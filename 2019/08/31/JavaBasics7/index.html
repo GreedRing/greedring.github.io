@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="面向对象">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-26T11:05:25.895Z">
+<meta property="og:updated_time" content="2019-08-26T12:00:01.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础3">
 <meta name="twitter:description" content="面向对象">
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1566817589826">
+  <link rel="stylesheet" href="/css/style.css?v=1566820810378">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -169,8 +169,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月31日</a>
-    <a><i class="nexmoefont icon-areachart"></i>424 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>704 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -212,9 +212,33 @@
 <li><strong>访问对象的属性以及行为</strong><br>对象名.属性名<br>对象名.方法名();</li>
 </ul>
 <p><strong>补充：</strong><br>如果在当前类下访问当前类的成员，直接访问即可<br>如果在其他类下访问当前类的成员，需要在其他类中创建当前类对象，通过 <label style="color:#ff4e6a">对象.属性</label> 或者 <label style="color:#ff4e6a">对象.成员方法()</label></p>
-<h2 id="面向对象三大特征之————封装"><a href="#面向对象三大特征之————封装" class="headerlink" title="面向对象三大特征之————封装"></a>面向对象三大特征之————封装</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>隐藏类内部实现细节，只暴露该暴露的属性、方法供外部调用</p>
-<p><strong>体现</strong><br>对类中的属性（xxx）进行私有化（使用private修饰符进行修饰）,暴露（public）出对应的get（getXxx()）/set(setXxx)方法供外部进行调用<br>封装实际就是通过private修饰符实现的</p>
-
+<h2 id="面向对象三大特征之————封装"><a href="#面向对象三大特征之————封装" class="headerlink" title="面向对象三大特征之————封装"></a>面向对象三大特征之————封装</h2><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>隐藏类内部实现细节，只暴露该暴露的属性、方法供外部调用</p>
+<h4 id="体现"><a href="#体现" class="headerlink" title="体现"></a>体现</h4><p>对类中的属性（xxx）进行私有化（使用private修饰符进行修饰）,暴露（public）出对应的get（getXxx()）/set(setXxx)方法供外部进行调用<br>封装实际就是通过private修饰符实现的</p>
+<pre><code class="java">//封装之后得到局部变量
+private int number;
+private String name;
+private double height;</code></pre>
+<h4 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h4><ul>
+<li>通过方法来控制成员变量的操作，提高了代码的安全性 </li>
+<li>把代码用方法进行封装，提高了代码的复用性</li>
+</ul>
+<p><strong>补充：</strong></p>
+<ul>
+<li>访问修饰符:(作用范围由小到大) private（同一个类）、缺省（同一个包下不同类）、protected（不同包下的子类）、public（当前工程）</li>
+<li>主要用于修饰：类、类的结构（属性、方法）、内部类、构造方法</li>
+<li>类： public、缺省</li>
+<li>类结构（属性、方法）： 四个都可以使用</li>
+<li>使用修饰符的作用：控制结构（变量、方法）可见范围</li>
+</ul>
+<h2 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h2><ul>
+<li>this代表所在类的对象引用，方法被哪个对象调用，this就代表那个对象</li>
+<li>局部变量名和成员变量名相同时使用，在局部使用的时候，采用就近原则，如果不用this关键字，就无法将局部变量赋值给成员变量<pre><code class="java">private int id;
+</code></pre>
+</li>
+</ul>
+<p>int getId(){<br>return id;<br>}</p>
+<p>void setId(int id){<br>this.id=id;//通过this将局部变量赋值给成员变量<br>}</p>
+<pre><code></code></pre>
   </article>
   
     
@@ -261,7 +285,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1566817589821"></script>
+<script src="/js/app.js?v=1566820810372"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
   
