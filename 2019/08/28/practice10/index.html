@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day10">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T13:44:43.568Z">
+<meta property="og:updated_time" content="2019-08-28T13:50:33.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="练习10">
 <meta name="twitter:description" content="day10">
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1566999933639">
+  <link rel="stylesheet" href="/css/style.css?v=1567000239049">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -228,6 +228,7 @@
 </ul>
 <p>1.定义玩游戏(PlayGame)接口<br>a)声明抽象 playGame()<br>2.定义手机类(Phone)类,实现玩游戏(PlayGame)接口<br>a)属性: 品牌(brand),价格(price)<br>b)功能:<br>i.特有功能: 打电话(call())<br>1.输出格式: 在使用3000 元 华为手机打电话<br>ii.实现接口功能: 玩游戏()<br>1.输出格式: 在使用3000 元 华为手机发短信<br>c)提供 空参,有参构造;setters和getters方法<br>3.定义电脑(Computer)类实现玩游戏接口(PlayGame())<br>a)属性: 品牌(brand)和价格(price)<br>b)功能:<br>i.实现playGame()方法<br>1.输出格式: 使用6000元的雷神电脑玩游戏<br>ii.特有功能: 编码(coding)<br>1.输出格式: 使用6000元的雷神电脑开发JavaEE应用<br>c)提供空参,有参构造;setters和getters方法<br>4.定义测试类Test<br>a)定义main方法<br>b)在main方法中<br>i.创建手机对象 p,品牌赋值为华为,价格赋值为3000<br>ii.调用手机对象 p的玩游戏功能<br>iii.调用手机对象 p的打电话功能<br>iv.创建电脑对象 c,品牌赋值为雷神,价格赋值为6000<br>v.调用电脑对象c的玩游戏功能<br>vi.调用电脑对象c的编程功能</p>
 <pre><code class="java">package com.greedring.practice01;
+
 public interface PlayGame {
     void playGame();
 }</code></pre>
@@ -431,7 +432,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1566999933516"></script>
+<script src="/js/app.js?v=1567000239035"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
   
