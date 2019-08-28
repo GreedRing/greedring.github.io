@@ -10,21 +10,24 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="面向对象基础、封装、this关键字">
+  <meta name="description" content="面向对象基础、封装、this关键字、匿名对象">
 <meta name="keywords" content="Java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基础7">
 <meta property="og:url" content="http://greedring.com/2019/08/31/JavaBasics7/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="面向对象基础、封装、this关键字">
+<meta property="og:description" content="面向对象基础、封装、this关键字、匿名对象">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/08/26/uaqeFCjghdQmM6x.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/26/smlSA6ba15LqJ9E.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/26/clsVyPCYzM75Z1S.png">
-<meta property="og:updated_time" content="2019-08-28T08:40:28.323Z">
+<meta property="og:image" content="https://i.loli.net/2019/08/28/xyoKwNr2tOQMGvP.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/28/Fq1m5QnOkyEc69t.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/28/InarTH9iAx5o2tR.png">
+<meta property="og:updated_time" content="2019-08-28T10:37:12.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础7">
-<meta name="twitter:description" content="面向对象基础、封装、this关键字">
+<meta name="twitter:description" content="面向对象基础、封装、this关键字、匿名对象">
 <meta name="twitter:image" content="https://i.loli.net/2019/08/26/uaqeFCjghdQmM6x.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
@@ -32,7 +35,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1566981948725">
+  <link rel="stylesheet" href="/css/style.css?v=1566988647725">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -173,8 +176,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月31日</a>
-    <a><i class="nexmoefont icon-areachart"></i>916 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.2k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -183,7 +186,7 @@
     
   </div>
   <article>
-    <p>面向对象基础、封装、this关键字</p>
+    <p>面向对象基础、封装、this关键字、匿名对象</p>
 <a id="more"></a> 
 
 <h2 id="面向对象基础"><a href="#面向对象基础" class="headerlink" title="面向对象基础"></a>面向对象基础</h2><p><strong>核心思想：万物皆对象</strong></p>
@@ -277,8 +280,22 @@ return id;
 void setId(int id){
 this.id=id;//通过this将局部变量赋值给成员变量
 }</code></pre>
-<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>一、需求说明：创建三个图书类对象，找出价格最高的图书并打印该图书的所有信息。<br>二、设计“图书类”Book，要求有以下属性：<br>    图书编号：<br>    书名：<br>    价格：</p>
+<h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><p>一、需求说明：创建三个图书类对象，找出价格最高的图书并打印该图书的所有信息。<br>二、设计“图书类”Book，要求有以下属性：<br>    图书编号：<br>    书名：<br>    价格：</p>
 <p><img src="https://i.loli.net/2019/08/26/uaqeFCjghdQmM6x.png" alt><br><img src="https://i.loli.net/2019/08/26/smlSA6ba15LqJ9E.png" alt><br><img src="https://i.loli.net/2019/08/26/clsVyPCYzM75Z1S.png" alt></p>
+<h2 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h2><h4 id="匿名对象概述"><a href="#匿名对象概述" class="headerlink" title="匿名对象概述"></a>匿名对象概述</h4><p>匿名对象即没有引用的对象，没有名字的对象，与有名对象对比如下：</p>
+<ul>
+<li>Person person = new Person();<br>可以通过 person.showName(); 调用名为person对象的 showName() 方法</li>
+<li>new Person().showName();<br>匿名对象仅可调用一次，之后便被计算机删除</li>
+</ul>
+<h4 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h4><p>请用代码描述： 小王卖出一部价值6000的iPhone手机</p>
+<p><strong>操作步骤描述</strong></p>
+<ul>
+<li>定义手机类<br>(a)属性: 品牌(brand),价格(price)<br>(b)要求:<br>  i.提供带参构造,setter与getter方法</li>
+<li>定义人类(Person)<br>(a)属性: 名称(name)<br>(b)行为:  卖手机: Phone sellPhone() ,在方法内部使用匿名对象作为返回值<br>(c)要求: 提供带参构造,setter和getter方法</li>
+<li>定义测试类Test<br>(a)提供main方法<br>(b)在main方法中<br>  i.使用带参构造创建Person对象 p,name初始化为小王<br>  ii.调用对象p的sellPhone()方法,赋值给Phone phone变量</li>
+<li>在main方法输出: 小王卖出一部价值6000的iPhone手机</li>
+</ul>
+<p><img src="https://i.loli.net/2019/08/28/xyoKwNr2tOQMGvP.png" alt><br><img src="https://i.loli.net/2019/08/28/Fq1m5QnOkyEc69t.png" alt><br><img src="https://i.loli.net/2019/08/28/InarTH9iAx5o2tR.png" alt></p>
 
   </article>
   
@@ -326,7 +343,7 @@ this.id=id;//通过this将局部变量赋值给成员变量
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1566981948619"></script>
+<script src="/js/app.js?v=1566988647715"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
   
