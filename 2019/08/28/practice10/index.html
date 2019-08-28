@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day10">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T16:03:33.579Z">
+<meta property="og:updated_time" content="2019-08-28T17:03:42.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="练习10">
 <meta name="twitter:description" content="day10">
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1567008268575">
+  <link rel="stylesheet" href="/css/style.css?v=1567011860092">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -169,8 +169,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月28日</a>
-    <a><i class="nexmoefont icon-areachart"></i>4.8k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 21 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>5.4k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 25 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -656,29 +656,266 @@ public class Test {
 </li>
 </ul>
 <p>1.定义动物类(Animal)<br>a)属性:颜色(color),年龄(age)<br>b)抽象方法: 吃(eat)<br>c)提供: 空参,带参构造;setters和getters方法<br>2.定义表演者接口(Actor)<br>a)抽象方法: play()<br>3.定义老虎类(Tiger),继承动物类(Animal)<br>a)实现抽象方法: 吃(eat)<br>i.输出格式: 2岁的黄色老虎吃肉<br>b)提供: 空参,带参构造;<br>4.定义会表演的老虎类(ActedTiger),继承老虎类(Tiger),实现表演者接口<br>a)实现抽象方法表演(play)<br>i.输出格式: 2岁的黄色老虎在表演钻火圈<br>b)提供: 空参,带参构造;<br>5.定义大猩猩类(Gorilla),继承动物类(Animal)<br>a)实现抽象方法: 吃(eat)<br>i.输出格式: 3岁的黑色大猩猩吃香蕉<br>b)提供: 空参,带参构造;<br>6.定义会表演的大猩猩(ActedGorilla),继承大猩猩类(Gorilla),实现表演者接口<br>a)实现抽象方法表演(play)<br>i.输出格式: 3岁的黑色大猩猩在表演骑自行车<br>b)提供: 空参,带参构造;<br>7.定义鹦鹉类(Parrot),继承动物类(Animal)<br>a)实现抽象方法: 吃(eat)<br>i.输出格式: 1岁的绿色鹦鹉在吃小米<br>b)特有方法: 说话(say)<br>i.输出格式: 1岁的绿色鹦鹉在说你好<br>c)提供: 空参,带参构造;<br>8.定义会会表演的鹦鹉类(ActedParrot),继承鹦鹉类(Parrot),实现表演者接口<br>a)实现抽象方法表演(play)<br>i.输出格式: 1岁的绿色鹦鹉在表演过跷跷板<br>b)提供: 空参,带参构造;<br>9.定义动物园管理员类(ZooManager)<br>a)属性:姓名(name),年龄(age)<br>b)行为:<br>i.喂养动物(feed(Animal a)),调用吃的方法;<br>1.请思考此处为什么使用Animal作为参数类型而不是其子类<br>2.在方法内部,调用a对象的eat方法<br>ii.组织演出(letItShow(Actor a))<br>1.请思考此处为什么使用Actor接口类型作为参数类型而不是其实现类<br>2.在方法内部<br>a)调用a的play方法<br>b)如果是鹦鹉,把a向下转型为Parrot类型,调用说话方法<br>c) 提供空参,有参构造方法与setters和getters方法<br>10.定义测试类Test<br>a)提供main方法<br>b)在main方法<br>i.创建会表演的老虎类(ActedTiger)对象t,把颜色赋值为黄色,年龄赋值为2<br>ii.创建会表演的大猩猩(ActedGorilla)对象g,把颜色赋值黑色,年龄赋值为3<br>iii.创建会表演的鹦鹉类(ActedParrot)对象 p,把颜色赋值为绿色,年龄赋值1<br>iv.创建物园管理员类(ZooManager)对象zm,把名称赋值邓超,年龄赋值30<br>1.调用三次zm对象的喂养动物(feed(Animal a))方法,分别传入t,g,p对象<br>调用三次zm对象的组织表演(letItShow(Actor a))方法,分别传入t,g,p对象</p>
-<pre><code class="java"></code></pre>
+<pre><code class="java">package com.greedring.practice05;
+
+public abstract class Animal {
+    private String color;
+    private int age;
+
+    String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    Animal(String color, int age) {
+        this.color = color;
+        this.age = age;
+    }
+
+    Animal() {
+    }
+
+    abstract void eat();
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice05;
+
+public interface Actor {
+    void play();
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice05;
+
+class Tiger extends Animal {
+    Tiger(String color, int age) {
+        super(color, age);
+    }
+
+    Tiger() {
+    }
+
+    @Override
+    void eat() {
+        System.out.println(getAge() + &quot;岁的&quot; + getColor() + &quot;老虎吃肉&quot;);
+    }
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice05;
+
+public class ActedTiger extends Tiger implements Actor {
+    ActedTiger(String color, int age) {
+        super(color, age);
+    }
+
+    public ActedTiger() {
+    }
+
+    @Override
+    public void play() {
+        System.out.println(getAge() + &quot;岁的&quot; + getColor() + &quot;老虎在表演钻火圈&quot;);
+    }
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice05;
+
+class Gorilla extends Animal {
+    Gorilla(String color, int age) {
+        super(color, age);
+    }
+
+    Gorilla() {
+    }
+
+    @Override
+    void eat() {
+        System.out.println(getAge() + &quot;岁的&quot; + getColor() + &quot;大猩猩吃香蕉&quot;);
+    }
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice05;
+
+public class ActedGorilla extends Gorilla implements Actor {
+    ActedGorilla(String color, int age) {
+        super(color, age);
+    }
+
+    public ActedGorilla() {
+    }
+
+    @Override
+    public void play() {
+        System.out.println(getAge() + &quot;岁的&quot; + getColor() + &quot;大猩猩在表演骑自行车&quot;);
+    }
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice05;
+
+class Parrot extends Animal {
+    Parrot(String color, int age) {
+        super(color, age);
+    }
+
+    Parrot() {
+    }
+
+    @Override
+    void eat() {
+        System.out.println(getAge() + &quot;岁的&quot; + getColor() + &quot;鹦鹉在吃小米&quot;);
+    }
+
+    void say() {
+        System.out.println(getAge() + &quot;岁的&quot; + getColor() + &quot;鹦鹉在说你好&quot;);
+    }
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice05;
+
+public class ActedParrot extends Parrot implements Actor {
+    ActedParrot(String color, int age) {
+        super(color, age);
+    }
+
+    public ActedParrot() {
+    }
+
+    @Override
+    public void play() {
+        System.out.println(getAge() + &quot;岁的&quot; + getColor() + &quot;鹦鹉在表演过跷跷板&quot;);
+    }
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice05;
+
+public class ZooManager {
+    private String name;
+    private int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    ZooManager(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public ZooManager() {
+    }
+
+    void feed(Animal animal) {
+        animal.eat();
+    }
+
+    void letItShow(Actor actor) {
+        if (actor instanceof Parrot) {
+            Parrot parrot = (Parrot) actor;
+            parrot.say();
+        } else {
+            actor.play();
+        }
+    }
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice05;
+
+public class Test {
+    public static void main(String[] args) {
+        ActedTiger actedTiger = new ActedTiger(&quot;黄色&quot;, 2);
+        ActedGorilla actedGorilla = new ActedGorilla(&quot;黑色&quot;, 3);
+        ActedParrot actedParrot = new ActedParrot(&quot;绿色&quot;, 1);
+        ZooManager zooManager = new ZooManager(&quot;邓超&quot;, 30);
+        zooManager.feed(actedTiger);
+        zooManager.feed(actedGorilla);
+        zooManager.feed(actedParrot);
+        zooManager.letItShow(actedTiger);
+        zooManager.letItShow(actedGorilla);
+        zooManager.letItShow(actedParrot);
+    }
+}</code></pre>
 <h2 id="关卡3"><a href="#关卡3" class="headerlink" title="关卡3"></a>关卡3</h2><h4 id="训练案例1-2"><a href="#训练案例1-2" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
 <li><p>训练考核知识点<br>继承、接口、类实现接口、多态、向下转型</p>
 </li>
 <li><p>训练描述<br>请使用代码描述:<br>所有飞机(Plane)都具有飞(fly)的功能，但是战斗机(Battleplane)除了具有飞的功能外，还具有发射炮弹(fire)的功能！<br>要求:在测试类中创建战斗机对象,分别调用fly和fire方法; 然后测试向上转型(转换为父类类型和实现的接口类型)和向下转型.</p>
-<pre><code class="java"></code></pre>
 </li>
 </ul>
+<pre><code class="java">package com.greedring.practice06;
+
+public interface fly {
+    void canFly();
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice06;
+
+public class Plane implements fly {
+
+    @Override
+    public void canFly() {
+        System.out.println(&quot;飞机可以飞&quot;);
+    }
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice06;
+
+class Battleplane extends Plane implements fly {
+    void fire() {
+        System.out.println(&quot;战斗机可以发射炮弹&quot;);
+    }
+}
+</code></pre>
+<pre><code class="java">package com.greedring.practice06;
+
+public class Test {
+    public static void main(String[] args) {
+        Battleplane battleplane = new Battleplane();
+        battleplane.canFly();
+        battleplane.fire();
+        System.out.println(&quot;===============&quot;);
+        Plane plane = new Battleplane();
+        plane.canFly();
+        System.out.println(&quot;===============&quot;);
+        Battleplane b = (Battleplane) plane;
+        b.fire();
+        b.canFly();
+    }
+}
+</code></pre>
 <h4 id="训练案例2-2"><a href="#训练案例2-2" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
 <li><p>训练考核知识点<br>抽象类、接口、继承、多态、类名作为参数类型、接口作为参数类型、向下转型</p>
 </li>
 <li><p>训练描述<br>请使用代码描述:<br>所有的猫都有颜色和年龄,都会吃(吃鱼)和抓老鼠,但是有部猫会卖萌(actingCute)<br>所有的狗都有颜色和年龄,都会吃(肯骨头)和看家,但有部分狗会卖萌(actingCute)<br>去卖萌,会卖萌的猫和狗可以. (提示通过在测试类中的静态方法实现)<br>如果传入的猫就调用猫的抓老鼠方法<br>如果传入的狗就调用狗的看家方法<br>去吃饭,所有动物都可以去(提示通过在测试类中的静态方法实现)<br>如果传入的猫就调用猫的抓老鼠方法<br>如果传入的狗就调用狗的看家方法</p>
-<pre><code class="java"></code></pre>
 </li>
 </ul>
+<pre><code class="java"></code></pre>
 <h4 id="训练案例3-2"><a href="#训练案例3-2" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
 <li><p>训练考核知识点<br>抽象类、接口、继承、多态、类名作为参数类型、接口作为参数类型</p>
 </li>
 <li><p>训练描述<br>请用代码描述<br>在某个公司每一个员工都有工号,姓名和工资,都要工作. 按照做工作的内容不同分为行政部(AdminStaff),开发部(Developer)和财务部(Treasurer)<br>所有行政部人员都要工作(采购),但是有的行政部员工会表演(跳舞)<br>所有的开发部人员都要工作(编程),但有开发部员工会表演(唱歌)<br>所有的财务部人员都要工作(对账),但是有的财务部员工表演(玩魔术)<br>35岁的薛之谦老板会安排员工工作和组织员工表演.</p>
-<pre><code class="java"></code></pre>
 </li>
 </ul>
-<p>```</p>
+<pre><code class="java"></code></pre>
 
   </article>
   
@@ -726,7 +963,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1567008268557"></script>
+<script src="/js/app.js?v=1567011860073"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
   
