@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/08/26/uaqeFCjghdQmM6x.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/26/smlSA6ba15LqJ9E.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/26/clsVyPCYzM75Z1S.png">
-<meta property="og:updated_time" content="2019-08-26T12:27:39.595Z">
+<meta property="og:updated_time" content="2019-08-28T08:40:28.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础7">
 <meta name="twitter:description" content="面向对象基础、封装、this关键字">
@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1566822464023">
+  <link rel="stylesheet" href="/css/style.css?v=1566981948725">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -173,7 +173,7 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月31日</a>
-    <a><i class="nexmoefont icon-areachart"></i>770 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>916 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -222,6 +222,38 @@
 private int number;
 private String name;
 private double height;</code></pre>
+<p>创建getter和setter方法</p>
+<pre><code class="java">    public int getNumber() {
+        return number;
+    }
+//this关键字下面会讲到
+    public void setNumber(int number) {
+        this.number = number;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public double getHeight() {
+        return height;
+    }
+    public void setHeight(double height) {
+        this.height = height;
+    }</code></pre>
+<p>构造带参和无参方法</p>
+<ul>
+<li>在未创建带参的构造方法时，系统会默认生成无参的构造方法</li>
+<li>如果创建了带参的构造方法，无参的构造方法就需要自行创建，习惯性的同时创建两种方法</li>
+</ul>
+<pre><code class="java">    public Main(int number, String name, double height) {
+        this.number = number;
+        this.name = name;
+        this.height = height;
+    }
+    public Main() {
+    }</code></pre>
 <h4 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h4><ul>
 <li>通过方法来控制成员变量的操作，提高了代码的安全性 </li>
 <li>把代码用方法进行封装，提高了代码的复用性</li>
@@ -294,7 +326,7 @@ this.id=id;//通过this将局部变量赋值给成员变量
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1566822464016"></script>
+<script src="/js/app.js?v=1566981948619"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
   
