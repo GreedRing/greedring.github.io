@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>练习11 - Greed Ring</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="day11">
+<meta name="keywords" content="Java基础练习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="练习11">
+<meta property="og:url" content="http://greedring.com/2019/08/29/JavaBasicsPractice11/index.html">
+<meta property="og:site_name" content="Greed Ring">
+<meta property="og:description" content="day11">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-29T08:41:40.579Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="练习11">
+<meta name="twitter:description" content="day11">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1567068166919">
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/08/22/IxAp3mfcJWbzaFU.jpg)"></div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/">
+            <img src="/images/avatar.png">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>8</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>1</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/friends.html">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/15144854" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/greedring/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div class="nexmoe-widget tagcloud">
+      <a href="/tags/Java基础/" style="font-size: 20px;">Java基础</a> <a href="/tags/Java基础练习/" style="font-size: 10px;">Java基础练习</a>
+    </div>
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 GreedRing
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+
+<script>
+    const getRealPath = (pathname, desc = false) => {
+        if (!pathname) {
+            pathname = window.location.pathname
+        }
+        let names = pathname.split("/")
+        if (desc === false) {
+            for (let i = names.length - 1; i >= 0; --i) {
+                let name = names[i].trim()
+                if (name.length > 0 && name !== "/" && name !== "index.html") {
+                    return name
+                }
+            }
+        } else {
+            for (let i = 0; i < names.length; ++i) {
+                let name = names[i].trim()
+                if (name.length > 0 && name !== "/" && name !== "index.html") {
+                    return name
+                }
+            }
+        }
+        return "/"
+    }
+    let links = document.querySelectorAll('.nexmoe-list-item');
+    let rootRealPath = getRealPath(window.location.pathname, true);
+    for (let link of links) {
+        let linkPath = link.getAttribute("href");
+        if (linkPath && getRealPath(linkPath, true) === rootRealPath) {
+            link.className = "active nexmoe-list-item mdui-list-item mdui-ripple";
+        }
+    }
+</script>
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-tab">
+            <a mdui-drawer="{target: '#drawer', swipe: true}">
+              <i class="mdui-icon material-icons">menu</i>
+            </a>
+          </div>
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+        <img src="https://i.loli.net/2019/08/28/VZTWaXsdY3hAoRg.jpg">
+        
+        <h1>练习11</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月29日</a>
+    <a><i class="nexmoefont icon-areachart"></i>5.3k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 22 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/Java基础练习/">Java基础练习</a>
+    
+  </div>
+  <article>
+    <p>day11</p>
+<a id="more"></a>
+
+
+    <div id="aplayer-maHLuSaw" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+
+<h2 id="关卡1"><a href="#关卡1" class="headerlink" title="关卡1"></a>关卡1</h2><h4 id="训练案例1"><a href="#训练案例1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li><p>训练考核知识点<br>static关键字</p>
+</li>
+<li><p>训练描述<br>请阐述对static关键字理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出 static 可以修饰什么?<br>2.请说出 static 关键字的特点 ?<br>3.请说出 static 修饰的成员如何使用 ?</p>
+<h4 id="训练案例2"><a href="#训练案例2" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
+<li><p>训练考核知识点<br>静态代码块</p>
+</li>
+<li><p>训练描述<br>请阐述你对静态代码块的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出静态代码块的定义位置.<br>2.请说出静态代码块的定义格式.<br>3.请说出静态代码块执行时机和执行次数.<br>4.请说出静态代码块可用于做什么?</p>
+<h4 id="训练案例3"><a href="#训练案例3" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
+<li><p>训练考核知识点<br>final关键字</p>
+</li>
+<li><p>训练描述<br>请阐述你对final关键字的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<ol>
+<li>请说出final关键字可以修饰什么?</li>
+<li>请说出被final关键字的特点.</li>
+</ol>
+<h4 id="训练案例4"><a href="#训练案例4" class="headerlink" title="训练案例4"></a>训练案例4</h4><ul>
+<li><p>训练考核知识点<br>包</p>
+</li>
+<li><p>训练描述<br>请阐述你对包的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出包的作用<br>2.请说出包命名规则<br>3.请说出包声明格式与位置<br>4.请说出如何访问包中的类<br>5.请说出导包的作用和导包的格式以及导包语句的位置</p>
+<h4 id="训练案例5"><a href="#训练案例5" class="headerlink" title="训练案例5"></a>训练案例5</h4><ul>
+<li><p>训练考核知识点<br>四种访问权限修饰符</p>
+</li>
+<li><p>训练描述<br>请阐述你对四种访问权限修饰符的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出四种权限修饰符分别是什么 ?<br>2.请说出四种权限修饰符可以修饰什么?<br>3.请说出每种权限修饰符特点 ?<br>4.请说出如何使用每种权限修饰符?</p>
+<h4 id="训练案例6"><a href="#训练案例6" class="headerlink" title="训练案例6"></a>训练案例6</h4><ul>
+<li><p>训练考核知识点<br>内部类</p>
+</li>
+<li><p>训练描述<br>请阐述内部类的概念</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出什么是内部类.<br>2.请说出什么时候使用内部类.<br>3.请说出内部类的分类.</p>
+<h4 id="训练案例7"><a href="#训练案例7" class="headerlink" title="训练案例7"></a>训练案例7</h4><ul>
+<li><p>训练考核知识点<br>成员内部类</p>
+</li>
+<li><p>训练描述<br>请阐述你对成员内部类的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出成员内部类定义位置.<br>2.请说出成员内部类定义格式.<br>3.请说出如何通过成员内部类创建对象.</p>
+<h4 id="训练案例8"><a href="#训练案例8" class="headerlink" title="训练案例8"></a>训练案例8</h4><ul>
+<li><p>训练考核知识点<br>匿名内部类</p>
+</li>
+<li><p>训练描述<br>请阐述你对匿名内部类的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出匿名内部类的两个含义分别是什么?.<br>2.请说出匿名内部类的作用.</p>
+<h4 id="训练案例9"><a href="#训练案例9" class="headerlink" title="训练案例9"></a>训练案例9</h4><ul>
+<li><p>训练考核知识点<br>引用数据类型</p>
+</li>
+<li><p>训练描述<br>请阐述你引用数据类型作为参数和返回值类型理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出你对类作为参数和返回值类型理解.<br>2.请说出你对抽象类作为参数和返回值类型理解<br>3.请说出你对接口作为参数和返回值类型理解</p>
+<h4 id="训练案例10"><a href="#训练案例10" class="headerlink" title="训练案例10"></a>训练案例10</h4><ul>
+<li><p>训练考核知识点<br>静态成员变量</p>
+</li>
+<li><p>训练描述<br>请说出下面代码执行结果并绘制内存图</p>
+</li>
+</ul>
+<pre><code class="java">   public class Student {
+   //    学校
+       public static String school  = &quot;清华大学&quot;;
+   //    姓名
+       private String name;
+   //    年龄
+       private int age;
+
+   //    构造方法
+       public Student() {
+           super();
+       }
+       public Student(String name, int age) {
+           super();
+           this.name = name;
+           this.age = age;
+       }
+   }
+
+   public class Test {
+       public static void main(String[] args) {
+           Student s1 = new Student(&quot;景甜&quot;,22);
+           Student s2 = new Student(&quot;林思意&quot;,18);
+           System.out.println(s1.school);
+           s1.school = &quot; 极客营&quot;;
+           System.out.println(s2.school);
+       }
+   }</code></pre>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<p>1.请说出上面代码的运行结果<br>2.请画出上面的代码的内存图<br>(a)打开画图软件<br>(b)在左上角写上:静态成员变量的内存图<br>(c)在左边画一个竖长的文本框,把字体调整到10号,把上面的代码拷贝过去<br>(d)在代码的右边绘制一个方块表示栈区,右边需要留出绘制堆内存区域,下面需要留出绘制方法区的区域<br>(e)在栈内存的方法,绘制一个表示堆内存的方块,在该方块左上角表上堆<br>(f)在栈内存和堆内存方块下面绘制一个方块表示方法区,在左上角标上方法区<br>(g)在方法区左边绘制一个方块,表示为Test.class代码分配的内存,方法左上角标注Test.class; 方法内部写Test.class的部分代码.<br>(h)在栈区最下面画一个方块,左上角标注main方法,表示main方法压栈执行<br>(i)在方法区Test.class区域,右边绘制一个方块,左上角标注为Student.class 表示为Student.class代码分配的内存, 方块内部可以写Student类的部分代码<br>(j)在方法区Student.class方法的右边绘制一个方块,左上角标注静态区<br>(k)在静态区,画一个方块,左上角写上 Student.class 表示Student.class中的静态变量内存<br>(l)在Student.class方块内,画一个方块,左上角标注 static school,表示为静态成员school分配的存储空间, 在这个方块内部写 “清华大学” ,表示默认初始化值为清华大学<br>(m)在main方块中,上面绘制一个小方块,左上标注为Student s1 表示为s1分配的存储<br>(n)在堆内存中,绘制一个方块,右上角标注new Student(“景甜”,22),表示创建对象分配的存储空间,在这个小方块内绘制绘制两个小方块一个左上标注为name,表示为成员变量name分配的存储空间,内部写上”景甜”,一个标注为age,内部写上22,表示为age成员变量分配的存储空间,初始化值为22<br>(o)在这个对象的方块,左上角标注上 0X001,表示这个对象的地址;在栈内存中,方块s1中写上0X001,表示变量中存储是对象的地址;画一条从这里到堆内存的0X001的线,然后标注上箭头(两根线),表示s1指向堆内存.<br>(p)在main方块中,上面绘制一个小方块,左上标注为Student s2 表示为s2分配的存储<br>(q)在堆内存中,绘制一个方块,右上角标注new Student(“林思意”,18),表示创建对象分配的存储空间,在这个小方块内绘制绘制两个小方块一个左上标注为name,表示为成员变量name分配的存储空间,内部写上”林思意”,一个标注为age,内部写上18,表示为age成员变量分配的存储空间,初始化值为18<br>(r)在这个对象的方块,左上角标注上 0X002,表示这个对象的地址;在栈内存中,方块s2中写上x003,表示变量中存储是对象的地址<br>(s)使用红框把System.out.println(s1.school);中的s1.school 框起来,画一条从这里到线到静态区school的线条,标注上箭头(使用两根线),表示s1.school访问的是静态区school,所以此处输出的是: 清华大学<br>(t)使用红框把s1.school = “ 极客营”; 中的s1.school框起来,然后一个从这里到静态区school的箭头,然后划掉school静态变量的清华大学,在后面写上 极客营,表示把静态变量school的从原来的清华大学修改为极客营<br>(u)使用红框把System.out.println(s2.school);中的s2.school 框起来,画一条从这里到线到静态区school的线条,标注上箭头(使用两根线),表示s2.school访问的是静态区school,所以此处输出的是: 极客营</p>
+<h4 id="训练案例11"><a href="#训练案例11" class="headerlink" title="训练案例11"></a>训练案例11</h4><ul>
+<li><p>训练考核知识点<br>静态代码块</p>
+</li>
+<li><p>训练描述<br>看下面的代码说出运行结果以及执行流程</p>
+</li>
+</ul>
+<pre><code class="java">   public class Test {
+
+       static {
+           System.out.println(&quot;Test 静态代码块&quot;);
+       }
+       public Test(){
+           System.out.println(&quot;Test 构造方法&quot;);
+       }
+       public static void main(String[] args) {
+           System.out.println(&quot;Test main方法&quot;);
+           Test t = new Test();
+       }
+   }</code></pre>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<p>1.请说上面代码运行结果<br>2.请说出上面代码的执行流程</p>
+<h5 id="训练案例12"><a href="#训练案例12" class="headerlink" title="训练案例12"></a>训练案例12</h5><ul>
+<li><p>训练考核知识点<br>成员内部类</p>
+</li>
+<li><p>训练描述<br>请用代码描述:<br>汽车有两种状态,一种是停止,一种运行; 汽车的内部都一个发动机;发动机有一个工作的功能; 如果汽车的运行状态发动机就飞速旋转,如果汽车是停止状态,发动机停止工作<br>要求: 使用成员内部类.</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.定义一个汽车类(Car)<br>(a)成员变量: 状态(status),true表示运行状态一种,false表示停止状态.<br>(b)成员内部类: 发动机(Engine)<br>i.成员方法:work()<br>1.如果汽车的运行状态打印发动机就飞速旋转<br>2.否则打印发动机停止工作<br>(c)提供:状态(status)的getter和setter方法<br>2.定义测试类(Test)<br>(a)提供main方法<br>(b)在main方法中<br>i.创建汽车对象 c<br>ii.通过汽车对象c创建该汽车的发动机对象e<br>iii.调用发动机e对象的work()方法<br>iv.把汽车对象c的状态设置为true<br>v.调用发动机e对象的work()方法</p>
+<h2 id="关卡2"><a href="#关卡2" class="headerlink" title="关卡2"></a>关卡2</h2><h4 id="训练案例1-1"><a href="#训练案例1-1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li><p>训练考核知识点<br>权限修饰符<br>static、final、abstract</p>
+</li>
+<li><p>训练描述<br>请简述abstract不能和那些关键一起使用,为什么.</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.abstract可以与private关键字一起使用吗? 为什么?<br>2.abstract 可以与static关键字一起使用吗? 为什么?<br>3.abstract 可以与final关键字一起使用吗? 为什么? </p>
+<h4 id="训练案例2-1"><a href="#训练案例2-1" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
+<li><p>训练考核知识点<br>静态代码块</p>
+</li>
+<li><p>训练描述<br>看下面的程序,说出的它的执行结果,以及执行流程</p>
+</li>
+</ul>
+<pre><code class="java">     public class Student {
+       static {
+           System.out.println(&quot;Student 类的静态代码块&quot;);
+       }
+       public Student(){
+           System.out.println(&quot;Student 类的构造方法&quot;);
+       }
+       public Student(String methodName){
+           System.out.println(&quot;在&quot;+methodName+&quot;方法中创建Student对象调用的&quot;);
+       }
+   }
+   public class Test {
+
+       static {
+           System.out.println(&quot;Test 类的静态代码块&quot;);
+       }
+
+       public static void main(String[] args) {
+          System.out.println(&quot;执行main方法&quot;);
+   //        创建学生对象
+           Student s1 = new Student(&quot;main&quot;);
+       }
+   }</code></pre>
+<p>提示: 类只有被使用到的时候才会加载</p>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<ol>
+<li>说出输出结果</li>
+<li>阐述类的加载与代码的执行流程</li>
+</ol>
+<h4 id="训练案例3-1"><a href="#训练案例3-1" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
+<li><p>训练考核知识点<br>final关键字</p>
+</li>
+<li><p>训练描述<br>请写代码验证final关键字的特点</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.验证:final修饰类不可以被继承，但是可以继承其他类<br>(a)定义类(Final_1),用于验证第一个特点<br>(b)在类上面使用注释写上: 验证:final修饰类不可以被继承，但是可以继承其他类<br>(c)在Final_1.java中,定义被修final修饰的类(FinalClass) 类<br>(d)在Final_1.java中,定义子类Sub继承FinalClass类,编译报错,把鼠标放在红色X上面,提示:The type Sub cannot subclass the final class FinalClass:<br>(e)把类Sub,使用注释掉,然后在下面写上: 被final修饰的类不能被继承<br>(f)让FinalClass继承Final_1,编译通过; 在FinalClass上面使用注释写上:  验证:被final的修饰类可以继承其他类.<br>2.final修饰的方法不可以被覆盖,但父类中没有被final修饰方法，子类覆盖后可以加final<br>(a)定义类(Final_2),用于验证第二特点<br>i.成员方法:<br>1.被final修饰的成员方法 finalMethod<br>2.普通方法 normalMethod<br>(b)在Final_2.java中,定义子类(Sub2) 继承 Final_2<br>i.覆盖 finalMethod编译报错,把鼠标放到红色x上面,提示:Cannot override the final method from Final_2: 被final修饰方法不能被覆盖(重写);<br>ii.注释调用这个方法,在上面使用注释写上: final修饰方法不能被覆盖(重写);<br>iii.覆盖normalMethod 方法,在权限修饰符 和返回值直接加上final,编译通过,在这个方法上面写上: 父类中没有被final修饰方法，子类覆盖后可以加final<br>3.final修饰的变量称为常量，这些变量只能赋值一次<br>(a)定义Final_3类,表示用于验证final的第三个特点<br>(b)在这个类上面使用注释写上: 验证: final修饰的变量称为常量，这些变量只能赋值一次<br>(c)提供main方法<br>(d)在main方法中<br>i.定义被final修饰的整型变量a,初始化值为10<br>ii.给a赋值为20,编译报错,<br>iii.把鼠标放在红色x上面提示:The final local variable a cannot be assigned:被fianl修饰的局部变量不能被赋值;<br>iv.注释掉这句话,在上面写上:final修饰的变量称为常量，这些变量只能赋值一次<br>v.定义被final修饰的整型变量b,没有初始化值<br>vi.下一行,给变量b赋值为5<br>vii.然后再给变量b赋值为15,编译报错<br>viii.把鼠标放到红色x上面提示:The final local variable b may already have been assigned: 被final修饰的局部变量已经赋值了<br>ix.注释掉这个赋值语句,然后在上面使用注释写上:final修饰的变量称为常量，这些变量只能赋值一次<br>4.引用类型的变量值为对象地址值，地址值不能更改，但是地址内的对象属性值可以修改<br>(a)定义类(Final_4),表示用于验证final的第四个特点,在这个类上面使用注释写上:验证:引用类型的变量值为对象地址值，地址值不能更改，但是地址内的对象属性值可以修改<br>(b)在Fianl4.java中,定义辅助类,随便写,我这里使用猫类(Cat)<br>i.定义公共权限成员变量: 年龄 (age)<br>(c)在Fianl_4类中提供main方法<br>(d)在main方法中<br>i.定义被final修饰的Cat类型的引用变量c,new Cat()赋值给它<br>ii.然后,在new Cat() 赋值给变量c,编译报错<br>iii.错误提示:The final local variable c cannot be assigned. 被fianl修饰的局部变量不能被赋值<br>iv.注释掉这个赋值语句,然后在上面使用注释写上: 引用类型的变量值为对象地址值，地址值不能更改<br>(e)给对象c的age属性赋值为2,编译通过; 表示: 其指向的对象属性值可以修改<br>(f)在这话上面,使用注释写上:地址内的对象属性值可以修改<br>5.修饰成员变量，需要在创建对象前赋值，否则报错。(当没有显式赋值时，多个构造方法的均需要为其赋值。<br>(a)定义类(Final_5),表示用于验证final的第五个特点<br>(b)在这个类上面使用注释写上:验证:修饰成员变量，需要在创建对象前赋值，否则报错。(当没有显式赋值时，多个构造方法的均需要为其赋值。<br>(c)这里需要验证两点:<br>i.定义final成员变量的时候,显示赋值<br>ii.否则每一个构造方法都需要给这个final修饰成员变量赋值<br>(d)定义被final修饰的整型成员变量a,并显式赋值为10<br>(e)定义被final修饰的整型成员变量b,不显式赋值,编译报错,<br>i.提示The blank final field b may not have been initialized,被final修饰的成员变量可能没有被赋值<br>(f)提供空参构造方法,上面成员变量b不报错了,但是这里开始报错了<br>i.提示:The blank final field b may not have been initialized<br>ii.在空参构造方法内部写上: b = 20; 编译通过<br>(g)提供满参构造,但是不给a和b赋值,报错<br>i.提示:The blank final field b may not have been initialized<br>ii.在满参构造方法中写上this.b = b; 编译通过,说明: 当没有显式赋值时，多个构造方法的均需要为其赋值.<br>iii.在写上 this.a = a; 编译报错,提示:The final field Final_5.a cannot be assigned 表示被final修饰成员变量只能赋值一次<br>iv.注释掉这句代码,在后面写上,被final修饰成员变量只能赋值一次</p>
+<h4 id="训练案例4-1"><a href="#训练案例4-1" class="headerlink" title="训练案例4"></a>训练案例4</h4><ul>
+<li><p>训练考核知识点<br>抽象类、匿名内部类</p>
+</li>
+<li><p>训练描述<br>请用代码描述:<br>在某新型公司,每一个员工都有工号,姓名; 都要工作,但是每一个员工的工作内容都不一样;<br>要求:使用匿名内部类创建对象</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.定义抽象类(Employee)<br>(a)属性: 工号(id),姓名(name)<br>(b)行为: 抽象方法work()<br>(c)要求: 提供setters和gettters方法<br>2.定义测试类Test<br>(a)提供main方法<br>(b)在main方法中<br>i.使用匿名内部类创建Employee的子类对象 e;并重写work()方法<br>1.输出格式:工号为001的员工范冰冰在努力的敲代码<br>ii.使用setXxx方法给e的工号和名称赋值<br>iii.调用e的work()方法</p>
+<h4 id="训练案例5-1"><a href="#训练案例5-1" class="headerlink" title="训练案例5"></a>训练案例5</h4><ul>
+<li><p>训练考核知识点<br>接口、接口名作为形式参数类型、匿名内部类</p>
+</li>
+<li><p>训练描述<br>请用代码描述：<br>某市举办一场运动会,只要是会跑的都可以参加.<br>要求: 使用到接口,接口作为参数,匿名内部类.<br>提示: 把跑功能抽取到接口中 ,在测试类中提供参加运动会的静态方法       </p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.定义接口(Sport)<br>(a)抽象方法: 跑(run)<br>2.定义测试类Test<br>(a)定义静态方法:进入运行会(enter(Sport s)),在方法中调用s的run方法<br>(b)提供main方法<br>(c)在main方法中<br>i.调用enter(Sport s),传入使用Sport接口的匿名内部类创建的对象;<br>ii.在匿名内部类中重写run方法<br>1.输出: 参加运动会,奔跑吧</p>
+<h4 id="训练案例6-1"><a href="#训练案例6-1" class="headerlink" title="训练案例6"></a>训练案例6</h4><ul>
+<li><p>训练考核知识点<br>接口、接口名作为形式参数类型、匿名内部类</p>
+</li>
+<li><p>训练描述<br>请用代码描述：<br>某高校举成立一个大球俱乐部,只要是会打篮球,踢足球,打排球的可以参加.<br>要求: 使用到接口,接口作为参数,匿名内部类.<br>提示: 把打篮球,踢足球,打排球功能抽取到接口中 ,在测试类中提供加入俱乐部的静态方法,参数为接口类; </p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.定义接口(Player)<br>(a)抽象方法: 打篮球(playBasketball),踢足球(playFootball),打排球(playVolleyball)<br>2.定义测试类Test<br>(a)定义静态方法:进入运行会(join(Player p)),在方法中调用p的 打篮球,踢足球,打排球 方法<br>(b)提供main方法<br>(c)在main方法中<br>i.调用join(Player p),传入使用Player 接口的匿名内部类创建的匿名对象;<br>ii.在匿名内部类中<br>1.重写playBasketball()方法<br>(a)输出: 在打篮球<br>2..重写playFootball()方法<br>(a)输出: 在踢足球<br>3..重写playVolleyball()方法<br>(a)输出: 在打排球</p>
+<h2 id="关卡3"><a href="#关卡3" class="headerlink" title="关卡3"></a>关卡3</h2><h4 id="训练案例1-2"><a href="#训练案例1-2" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li><p>训练考核知识点<br>静态代码块、构造方法、成员变量</p>
+</li>
+<li><p>训练描述<br>看下面的程序说出执行结果并阐述程序的执行流程</p>
+</li>
+</ul>
+<pre><code class="java">   public class Student {
+       static {
+           System.out.println(&quot;Student 类的静态代码块&quot;);
+       }
+       public Student(){
+           System.out.println(&quot;Student 类的构造方法&quot;);
+       }
+       public Student(String methodName){
+           System.out.println(&quot;在&quot;+methodName+&quot;创建Student对象调用的&quot;);
+       }
+   }
+
+   public class Test {
+
+   //    实例(对象)成员变量
+       Student s = new Student(&quot;成员变量显式初始化的时候&quot;);    
+   //    静态代码块
+       static {
+           System.out.println(&quot;Test 类的静态代码块&quot;);
+       }
+
+       public static void main(String[] args) {
+          System.out.println(&quot;main方法&quot;);
+   //        创建学生对象
+           Student s1 = new Student(&quot;main方法中&quot;);
+   //        创建Test对象
+           Test t = new Test();
+       }
+   }</code></pre>
+<p>提示: </p>
+<ol>
+<li>类只有被使用就会加载到内存中</li>
+<li>只有创建对象才会为成员变量分配存储空间才能对成员变量赋值</li>
+</ol>
+<h4 id="训练案例2-2"><a href="#训练案例2-2" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
+<li>训练考核知识点<br>抽象类、匿名内部类</li>
+</ul>
+<p>-训练描述<br>请使用代码描述:<br>某人养了几只宠物,每个宠物都有名字,每一个宠物都会吃,但是每个宠物吃的东西都不一样;宠物1叫tom吃鱼,宠物2叫小黑,啃骨头.<br>要求: 用到抽象类和匿名内部类</p>
+<h4 id="训练案例3-2"><a href="#训练案例3-2" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
+<li><p>训练考核知识点<br>接口、接口作为形式参数、匿名内部类</p>
+</li>
+<li><p>训练描述<br>请使用代码描述<br>某公司成立一个游泳俱乐部,只要是会游泳的都可以加入;<br>要求: 使用到接口,接口作为参数,匿名内部类.<br>提示: 把游泳功能抽取到接口中 ,在测试类中提供参加运动会的静态方法</p>
+</li>
+</ul>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>GreedRing<br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/08/29/JavaBasicsPractice11/" title="http://greedring.com/2019/08/29/JavaBasicsPractice11/" target="_blank" rel="noopener">http://greedring.com/2019/08/29/JavaBasicsPractice11/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '192a24997642e3747506',
+        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
+        id: window.location.pathname,
+        repo: 'greedring.github.io',
+        owner: 'GreedRing',
+        admin: 'GreedRing'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1567068166783"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
