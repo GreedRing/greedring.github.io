@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day10">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T19:51:01.308Z">
+<meta property="og:updated_time" content="2019-08-29T00:58:19.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="练习10">
 <meta name="twitter:description" content="day10">
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1567021890856">
+  <link rel="stylesheet" href="/css/style.css?v=1567040307317">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -170,7 +170,7 @@
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月28日</a>
     <a><i class="nexmoefont icon-areachart"></i>6.2k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 29 分钟</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 30 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -1037,7 +1037,7 @@ public class Test {
 </ul>
 <pre><code class="java">package com.greedring.practice08;
 
-abstract public class Person {
+abstract public class Person implements Showing{
     private int id;
     private String name;
     private int salary;
@@ -1077,6 +1077,7 @@ abstract public class Person {
 
     abstract void work();
 }
+
 </code></pre>
 <pre><code class="java">package com.greedring.practice08;
 
@@ -1096,7 +1097,7 @@ public class AdminStaff extends Person implements Showing {
 
     @Override
     public void show() {
-        System.out.println(&quot;的行政部员工会表演(跳舞)&quot;);
+        System.out.println(&quot;有的行政部员工会表演(跳舞)&quot;);
     }
 
     @Override
@@ -1193,9 +1194,18 @@ public class Test {
         treasurer.work();
         treasurer.show();
         Boss boss = new Boss(35, &quot;薛之谦&quot;);
-        boss.work();
+        Organization(adminStaff, boss);
+        Organization(developer, boss);
+        Organization(treasurer, boss);
     }
-}</code></pre>
+
+    private static void Organization(Person person, Boss boss) {
+        boss.work();
+        person.work();
+        person.show();
+    }
+}
+</code></pre>
 
   </article>
   
@@ -1243,7 +1253,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1567021890834"></script>
+<script src="/js/app.js?v=1567040307297"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
   
