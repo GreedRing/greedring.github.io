@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>练习12 - Greed Ring</title>
+  <meta charset="UTF-8">
+  <meta name="description" content>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="day12">
+<meta name="keywords" content="Java基础练习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="练习12">
+<meta property="og:url" content="http://greedring.com/2019/09/02/JavaBasicsPractice12/index.html">
+<meta property="og:site_name" content="Greed Ring">
+<meta property="og:description" content="day12">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-02T12:25:52.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="练习12">
+<meta name="twitter:description" content="day12">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1567427329186">
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/08/22/IxAp3mfcJWbzaFU.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="GreedRing" class="mdui-btn mdui-btn-icon"><img src="/images/avatar.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="GreedRing">
+            <img src="/images/avatar.png" alt="GreedRing">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>10</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/friends.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/15144854" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/greedring/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">8</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/设计模式/">设计模式</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/Java基础/" style="font-size: 20px;">Java基础</a> <a href="/tags/Java基础练习/" style="font-size: 15px;">Java基础练习</a> <a href="/tags/桥接模式/" style="font-size: 10px;">桥接模式</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 GreedRing
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+        <img src="https://i.loli.net/2019/08/28/VZTWaXsdY3hAoRg.jpg">
+        
+        <h1>练习12</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月02日</a>
+    <a><i class="nexmoefont icon-areachart"></i>4.1k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 17 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/Java基础练习/">Java基础练习</a>
+    
+  </div>
+  <article>
+    <p>day12</p>
+<a id="more"></a>
+
+
+    <div id="aplayer-xEVISdIF" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+
+<h2 id="关卡1"><a href="#关卡1" class="headerlink" title="关卡1"></a>关卡1</h2><h4 id="训练案例1"><a href="#训练案例1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li><p>训练考核知识点<br>Object类</p>
+</li>
+<li><p>训练描述<br>请谈谈你对Object类的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出Object类在继承层次结构中的位置<br>2.请说出 Object 类的特点</p>
+<h4 id="训练案例2"><a href="#训练案例2" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
+<li><p>训练考核知识点<br>equals方法</p>
+</li>
+<li><p>训练描述<br>请阐述你对equals方法的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出equals方法在Object类中的默认实现什么?.<br>2.请说出我们自定义类什么时候需要对equals方法进行重写.<br>3.请说出重写equals方法注意事项</p>
+<h4 id="训练案例3"><a href="#训练案例3" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
+<li><p>训练考核知识点<br>toString方法</p>
+</li>
+<li><p>训练描述<br>请阐述你对toString()的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出toString()方法在Object类默认返回的是什么?<br>2.请说出什么时候需要重写toString()方法?<br>3.在什么时候,会自动调用这个对象的toString()方法</p>
+<h4 id="训练案例4"><a href="#训练案例4" class="headerlink" title="训练案例4"></a>训练案例4</h4><ul>
+<li><p>训练考核知识点<br>异常</p>
+</li>
+<li><p>训练描述<br>请阐述异常的分类</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出异常的继承体系<br>2.请说出你对错误(Error)的理解<br>3.请说出你对异常(Expection的理解)<br>4.请说出你对运行时异常(RuntimeException)的理解</p>
+<h4 id="训练案例5"><a href="#训练案例5" class="headerlink" title="训练案例5"></a>训练案例5</h4><ul>
+<li><p>训练考核知识点<br>错误(Error)<br>异常(Exception)</p>
+</li>
+<li><p>训练描述<br>请阐述 错误(Error)与异常(Exception) 的区别</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出什么是错误(Error),错误可以捕获和抛出吗?<br>2.请说出什么是异常(Exception),异常可以捕获和抛出吗?</p>
+<h4 id="训练案例6"><a href="#训练案例6" class="headerlink" title="训练案例6"></a>训练案例6</h4><ul>
+<li><p>训练考核知识点<br>异常</p>
+</li>
+<li><p>训练描述<br>请说出虚拟机处理异常的方式</p>
+</li>
+<li><p>操作步骤描述<br>略</p>
+</li>
+</ul>
+<h4 id="训练案例7"><a href="#训练案例7" class="headerlink" title="训练案例7"></a>训练案例7</h4><ul>
+<li><p>训练考核知识点<br>运行时异常</p>
+</li>
+<li><p>训练描述<br>请说出四种运行时异常</p>
+</li>
+<li><p>操作步骤描述<br>略.</p>
+<h4 id="训练案例8"><a href="#训练案例8" class="headerlink" title="训练案例8"></a>训练案例8</h4></li>
+<li><p>训练考核知识点<br>异常的处理</p>
+</li>
+<li><p>训练描述<br>请说出throw与throws的区别</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出throw的使用位置,作用是什么?<br>2.请说出 throws的使用位置,作用是什么?</p>
+<h4 id="训练案例9"><a href="#训练案例9" class="headerlink" title="训练案例9"></a>训练案例9</h4><ul>
+<li><p>训练考核知识点<br>异常的处理</p>
+</li>
+<li><p>训练描述<br>请简述异常的处理方式</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<ol>
+<li>异常处理方式有几种,分别是什么?</li>
+<li>详细阐述每种方式对异常是如何处理的</li>
+</ol>
+<h4 id="训练案例10"><a href="#训练案例10" class="headerlink" title="训练案例10"></a>训练案例10</h4><ul>
+<li><p>训练考核知识点<br>抛出异常、异常处理</p>
+</li>
+<li><p>训练描述</p>
+</li>
+</ul>
+<p><strong>请用代码实现如下需求:</strong><br>1.写一个方法实现获取字符串某个索引上的字符的功能<br>2.写一个测试测试方法调用上面写的方法,使用thows方式进行处理异常,并在main方法中调用这个测试方法<br>3.再写一个测试测试方法调用上面写的方法,使用try…catch方式进行处理异常,并在main方法中调用这个测试方法</p>
+<ul>
+<li>操作步骤描述 </li>
+</ul>
+<p>1.创建包com.itheima.level1_10<br>2.定义 Test10类<br>3.提供一个静态方法:public static char charAt(String str, int index) 用于获取字符串str,index索引处的字符<br>4.在方法中charAt(String,int index)<br>(a)    当字符串为null抛出 Exception(“字符串不能为null”)异常,<br>(b)    当字符串为”” 的时候抛出 Excetion(“字符串不能为空”) 异常;<br>(c)    当index不在 [0,str.length()-1] 之间的时,抛出Exception(“索引越界”) 异常.<br>(d)    否则返回str在index索引的字符<br>5.提供一个静态的方法testThrows() 用于测试charAt(String,int index)方法<br>(a)在方法中调用charAt(String,int index)方法;<br>i.注意需要测试每一种情况<br>ii.体会: 程序一旦遇到异常后面的代码就不执行了<br>iii.注释运行过测试的代码,继续测试下一种情况<br>(b)使用throws方式对异常进行处理<br>(c)在main方法中,调用本方法<br>6.提供 一个静态方法testTryCatch(),用于测试charAt(String,int index)方法<br>(a)在方法中调用charAt(String,int index)方法;<br>i.注意需要测试每一种情况<br>(b)使用try…catch方式对异常进行处理<br>(c)在main方法中,调用本方法.</p>
+<h4 id="训练案例11"><a href="#训练案例11" class="headerlink" title="训练案例11"></a>训练案例11</h4><ul>
+<li><p>训练考核知识点<br>向文件中写入数据、try…catch的方式处理异常</p>
+</li>
+<li><p>训练描述</p>
+</li>
+</ul>
+<p><strong>使用代码实现</strong><br>写一个实现把字符串中数据,写入项目根目录下的content.txt文件中</p>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<p>1.创建包com.itheima.level1_11<br>2.定义类(Test11)<br>3.写一个静态方法 void write(String content),在方法中<br>(a)定义字符缓冲输出流变量BufferedWriter bw;初始值为null<br>(b)写一个try{   }catch(IOException e){  }finally{ }代码块<br>(c)在try{ }在代码块中<br>i.创建BufferedWriter对象,绑定content.txt文件,赋值给bw<br>ii.调用bw的write()方法,传入content<br>(d)在catch代码块中,打印异常信息<br>(e)在finally代码块关闭流<br>i.写try{}catch(IOException ex){} 代码块<br>ii.在try 代码块中,如果bw!=null,调用bw.close()方法<br>iii.在catch代码块,打印异常信息<br>4.在main方法中调用write(String conent)方法</p>
+<h4 id="训练案例12"><a href="#训练案例12" class="headerlink" title="训练案例12"></a>训练案例12</h4><ul>
+<li><p>训练考核知识点<br>自定义异常</p>
+</li>
+<li><p>训练描述</p>
+</li>
+</ul>
+<p><strong>请使用代码实现</strong><br>每一个学生(Student)都有学号,姓名和分数,分数永远不能为为负数<br>如果师徒给学生赋值一个负数,抛出一个自定异常</p>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<p>1.创建包com.itheima.level1_12<br>2.定义异常类NoScoreException,继承RuntimeException<br>(a)提供空参和有参构造方法<br>3.定义学生类(Student)<br>(a)属性:name,score<br>(b)提供空参构造<br>(c)提供有参构造;<br>     i.使用setXxx方法给名称和score赋值<br>(d)提供setter和getter方法<br>i.在setScore(int score)方法中<br>(1).首先判断,如果score为负数,就抛出NoScoreException,异常信息为:分数不能为负数:xxx.<br>(2).然后在给成员score赋值.<br>4.定义测试类Test12<br>(a)提供main方法,在main方法中<br>i.使用满参构造方法创建Student对象,分数传入一个负数,运行程序<br>ii.由于一旦遇到异常,后面的代码的将不在执行,所以需要注释掉上面的代码<br>iii.使用空参构造创建Student对象<br>iv.调用setScore(int score)方法,传入一个正数,运行程序<br>v.调用setScore(int score)方法,传入一个负数,运行程序</p>
+<h2 id="关卡2"><a href="#关卡2" class="headerlink" title="关卡2"></a>关卡2</h2><h4 id="训练案例1-1"><a href="#训练案例1-1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li><p>训练考核知识点<br>复制文件、异常处理</p>
+</li>
+<li><p>训练描述</p>
+</li>
+</ul>
+<p><strong>请使用代码实现</strong><br>写一个方法用于复制文本文件;<br>要求:使用try…catch…finally对异常进行处理</p>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<p>1.创建包com.itheima.level2_01<br>2.定义测试类Test13<br>(a))写一个复制文件的静态方法:copyFile(String src,String dest)<br>i.这里的src为源文件路径,dest为目标文件路径<br>ii.定义BufferedReader br变量,初始值为null<br>iii.定义BufferedWriter bw 变量,初始值为null<br>iv.写try…catch…finally代码块<br>v.在try代码块中<br>(1).创建BufferedReader的对象,绑定源文件,并把对象赋值给br<br>(2).创建BufferedWriter的对象,绑定目标文件,并把对象赋值给bw<br>(3).定义一个字符数组 chs,长度为1024,用于临时存储读取到的数据<br>(4).定义整型变量len,用于记录读取到的有效字节个数<br>(5).使用while循环,读一个字符数组,写一个字符数组,并刷新流<br>vi.在catch代码块中,打印异常信息<br>vii.在finally代码块<br>(1).写一个try…catch代码块<br>(2).在try代码块中: 如果bw不为null就关闭bw<br>(3).在catch代码块中打印异常信息<br>(4).在写一个try…catch代码块<br>(5).在try代码块中,如果br不为null就关闭br<br>(6).在catch代码中打印异常信息<br>(b)提供main方法,在main方法中<br>i.在main方法,调用刚刚写copyFile方法,传入源文件路径和目标文件路径</p>
+<h4 id="训练案例2-1"><a href="#训练案例2-1" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
+<li><p>训练考核知识点<br>自定义异常、使用代码验证知识点、继承、方法重写、使用throws的使用</p>
+</li>
+<li><p>训练描述</p>
+</li>
+</ul>
+<p><strong>通过代码验证</strong></p>
+<ol>
+<li><p>方法重写,子类只能抛比父类小的异常(父类所抛异常或父类所抛异常的子类)<br>a. 重写方法不能抛出与父类平级的其他异常<br>b. 重写方法不能抛出比父类高级的异常<br>c. 重写方法: 可以抛出和父类同样的异常<br>d. 重写方法: 可以抛出父类抛出异常的子类异常.<br>e. 重写方法: 可以抛出多个 “父类抛出异常的子类异常”.</p>
+</li>
+<li><p>方法重写, 父类没有抛异常,子类重写父类方法也不能抛异常?<br>a. 父类不抛出异常,子类也不能抛出异常<br>b. 如果子类内部抛出了异常(或调用抛出异常的方法)只能自己处理,不允许向外抛.<br>注: 这里所说的异常都是编译异常</p>
+</li>
+</ol>
+<ul>
+<li>操作步骤描述<br>分析: </li>
+</ul>
+<p>1.要完成上面的验证必须要一个异常体系,可以使用现有的,也可以自定义异常体系;我们这里自定义异常体系,注意异常体系中的所有异常都是编译异常;</p>
+<ol start="2">
+<li>定义用于测试的父类和子类,然后逐条验证上面的说法是否正确</li>
+<li>把报编译异常的代码可以使用注释,注释起来,上面写明验证的知识点.<br>步骤:</li>
+<li>创建包com.itheima.level2_02</li>
+<li>构建异常体系</li>
+</ol>
+<p>(a)定义PainExecption(疼异常)类继承Exception<br>i.提供空参和有参构造,注意有参构造必须调用父类的有参构造<br>(b)定义ToothPainException(牙疼异常)类和TonguePainException(舌头疼异常)类继承PainException<br>i.提供空参和有参构造,注意有参构造必须调用父类的有参构造<br>(c)定义BigToothPainException(大牙疼),FrontToothPainExcption(门牙疼)继承ToothPainException(牙痛)<br>i.提供空参和有参构造,注意有参构造必须调用父类的有参构造<br>3.定义用于测试的父类Father<br>(a)提供一个吃(eat)的成员方法,抛出牙疼异常<br>i.输出吃到一个石子<br>ii.抛出一个牙疼的异常<br>(b)提供一个喝(drink)的成员方法不抛出异常<br>i.输出: 喝什么都没有问题<br>4.定义用于测试的子类Son,继承Father<br>(a)验证: 重写方法不能抛出与父类平级的其他异常<br>i.重写父类的eat方法,抛出与牙疼平级舌头疼异常,编译报错,说明这句话是对的<br>ii.注释掉这个重写的方法,验证下一个<br>(b)验证: 重写方法不能抛出比父类高级的异常<br>i.重写父类的eat方法,抛出比牙疼高级疼异常,编译报错,说明这句话是对的<br>(c)验证:重写方法: 可以抛出和父类同样的异常<br>i.重写父类的eat方法,也抛出牙疼异常,编译通过,说明这句话是对的<br>(d)验证:重写方法: 可以抛出父类抛出异常的子类异常.<br>i.重写父类的eat方法,抛出牙疼异常的子类异常大牙疼异常,编译通过,说明这句话是对的<br>(e)验证: 重写方法: 可以抛出多个 “父类抛出异常的子类异常”.<br>i.重写父类的eat方法,抛出牙疼异常的两个子类异常,大牙疼和门牙疼,编译通过,说明这句是对的<br>(f)验证:父类不抛出异常,子类也不能抛出异常(编译时异常)<br>i.重写父类的drink方法,抛出(牙疼,舌头疼,门牙疼)任意一个编译异常,编译都报错,说明这句话是对的<br>(g)验证: 如果子类内部抛出了异常(或调用抛出异常的方法)只能自己处理,不允许向外抛.<br>i.重写父类的drink方法<br>ii.输出喝到了100度的水<br>iii.抛出舌头疼异常<br>iv.这个时候编译报错<br>v.把上面两句代码放到try代码块中<br>vi.在catch代码块中打印异常信息<br>vii.编译通过.</p>
+<h4 id="训练案例3-1"><a href="#训练案例3-1" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
+<li><p>训练考核知识点<br>自定义异常类</p>
+</li>
+<li><p>训练描述</p>
+</li>
+</ul>
+<p><strong>请用代码描述:</strong><br>在一款角色扮演游戏中,每一个人都会有名字和生命值;角色的生命值不能为负数<br>要求:当一个人物的生命值为负数的时候需要抛出自定的异常</p>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<p>1.创建包com.itheima.level2_03<br>2.自定义异常类NoLifeValueExption继承RuntimeException<br>(a)提供空参和有参构造<br>(b)在有参构造中,需要调用父类的有参构造,把异常信息传入<br>3.定义Person类<br>(a)属性:名称(name)和生命值(lifeValue)<br>(b)提供空参构造<br>(c)提供有参构造;<br>i.使用setXxx方法给name和lifeValue赋值<br>(d)提供setter和getter方法<br>i.在setLifeValue(int lifeValue)方法中<br>(1).首先判断,如果 lifeValue为负数,就抛出NoLifeValueException,异常信息为:生命值不能为负数:xxx.<br>(2).然后在给成员lifeValue赋值.<br>(3). 定义测试类Test15<br>(e)提供main方法,在main方法中<br>i.使用满参构造方法创建Person对象,分数传入一个负数,运行程序<br>ii.由于一旦遇到异常,后面的代码的将不在执行,所以需要注释掉上面的代码<br>iii.使用空参构造创建Person对象<br>iv.调用setLifeValue(int lifeValue)方法,传入一个正数,运行程序<br>v.调用setLifeValue(int lifeValue)方法,传入一个负数,运行程序</p>
+<h4 id="训练案例4-1"><a href="#训练案例4-1" class="headerlink" title="训练案例4"></a>训练案例4</h4><ul>
+<li><p>训练考核知识点<br>自定义异常</p>
+</li>
+<li><p>训练描述</p>
+</li>
+</ul>
+<p><strong>请使用代码描述</strong><br>写一个方法实现用户登陆,插,传入用户名和密码<br>如果用户名错误,就抛出自定义登陆异常(LoginException),异常信息为用户名不存在<br>如果密码错了就也抛出登陆异常,异常信息为密码错误<br>如果用户名和密码都对了,输出: 欢迎xxx<br>说明:正确用户名和密码都是admin</p>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<p>1.创建包com.itheima.level2_04<br>2.定义异常类LoginException继承Exception<br>(a)提供空参和有参构造<br>3.创建测试类Test<br>(a)提供一个用于登陆的方法login(String name,String pwd),在放方法中<br>i.如果用户名错误,就抛出自定义登陆异常(LoginException),异常信息为用户名不存在<br>ii.如果密码错了就也抛出登陆异常,异常信息为密码错误.<br>iii.如果能来到下面,就说明用户和密码都是对的,输出: 欢迎xxx<br>(b)提供main方法,在main方法<br>i.使用try…catch代码块处理异常<br>ii.调用login方法,传入错误用户名,运行程序,报运行时异常,然后注释这行代码<br>iii.调用login方法,传入正确用户名,错误的命名,运行程序,报运行时异常,然后注释这行代码<br>iv.调用login方法,传入正确的用户名和密码</p>
+<h2 id="关卡3"><a href="#关卡3" class="headerlink" title="关卡3"></a>关卡3</h2><h4 id="训练案例1-2"><a href="#训练案例1-2" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li><p>训练考核知识点<br>集合、IO流、异常处理</p>
+</li>
+<li><p>训练描述<br>已知集合ArrayList中有, ”张三丰”,”景甜”,”林思意”,”鹿晗”;<br>把集合中人名写入当前项目的根目录下的names.txt中,每一个人名占一行;<br>要求: 使用try…catch…finally对异常进行处理</p>
+</li>
+</ul>
+<h4 id="训练案例2-2"><a href="#训练案例2-2" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
+<li><p>训练考核知识点<br>集合、IO流、异常处理</p>
+</li>
+<li><p>训练描述</p>
+</li>
+</ul>
+<p><strong>请使用代码描述</strong><br>把names.txt中的人名,读取到程序中,存储到ArrayList集合中;每一个人名为ArrayList集合中一个元素;<br>要求:使用try…catch…finally对异常进行处理  </p>
+<h5 id="训练案例3-2"><a href="#训练案例3-2" class="headerlink" title="训练案例3"></a>训练案例3</h5><ul>
+<li><p>训练考核知识点<br>自定义异常</p>
+</li>
+<li><p>训练描述</p>
+</li>
+</ul>
+<p><strong>请使用代码描述:</strong><br>每一张借记卡(DebitCard)都有账号(accountNumber):和余额(money); 余额永远不能为负数<br>要求:当借记卡的余额为负数的时候需要抛出自定的异常</p>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>GreedRing<br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/09/02/JavaBasicsPractice12/" title="http://greedring.com/2019/09/02/JavaBasicsPractice12/" target="_blank" rel="noopener">http://greedring.com/2019/09/02/JavaBasicsPractice12/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '192a24997642e3747506',
+        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
+        id: window.location.pathname,
+        repo: 'greedring.github.io',
+        owner: 'GreedRing',
+        admin: 'GreedRing'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1567427329191"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
