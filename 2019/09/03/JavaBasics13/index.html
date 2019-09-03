@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day13">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-03T12:49:25.813Z">
+<meta property="og:updated_time" content="2019-09-03T13:24:33.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础13">
 <meta name="twitter:description" content="day13">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1567515038151">
+  <link rel="stylesheet" href="/css/style.css?v=1567517105486">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,7 +171,7 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月03日</a>
-    <a><i class="nexmoefont icon-areachart"></i>307 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>417 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-XYCWZIZJ" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-kLKKRjTb" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>字符串，用一对””表示</p>
 <ul>
@@ -202,6 +202,12 @@ String s2 = &quot;Greed&quot;;
 System.out.println(s1==s2);//true 字面量方式赋值，地址相同
 s2 = &quot;Ring&quot;;
 System.out.println(s1==s2);//false String重新赋值时，在常量池中新开辟一块区域，原区域不变
+String s3 = new String(&quot;Greed&quot;);
+String s4 = new String(&quot;Greed&quot;);
+System.out.println(s1==s3);//false
+/*通过构造方法赋值时，会在堆区创建一个value属性
+value属性指向常量池中的Greed的地址，s3指向value属性的地址，s1指向常量池中的Greed的地址*/
+System.out.println(s3==s4);//false 构造方法赋值时，每次都会在堆区创建一个新的value属性，s3和s4指向不同的value属性
   }
 }</code></pre>
 <p>String的创建方式：<br>字面量赋值<br>String(String original) 把字符串数据封装成字符串对象  this.value = original<br>String(char[] value) 把字符数组的数据封装成字符串对象 this.value = Arrays.copyOf(value);<br>String(char[] value,int index,int count) 把字符数组中的一部分数据封装成字符串对象 this.value = Arrays.copyOf(value,start,length);</p>
@@ -252,7 +258,7 @@ System.out.println(s1==s2);//false String重新赋值时，在常量池中新开
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1567515038169"></script>
+<script src="/js/app.js?v=1567517105500"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
