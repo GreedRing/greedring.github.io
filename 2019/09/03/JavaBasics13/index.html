@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="String">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-03T14:09:29.730Z">
+<meta property="og:updated_time" content="2019-09-03T16:46:53.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础13">
 <meta name="twitter:description" content="String">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1567519775455">
+  <link rel="stylesheet" href="/css/style.css?v=1567529284729">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,8 +171,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月03日</a>
-    <a><i class="nexmoefont icon-areachart"></i>703 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.3k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-faHqxdaV" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-RzLIAutT" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>字符串，用一对””表示</p>
 <ul>
@@ -195,10 +195,7 @@
 <li>String类中定义了private final char value[]；存放字符串的值(String底层通过字符数组来存放字符序列)</li>
 </ul>
 <p><strong>String是不可变的字符序列，String具有不可变性</strong></p>
-<h4 id="String的创建方式："><a href="#String的创建方式：" class="headerlink" title="String的创建方式："></a>String的创建方式：</h4><ul>
-<li>字面量赋值<br>如果String采用的字面量方式进行赋值，那么该字符串存储于方法区的常量池中。而常量池中，数据一般是不重复的</li>
-<li>String(String original) 把字符串数据封装成字符串对象  this.value = original</li>
-</ul>
+<h4 id="String的创建方式："><a href="#String的创建方式：" class="headerlink" title="String的创建方式："></a>String的创建方式：</h4><p><strong>1.字面量赋值</strong><br>如果String采用的字面量方式进行赋值，那么该字符串存储于方法区的常量池中。而常量池中，数据一般是不重复的<br><strong>2.String(String original) 把字符串数据封装成字符串对象  this.value = original</strong></p>
 <pre><code class="java">class Test{
 public static void main(String[] args){ 
 String s1 = &quot;Greed&quot;;
@@ -244,14 +241,82 @@ System.out.println(s_);//love
         System.out.println(s3==s7);//false 理由同上
   }
 }</code></pre>
-<h4 id="字符串判断"><a href="#字符串判断" class="headerlink" title="字符串判断"></a>字符串判断</h4><ul>
-<li><p><strong>比较字符串的内容是否相同,忽略大小写  boolean equalsIgnoreCase(String str)</strong><br>String s1 = “greed”;<br>String s2 = “Greed”;<br>s1.equals(s2);//true</p>
+<h4 id="字符串判断"><a href="#字符串判断" class="headerlink" title="字符串判断"></a>字符串判断</h4><p><strong>1.比较字符串的内容是否相同,忽略大小写  boolean equalsIgnoreCase(String str)</strong></p>
+<pre><code class="java">String s1 = &quot;greed&quot;;
+String s2 = &quot;greed&quot;;
+System.out.println(s1.equals(s2));//true</code></pre>
+<p><strong>2.判断字符串对象是否以指定的str开头  boolean startsWith(String str)</strong></p>
+<pre><code class="java">String s1 = &quot;greed&quot;;
+System.out.println(s1.startsWith(&quot;gr&quot;));//true</code></pre>
+<p><strong>3.判断字符串对象是否以指定的str结尾  boolean endsWith(String str)</strong></p>
+<pre><code class="java">String s1 = &quot;greed&quot;;
+System.out.println(s1.endsWith(&quot;eed&quot;));//true</code></pre>
+<h4 id="String类的获取方法"><a href="#String类的获取方法" class="headerlink" title="String类的获取方法"></a>String类的获取方法</h4><p><strong>1.获取字符串的长度，其实也就是字符个数  int length()</strong></p>
+<pre><code class="java">String s = &quot;greed&quot;;
+System.out.println(s.length());//5</code></pre>
+<p><strong>2.获取指定索引(从0开始)处的字符  char charAt(int index)</strong></p>
+<pre><code class="java">String s = &quot;greed&quot;;
+System.out.println(s.charAt(1));//r</code></pre>
+<p><strong>3.获取str在字符串对象中第一次出现的索引  int indexOf(String str)</strong><br>String s = “greedee”;</p>
+<ul>
+<li><p><em>System.out.println(s.indexOf(“ee”));//2</em><br>如果没有找到输出-1</p>
 </li>
-<li><p><strong>判断字符串对象是否以指定的str开头  boolean startsWith(String str)</strong><br>String s1 = “greed”;<br>s1.startsWith(“gr”);//true</p>
-</li>
-<li><p><strong>判断字符串对象是否以指定的str结尾  boolean endsWith(String str)</strong><br>String s1 = “greed”;<br>s1.endsWith(“eed”);//true</p>
+<li><p><em>从制定位置开始查找 int indexOf(String str,int fromIndex)</em></p>
 </li>
 </ul>
+<pre><code class="java">System.out.println(s.indexOf(&quot;ee&quot;, 1));//2
+System.out.println(s.indexOf(&quot;ee&quot;, 3));//5</code></pre>
+<ul>
+<li>从后往前找  int lastIndexOf(String str)</li>
+</ul>
+<pre><code class="java">System.out.println(s.lastIndexOf(&quot;ee&quot;));//5</code></pre>
+<p><strong>4.从start开始截取字符串  String substring(int start)</strong><br>String s = “greed”;</p>
+<ul>
+<li><p><em>System.out.println(s.substring(2));//eed</em></p>
+</li>
+<li><p><em>截取到指定位置结束（前闭后开，包含beginIndex，不包含endIndex）  String substring(int beginIndex，int endIndex)</em></p>
+</li>
+</ul>
+<pre><code class="java">System.out.println(s.substring(1, 4));//ree</code></pre>
+<h4 id="String类的转换方法"><a href="#String类的转换方法" class="headerlink" title="String类的转换方法"></a>String类的转换方法</h4><p><strong>1.把字符串转换为字符数组  char[] toCharArray()</strong></p>
+<pre><code class="java">import java.util.Arrays;
+class Test{
+public static void main(String[] args){
+  String s = &quot;greed&quot;;
+  char[] arr = s.toCharArray();
+  System.out.println(arr);//greed
+  System.out.println(arr.toString());//打印地址
+  System.out.println(Arrays.toString(arr));//[g, r, e, e, d]  这里调用了util.Arrays层里面重写的toString方法
+  }
+}</code></pre>
+<ul>
+<li>字符数组转字符串</li>
+</ul>
+<pre><code class="java">String ss = new String(arr);
+System.out.println(ss);//greed</code></pre>
+<p><strong>2.把字符串转换为小写字符串  String toLowerCase()</strong></p>
+<pre><code class="java">String s = &quot;Greed&quot;;
+System.out.println(s.toLowerCase());//greed</code></pre>
+<p><strong>3.把字符串转换为大写字符串  String toUpperCase()</strong></p>
+<pre><code class="java">String s = &quot;Greed&quot;;
+System.out.println(s.toUpperCase());//GREED</code></pre>
+<h4 id="String类的其他方法"><a href="#String类的其他方法" class="headerlink" title="String类的其他方法"></a>String类的其他方法</h4><p><strong>1.去除字符串两端空格  String trim()</strong></p>
+<pre><code class="java">String s = &quot;   gr  eed    &quot;;
+System.out.println(s.trim());//gr  eed</code></pre>
+<p><strong>2.按照指定符号分割字符串  String[] split(String str)</strong></p>
+<pre><code class="java">import java.util.Arrays;
+class Test{
+public static void main(String[] args){ 
+  String s = &quot;com.greed.ring&quot;;
+  String[] arr = s.split(&quot;\\.&quot;);//因为.被当作任意字符，所以在前面加上转义字符\\
+  System.out.println(Arrays.toString(arr));//[com, greed, ring] 同样调用了util.Arrays中重写的toString方法，需要导包
+  System.out.println(arr[arr.length-1]);//ring 可能通过该方法获取文件后缀名，如：jpg
+
+  //通过截取的方式获取文件后缀
+  String ss = s.substring(s.lastIndexOf(&quot;.&quot;)+1);
+  System.out.println(ss);//ring
+  }
+}</code></pre>
 
   </article>
   
@@ -299,7 +364,7 @@ System.out.println(s_);//love
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1567519775472"></script>
+<script src="/js/app.js?v=1567529284742"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
