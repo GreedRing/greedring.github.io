@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day13">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-03T06:34:55.105Z">
+<meta property="og:updated_time" content="2019-09-03T12:49:25.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础13">
 <meta name="twitter:description" content="day13">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1567512800556">
+  <link rel="stylesheet" href="/css/style.css?v=1567514971114">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,7 +171,7 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月03日</a>
-    <a><i class="nexmoefont icon-areachart"></i>266 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>307 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-mxeTyzwg" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-FEHUZLEj" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>字符串，用一对””表示</p>
 <ul>
@@ -194,8 +194,17 @@
 <li>String实现了Comparable接口，String是支持比较大小的</li>
 <li>String类中定义了private final char value[]；存放字符串的值(String底层通过字符数组来存放字符序列)</li>
 </ul>
-<p>String是不可变的字符序列，String具有不可变性<br>如果String采用的字面量方式进行赋值，那么该字符串存储于方法区的常量池中<br>(String a = “greed”;)字面量方式赋值。而常量池中，数据一般是不重复的<br>[String重新赋值时，在常量池中开辟一块新的区域，原区域不变]</p>
-<p>String的创建方式：<br>字面量赋值<br>String(String original) 把字符串数据封装成字符串对象  this.value = original<br>String(char[] value) 把字符数组的数据封装成字符串对象 this.value = Arrays.copyOf(value);<br>String(char[] value,int index,int count) 把字符数组中的一部分数据封装成字符串对象</p>
+<p>String是不可变的字符序列，String具有不可变性<br>如果String采用的字面量方式进行赋值，那么该字符串存储于方法区的常量池中。而常量池中，数据一般是不重复的</p>
+<pre><code class="java">class Test{
+public static void main(String[] args){ 
+String s1 = &quot;Greed&quot;;
+String s2 = &quot;Greed&quot;;
+System.out.println(s1==s2);//true 字面量方式赋值，地址相同
+s2 = &quot;Ring&quot;;
+System.out.println(s1==s2);//false String重新赋值时，在常量池中新开辟一块区域，原区域不变
+  }
+}</code></pre>
+<p>String的创建方式：<br>字面量赋值<br>String(String original) 把字符串数据封装成字符串对象  this.value = original<br>String(char[] value) 把字符数组的数据封装成字符串对象 this.value = Arrays.copyOf(value);<br>String(char[] value,int index,int count) 把字符数组中的一部分数据封装成字符串对象 this.value = Arrays.copyOf(value,start,length);</p>
 
   </article>
   
@@ -243,7 +252,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1567512800564"></script>
+<script src="/js/app.js?v=1567514971131"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
