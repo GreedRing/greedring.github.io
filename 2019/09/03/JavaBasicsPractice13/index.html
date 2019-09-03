@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day12">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-03T17:17:59.499Z">
+<meta property="og:updated_time" content="2019-09-03T18:14:11.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="练习13">
 <meta name="twitter:description" content="day12">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1567531086650">
+  <link rel="stylesheet" href="/css/style.css?v=1567537886145">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,8 +171,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月03日</a>
-    <a><i class="nexmoefont icon-areachart"></i>1.3k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-aVWWzQet" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-VSSkfuLe" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="基础案例"><a href="#基础案例" class="headerlink" title="基础案例"></a>基础案例</h2><h4 id="训练案例1"><a href="#训练案例1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
 <li>训练描述：【方法、String类】</li>
@@ -227,6 +227,42 @@ public class MainApp {
 <li>操作步骤描述</li>
 </ul>
 <p>1.定义MainApp类，包含main()方法；<br>2.在MainApp类中，定义以下两个方法：<br>(1)可以统计一个字符串中，某个字符出现的次数；<br>public static int countChar(String str,char c)<br>(2)可以统计一个字符串中，某个字符串出现的次数；<br>public static int countString(String str,String s)<br>3.请实现方法，并在main()方法中分别调用这两个方法进行统计。</p>
+<pre><code class="java">package com.greedring.practice2;
+
+public class MainApp {
+    public static void main(String[] args) {
+        String str = &quot;javajfiewjavajfiowfjavagkljjava&quot;;
+        System.out.println(&quot;j出现次数：&quot; + countChar(str, &#39;j&#39;));
+        System.out.println(&quot;java出现次数：&quot; + countString(str, &quot;java&quot;));
+
+    }
+
+    private static int countChar(String str, char c) {
+        char[] arr = str.toCharArray();
+        int a = 0;
+        for (int i = 0; i &lt; arr.length; i++) {
+            if (c == arr[i]) {
+                a++;
+            }
+        }
+        return a;
+    }
+
+    private static int countString(String str, String s) {
+        int a = 0;
+        int b = 0;
+        while (true) {
+            if (str.indexOf(s, b) == -1) {
+                break;
+            } else {
+                a++;
+                b = str.indexOf(s, b) + 1;
+            }
+        }
+        return a;
+    }
+}
+</code></pre>
 <h2 id="扩展案例"><a href="#扩展案例" class="headerlink" title="扩展案例"></a>扩展案例</h2><h4 id="训练案例1-1"><a href="#训练案例1-1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
 <li>训练描述：【Scanner类、方法、String类】</li>
 </ul>
@@ -309,7 +345,7 @@ public class MainApp {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1567531086663"></script>
+<script src="/js/app.js?v=1567537886157"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
