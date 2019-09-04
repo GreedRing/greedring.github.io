@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="String">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-03T16:46:53.426Z">
+<meta property="og:updated_time" content="2019-09-04T12:48:20.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础13">
 <meta name="twitter:description" content="String">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1567559040061">
+  <link rel="stylesheet" href="/css/style.css?v=1567601313458">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,8 +171,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月03日</a>
-    <a><i class="nexmoefont icon-areachart"></i>1.3k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>2.8k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 13 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-sQhMXMqw" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-RsjPyUNo" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>字符串，用一对””表示</p>
 <ul>
@@ -306,9 +306,9 @@ System.out.println(s.trim());//gr  eed</code></pre>
 <p><strong>2.按照指定符号分割字符串  String[] split(String str)</strong></p>
 <pre><code class="java">import java.util.Arrays;
 class Test{
-public static void main(String[] args){ 
+public static void main(String[] args){
   String s = &quot;com.greed.ring&quot;;
-  String[] arr = s.split(&quot;\\.&quot;);//因为.被当作任意字符，所以在前面加上转义字符\\
+  String[] arr = s.split(&quot;\\.&quot;);//&quot;.&quot;在正则表达式中被当作任意字符，所以在前面加上转义字符\\
   System.out.println(Arrays.toString(arr));//[com, greed, ring] 同样调用了util.Arrays中重写的toString方法，需要导包
   System.out.println(arr[arr.length-1]);//ring 可能通过该方法获取文件后缀名，如：jpg
 
@@ -316,6 +316,155 @@ public static void main(String[] args){
   String ss = s.substring(s.lastIndexOf(&quot;.&quot;)+1);
   System.out.println(ss);//ring
   }
+}</code></pre>
+<h4 id="String类补充方法"><a href="#String类补充方法" class="headerlink" title="String类补充方法"></a>String类补充方法</h4><p><strong>1.比较两个字符串的字典</strong><br>int compareTo(String anotherString)<br>首先，先比较两个字符串第一个字母，如果第一个字母不一样，返回字母对应的ascii码值的差值<br>如果当前位置上字母相同，则比较后一位,直到末位<br>如果字符串长度不同，前同位字母也相同，则返回俩字符串长度差值<br>如果每一位都相同且长度相等，返回0</p>
+<pre><code class="java">String s1 = &quot;abc&quot;;//97 98 99
+String s2 = &quot;adfe&quot;;//97 100 102 101
+String s3 = &quot;ab&quot;;
+System.out.println(s1.compareTo(s2));//-2
+System.out.println(s1.compareTo(s3));//1</code></pre>
+<p><strong>2.将指定的字符串拼接在字符串的末尾  String concat(String str)</strong><br>允许链式调用</p>
+<pre><code class="java">String s1 = &quot;greed&quot;;
+String s2 = &quot;ring&quot;;
+System.out.println(s1.concat(s2).concat(s1));//greedringgreed</code></pre>
+<p><strong>3.如果并且只有当此字符串包含指定的字符序列的字符串值，则返回真值  boolean contains(CharSequence s)</strong><br>也可使用indexOf查找字符串，根据是否返回-1判断</p>
+<pre><code class="java">String s = &quot;greed&quot;;
+System.out.println(s.contains(&quot;eed&quot;));//true</code></pre>
+<p><strong>4.将字符串存放到常量池，并返回该对象 String intern()</strong></p>
+<pre><code class="java">String s = &quot;greed&quot;;
+String s2 = &quot;ring&quot;;
+String s3 = &quot;greedring&quot;;
+String s4 = s + &quot;ring&quot;;//变量s与常量拼接
+System.out.println(s3 == s4);//false
+String s5 = s4.intern();
+/*如果常量池中没有greedring，则开辟空间存放greedring，并返回地址给s5。
+如果常量池中已经存在greedring，直接将该地址赋值给s5。*/
+System.out.println(s5 == s3);//true</code></pre>
+<p><strong>5.boolean isEmpty()  length()是 0，返回true</strong></p>
+<pre><code class="java">String s = &quot;&quot;;
+System.out.println(s.isEmpty());//true</code></pre>
+<p><strong>6.将基本数据类型转换为String类型 static String valueOf(int i)</strong></p>
+<pre><code class="java">String numStr = String.valueOf(12);
+String numStr2 = 12+&quot;&quot;;//未报错，则为String类型的12与空字符串进行拼接</code></pre>
+<p>面试题：</p>
+<pre><code class="java">//创建了几个对象？
+String s = new String(&quot;hello&quot;);
+//一个创建在常量池，一个创建在堆内存，总计两个。如果常量池中已存在hello，则创建一个
+
+//创建了几个对象？
+String ss = new String(&quot;hello&quot;);
+ss += &quot;world&quot;;
+ss += &quot;greed&quot;;
+ss += &quot;ring&quot;;
+//因为常量池已存在hello，构造方法赋值ss时，在堆中创建一个对象。后面运算时每次都要在堆与o常量池中重新创建对象
+//所以一共创建7个</code></pre>
+<p>如何反转一个字符串</p>
+<pre><code class="java">public class Test {
+    public static void main(String[] args) {
+        String str = &quot;greedring&quot;;
+        System.out.println(flip(str));
+    }
+
+    //该方法比连续的字符串拼接省内存
+    private static String flip(String str) {
+        char[] arr = str.toCharArray();//将字符串转化为数组
+        for (int start = 0, end = arr.length - 1; start &lt; end; start++, end--) {
+            char temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+        }
+        return new String(arr);
+    }
+}</code></pre>
+<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><p>String：不可变字符序列<br>StringBuffer和StringBuilder：可变字符序列<br>两者功能基本相似，StringBuffer线程安全，StringBuilder线程不安全（效率高）</p>
+<p>总的效率来说：StringBuilder &gt; StringBuffer &gt; String</p>
+<p>StringBuilder是一个可变字符串，字符串缓冲区。<br>StringBuilder底层数组可以动态改变数组中元素，还能改变数组自身引用。<br>String的内容固定，而StringBuilder的内容可变。</p>
+<h4 id="StringBuilder常用方法"><a href="#StringBuilder常用方法" class="headerlink" title="StringBuilder常用方法"></a>StringBuilder常用方法</h4><p><strong>1.构造方法</strong><br>StringBuilder()</p>
+<p><strong>2.成员方法</strong></p>
+<ul>
+<li><p>返回当前容量 (理论值)  数组的实际大小  public int capacity()<br>底层其实返回的是字符数组的长度（不管有没有被使用）<br>在创建新的StringBuilder数组时，默认创建长度为16。</p>
+</li>
+<li><p>返回长度(已经存储的字符个数)  public int length()<br>底层其实返回的count值（记录了数组中实际使用了多少长度，未使用的为null）</p>
+</li>
+<li><p>添加数据，并返回自身对象  public StringBuilder append(任意类型)<br>如果进行append操作时，底层字符数组如果容量不够存放，会进行自动扩容操作，<br>默认会扩容到原有长度的两倍+2长度</p>
+</li>
+<li><p>反转功能 public StringBuilder reverse()<br>反转自身，不会创建新对象</p>
+</li>
+</ul>
+<pre><code class="java">public class Test {
+    public static void main(String[] args) {
+        //1.默认创建一个长度为16的数组
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sb1 = sb.append(&quot;hello&quot;);
+        System.out.println(sb == sb1);//true
+
+        System.out.println(&quot;数组实际容量:&quot; + sb.capacity());//16
+        System.out.println(&quot;数组实际常用长度：&quot; + sb.length());//0
+        sb.append(&quot;hello&quot;);
+        System.out.println(&quot;数组实际容量:&quot; + sb.capacity());//16
+        System.out.println(&quot;数组实际常用长度：&quot; + sb.length());//5
+        sb.append(&quot;world&quot;);
+        //允许链式调用
+        sb.append(&quot;greedring&quot;).append(true).append(7).append(&#39;q&#39;);//自动扩容
+        System.out.println(&quot;数组实际容量:&quot; + sb.capacity());//34
+        System.out.println(&quot;数组实际常用长度：&quot; + sb.length());//30
+        System.out.println(sb);//StringBuilder重写了toString方法，等同于sb.toString()
+
+        //2.底层默认字符串长度+16的长度的字符数组
+        StringBuilder sb2 = new StringBuilder(&quot;helloworld&quot;);
+        System.out.println(&quot;数组实际容量:&quot; + sb2.capacity());//10+16=26
+        System.out.println(&quot;数组实际常用长度：&quot; + sb2.length());//10
+        sb2.append(&quot;dsajkdnasdsanasdsad&quot;);
+        System.out.println(&quot;数组实际容量:&quot; + sb2.capacity());//26*2+2=54
+        System.out.println(&quot;数组实际常用长度：&quot; + sb2.length());//29
+
+        //3.参数：底层数组的实际容量（自定义底层数组长度）
+        StringBuilder sb3 = new StringBuilder(20);
+        System.out.println(&quot;数组实际容量:&quot; + sb3.capacity());//20
+        System.out.println(&quot;数组实际常用长度：&quot; + sb3.length());//0
+
+        StringBuilder sb4 = new StringBuilder(&quot;greedring&quot;);
+        sb4.reverse();//反转自身，不创建新对象
+        System.out.println(sb4.toString());//这里的.toString()方法可省略，Stringbuilder已重写
+    }
+}</code></pre>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><strong>1.利用StringBuilder把数组拼接成一个字符串</strong></p>
+<pre><code class="java">public class Test {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3};
+        System.out.println(arrayToString(arr));
+    }
+
+    private static String arrayToString(int[] arr) {
+        StringBuilder sb = new StringBuilder(arr.length);
+        for (int i = 0; i &lt; arr.length; i++) {
+            if (i == 0) {
+                sb.append(&quot;[&quot;).append(arr[i]).append(&quot;,&quot;);
+            } else if (i &lt; arr.length - 1) {
+                sb.append(&quot; &quot;).append(arr[i]).append(&quot;,&quot;);
+            } else {
+                sb.append(&quot; &quot;).append(arr[i]).append(&quot;]&quot;);
+            }
+        }
+        return sb.toString();
+    }
+}</code></pre>
+<p><strong>2.判断一个字符串是否是对称字符串</strong></p>
+<pre><code class="java">public class Test {
+    public static void main(String[] args) {
+        String str = &quot;abcba&quot;;
+        if (getContrary(str)) {
+            System.out.println(&quot;是对称字符串&quot;);
+        } else {
+            System.out.println(&quot;不是对称字符串&quot;);
+        }
+    }
+
+    private static boolean getContrary(String str) {
+        StringBuilder sb = new StringBuilder(str);
+        sb.reverse();
+        return str.equals(sb.toString());
+    }
 }</code></pre>
 
   </article>
@@ -364,7 +513,7 @@ public static void main(String[] args){
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1567559040070"></script>
+<script src="/js/app.js?v=1567601313465"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 

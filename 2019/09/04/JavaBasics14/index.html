@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>JavaBasics14 - Greed Ring</title>
+  <title>Java基础14 - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,14 +14,14 @@
   <meta name="description" content="day14">
 <meta name="keywords" content="Java基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaBasics14">
+<meta property="og:title" content="Java基础14">
 <meta property="og:url" content="http://greedring.com/2019/09/04/JavaBasics14/index.html">
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day14">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-04T01:03:55.185Z">
+<meta property="og:updated_time" content="2019-09-04T07:24:11.742Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaBasics14">
+<meta name="twitter:title" content="Java基础14">
 <meta name="twitter:description" content="day14">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1567559040390">
+  <link rel="stylesheet" href="/css/style.css?v=1567601313825">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -167,11 +167,11 @@
         
         <img src="https://i.loli.net/2019/08/25/qjVyadYDSXgeC9A.jpg">
         
-        <h1>JavaBasics14</h1>
+        <h1>Java基础14</h1>
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月04日</a>
-    <a><i class="nexmoefont icon-areachart"></i>1 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>335 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -185,9 +185,15 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-YevolMmb" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-itmdmmJz" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
-<p>## </p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>匹配字符串的一种模式<br>正则表达式也是一个字符串<br>//匹配指定单个字符<br>String regex = “a”;<br>System.out.println(“a”.matches(regex));//true</p>
+<p>//2.匹配字符集、字符组：[abc]<br>String regex = “abc”;<br>System.out.println(“a”.matches(regex));<br>System.out.println(“b”.matches(regex));<br>System.out.println(“c”.matches(regex));<br>System.out.println(“abc”.matches(regex));</p>
+<p>//3.字符类：[^abc]//除abc以外<br>regex = “[^abc]”;<br>System.out.println(“a”.matches(regex));//false<br>System.out.println(“b”.matches(regex));//false<br>System.out.println(“c”.matches(regex));//false<br>System.out.println(“d”.matches(regex));//true<br>System.out.println(“dd”.matches(regex));//false 只能匹配单个字符</p>
+<p>//4.字符类：[a-zA-Z]//表示范围<br>regex = “[a-z_A-Z0-9]”;<br>System.out.println(“a”.matches(regex));<br>System.out.println(“A”.matches(regex));<br>System.out.println(“1”.matches(regex));<br>System.out.println(“_”.matches(regex));</p>
+<p>//预定义字符<br>//1.任意字符<br>regex = “.”;<br>System.out.println(“x”.matches(regex));//true<br>//2.数字字符[0-9]<br>regex = “\d”;<br>System.out.println(“1”.matches(regex));//true<br>//3.预定义字符类：\w [a-zA-Z_0-9]<br>regex = “\w”;<br>System.out.println(“_”.matches(regex));//true</p>
+<p><strong>//4.边界匹配器：\b</strong><br>regex = “”</p>
+<p>//数量词<br>//1. ?  0个或1个<br>regex = “a?”;<br>System.out.println(“a”.matches(regex));//true<br>System.out.println(“”.matches(regex));//true<br>//2. *  0个或多个<br>regex = “a*”;<br>System.out.println(“aaaa”.matches(regex));//true<br>System.out.println(“”.matches(regex));//true<br>//3. +  1个或多个<br>regex = “a+”;<br>System.out.println(“aaaa”.matches(regex));//true<br>System.out.println(“”.matches(regex));//false<br>//4.  指定具体数量<br>regex = “a{5}”;//只能五次<br>  //regex = “a{5,}”;至少五次<br>  //regex = “a{5,10}”;五到十次<br>System.out.println(“aaaaa”.matches(regex));//true<br>System.out.println(“aaa”.matches(regex));//false<br>//</p>
 
   </article>
   
@@ -235,7 +241,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1567559040395"></script>
+<script src="/js/app.js?v=1567601313829"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
