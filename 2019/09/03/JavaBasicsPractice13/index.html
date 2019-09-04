@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day12">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-03T18:14:11.472Z">
+<meta property="og:updated_time" content="2019-09-04T00:47:51.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="练习13">
 <meta name="twitter:description" content="day12">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1567537886145">
+  <link rel="stylesheet" href="/css/style.css?v=1567558079710">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,7 +171,7 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月03日</a>
-    <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.5k 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-VSSkfuLe" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-ZryexYGo" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="基础案例"><a href="#基础案例" class="headerlink" title="基础案例"></a>基础案例</h2><h4 id="训练案例1"><a href="#训练案例1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
 <li>训练描述：【方法、String类】</li>
@@ -277,6 +277,30 @@ public class MainApp {
 <ul>
 <li>操作步骤描述</li>
 </ul>
+<pre><code class="java">package com.greedring.practice4;
+
+public class MainApp {
+    public static void main(String[] args) {
+        String str = &quot;abcdefg&quot;;
+        String str1 = &quot;a&quot;;
+        System.out.println(&quot;出现了：&quot; + getFrequency(str, str1) + &quot;次&quot;);
+
+    }
+
+    private static int getFrequency(String string, String string1) {
+        int a = 0;
+        int b = 0;
+        while (true) {
+            if (string.indexOf(string1, b) == -1) {
+                break;
+            } else {
+                a++;
+                b = string.indexOf(string1, b) + 1;
+            }
+        }
+        return a;
+    }
+}</code></pre>
 <h4 id="训练案例3"><a href="#训练案例3" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
 <li>训练描述：<br>分析以下需求,并用代码实现</li>
 </ul>
@@ -345,7 +369,7 @@ public class MainApp {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1567537886157"></script>
+<script src="/js/app.js?v=1567558079720"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
