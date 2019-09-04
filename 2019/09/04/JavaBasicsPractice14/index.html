@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>Java练习14 - Greed Ring</title>
+  <meta charset="UTF-8">
+  <meta name="description" content>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="day14">
+<meta name="keywords" content="Java基础练习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java练习14">
+<meta property="og:url" content="http://greedring.com/2019/09/04/JavaBasicsPractice14/index.html">
+<meta property="og:site_name" content="Greed Ring">
+<meta property="og:description" content="day14">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-04T18:37:50.768Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java练习14">
+<meta name="twitter:description" content="day14">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1567622282725">
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/08/22/IxAp3mfcJWbzaFU.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="GreedRing" class="mdui-btn mdui-btn-icon"><img src="/images/avatar.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="GreedRing">
+            <img src="/images/avatar.png" alt="GreedRing">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>15</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/friends.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/15144854" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/greedring/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">13</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/设计模式/">设计模式</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/Java基础/" style="font-size: 20px;">Java基础</a> <a href="/tags/Java基础练习/" style="font-size: 15px;">Java基础练习</a> <a href="/tags/桥接模式/" style="font-size: 10px;">桥接模式</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 GreedRing
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+        <img src="https://i.loli.net/2019/08/28/VZTWaXsdY3hAoRg.jpg">
+        
+        <h1>Java练习14</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月04日</a>
+    <a><i class="nexmoefont icon-areachart"></i>3.6k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 15 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/Java基础练习/">Java基础练习</a>
+    
+  </div>
+  <article>
+    <p>day14</p>
+<a id="more"></a>
+
+
+    <div id="aplayer-yhLglvgE" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+
+<h2 id="关卡1"><a href="#关卡1" class="headerlink" title="关卡1"></a>关卡1</h2><h4 id="训练案例1"><a href="#训练案例1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li>训练考核知识点<br>Date类</li>
+</ul>
+<p>-请说出你对Date类的理解</p>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<p>1.请问Date类用于表示什么 ?<br><label style="color:#ff4e6a">日期类，一个以毫秒为标记的瞬间值，与1970年1月1日00:00:00的距离</label></p>
+<p>2.请问如何使用Date 类获取当前的日期?<br><label style="color:#ff4e6a">Date date = new Date();</label><br><label style="color:#ff4e6a">System.out.println(date);</label></p>
+<p>3.请问如何把当前的日期转换为毫秒值?<br><label style="color:#ff4e6a">long time = date.getTime();</label><br><label style="color:#ff4e6a">System.out.println(time);</label></p>
+<p>4.请问如何把毫秒值转换为日期?<br><label style="color:#ff4e6a">date.setTime(time);</label><br><label style="color:#ff4e6a">System.out.println(date);</label></p>
+<h4 id="训练案例2"><a href="#训练案例2" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
+<li><p>训练考核知识点<br>日期格式化</p>
+</li>
+<li><p>训练描述<br>请阐述如何实现日期对象与指定格式的字符串之间的转换</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出日期格式化的核心类是什么?<br><label style="color:#ff4e6a">DateFormat</label></p>
+<p>2.请说出日期指定格式的常见的规则是什么 ?<br><label style="color:#ff4e6a">yyyy年MM月dd日HH:mm:ss</label></p>
+<p>3.请说出如何把日期转换为指定格式的字符串 ?<br><label style="color:#ff4e6a">String rule = “yyyy年MM月dd日HH:mm:ss”;</label><br><label style="color:#ff4e6a">DateFormat format = new SimpleDateFormat(rule);</label><br><label style="color:#ff4e6a">Date dNow = new Date();</label><br><label style="color:#ff4e6a">String sNow = format.format(dNow);</label></p>
+<p>4.请说出如何把指定格式的字符串转换为日期 ?<br><label style="color:#ff4e6a">String rule = “yyyy年MM月dd日HH:mm:ss”;</label><br><label style="color:#ff4e6a">DateFormat format = new SimpleDateFormat(rule);</label><br><label style="color:#ff4e6a">String sTime = “2017年11月06日  14:10:28”;</label><br><label style="color:#ff4e6a">Date dTime = format.parse(sTime);</label><br><label style="color:#ff4e6a">System.out.println(dTime);</label></p>
+<h4 id="训练案例3"><a href="#训练案例3" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
+<li><p>训练考核知识点<br>Calendar类</p>
+</li>
+<li><p>训练描述<br>请阐述Calendar的基本使用</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说出如何获取Calendar对象<br><label style="color:#ff4e6a">Calendar.getInstance();</label></p>
+<p>2.请说出Calendar的常见方法有哪些,作用是什么?<br><label style="color:#ff4e6a">对象.get(Calendar.YEAR);获取年属性值</label><br><label style="color:#ff4e6a">对象.get(Calendar.MONTH)+1;获取月份属性值</label><br><label style="color:#ff4e6a">对象.get(Calendar.DAY_OF_MONTH);获取日期属性值</label><br><label style="color:#ff4e6a">对象.set(年份, 月份, 日期);设置年月日</label></p>
+<p>3.请说出Calendar注意事项有哪些?<br><label style="color:#ff4e6a">取出月份时要比实际少一个月。</label></p>
+<h4 id="训练案例4"><a href="#训练案例4" class="headerlink" title="训练案例4"></a>训练案例4</h4><ul>
+<li><p>训练考核知识点<br>System类</p>
+</li>
+<li><p>训练描述<br>请阐述System类的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请说System类的特点是什么?<br><label style="color:#ff4e6a"></label></p>
+<p>2.请说System类的常见方法有哪些,作用是什么?<br><label style="color:#ff4e6a"></label></p>
+<h4 id="训练案例5"><a href="#训练案例5" class="headerlink" title="训练案例5"></a>训练案例5</h4><ul>
+<li><p>训练考核知识点<br>Math类</p>
+</li>
+<li><p>训练描述<br>请阐述你对Math类的理解</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.请阐述Math类的概念?<br><label style="color:#ff4e6a">在Math包中将一些数学方法进行封装，方便我们日常编写代码时的调用。</label></p>
+<p>2.请说出Math类的常见方法有哪些,作用是什么?<br><label style="color:#ff4e6a">public static int abs(int a)：返回a的绝对值</label><br><label style="color:#ff4e6a">public static double ceil(double a) ：求大于等于a的最小整数,返回该整数的小数形式</label><br><label style="color:#ff4e6a">public static double floor(double a) ：求小于等于a的最小整数</label><br><label style="color:#ff4e6a">public static long round(double a) ：对a进行四舍五入,返回四舍五入后的值</label><br><label style="color:#ff4e6a">public static double pow(double a, double b) ：求a的b次幂,返回double形式</label></p>
+<h4 id="训练案例6"><a href="#训练案例6" class="headerlink" title="训练案例6"></a>训练案例6</h4><ul>
+<li><p>训练考核知识点</p>
+<pre><code> 包装类型</code></pre></li>
+<li><p>训练描述<br>  请阐述你对基本数据类型包装类的理解</p>
+</li>
+<li><p>操作步骤描述<br> 1.请说出基本数据类型包装类的主要作用是什么?<br> 2.请说出基本数据类型对应的八个包装类分别是什么?<br> 3.请说出如何把字符串转换为对应的基本数据类型,有什么主意点?</p>
+</li>
+</ul>
+<h4 id="训练案例7"><a href="#训练案例7" class="headerlink" title="训练案例7"></a>训练案例7</h4><ul>
+<li><p>训练考核知识点<br> 自动装箱<br> 自动拆箱</p>
+</li>
+<li><p>训练描述<br>  请阐述你对自动装箱和自动拆箱的理解</p>
+</li>
+<li><p>操作步骤描述<br> 1.请说出你对自动装箱的理解<br> 2.请说出你对自动拆箱的理解</p>
+</li>
+</ul>
+<h4 id="训练案例8"><a href="#训练案例8" class="headerlink" title="训练案例8"></a>训练案例8</h4><ul>
+<li><p>训练考核知识点<br> 正则表达式</p>
+</li>
+<li><p>训练描述<br> 请阐述你对正则表达式的理解</p>
+</li>
+<li><p>操作步骤描述<br> 1.请说出什么是正则表达式<br> 2.请说出正则表达式的作用是什么?<br> 3.请说出字符串中关于正则表达式的常见方法有哪些?<br> 4.请说出正则表达式的匹配规则是什么?</p>
+</li>
+</ul>
+<h4 id="训练案例9"><a href="#训练案例9" class="headerlink" title="训练案例9"></a>训练案例9</h4><ul>
+<li><p>训练考核知识点<br>Date类、SimpleDateFormat类</p>
+</li>
+<li><p>训练描述<br>请用代码实现:<br>获取当前的日期,并把这个日期转换为指定格式的字符串,如2088-08-08 08:08:08</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.创建包com.itheima.level1<br>2.定义类Test09<br>3.提供main方法,在main方法中<br>a)获取当前日期对象 now;<br>b)创建SimpleDateFormat对象 df,并制定日期格式<br>c)调用df的format(Date  date) 方法,传入now; 接收返回的字符串<br>d)打印这个字符串</p>
+<pre><code class="java">package com.greedring.practice01;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class MainApp {
+    public static void main(String[] args) {
+        Date now = new Date();
+        String rule = &quot;yyyy年MM月dd日 HH:mm:ss&quot;;
+        DateFormat df = new SimpleDateFormat(rule);
+        System.out.println(df.format(now));
+    }
+}</code></pre>
+<h4 id="训练案例10"><a href="#训练案例10" class="headerlink" title="训练案例10"></a>训练案例10</h4><ul>
+<li><p>训练考核知识点<br>Date类、SimpleDateFormat类、异常处理</p>
+</li>
+<li><p>训练描述<br>请用代码实现如下需求:<br>把你的生日字符串表示转换为对应的日期对象.      </p>
+</li>
+<li><p>操作步骤描述 </p>
+</li>
+</ul>
+<p>1.在com.itheima.level1包下创建Test10类<br>2.在Test10类中,提供main方法,在main方法中<br>a)创建SimpleDateFormat对象 df,并制定日期格式<br>b)调用df的parse(String str)方法,传入你的生日字符串;结束返回的日期对象<br>c)打印这个日期对象<br>d)使用try…catch处理解析异常</p>
+<pre><code class="java">package com.greedring.practice02;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class MainApp {
+    public static void main(String[] args) throws ParseException {
+        Date date = new Date();
+        String rule = &quot;yyyy年MM月dd日 HH:mm:ss&quot;;
+        DateFormat df = new SimpleDateFormat(rule);
+        String birthday = &quot;1999年1月15日 00:00:00&quot;;
+        try {
+            date = df.parse(birthday);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(date);
+    }
+}</code></pre>
+<h4 id="训练案例11"><a href="#训练案例11" class="headerlink" title="训练案例11"></a>训练案例11</h4><ul>
+<li><p>训练考核知识点<br> Calendar类</p>
+</li>
+<li><p>训练描述<br> 使用代码实现<br> 500天后是几几年几月几日.</p>
+</li>
+<li><p>操作步骤描述<br> 1.创建包com.itheima.level1中创建Test11<br> 2.在Test11类中,提供main方法,在main方法中<br> a)获取当前日历对象<br> b)调用日期对象的add()方法,让当前日历向后移动500天<br> c)获取日历中的年,月,日<br> d)输出几几年几月几日.</p>
+</li>
+</ul>
+<h4 id="训练案例12"><a href="#训练案例12" class="headerlink" title="训练案例12"></a>训练案例12</h4><ul>
+<li><p>训练考核知识点</p>
+<pre><code> 正则表达式</code></pre></li>
+<li><p>训练描述</p>
+<pre><code>  编写一个校验用户名的程序,检测键盘录入的用户名是否合法
+  要求:必须以英文开头,只能包含英文,数字和`_`;最少6位,做多12位    </code></pre></li>
+<li><p>操作步骤描述<br> 1.在com.itheima.level1中创建Test12类<br> 2.在Test12类中提供main方法,在main方法中<br> a)创建键盘录入对象<br> b)接收用户录入的用户名字符串<br> c)调用字符串的matches方法,判断用户名是否合法<br> d)如果合法就打印: 用户名合法<br> e)如果不合法就打印: 用户名不合法</p>
+</li>
+</ul>
+<h2 id="关卡2"><a href="#关卡2" class="headerlink" title="关卡2"></a>关卡2</h2><h4 id="训练案例1-1"><a href="#训练案例1-1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li><p>训练考核知识点<br> Date类</p>
+</li>
+<li><p>训练描述</p>
+<pre><code>请使用代码实现</code></pre><p> 计算你活了多少天</p>
+</li>
+<li><p>操作步骤描述<br> 1.创建包com.itheima.level2<br> 2.在包中创建测试类Test13<br> 3.在Test13类中,提供main方法,在main方法中<br> a)把你生日的字符串,转换为日期对象<br> b)把日期对象转换为对应的毫秒值<br> c)获取当前系统的毫秒值<br> d)当前系统毫秒值-出生时间对于的毫秒值计算你活的毫秒值<br> e)把你活毫秒值转换为天<br> f)输出天数<br> g)使用try…catch处理异常</p>
+</li>
+</ul>
+<h4 id="训练案例2-1"><a href="#训练案例2-1" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
+<li><p>训练考核知识点<br> System类<br> Date类<br> SimpleDateFormat类</p>
+</li>
+<li><p>训练描述<br> 写代码验证使用SimpleDateFormat把日期转换为字符串的时候;<br> 创建SimpleDateFormat对象,比较消耗程序的执行性能</p>
+</li>
+<li><p>操作步骤描述<br> 1.在com.itheima.level2包下创建Test14类<br> 2.在Test14类中提供main方法,在main方法中<br> a)使用System的currentTimeMillis()方法获取当前操作系统的毫秒值,作用程序执行的开始时间,使用start变量接收<br> b)需要测试执行性能的代码<br> c)使用System的currentTimeMillis()方法获取当前操作系统的毫秒值,作用程序执行的结束时间,使用end变量接收<br> d)计算代码执行花费的时间 end - start,输出代码执行消耗的时间<br> 3.在Test14类中提供一个静态方法testSimpleDataFormatInLoop(),在方法中<br> a)创建日期(Date)对象 now<br> b)写一个循环100000次的for循环<br> c)在循环中<br> i.创建SimpleDateFormat对象 df,并制定日期格式为yyyy-MM-dd<br> ii.调用df的format(Date date),传入now<br> d)在main方法中,需要测试执行的性能的代码处调用testSimpleDataFormatInLoop()方法<br> e)记录程序执行的效率<br> 4.在Test14类,完整复制testSimpleDataFormatInLoop()方法<br> a)改名为testSimpleDataFormatOutLoop<br> b)把创建SimpleDateFormat的代码移动到循环外部<br> c)在main方法中,注释调用testSimpleDataFormatInLoop();<br> d)在语句下一行调用testSimpleDataFormatOutLoop方法<br> e)运行程序,查看输出结果,并记录<br> 5.得出结论: 创建日期格式对象,确实比较消耗程序性能,所以在实际开发一般会写一个工具类专门处理,日期的格式化与解析.</p>
+</li>
+</ul>
+<h4 id="训练案例3-1"><a href="#训练案例3-1" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
+<li><p>训练考核知识点<br> 正则表达式<br> 字符串的split(String regex)方法</p>
+</li>
+<li><p>训练描述<br> 使用正则表达式切割字符串</p>
+<ul>
+<li>192.168.105.27 按照  . 号切割字符串</li>
+<li>18 22 40 65 按照空格切割字符串<br>  提示: 由于 . 号 在正则表达式中用于匹配除换行符以外的任意字符,会把字符串切的连渣都不剩,此处使用 . 号需要转义; 使用\.作为切割使用正则表达式</li>
+</ul>
+</li>
+<li><p>操作步骤描述<br> 1.在com.itheima.level2包下创建Test15<br> 2.在Test15类中提供main方法,在main方法中<br> a)定义字符串变量str1,赋值为192.168.105.27<br> b)调用str1的split的方法,传入 “\.”,使用字符春数组strs1接收<br> c)遍历数组strs1,输出每一个元素<br> d)定义字符串变量str2,赋值为 18  22  40  65<br> e)调用str1的split的方法,传入“\s+”,使用字符春数组strs2接收<br> f)遍历数组strs2,输出每一个元素</p>
+</li>
+</ul>
+<h4 id="训练案例4-1"><a href="#训练案例4-1" class="headerlink" title="训练案例4"></a>训练案例4</h4><ul>
+<li><p>训练考核知识点<br> 正则表达式<br> 字符串类的split方法<br> 字符串类的matches方法</p>
+</li>
+<li><p>训练描述<br> 请使用代码描述:<br> 有一段文本 “  anglebaby      女      18      515151511  “<br> 分别描述一个人的姓名 性别 年龄(int) 和QQ号码信息,完成如下需求:</p>
+<pre><code> 1. 创建一个Person类,包含性别,性别,年龄和QQ号码属性,使用解析出来信息创建一个Person对象,并打印这个人信息
+2. 并判断QQ号是否合法,匹配规则,全部都是数字,第一位非0,长度为5到12位. </code></pre></li>
+<li><p>操作步骤描述<br> 1.在com.itheima.level2包中<br> 2.创建Student类<br> a)属性: 姓名(name),性别(sex),年龄(int age),QQ号码(qq)<br> b)提供空参,有参构造方法以及setters与getters方法<br> c)重写toString()方法,返回属性值<br> 3.创建Test16类,在Test16类中:<br> a)提供main方法,在main方法中<br> i.定义字符串变量str,赋值为:”  anglebaby      女      18      515151511  “<br> ii.取出字符str两端的空格,避免切割的时候,产生空字符串<br> iii.使用”\s+”正则表达式切割字符串,因为中间的空格可能包含制表符,多个空格<br> iv.切割后,字符串数组0索引-&gt;姓名,1索引-&gt;性别,2索引-&gt;年龄,3索引-&gt;QQ号<br> v.把年龄字符串转换int类型,赋值给变量age<br> vi.使用满参构造创建Student对象s,传入对应的数据<br> vii.打印学生s信息<br> viii.判断该学生的QQ号码是否合法,如果合法输出QQ号码合法,否则输出QQ号码不合法</p>
+</li>
+</ul>
+<h4 id="训练案例5-1"><a href="#训练案例5-1" class="headerlink" title="训练案例5"></a>训练案例5</h4><ul>
+<li><p>训练考核知识点<br> 正则表达式<br> 字符串类的replaceAll(String regex,string str)方法</p>
+</li>
+<li><p>训练描述<br> 通过代码实现:<br> 把字符串 “Hello12345World6789012” 中所有数字替换为 “#”<br> 提示: 字符串类的replaceAll(String regex,string str)方法,使用str替换掉当前字符串中所有与正则表达式匹配的字符</p>
+</li>
+<li><p>操作步骤描述<br> 1.在com.itheima.level2包中<br> 2.创建Test17类,在Test17类中:<br> a)提供main方法,在main方法中<br> b)定义字符串变量str,赋值为:”Hello12345World6789012”<br> c)调用str的replaceAll(String regex,String str),第一个参数传入”\d+”,第二个参数传入”#”,定义字符串变量newStr接收替换后的字符串<br> d)输出: newStr</p>
+</li>
+</ul>
+<h2 id="关卡3"><a href="#关卡3" class="headerlink" title="关卡3"></a>关卡3</h2><h4 id="训练案例1-2"><a href="#训练案例1-2" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li><p>训练考核知识点<br> SimpleDateFormat</p>
+</li>
+<li><p>训练描述<br> 使用SimpleDateFormat类,把2016-12-18转换为2016年12月18日.<br> 提示: SimpleDateFormat对象的日期格式字符串可以通过applyPattern(String pattern)进行修改<br> 要求:异常处理使用throws的方式</p>
+</li>
+</ul>
+<h4 id="训练案例2-2"><a href="#训练案例2-2" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
+<li><p>训练考核知识点<br> 使用System类获取当前系统的毫秒值<br> 统计代码的执行时间<br> String拼接<br> StringBuilder拼接</p>
+</li>
+<li><p>训练描述<br> 请用代码实现<br> 分别使用String的+= 和StringBuilder的append方法对字符串做100000次拼接,<br> 计算String拼接100000次花费时间与StringBuilder拼接100000次所花费时间并打印</p>
+</li>
+</ul>
+<h4 id="训练案例3-2"><a href="#训练案例3-2" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
+<li><p>训练考核知识点<br>   正则表达式</p>
+</li>
+<li><p>训练描述<br> 模拟验证手机号的过程，按照以下要求实现相关代码（友情提示：不一定要用正则）</p>
+<pre><code> a.    提示用户在控制台输入手机号，用一个字符串对其进行保存
+ b.    判断该手机号位数是否是11位
+ c.    判断该手机号，是否都是数字
+ d.    判断改手机号最后3为数字如果是相同数字则认为是靓号</code></pre></li>
+</ul>
+<h4 id="训练案例3-3"><a href="#训练案例3-3" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
+<li><p>训练考核知识点<br>   IO流<br>   集合<br>   正则表达式<br>   字符串的split方法<br>   数组</p>
+</li>
+<li><p>训练描述<br> 请使用实现:<br> 已知项目的根目录下有一个student.txt,内容如下:</p>
+<pre><code>          1       郝婷婷    女      30
+          2       赵鹏      男      35
+          3       周强      男      38
+          4       李艳欣    女      37
+          5       朱可可    女      41
+          6       张少荣    女      30
+          7       王小军    男      28</code></pre><p> 该文件中,每一行表示一个学生信息,从前往后依次是学号,姓名,姓名,年龄<br> 要求:<br> 1.读取文件内容,把每一个学生信息封装为一个学生对象,存储到ArrayList集合中<br> 2.打印集合中的学生信息<br> 3.计算平均年龄<br> 4.异常处理使用throws的方式</p>
+</li>
+</ul>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>GreedRing<br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/09/04/JavaBasicsPractice14/" title="http://greedring.com/2019/09/04/JavaBasicsPractice14/" target="_blank" rel="noopener">http://greedring.com/2019/09/04/JavaBasicsPractice14/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '192a24997642e3747506',
+        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
+        id: window.location.pathname,
+        repo: 'greedring.github.io',
+        owner: 'GreedRing',
+        admin: 'GreedRing'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1567622282736"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
