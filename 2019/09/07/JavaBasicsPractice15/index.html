@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>Java练习15 - Greed Ring</title>
+  <meta charset="UTF-8">
+  <meta name="description" content>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="day15">
+<meta name="keywords" content="Java基础练习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java练习15">
+<meta property="og:url" content="http://greedring.com/2019/09/07/JavaBasicsPractice15/index.html">
+<meta property="og:site_name" content="Greed Ring">
+<meta property="og:description" content="day15">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-06T19:08:26.603Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java练习15">
+<meta name="twitter:description" content="day15">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1567797013156">
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/08/22/IxAp3mfcJWbzaFU.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="GreedRing" class="mdui-btn mdui-btn-icon"><img src="/images/avatar.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="GreedRing">
+            <img src="/images/avatar.png" alt="GreedRing">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>17</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/friends.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/15144854" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/greedring/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">15</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/设计模式/">设计模式</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/Java基础/" style="font-size: 20px;">Java基础</a> <a href="/tags/Java基础练习/" style="font-size: 15px;">Java基础练习</a> <a href="/tags/桥接模式/" style="font-size: 10px;">桥接模式</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 GreedRing
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+        <img src="https://i.loli.net/2019/08/28/VZTWaXsdY3hAoRg.jpg">
+        
+        <h1>Java练习15</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月07日</a>
+    <a><i class="nexmoefont icon-areachart"></i>3.5k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 15 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/Java基础练习/">Java基础练习</a>
+    
+  </div>
+  <article>
+    <p>day15</p>
+<a id="more"></a>
+
+
+    <div id="aplayer-eUrfLUBc" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+
+<h2 id="关卡1"><a href="#关卡1" class="headerlink" title="关卡1"></a>关卡1</h2><h4 id="训练案例1"><a href="#训练案例1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li><p>训练考核知识点<br>进程的概念；</p>
+</li>
+<li><p>训练描述<br>请描述什么是进程。</p>
+</li>
+<li><p>操作步骤描述<br>请参考讲义1.1：多线程介绍。</p>
+</li>
+</ul>
+<h4 id="训练案例2"><a href="#训练案例2" class="headerlink" title="训练案例2"></a>训练案例2</h4><p>   2.1．训练考核知识点<br>           讲义1.1：多线程介绍。<br>   2.2．训练描述<br>           请描述什么是线程。<br>   2.3．操作步骤描述<br>           请参考讲义1.1：多线程介绍。<br>   3．训练案例3<br>   3.1．训练考核知识点<br>           讲义1.1：多线程介绍。<br>   3.2．训练描述<br>           请描述进程与线程之间的关系，并举例说明。<br>   3.3．操作步骤描述<br>           请参考讲义1.1：多线程介绍。<br>   4．训练案例4<br>   4.1．训练考核知识点<br>           讲义1.2：多线程程序运行的原理。<br>   4.2．训练描述<br>           请描述多线程程序运行的原理。<br>   4.3．操作步骤描述<br>           请参考讲义1.2：多线程程序运行的原理。<br>   5．训练案例5<br>   5.1．训练考核知识点<br>           讲义1.3：主线程。<br>   5.2．训练描述<br>           请描述什么主线程。<br>   5.3．操作步骤描述<br>           请参考讲义1.3：主线程。<br>   6．训练案例6<br>   6.1．训练考核知识点<br>           讲义1.4 ：Thread类。<br>   6.2．训练描述<br>           请描述Thread类中的start（）方法与run方法的区别。<br>   6.3．操作步骤描述<br>           参考讲义1.4 ：Thread类。<br>   7．训练案例7<br>   7.1．训练考核知识点<br>           讲义1.4 ：Thread类。<br>   7.2．训练描述<br>           请描述创建线程的两种方式。<br>   7.3．操作步骤描述<br>           参考讲义1.4 ：Thread类。</p>
+<h4 id="训练案例8"><a href="#训练案例8" class="headerlink" title="训练案例8"></a>训练案例8</h4><ul>
+<li><p>训练考核知识点<br>讲义1.5：创建线程方式一继承Thread类</p>
+</li>
+<li><p>训练描述<br>请编写程序，分别打印主线程的名称和子线程的名称。<br>要求使用两种方式实现：<br>第一种方式：继承Thread类；<br>第二种方法：实现Runnable接口；</p>
+</li>
+<li><p>操作步骤描述</p>
+<ul>
+<li>第一种方式：继承Thread类</li>
+</ul>
+</li>
+</ul>
+<p>1.定义一个子线程的类，继承Thread类；<br>2.在子线程类中重写run方法，在run方法中打印子线程的名称；<br>3.定义一个测试类；<br>4.在main方法中打印主线程的名称；<br>5.在main方法中创建子线程对象；<br>6.调用子线程对象的start方法，开启子线程。<br>    - 第二种方式：实现Runnable接口<br>1.定义一个子任务类，实现Runnable接口；<br>2.在子任务类中重写run方法，在run方法中打印子线程的名称；<br>3.定义一个测试类；<br>4.在main方法中打印主线程的名称；<br>5.在main方法中创建一个子任务对象；<br>6.在main方法中创建一个Thread类的对象，并把子任务对象传递给Thread类的构造方法；<br>7.调用Thread类对象的start方法开启子线程；</p>
+<pre><code class="java">package com.greedring.practice01;
+
+public class MainApp {
+    public static void main(String[] args) {
+        MyThread myThread = new MyThread();
+        myThread.start();
+        MyRunnable myRunnable = new MyRunnable();
+        Thread thread = new Thread(myRunnable);
+        thread.start();
+        System.out.println(Thread.currentThread().getName());
+    }
+}
+
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName());
+    }
+}
+
+class MyRunnable implements Runnable {
+
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName());
+    }
+}</code></pre>
+<h4 id="训练案例9"><a href="#训练案例9" class="headerlink" title="训练案例9"></a>训练案例9</h4><ul>
+<li><p>训练考核知识点<br>讲义1.6.2：实现Runnable的好处。</p>
+</li>
+<li><p>训练描述<br>请描述使用实现Runnable接口的方式创建线程的好处。</p>
+</li>
+<li><p>操作步骤描述<br>请参考讲义1.6.2：实现Runnable的好处。</p>
+</li>
+</ul>
+<h4 id="训练案例10"><a href="#训练案例10" class="headerlink" title="训练案例10"></a>训练案例10</h4><ul>
+<li><p>训练考核知识点<br>讲义2.1：线程安全。</p>
+</li>
+<li><p>训练描述<br>请描述在什么样的情况下会出现线程安全的问题。</p>
+</li>
+<li><p>操作步骤描述<br>请参考讲义2.1：线程安全。</p>
+</li>
+</ul>
+<h4 id="训练案例11"><a href="#训练案例11" class="headerlink" title="训练案例11"></a>训练案例11</h4><ul>
+<li><p>训练考核知识点<br>讲义2.2：线程同步。</p>
+</li>
+<li><p>训练描述<br>使用3个线程模拟电影院3个窗口同时卖票的过程，总票数量为100张。在卖票的过程要考虑到线程同步的问题，不能出现多卖、少卖、重复卖票的情况。</p>
+</li>
+<li><p>操作步骤描述</p>
+</li>
+</ul>
+<p>1.定义一个子任务类，实现Runnable接口，用来模拟电影票。<br>1.1 在子任务类中定义一个变量，用来表示总票数量；<br>1.2 在子任务类中，重写Runnable接口的run方法；<br>1.3在run方法中，模拟卖票，使用同步代码块或者同步方法保证同一时间只能有一个线程（窗口）在卖票，每卖一张票，就让票数量减一；<br>2.定义一个测试：<br>2.1在测试类的main方法中，创建一个票对象，三个子线程对象，创建三个子线程时，把票对象和窗口名作为参数传递给线程的构造方法；<br>2.2 开启三个子线程；</p>
+<pre><code class="java">package com.greedring.practice02;
+
+public class MainApp {
+    public static void main(String[] args) {
+        Ticket ticket = new Ticket();
+        new Thread(ticket, &quot;Yae&quot;).start();
+        new Thread(ticket, &quot;Bronya&quot;).start();
+        new Thread(ticket, &quot;Seele&quot;).start();
+    }
+}
+
+class Ticket implements Runnable {
+    private static int ticket = 100;
+
+    @Override
+    public void run() {
+        while (ticket &gt; 0) {
+            System.out.println(Thread.currentThread().getName() + &quot;卖出第&quot; + ticket-- + &quot;张票&quot;);
+        }
+    }
+}</code></pre>
+<h4 id="训练案例12"><a href="#训练案例12" class="headerlink" title="训练案例12"></a>训练案例12</h4><ul>
+<li><p>训练考核知识点<br>讲义2.4：线程状态。</p>
+</li>
+<li><p>训练描述<br>请描述线程的几个状态。</p>
+</li>
+<li><p>训练步骤描述<br>请参考讲义：2.4线程状态。</p>
+</li>
+</ul>
+<h2 id="关卡2"><a href="#关卡2" class="headerlink" title="关卡2"></a>关卡2</h2><h4 id="训练案例1-1"><a href="#训练案例1-1" class="headerlink" title="训练案例1"></a>训练案例1</h4><ul>
+<li><p>训练考核知识点<br>讲义2.2：线程同步。</p>
+</li>
+<li><p>训练描述<br>请按如下要求编写多线程程序：</p>
+</li>
+</ul>
+<p>1.得到一个随机的整数n，创建n个子线程对象；<br>2.要求在子线程中把当前线程的名称作为元素添加一个集合中；<br>3.当n个线程的名称都添加到集合中，遍历集合打印每个线程的名称；</p>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<p>1.定义一个子任务类，实现Runnable接口：<br>1.1 定义一个ArrayList集合对象，用于存放子线程的名称；<br>1.2 定义一个变量，用来记录正在运行的线程个数；<br>1.3定义一个构造方法，把进程总数作为参数进来；<br>1.4 在构造方法中，给正在运行的线程个数赋值为线程总数；<br>1.5 重写Runnable接口的run方法 ；<br>1.6 使用同步代码块，保证同一时间只能向集合中添加一个线程名称；<br>1.7 正在运行的线程个数减1；<br>1.8 所有的线程运行结束后遍历集合，打印所有线程的名称；<br>2.定义一个测试类：<br>2.1 在main方法中使用Random得到一个1到10的随机数；<br>2.2 调用子任务类的构造方法创建子任务对象，把随机数传递给构造方法；<br>2.3 循环创建n的子线程对象，并开启子线程；</p>
+<pre><code class="java">package com.greedring.practice03;
+
+import java.util.Random;
+
+public class MainApp {
+    public static void main(String[] args) {
+        int a = new Random().nextInt(10) + 1;
+        String[] ArrayList = new String[a];
+        MyRunnable myRunnable = new MyRunnable();
+        for (int i = 0; i &lt; ArrayList.length; i++) {
+            ArrayList[i] = new Thread(myRunnable).getName();
+            System.out.println(ArrayList[i]);
+        }
+    }
+}
+
+class MyRunnable implements Runnable {
+
+    @Override
+    public void run() {
+
+    }
+}</code></pre>
+<h4 id="训练案例2-1"><a href="#训练案例2-1" class="headerlink" title="训练案例2"></a>训练案例2</h4><ul>
+<li><p>训练考核知识点<br>讲义2.2：线程同步。</p>
+</li>
+<li><p>训练描述<br>请按要求编写多线程应用程序，模拟多个人通过一个山洞：</p>
+</li>
+</ul>
+<p>1.这个山洞每次只能通过一个人，每个人通过山洞的时间为5秒；<br>2.随机生成10个人，同时准备过此山洞，显示每次通过山洞人的姓名；</p>
+<ul>
+<li>操作步骤描述</li>
+</ul>
+<p>1.定义一个隧道类，实现Runnable接口：<br>1.1 定义一个变量，用来记录通过隧道的人数；<br>1.2 重写Runnable的run方法；<br>1.3 定义一个同步方法，模拟每个人通过隧道需要5秒钟：<br>1.3.1 子线程睡眠5秒钟，模拟每个人通过隧道需要5秒钟；<br>1.3.2 改变通过的人次；<br>1.3.3 打印线程名称及其通过隧道的顺序，模拟人通过隧道及其顺序；<br>1.4 调用通过隧道的方法；<br>2.定义一个测试类：<br>2.1 在main方法中创建一个隧道类对象；<br>2.2 在main方法中，循环创建10个子线程对象，通过构造方法把隧道对象<br>和线程名（作为人的姓名）传递进去，并开启子线程；</p>
+<h4 id="训练案例3"><a href="#训练案例3" class="headerlink" title="训练案例3"></a>训练案例3</h4><ul>
+<li><p>训练考核知识点</p>
+<pre><code>     讲义2.2：线程同步。</code></pre><p> 3.2．训练描述</p>
+<pre><code> 编写线程同步模拟应用程序:
+ 1. 大气环境数据为:温度,湿度,风速；
+ 2. 一个大气环境传感器测量环境数据需要5秒时间；
+ 3. 一个计算机读取传感器获得数据需要0.01秒时间；
+ 4. 模拟100个计算机读取大气环境传感器获取的随机温度,湿度,风速；    </code></pre><p> 3.3．操作步骤描述</p>
+<pre><code> 1.定义一个传感器类,实现Runnable接口：
+     1.1 重写Runnable的run方法；
+     1.2 子线程睡眠5秒钟,模拟传感器获得温度,湿度,风速需要的5秒钟时间；
+     1.3 使用Random模拟得到随机的温度,湿度和风速；
+     1.4 子线程睡眠0.01秒,模拟计算机读取传感器的数据需要的0.01秒时间；
+     1.5 打印温度,湿度和风速, 模拟计算机读取传感器的数据；
+ 2.定义一个传感器的测试类：
+     2.1 在main方法中创建传感器类的对象；
+     2.2 在main方法中循环创建100个子线程对象,并把传感器对象传递给构造方法；
+     2.3 每创建一个子线程，就开启，读取传感器的获取的大气环境数据；</code></pre><p> 三、关卡3<br> 1．训练案例1<br> 1.1．训练考核知识点</p>
+<pre><code>     讲义2.2：线程同步。</code></pre><p> 1.2．训练描述</p>
+<pre><code> 编写多线程同步程序，模拟3个人排除买票，张某、李某和赵某买电影票，售票员只有3张五元的钱，电影票5元一张。张某拿20元一张的RMB排在李某的前面，李某排在赵某的前面拿一张10元的RMB买票，赵某拿一张5元的RMB买票。
+ 提示：</code></pre><p> 1.Thread类的wait()方法：是指让当前线程处于等待状态，让释放线程锁对象，让其它线程能够获得锁对象，直到其它线程调用notify()或者notifyAll()方法唤醒后才能继续执行。<br> 2.Thread类的notifyAll()方法：是指唤醒所有正在等待锁对象的线程。<br> 1.3．操作步骤描述</p>
+<pre><code> 1. 定义一个购票的类：
+     1.1 定义三个变量，分别用来记录是售票员手中面值5,10元，20元RMB的张数；
+     1.2 定义一个变量用来记录购票人手中一张RMB的面值；
+     1.3 定义一个构造方法，把购票人手中的人民币作为参数传递进去；
+     1.4 重写Thread类的run方法；
+     1.5 定义售票找零的方法：
+         1.5.1 如果购票人给的RMB面值是5元的，卖票成功，打印卖票的信息；
+         1.5.2 如果购票人给的RMB面值是20元的,但是售票员手中5元的RMB不够
+              3张，没有零钱，就调用wait方法等待 ，让其它人买票；
+         1.5.3 如果售票员手中5元的RMB大于或者等于3张，就应该找回3张5元的
+              RMB,5元的RMB张数应该减3，收到一张20元的RMB,20元的RMB张
+              数应该加1，卖票成功，打印卖票的信息；
+         1.5.4 如果购票人给的一张10元的，但是售票员手中没有5元的RMB可以找
+              给购票人，就等待，让其它人买票；
+         1.5.5 如果售票员手中有5元的RMB，就找给购票人，5元的RMB张数应该减
+               1，售票员收到了一张10元的，10元的RMB张数应该加1，打印售票
+               成功的信息；
+         1.5.6最后唤醒所有正在等待的线程，通知所有刚才没有零钱可以找回的购票
+              可以买票了；
+     1.6 在run方法中，调用买票找零的规则方法，售票； 
+  2.定义一个测试类：
+     2.1 在main方法中创建三个购票类的对象；
+     2.2 分别调用start方法，开启子线程，开始购票；</code></pre><p> 2．训练案例2<br> 2.1．训练考核知识点</p>
+<pre><code>     讲义2.2：线程同步。</code></pre><p> 2.2．训练描述</p>
+<pre><code>     请按如下要求编写多线程程序：
+     1. 创建两个类，一个是测试类，一个是Thread的子类；
+     2. 在测试类中，创建两个Thread类的子类对象，将其中的一个线程对象的优先级
+        设置10，另一个线程对象的优先级设置为6。
+     3. 让优先级为10的线程打印5次“线程1正在运行”，让优先级为6的线程打印
+        10次“线程2正在运行”；
+     提示：</code></pre><p> 1.设置线程优先级的方法为setPriority方法；<br> 2.得到线程优先级的方法为getPriority方法；<br> 2.3．训练步骤描述</p>
+<pre><code>     1. 定义一个子线程类：
+         1.1 创建一个对象，用作锁对象；
+         1.2 重写Thread类的run方法；
+         1.3 使用同步代码块，保证每个线程能够按照要求连续打印语句；
+         1.4 调用getPriority方法获得当前线程的优先级；
+         1.5 如果线程的优先级为10,就打印5次“线程1正在运行”；
+         1.6 如果线程的优先级为6,就打印10次“线程2正在运行”；
+     2. 定义测试类：
+         2.1 在main方法中创建线程任务类的对象；
+         2.2 创建两个线程对象；
+         2.3 调用setPriority方法给线程对象设置优先级；
+         2.4  开启线程；</code></pre></li>
+</ul>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>GreedRing<br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/09/07/JavaBasicsPractice15/" title="http://greedring.com/2019/09/07/JavaBasicsPractice15/" target="_blank" rel="noopener">http://greedring.com/2019/09/07/JavaBasicsPractice15/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '192a24997642e3747506',
+        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
+        id: window.location.pathname,
+        repo: 'greedring.github.io',
+        owner: 'GreedRing',
+        admin: 'GreedRing'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1567797013161"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
