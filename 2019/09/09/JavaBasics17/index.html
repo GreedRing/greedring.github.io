@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>标签：桥接模式 - Greed Ring</title>
+  <title>Java基础17 - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,13 +11,17 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Greed Ring">
-<meta property="og:url" content="http://greedring.com/tags/桥接模式/index.html">
+  <meta name="description" content="day17">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础17">
+<meta property="og:url" content="http://greedring.com/2019/09/09/JavaBasics17/index.html">
 <meta property="og:site_name" content="Greed Ring">
+<meta property="og:description" content="day17">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-09T06:25:58.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Greed Ring">
+<meta name="twitter:title" content="Java基础17">
+<meta name="twitter:description" content="day17">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -25,7 +29,10 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1568033894195">
+  <link rel="stylesheet" href="/css/style.css?v=1568033893896">
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -154,37 +161,88 @@
   </div>
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
-        <section class="nexmoe-posts" id="brand-waterfall">
-    
-    <div class="nexmoe-post">
-        <a href="/2019/08/29/Bridge/">
-            <div class="nexmoe-post-cover mdui-ripple"> 
-                
-                <img src="https://i.loli.net/2019/08/29/G849m2SvIdk6bHl.png" alt="桥接模式">
-                
-                <h1>桥接模式</h1>
-            </div>
-        </a>
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月29日</a>
-            <a><i class="nexmoefont icon-areachart"></i>126 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-            
-                <a class="nexmoefont icon-appstore-fill -link" href="/categories/设计模式/">设计模式</a>
-            
-            
-                <a class="nexmoefont icon-tag-fill -link" href="/tags/桥接模式/">桥接模式</a>
-            
-        </div>
-        <article>
-            
-            <p>【待写</p>
-            
-        </article>
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+        <img src="https://i.loli.net/2019/08/25/qjVyadYDSXgeC9A.jpg">
+        
+        <h1>Java基础17</h1>
     </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月09日</a>
+    <a><i class="nexmoefont icon-areachart"></i>297 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
-</section>
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+    
+    
+  </div>
+  <article>
+    <p>day17</p>
+<a id="more"></a>
 
+
+    <div id="aplayer-ATPugerZ" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+
+<h2 id="集合引入"><a href="#集合引入" class="headerlink" title="集合引入"></a>集合引入</h2><h4 id="1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"><a href="#1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器" class="headerlink" title="1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"></a>1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器</h4><p>注意：此处的存储是基于内存结构的存储，不同于持久化存储（txt数据库….）</p>
+<h4 id="2-int-arr-new-int-5"><a href="#2-int-arr-new-int-5" class="headerlink" title="2.int[] arr = new int[5];"></a>2.int[] arr = new int[5];</h4><p>User[] arr = new User[5];//对象数组<br>Object[] objects = new Object[5];<br>(1).数组一旦初始化，长度就固定了（ArrayIndexOutOfBoundsException）<br>(2).数组一旦定义，那么数组中存储的数据元素的数据类型就确定了</p>
+<h4 id="3-数组的缺点："><a href="#3-数组的缺点：" class="headerlink" title="3.数组的缺点："></a>3.数组的缺点：</h4><p>(1).数组一旦初始化，长度就固定了，无法进行扩容<br>(2).数组中提供的操作方法过少，删除、插入元素效率过低<br>(3).数组中没有提供获取数组实际长度的操作<br>(4).数组中数据默认是有序且可以重复的，如果需要设计无序且不能重复则无法实现</p>
+<h2 id="集合概述"><a href="#集合概述" class="headerlink" title="集合概述"></a>集合概述</h2><h4 id="1-体系结构："><a href="#1-体系结构：" class="headerlink" title="1.体系结构："></a>1.体系结构：</h4><ul>
+<li>Collection：单列结构（一个个数据组成）</li>
+</ul>
+<p>– List<br>— ArrayList 基于“动态”数组<br>— LinkedList 基于双向链表结构<br>— Vector 基于“动态”数组（线程安全）</p>
+<p>– Set(子接口)<br>— HashSet<br>— LinkedHashSet<br>— TreeSet</p>
+<ul>
+<li>Map：双列结构（一对对数据组成）</li>
+<li><ul>
+<li>HashMap</li>
+</ul>
+</li>
+<li><ul>
+<li>LinkedHashMap</li>
+</ul>
+</li>
+<li><ul>
+<li>TreeMap</li>
+</ul>
+</li>
+<li><ul>
+<li>HashTable</li>
+</ul>
+</li>
+</ul>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>GreedRing<br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/09/09/JavaBasics17/" title="http://greedring.com/2019/09/09/JavaBasics17/" target="_blank" rel="noopener">http://greedring.com/2019/09/09/JavaBasics17/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '192a24997642e3747506',
+        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
+        id: window.location.pathname,
+        repo: 'greedring.github.io',
+        owner: 'GreedRing',
+        admin: 'GreedRing'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
@@ -200,7 +258,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1568033894202"></script>
+<script src="/js/app.js?v=1568033893906"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
