@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="线程安全">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-09T15:33:49.802Z">
+<meta property="og:updated_time" content="2019-09-09T15:52:53.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础16">
 <meta name="twitter:description" content="线程安全">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1568043526492">
+  <link rel="stylesheet" href="/css/style.css?v=1568044420903">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,7 +171,7 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月07日</a>
-    <a><i class="nexmoefont icon-areachart"></i>1.5k 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.6k 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-bhYYoBBf" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-BLPCwufA" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="线程安全问题"><a href="#线程安全问题" class="headerlink" title="线程安全问题"></a>线程安全问题</h2><p>多个线程同时操作共享数据时，可能会发生数据不一致的情况</p>
 <blockquote>
@@ -468,6 +468,11 @@ class Consumer implements Runnable {
         }
     }
 }</code></pre>
+<h5 id="死锁："><a href="#死锁：" class="headerlink" title="死锁："></a>死锁：</h5><p>同步锁使用的弊端：当线程任务中出现了多个同步(多个锁)时，<br>如果同步中嵌套了其他的同步。这时容易引发一种现象：程序出现无限等待，这种现象我们称为死锁。这种情况能避免就避免掉。</p>
+<blockquote>
+<p>synchronzied(A锁){<br>   synchronized(B锁){<br>   }<br>}</p>
+</blockquote>
+<p>死锁：多个线程互相持有对方锁需要的资源</p>
 
   </article>
   
@@ -515,7 +520,7 @@ class Consumer implements Runnable {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1568043526502"></script>
+<script src="/js/app.js?v=1568044420912"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
