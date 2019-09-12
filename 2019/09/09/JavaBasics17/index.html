@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day17">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-10T18:08:50.670Z">
+<meta property="og:updated_time" content="2019-09-12T11:23:07.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础17">
 <meta name="twitter:description" content="day17">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1568204182552">
+  <link rel="stylesheet" href="/css/style.css?v=1568298940859">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,8 +171,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月09日</a>
-    <a><i class="nexmoefont icon-areachart"></i>2.3k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 10 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>3k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 13 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-WOFrCTJH" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-EFgadKjX" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="集合引入"><a href="#集合引入" class="headerlink" title="集合引入"></a>集合引入</h2><h4 id="1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"><a href="#1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器" class="headerlink" title="1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"></a>1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器</h4><p>注意：此处的存储是基于内存结构的存储，不同于持久化存储（txt数据库….）</p>
 <h4 id="2-数组特点"><a href="#2-数组特点" class="headerlink" title="2.数组特点"></a>2.数组特点</h4><p>int[] arr = new int[5];<br>User[] arr = new User[5];//对象数组<br>Object[] objects = new Object[5];</p>
@@ -208,43 +208,43 @@
 </ul>
 <p><strong><label style="color:#ff4e6a">Map：双列集合（一对对数据组成）</label></strong><br>&emsp;- HashMap<br>&emsp;- LinkedHashMap<br>&emsp;- TreeMap<br>&emsp;- HashTable<br>&emsp;- Properties</p>
 <h4 id="2-Collection-单列集合-常用方法"><a href="#2-Collection-单列集合-常用方法" class="headerlink" title="2.Collection 单列集合 常用方法"></a>2.Collection 单列集合 常用方法</h4><ul>
-<li>boolean <label style="color:#ff4e6a">集合A.add(E e);</label><br>向集合A中添加元素（可选操作）</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.add(E e);</label><br>向集合A中添加元素（可选操作）</li>
 </ul>
 <ul>
-<li>boolean <label style="color:#ff4e6a">集合A.addAll(集合B);</label><br>将集合B中的所有元素添加到集合A中（可选操作）</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.addAll(集合B);</label><br>将集合B中的所有元素添加到集合A中（可选操作）</li>
 </ul>
 <ul>
-<li>void <label style="color:#ff4e6a">集合A.clear();</label><br>从集合A中移除所有的元素（可选操作）</li>
+<li>void &emsp;<label style="color:#ff4e6a">集合A.clear();</label><br>从集合A中移除所有的元素（可选操作）</li>
 </ul>
 <ul>
-<li>boolean <label style="color:#ff4e6a">集合A.contains(Object o);</label><br>如果集合A包含指定元素，返回true</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.contains(Object o);</label><br>如果集合A包含指定元素，返回true</li>
 </ul>
 <ul>
-<li>boolean <label style="color:#ff4e6a">集合A.containsAll(集合B);</label><br>如果集合A包含指定集合B的所有元素，返回true</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.containsAll(集合B);</label><br>如果集合A包含指定集合B的所有元素，返回true</li>
 </ul>
 <ul>
-<li>boolean <label style="color:#ff4e6a">集合A.equals(集合B);</label><br>将集合A与集合B进行比较，以进行相等性比较（顺序需要依次对应）</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.equals(集合B);</label><br>将集合A与集合B进行比较，以进行相等性比较（顺序需要依次对应）</li>
 </ul>
 <ul>
-<li>int <label style="color:#ff4e6a">集合A.hashCode();</label><br>返回集合A的哈希代码值</li>
+<li>int &emsp;<label style="color:#ff4e6a">集合A.hashCode();</label><br>返回集合A的哈希代码值</li>
 </ul>
 <ul>
-<li>boolean <label style="color:#ff4e6a">集合A.isEmpty();</label><br>如果集合A不包含任何元素，返回true</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.isEmpty();</label><br>如果集合A不包含任何元素，返回true</li>
 </ul>
 <ul>
-<li>boolean <label style="color:#ff4e6a">集合A.remove(Object o);</label><br>从集合A中移除指定元素的一个实例，如果它是存在的（可选操作）</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.remove(Object o);</label><br>从集合A中移除指定元素的一个实例，如果它是存在的（可选操作）</li>
 </ul>
 <ul>
-<li>boolean <label style="color:#ff4e6a">集合A.removeAll(集合B);</label><br>删除集合A中包含的所有，集合B中的元素（可选操作）<br>[当集合A中包含多个相同的元素，该元素在集合B中，全部删除]</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.removeAll(集合B);</label><br>删除集合A中包含的所有，集合B中的元素（可选操作）<br>[当集合A中包含多个相同的元素，该元素在集合B中，全部删除]</li>
 </ul>
 <ul>
-<li>boolean <label style="color:#ff4e6a">集合A.retainAll(集合B);</label><br>求两个集合的交集,并将交集返回给集合A<br>[如果俩集合相等，返回false]</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.retainAll(集合B);</label><br>求两个集合的交集,并将交集返回给集合A<br>[如果俩集合相等，返回false]</li>
 </ul>
 <ul>
-<li>int <label style="color:#ff4e6a">集合A.size();</label><br>返回集合A中的元素的数目</li>
+<li>int &emsp;<label style="color:#ff4e6a">集合A.size();</label><br>返回集合A中的元素的数目</li>
 </ul>
 <ul>
-<li>Object[] <label style="color:#ff4e6a">集合A.toArray();</label><br>返回包含集合A中所有元素的数组</li>
+<li>Object[] &emsp;<label style="color:#ff4e6a">集合A.toArray();</label><br>返回包含集合A中所有元素的数组</li>
 </ul>
 <blockquote>
 <p><strong>将集合转为数组</strong><br>Object[] array = A.toArray();<br>System.out.println(array);//打印数组地址<br>System.out.println(Arrays.toString(array));//打印数组</p>
@@ -253,10 +253,10 @@
 <p><strong>将数组转为集合</strong><br>Collection A = Arrays.asList(array);</p>
 </blockquote>
 <ul>
-<li>&lt;T&gt; T[] <label style="color:#ff4e6a">集合A.toArray(T[] a);</label><br>返回包含此集合中所有元素的数组；返回数组的运行时类型是指定的数组的运行时类型</li>
+<li>&lt;T&gt; T[] &emsp;<label style="color:#ff4e6a">集合A.toArray(T[] a);</label><br>返回包含此集合中所有元素的数组；返回数组的运行时类型是指定的数组的运行时类型</li>
 </ul>
 <ul>
-<li>Iterator<e> <label style="color:#ff4e6a">集合A.iterator();</label><br>获取遍历、迭代器对象</e></li>
+<li>Iterator<e> &emsp;<label style="color:#ff4e6a">集合A.iterator();</label><br>获取遍历、迭代器对象</e></li>
 </ul>
 <pre><code class="java">package com.greedring;
 
@@ -330,7 +330,9 @@ public class Test {
         }
     }
 }</code></pre>
-<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><p>1.格式：在形参声明中使用  数据类型… 变量名<br>2.可变参数传递实参时，可以传递一个数组的实参（可变参数使用类似数组 length args[i]）<br>3.可变参数在调用方法时，可以传递0个、1个、2个…数量的参数<br>4.可变参数的方法与同名的方法可以构成重载(但是存在匹配方法时，会优点调用匹配的非可变参数方法)<br>5.可变参数的方法与同名的数组作为参数的方法不构成重载<br>6.可变参数必须声明在形参列表的最后一个<br>7.在一个方法的参数列表中，只能声明一个可变参数</p>
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><blockquote>
+<p>&emsp;1.格式： 数据类型… 变量名&emsp;&emsp;[在形参声明中使用]<br>&emsp;2.可变参数传递实参时，可以传递一个数组的实参（可变参数使用类似数组 length args[i]）<br>&emsp;3.可变参数在调用方法时，可以传递0个、1个、2个…数量的参数<br>&emsp;4.可变参数的方法与同名的方法可以构成重载(但是存在匹配方法时，会优点调用匹配的非可变参数方法)<br>&emsp;5.可变参数的方法与同名的数组作为参数的方法不构成重载<br>&emsp;6.可变参数必须声明在形参列表的最后一个<br>&emsp;7.在一个方法的参数列表中，只能声明一个可变参数</p>
+</blockquote>
 <pre><code class="java">package com.greedring;
 
 public class Test {
@@ -383,6 +385,18 @@ public class Test {
 <li><strong>??????</strong> 接口<br>String、包装类都已经默认实现了Comparable接口，并重写了int CompareTo(T o)方法，所以String、包装类都<br>默认是按照升序进行排序的<br>int compareTo(T o)如果返回值是正数，代表调用者(this)的值比o要大。负数比o小，0则相等。<br>如果一个自定义类需要实现排序功能，需要让当前类实现Comparable接口，重写compareTo（T o）方法，在该方法中重写排序的规则<br>如果一个类一旦实现了Comparable接口，那么这个类的对象在任意地方都可以进行排序或比较</li>
 </ol>
 <p>2.</p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>接口，双列集合（存储一对一对的数据）类似函数y=f(x)</p>
+<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p>Map的主要实现类，线程不安全，效率高，可存储为null的key和value<br><strong>LinkedMap</strong>HashMap的子类，能够安装元素的添加顺序进行遍历（因为每个元素包含了两个引用）<br>如果涉及到频繁遍历操作时，LinkedHashMap性能高于HashMap</p>
+<h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h4><p>可以对添加到集合中的元素进行排序（按照key的自然排序或者如果key是对象的话，</p>
+<h4 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h4><p>古老的双列集合，线程安全，效率低<br><strong>Properties</strong>操作属性配置文件的key和value都必须是String型</p>
+<p>Map、key、value的特点<br>以HashSet为例<br>Key是无序且不可重复，如果需要获取一个Map的所有的Key，可以使用的是Set结构<br>Value是无序可重复的，如果需要获取一个Map的所有Value，可以使用Collection结构存储<br>一个Map中的Entry对象无序且不可重复的，如果需要获取一个Map的所有键值对(Entry)，可以使用Set结构</p>
+<p><strong>Hash底层实现原理</strong><br>HashMap map = new HashMap();<br>当创建HashMap时，底层默认创建一个Entry数组，并进行默认初始化，初始化长度为16</p>
+<p>//之前已经存储了部分key…value<br>map.put(k1,v1)<br>先调用k1对象的hashCode方式，，根据k1的哈希值通过某种算法，得到元素需要再底层数组存储的位置（索引0-）<br>判断当前索引位置上是否有元素，如果当前索引位置上没有元素，k1，v1直接添加成功[情况1]<br>判断当前索引位置上存在一个或多个元素，将k1的哈希值依次与这一个或多个已经存在的key的哈希值进行比较，如果k1的哈希值与已存在元素的哈希值都不同，k1、v1添加成功[情况2]<br>如果k1的哈希值与已经存在的元素中的任意一个元素的key的哈希值相同(k2,v2)<br>调用equals方法比较k1、k2，如果返回false，k1、v1添加成功[情况3]<br>如果equals方法返回true，那么v1值将覆盖v2[情况4]</p>
+<p>1.对于情况23多个元素再同一个数组中的位置使用链表进行存储<br>2.对于put过程（添加元素），可能会涉及到扩容操作，当数组使用长度超过临界值（而并非是数组长度），并且当前数组位置不为空</p>
+<p>术语（常量）<br>DEFAULT_</p>
+<p><strong>Map常用方法</strong><br>1.Map的操作（新增，删除，修改）</p>
+<p>1.3移除内容，不移除对象，移除后不为null</p>
+<p>面试题：<br>1.HashMap底层实现原理<br>2.HashMap与HashTable区别？同+异<br>3.ConcurrentHashMap与HashMap区别（暂时不讲）</p>
 
   </article>
   
@@ -430,7 +444,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1568204182562"></script>
+<script src="/js/app.js?v=1568298940884"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
