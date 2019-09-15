@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day17">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-12T11:23:07.888Z">
+<meta property="og:updated_time" content="2019-09-15T12:35:40.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础17">
 <meta name="twitter:description" content="day17">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1568298940859">
+  <link rel="stylesheet" href="/css/style.css?v=1568550951112">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -57,8 +57,8 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>20</div>
-        <div><span>标签</span>4</div>
+        <div><span>文章</span>22</div>
+        <div><span>标签</span>3</div>
         <div><span>分类</span>2</div>
     </div>
     <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
@@ -114,7 +114,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/Java/">Java</a>
-          <span class="category-list-count">18</span>
+          <span class="category-list-count">20</span>
         </li>
 
         
@@ -171,7 +171,7 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月09日</a>
-    <a><i class="nexmoefont icon-areachart"></i>3k 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>2.8k 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 13 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-EFgadKjX" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-irVHATLW" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="集合引入"><a href="#集合引入" class="headerlink" title="集合引入"></a>集合引入</h2><h4 id="1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"><a href="#1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器" class="headerlink" title="1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"></a>1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器</h4><p>注意：此处的存储是基于内存结构的存储，不同于持久化存储（txt数据库….）</p>
 <h4 id="2-数组特点"><a href="#2-数组特点" class="headerlink" title="2.数组特点"></a>2.数组特点</h4><p>int[] arr = new int[5];<br>User[] arr = new User[5];//对象数组<br>Object[] objects = new Object[5];</p>
@@ -199,7 +199,7 @@
 <li>数组中没有提供获取数组实际长度的操作</li>
 <li>数组中数据默认是有序且可以重复的，如果需要设计无序且不能重复则无法实现</li>
 </ul>
-<h2 id="集合概述"><a href="#集合概述" class="headerlink" title="集合概述"></a>集合概述</h2><h4 id="1-体系结构："><a href="#1-体系结构：" class="headerlink" title="1.体系结构："></a>1.体系结构：</h4><p><strong><label style="color:#ff4e6a">Collection：单列集合（一个个数据组成）</label></strong></p>
+<h2 id="集合概述"><a href="#集合概述" class="headerlink" title="集合概述"></a>集合概述</h2><h4 id="体系结构："><a href="#体系结构：" class="headerlink" title="体系结构："></a>体系结构：</h4><p><strong><label style="color:#ff4e6a">Collection：单列集合（一个个数据组成）</label></strong></p>
 <ul>
 <li><em>List(子接口)  有序且可重复</em><br>&emsp;- ArrayList 基于“动态”数组，读取效率高(根据下标、索引)，增删效率慢<br>&emsp;- LinkedList 基于双向链表结构，增删效率高，读取效率慢<br>&emsp;- Vector 基于“动态”数组（线程安全效率低）</li>
 </ul>
@@ -207,14 +207,14 @@
 <li><em>Set(子接口) 无序不可重复</em><br>&emsp;- HashSet<br>&emsp;- LinkedHashSet<br>&emsp;- TreeSet</li>
 </ul>
 <p><strong><label style="color:#ff4e6a">Map：双列集合（一对对数据组成）</label></strong><br>&emsp;- HashMap<br>&emsp;- LinkedHashMap<br>&emsp;- TreeMap<br>&emsp;- HashTable<br>&emsp;- Properties</p>
-<h4 id="2-Collection-单列集合-常用方法"><a href="#2-Collection-单列集合-常用方法" class="headerlink" title="2.Collection 单列集合 常用方法"></a>2.Collection 单列集合 常用方法</h4><ul>
-<li>boolean &emsp;<label style="color:#ff4e6a">集合A.add(E e);</label><br>向集合A中添加元素（可选操作）</li>
+<h2 id="List特有方法"><a href="#List特有方法" class="headerlink" title="List特有方法"></a>List特有方法</h2><ul>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.add(E e);</label><br>向集合A中添加元素</li>
 </ul>
 <ul>
-<li>boolean &emsp;<label style="color:#ff4e6a">集合A.addAll(集合B);</label><br>将集合B中的所有元素添加到集合A中（可选操作）</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.addAll(集合B);</label><br>将集合B中的所有元素添加到集合A中</li>
 </ul>
 <ul>
-<li>void &emsp;<label style="color:#ff4e6a">集合A.clear();</label><br>从集合A中移除所有的元素（可选操作）</li>
+<li>void &emsp;<label style="color:#ff4e6a">集合A.clear();</label><br>从集合A中移除所有的元素</li>
 </ul>
 <ul>
 <li>boolean &emsp;<label style="color:#ff4e6a">集合A.contains(Object o);</label><br>如果集合A包含指定元素，返回true</li>
@@ -232,7 +232,7 @@
 <li>boolean &emsp;<label style="color:#ff4e6a">集合A.isEmpty();</label><br>如果集合A不包含任何元素，返回true</li>
 </ul>
 <ul>
-<li>boolean &emsp;<label style="color:#ff4e6a">集合A.remove(Object o);</label><br>从集合A中移除指定元素的一个实例，如果它是存在的（可选操作）</li>
+<li>boolean &emsp;<label style="color:#ff4e6a">集合A.remove(Object o);</label><br>从集合A中移除指定元素的一个实例，如果它是存在的</li>
 </ul>
 <ul>
 <li>boolean &emsp;<label style="color:#ff4e6a">集合A.removeAll(集合B);</label><br>删除集合A中包含的所有，集合B中的元素（可选操作）<br>[当集合A中包含多个相同的元素，该元素在集合B中，全部删除]</li>
@@ -302,6 +302,112 @@ public class Test {
         System.out.println(&quot;删除集合中第一次出现的元素&#39;a&#39;后为：&quot;+collection);
     }
 }</code></pre>
+<h4 id="底层分析"><a href="#底层分析" class="headerlink" title="底层分析"></a>底层分析</h4><p><strong>ArrayList</strong></p>
+<p>Object[] elementData<br>ArrayList list = new</p>
+<p>懒加载</p>
+<p><strong>LinkedList</strong><br>基于双向链表结构<br>LinkedList linkedList = new LinkedList();<br>LinkedList对象默认维护了两个对象Node<e> First、Node<e> Last</e></e></p>
+<p>确认双向链表结构：Node<br>private static class Node<e>{<br>       E item;//当前节点的元素<br>       Node<e> next;//后置指针（下一个节点元素）<br>       Node<e> prev;//前置指针（指向）</e></e></e></p>
+<p><strong>Vector底层实现（线程安全）</strong><br>底层依旧是“动态”数组<br>Vector vector = new </p>
+<h4 id="List特有方法-1"><a href="#List特有方法-1" class="headerlink" title="List特有方法"></a>List特有方法</h4><p>1.void &emsp;<label style="color:#ff4e6a">集合A.add(int index, E e);</label><br>在集合A的指定位置插入元素,后续元素依次后移</p>
+<p>2.boolean &emsp;<label style="color:#ff4e6a">集合A.addAll(int index, Collection&lt;? extends E&gt; c);</label><br>将指定的集合中的所有元素插入到集合A指定位置的列表中</p>
+<p>3.E &emsp;<label style="color:#ff4e6a">集合A.get(int index);</label><br>返回集合A中指定位置的元素</p>
+<p>4.int &emsp;<label style="color:#ff4e6a">集合A.indexOf(Object o);</label><br>查找元素在集合A中出现的第一个位置，如果找不到返回-1</p>
+<p>5.int &emsp;<label style="color:#ff4e6a">集合A.lastIndexOf(元素);</label><br>查找元素在集合A中出现的最后一个位置，如果找不到返回-1</p>
+<p>6.E &emsp;<label style="color:#ff4e6a">集合A.remove(索引);</label><br>按照索引移除元素<br><em>[如果需要删除第一次出现的给定元素（如删除4这个元素）：集合A.remove(new Integer(4));]</em></p>
+<p>7.E &emsp;<label style="color:#ff4e6a">集合A.set(int index, E e);</label><br>更新指定索引的值 &emsp;<strong>返回旧值</strong></p>
+<p>8.List<e> &emsp;<label style="color:#ff4e6a">集合A.subList(int fromIndex, int toIndex);</label><br>截取集合A的子集合 &emsp;<strong>首索引到尾索引，前闭后开</strong></e></p>
+<pre><code class="java">package com.greedring;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+        List list = new ArrayList();
+        list.add(123);
+        list.add(4);
+        list.add(&quot;greed&quot;);
+        list.add(&quot;ring&quot;);
+        list.add(new Date());
+        list.add(&quot;abc&quot;);
+        System.out.println(list);
+        System.out.println(&quot;===================&quot;);
+
+        //在指定位置插入元素
+        list.add(1, &#39;a&#39;);
+        System.out.println(&quot;指定位置插入元素后：&quot; + list);
+        System.out.println(&quot;===================&quot;);
+
+        //在指定位置插入集合中所有元素
+        List list1 = new ArrayList();
+        list1.add(&#39;b&#39;);
+        list1.add(&#39;a&#39;);
+        list.addAll(2, list1);
+        System.out.println(&quot;指定位置插入集合后：&quot; + list);
+        System.out.println(&quot;===================&quot;);
+
+        //获取集合指定位置元素
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        System.out.println(list.get(8));
+        System.out.println(&quot;===================&quot;);
+
+        //查找元素在集合中出现的位置，如果找不到返回-1
+        System.out.println(list.indexOf(&quot;abc&quot;));
+        System.out.println(list.lastIndexOf(&#39;a&#39;));
+        int index = list.lastIndexOf(&#39;c&#39;);
+        System.out.println(index);//-1
+        System.out.println(&quot;===================&quot;);
+
+        //按照引索移除元素
+        list.remove(0);
+        System.out.println(&quot;移除第一个元素后：&quot; + list);
+        list.remove(new Character(&#39;a&#39;));
+        System.out.println(&quot;移除第一个a元素后：&quot; + list);
+        System.out.println(&quot;===================&quot;);
+
+        //更新指定索引的元素
+        Object set = list.set(1, &#39;c&#39;);
+        System.out.println(set);
+        System.out.println(&quot;更新元素后：&quot; + list);
+        System.out.println(&quot;===================&quot;);
+
+        //截取子集合
+        List new_List = list.subList(3, 5);
+        System.out.println(new_List);
+        System.out.println(list);
+    }
+}</code></pre>
+<h4 id="LinkedList特有方法"><a href="#LinkedList特有方法" class="headerlink" title="LinkedList特有方法"></a>LinkedList特有方法</h4><p>基于双向链表结构，所以存在一些链表操作特有的方法</p>
+<p>1.void &emsp;<label style="color:#ff4e6a">集合A..addFirst(E e);/集合A..addLast(E e);</label><br>在首尾插入指定元素</p>
+<p>2.E &emsp;<label style="color:#ff4e6a">集合A.getFirst();/集合A.getLast();</label><br>返回首位元素</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.LinkedList;
+
+public class Test {
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+        linkedList.add(123);
+        linkedList.add(&quot;Yae&quot;);
+        linkedList.add(&#39;a&#39;);
+        //Collection和List接口中的方法都会继承
+        linkedList.add(1, 666);
+        System.out.println(linkedList);
+
+        //在列表开始处插入指定元素
+        linkedList.addFirst(1);
+        System.out.println(linkedList);
+        //在列表开结束插入指定元素
+        linkedList.addLast(999);
+        System.out.println(linkedList);
+        //返回列表中的第一个元素
+        System.out.println(&quot;first=&gt;&quot; + linkedList.getFirst());
+        //返回列表中的最后一个元素
+        System.out.println(&quot;last=&gt;&quot; + linkedList.getLast());
+    }
+}</code></pre>
 <h4 id="增强for循环"><a href="#增强for循环" class="headerlink" title="增强for循环"></a>增强for循环</h4><pre><code class="java">package com.greedring;
 
 import java.util.Arrays;
@@ -363,40 +469,96 @@ public class Test {
         }
     }
 }</code></pre>
-<h4 id="底层分析"><a href="#底层分析" class="headerlink" title="底层分析"></a>底层分析</h4><p><strong>ArrayList</strong></p>
-<p>Object[] elementData<br>ArrayList list = new</p>
-<p>懒加载</p>
-<p><strong>LinkedList</strong><br>基于双向链表结构<br>LinkedList linkedList = new LinkedList();<br>LinkedList对象默认维护了两个对象Node<e> First、Node<e> Last</e></e></p>
-<p>确认双向链表结构：Node<br>private static class Node<e>{<br>       E item;//当前节点的元素<br>       Node<e> next;//后置指针（下一个节点元素）<br>       Node<e> prev;//前置指针（指向）</e></e></e></p>
-<p><strong>Vector底层实现（线程安全）</strong><br>底层依旧是“动态”数组<br>Vector vector = new </p>
-<h4 id="List特有方法"><a href="#List特有方法" class="headerlink" title="List特有方法"></a>List特有方法</h4><p>1.在指定位置插入元素<br>集合A.add(1,”Ring”)<br>//1：索引。在A的第二个位置上插入String Ring，后续元素依次后移</p>
-<p>2.<strong>需要看视频</strong></p>
-<p>3.获取指定索引位置元素<br>集合A.get(索引);</p>
-<p>4.查找元素在集合A中出现的第一个位置(indexOf)，如果找不到返回-1<br>集合A.indexOf(元素);</p>
-<p>5.查找元素在集合A中出现的最后一个位置(lastIndexOf)，如果找不到返回-1<br>集合A.lastIndexOf(元素);</p>
-<p>6.按照索引移除元素<br>集合A.remove(索引);<br>如果需要删除索引元素（如删除4这个元素）：集合A.remove(new Integer(4));</p>
-<p>7.更新指定索引值<br>集合A.set(索引,元素);<br>Object set = 集合A.set(索引,元素);//返回旧值</p>
-<p>8.截取子集合[前闭后开]<br><strong>首索引，尾索引</strong><br>集合A.submit(int );</p>
-<h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><p>以HashSet为例<br>无序性：数据在存储时并非按照数组索引顺序进行存储的，是由存储数据的哈希值决定的<br>不可重复性：在添加数据时调用hashCode、equals方法，返回值不能为true。</p>
-<h4 id="HashSet添加元素底层实现原理"><a href="#HashSet添加元素底层实现原理" class="headerlink" title="HashSet添加元素底层实现原理"></a>HashSet添加元素底层实现原理</h4><p>在HashSet中添加元素a，首先调用元素a对象的hashCode方法获取七哈希值<br>根据哈希值通过某种算法，找到需要在数组中存储的位置（引索），如果该位置还没有存储元素，那么元素a添加成功（情况1）<br>如果该位置存储了元素b，那么就比较两者的哈希值是否相等，如果两种哈希值一致，那么元素a添加成功</p>
-<h4 id="LinkHashSet-HashSet的子类"><a href="#LinkHashSet-HashSet的子类" class="headerlink" title="LinkHashSet [HashSet的子类]"></a>LinkHashSet [HashSet的子类]</h4><p>每个元素维护了两个引用，一个指向上一个元素，一个指向下一个元素<br>更适合做 <strong>？？？？遍历</strong></p>
-<h4 id="Java中比较器"><a href="#Java中比较器" class="headerlink" title="Java中比较器"></a>Java中比较器</h4><p>Java中存在比较运算符：&gt; 、&lt; 、&gt;= &lt;= 、!= 、== 、instanceof<br>只能比较基本数据类型，对于对象无法比较，如果在对象中需要实现对象间的比较，只能通过Comparable、Comparator</p>
-<ol>
-<li><strong>??????</strong> 接口<br>String、包装类都已经默认实现了Comparable接口，并重写了int CompareTo(T o)方法，所以String、包装类都<br>默认是按照升序进行排序的<br>int compareTo(T o)如果返回值是正数，代表调用者(this)的值比o要大。负数比o小，0则相等。<br>如果一个自定义类需要实现排序功能，需要让当前类实现Comparable接口，重写compareTo（T o）方法，在该方法中重写排序的规则<br>如果一个类一旦实现了Comparable接口，那么这个类的对象在任意地方都可以进行排序或比较</li>
-</ol>
-<p>2.</p>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>接口，双列集合（存储一对一对的数据）类似函数y=f(x)</p>
-<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p>Map的主要实现类，线程不安全，效率高，可存储为null的key和value<br><strong>LinkedMap</strong>HashMap的子类，能够安装元素的添加顺序进行遍历（因为每个元素包含了两个引用）<br>如果涉及到频繁遍历操作时，LinkedHashMap性能高于HashMap</p>
-<h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h4><p>可以对添加到集合中的元素进行排序（按照key的自然排序或者如果key是对象的话，</p>
-<h4 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h4><p>古老的双列集合，线程安全，效率低<br><strong>Properties</strong>操作属性配置文件的key和value都必须是String型</p>
-<p>Map、key、value的特点<br>以HashSet为例<br>Key是无序且不可重复，如果需要获取一个Map的所有的Key，可以使用的是Set结构<br>Value是无序可重复的，如果需要获取一个Map的所有Value，可以使用Collection结构存储<br>一个Map中的Entry对象无序且不可重复的，如果需要获取一个Map的所有键值对(Entry)，可以使用Set结构</p>
-<p><strong>Hash底层实现原理</strong><br>HashMap map = new HashMap();<br>当创建HashMap时，底层默认创建一个Entry数组，并进行默认初始化，初始化长度为16</p>
-<p>//之前已经存储了部分key…value<br>map.put(k1,v1)<br>先调用k1对象的hashCode方式，，根据k1的哈希值通过某种算法，得到元素需要再底层数组存储的位置（索引0-）<br>判断当前索引位置上是否有元素，如果当前索引位置上没有元素，k1，v1直接添加成功[情况1]<br>判断当前索引位置上存在一个或多个元素，将k1的哈希值依次与这一个或多个已经存在的key的哈希值进行比较，如果k1的哈希值与已存在元素的哈希值都不同，k1、v1添加成功[情况2]<br>如果k1的哈希值与已经存在的元素中的任意一个元素的key的哈希值相同(k2,v2)<br>调用equals方法比较k1、k2，如果返回false，k1、v1添加成功[情况3]<br>如果equals方法返回true，那么v1值将覆盖v2[情况4]</p>
-<p>1.对于情况23多个元素再同一个数组中的位置使用链表进行存储<br>2.对于put过程（添加元素），可能会涉及到扩容操作，当数组使用长度超过临界值（而并非是数组长度），并且当前数组位置不为空</p>
-<p>术语（常量）<br>DEFAULT_</p>
-<p><strong>Map常用方法</strong><br>1.Map的操作（新增，删除，修改）</p>
-<p>1.3移除内容，不移除对象，移除后不为null</p>
-<p>面试题：<br>1.HashMap底层实现原理<br>2.HashMap与HashTable区别？同+异<br>3.ConcurrentHashMap与HashMap区别（暂时不讲）</p>
+<h2 id="栈与队列"><a href="#栈与队列" class="headerlink" title="栈与队列"></a>栈与队列</h2><h4 id="进出栈分析"><a href="#进出栈分析" class="headerlink" title="进出栈分析"></a>进出栈分析</h4><p>先进后出</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.LinkedList;
+
+public class Test {
+    //创建栈的结构
+    private LinkedList data = new LinkedList();
+
+    private LinkedList getData() {
+        return data;
+    }
+
+    public void setData(LinkedList data) {
+        this.data = data;
+    }
+
+    //压栈
+    private void push(Object object) {
+        data.add(object);
+    }
+
+    //出栈
+    private Object pop() {
+        return data.removeLast();
+    }
+
+    //返回栈顶元素
+    private Object peek() {
+        return data.getLast();
+    }
+
+    public static void main(String[] args) {
+        //创建栈结构
+        Test stack = new Test();
+        //压栈
+        stack.push(1);
+        stack.push(2);
+        System.out.println(stack.getData());
+        Object object = stack.pop();//出栈
+        System.out.println(&quot;出栈元素：&quot; + object);
+        System.out.println(stack.getData());
+        System.out.println(&quot;栈顶元素：&quot; + stack.peek());
+    }
+}</code></pre>
+<h4 id="进出队列分析"><a href="#进出队列分析" class="headerlink" title="进出队列分析"></a>进出队列分析</h4><p>先来后到</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.LinkedList;
+
+public class Test {
+    private LinkedList data = new LinkedList();
+
+    private LinkedList getData() {
+        return data;
+    }
+
+    public void setData(LinkedList data) {
+        this.data = data;
+    }
+
+    //加入队列
+    private void offer(Object object) {
+        data.add(object);
+    }
+
+    //离开队列
+    private Object poll() {
+        return data.removeFirst();
+    }
+
+    //查询出即将要离开队列的是哪个元素,检查有没有要离开队列的元素
+    private Object peek() {
+        return data.getFirst();
+    }
+
+    public static void main(String[] args) {
+        //创建队列结构
+        Test queue = new Test();
+
+        queue.offer(1);
+        queue.offer(2);
+        System.out.println(queue.getData());
+
+        Object object = queue.poll();
+        System.out.println(&quot;出队列元素：&quot; + object);
+        System.out.println(queue.getData());
+        System.out.println(&quot;队列顶元素：&quot; + queue.peek());
+    }
+}</code></pre>
 
   </article>
   
@@ -444,7 +606,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1568298940884"></script>
+<script src="/js/app.js?v=1568550951123"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
