@@ -81,7 +81,7 @@ body {
   color: #a3a8ae;
 }
 #nexmoe-header .nexmoe-count div span {
-  color: #363636;
+  color: #ffb11b;
   display: block;
 }
 #nexmoe-header .nexmoe-social {
@@ -115,7 +115,7 @@ body {
 #nexmoe-header .nexmoe-list .nexmoe-list-item.active {
   opacity: 0.9;
   background: #ff4e6a;
-  box-shadow: 0 2px 12px #ff4e6a;
+  box-shadow: 0 2px 12px #d0104c;
 }
 #nexmoe-header .nexmoe-list .nexmoe-list-item i {
   font-size: 22px;
