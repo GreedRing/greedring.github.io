@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>Java练习20 - Greed Ring</title>
+  <meta charset="UTF-8">
+  <meta name="description" content>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="day20">
+<meta name="keywords" content="Java基础练习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java练习20">
+<meta property="og:url" content="http://greedring.com/2019/09/12/JavaBasicsPractice20/index.html">
+<meta property="og:site_name" content="Greed Ring">
+<meta property="og:description" content="day20">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-15T19:30:30.986Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java练习20">
+<meta name="twitter:description" content="day20">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1568575841534">
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/08/22/IxAp3mfcJWbzaFU.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="GreedRing" class="mdui-btn mdui-btn-icon"><img src="/images/avatar.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="GreedRing">
+            <img src="/images/avatar.png" alt="GreedRing">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>23</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/friends.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/15144854" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/greedring/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">21</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/设计模式/">设计模式</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/Java基础/" style="font-size: 20px;">Java基础</a> <a href="/tags/Java基础练习/" style="font-size: 15px;">Java基础练习</a> <a href="/tags/桥接模式/" style="font-size: 10px;">桥接模式</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 GreedRing
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+        <img src="https://i.loli.net/2019/08/28/VZTWaXsdY3hAoRg.jpg">
+        
+        <h1>Java练习20</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月12日</a>
+    <a><i class="nexmoefont icon-areachart"></i>5.8k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 25 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/Java基础练习/">Java基础练习</a>
+    
+  </div>
+  <article>
+    <p>day20</p>
+<a id="more"></a>
+
+
+    <div id="aplayer-eopIoXEd" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+
+<h2 id="一、关卡1"><a href="#一、关卡1" class="headerlink" title="一、关卡1"></a>一、关卡1</h2><h4 id="训练案例1"><a href="#训练案例1" class="headerlink" title="训练案例1"></a>训练案例1</h4><p>   1.1．训练知识点<br>   1.Map特点<br>   1.2．训练描述<br>   请简述Map 的特点<br>   1.3．操作步骤描述<br>   Map的特点:<br>       1.Map每个元素由键与值两部分组成<br>   2.Map键不能重复,每个键对应一个值<br>   3.键和值可以为null</p>
+<h4 id="训练案例2"><a href="#训练案例2" class="headerlink" title="训练案例2"></a>训练案例2</h4><p>   2.1．训练知识点<br>   1.Map接口中的常用方法<br>   2.2．训练描述<br>   练习Map集合的常用方法: put, get, remove<br>   2.3．操作步骤描述<br>   1.创建HashMap<br>   2.使用put添加元素<br>   3.使用put修改元素<br>   4.使用get获取元素<br>   5.使用remove删除元素<br>   6.打印集合中的元素</p>
+<h4 id="训练案例3"><a href="#训练案例3" class="headerlink" title="训练案例3"></a>训练案例3</h4><p>   3.1．训练知识点<br>   1.Map接口中的方法<br>   3.2．训练描述<br>   往一个Map集合中添加若干元素.获取Map中的所有key, 并使用增强for和迭代器遍历输出每个key<br>   3.3．操作步骤描述<br>   1.创建HashMap<br>   2.使用put添加元素<br>   3.使用Map的keySet方法获取到所有的key<br>   4.使用增强for获取每个key<br>   5.获取keySet的迭代器<br>   6.循环判断迭代器中是否有下一个元素<br>   7.使用迭代器获取每个key</p>
+<h4 id="训练案例4"><a href="#训练案例4" class="headerlink" title="训练案例4"></a>训练案例4</h4><p>   4.1．训练知识点<br>   1.Map接口中的方法<br>   4.2．训练描述<br>   往一个Map集合中添加若干元素.获取Map中的所有value, 并使用增强for和迭代器遍历输出每个value<br>   4.3．操作步骤描述<br>   1.创建HashMap<br>   2.使用put添加元素<br>   3.使用Map的values方法获取到所有的value<br>   4.使用增强for获取每个value<br>   5.使用迭代器获取每个value</p>
+<h4 id="训练案例5"><a href="#训练案例5" class="headerlink" title="训练案例5"></a>训练案例5</h4><p>   5.1．训练知识点<br>   1.Map遍历<br>   5.2．训练描述<br>   Map集合中包含5对元素: “邓超”-&gt;”孙俪”, “李晨”-&gt;”范冰冰”, “刘德华”-&gt;”柳岩”, “黄晓明”-&gt;” Baby”, “谢霆锋”-&gt;”张柏芝”.使用keySet方式迭代出Map集合中的元素<br>   5.3．操作步骤描述<br>   1.创建HashMap<br>   2.使用put方法添加元素<br>   3.使用keySet方法获取所有的键<br>   4.获取到keySet的迭代器<br>   5.循环判断迭代器是否有下一个元素<br>   6.使用迭代器next方法获取到一个键<br>   7.通过一个键找到一个值<br>   8.输出键和值</p>
+<h4 id="训练案例6"><a href="#训练案例6" class="headerlink" title="训练案例6"></a>训练案例6</h4><p>   6.1．训练知识点<br>   1.Map遍历<br>   6.2．训练描述<br>   Map集合中包含5对元素: “邓超”-&gt;”孙俪”, “李晨”-&gt;”范冰冰”, “刘德华”-&gt;”柳岩”, “黄晓明”-&gt;” Baby”, “谢霆锋”-&gt;”张柏芝”.使用Entry方式迭代出Map集合中的元素<br>   6.3．操作步骤描述<br>   1.创建HashMap<br>   2.使用put方法添加元素<br>   3.使用entrySet方法获取到所有的键值对关系<br>   4.获取entrySet的迭代器<br>   5.使用迭代器查看是否有下一个元素<br>   6.使用迭代器拿到下一个元素(Entry类型)<br>   7.通过一个Entry&lt;K,V&gt;获取到key和value</p>
+<h4 id="训练案例7"><a href="#训练案例7" class="headerlink" title="训练案例7"></a>训练案例7</h4><p>   7.1．训练知识点<br>   1.HashMap存储键是String值是自定义对象<br>   7.2．训练描述<br>   每位学生（姓名，年龄）都有自己的家庭住址。那么，既然有对应关系，则将学生对象和家庭住址存储到Map集合中。家庭住址作为键, 学生作为值。并使用keySet和entrySet方式遍历Map集合<br>   7.3．操作步骤描述<br>   1.定义学生类.包含姓名和年龄属性<br>   2.创建HashMapkey保存学生家庭住址,value是学生对象<br>   3.添加一批学生到HashMap中<br>   4.使用keySet方式遍历Map<br>   5.使用entrySet方式遍历Map</p>
+<h4 id="训练案例8"><a href="#训练案例8" class="headerlink" title="训练案例8"></a>训练案例8</h4><p>   8.1．训练知识点<br>   1.HashMap存储键是自定义对象值是String<br>   8.2．训练描述<br>   每位学生（姓名，年龄）都有自己的家庭住址。那么，既然有对应关系，则将学生对象和家庭住址存储到map集合中。学生作为键, 家庭住址作为值, 并使用keySet和entrySet方式遍历Map集合.注意，学生姓名相同并且年龄相同视为同一名学生<br>   8.3．操作步骤描述<br>   1.定义学生类.包含姓名和年龄属性, 重写hashCode和equals方法<br>   2.创建HashMapkey保存学生对象,value是学生家庭住址<br>   3.添加一批学生到HashMap中<br>   4.使用keySet方式遍历Map<br>   5.使用entrySet方式遍历Map</p>
+<h4 id="训练案例9"><a href="#训练案例9" class="headerlink" title="训练案例9"></a>训练案例9</h4><p>   9.1．训练知识点<br>   1.可变参数<br>   9.2．训练描述<br>   定义一个方法add接收0个及以上的int类型数据,这个方法的作用是将传入的int类型的值进行相加,并返回相加后的结果<br>   9.3．操作步骤描述<br>   1.定义add方法.参数是可变参数(int… arr)<br>   2.在add方法定义求和变量sum<br>   3.使用增强for获取每个参数<br>   4.将每个参数都加到求和变量sum中<br>   5.返回sum<br>   6.调用add方法传入任意个int类型的参数</p>
+<h4 id="训练案例10"><a href="#训练案例10" class="headerlink" title="训练案例10"></a>训练案例10</h4><p>   10.1．训练知识点<br>   1.Collections工具类<br>   10.2．训练描述<br>   ArrayList集合中有如下内容: {33,11,77,55},使用Collections.sort()对ArrayList集合中的数据进行排序,并打印出排序后的结果<br>   10.3．操作步骤描述<br>   1.创建ArrayList<br>   2.使用add方法添加{33,11,77,55}四个元素<br>   3.调用Collections的sort方法,对集合排序<br>   4.使用增强for遍历ArrayList集合</p>
+<h4 id="训练案例11"><a href="#训练案例11" class="headerlink" title="训练案例11"></a>训练案例11</h4><p>   11.1．训练知识点<br>   1.Collections工具类<br>   11.2．训练描述<br>   ArrayList集合中有如下内容: {11,33,55,77},使用Collections.shuffle ()对ArrayList集合中的数据进行随机打乱顺序,并打印出排序后的结果<br>   11.3．操作步骤描述<br>   1.创建ArrayList<br>   2.使用add方法添加{11,33,55,77}四个元素<br>   3.调用Collections的shuffle方法,对集合中的元素打乱顺序<br>   4.使用增强for遍历ArrayList集合</p>
+<h4 id="训练案例12"><a href="#训练案例12" class="headerlink" title="训练案例12"></a>训练案例12</h4><p>   12.1．训练知识点<br>   1.Collections工具类<br>   12.2．训练描述<br>   ArrayList集合中有如下内容: {11,33,55,77},使用Collections.reverse()对ArrayList集合中的数据进行反转,使用增强for遍历ArrayList集合<br>   12.3．操作步骤描述<br>   1.创建ArrayList<br>   2.使用add方法添加{11,33,55,77}四个元素<br>   3.调用Collections的reverse方法,对ArrayList集合中的数据进行反转<br>   4.使用增强for遍历ArrayList集合</p>
+<h4 id="训练案例13"><a href="#训练案例13" class="headerlink" title="训练案例13"></a>训练案例13</h4><p>   13.1．训练知识点<br>   1.Collections工具类<br>   13.2．训练描述<br>   ArrayList集合中有如下内容: {11,33,55,77},使用Collections.binarySearch ()查询33元素在ArrayList集合中的索引是多少<br>   13.3．操作步骤描述<br>   1.创建ArrayList<br>   2.使用add方法添加{11,33,55,77}四个元素<br>   3.调用Collections的binarySearch方法,对ArrayList集合中的数据进行反转<br>   4.输出查找到的索引</p>
+<h2 id="关卡2"><a href="#关卡2" class="headerlink" title="关卡2"></a>关卡2</h2><h4 id="训练案例1-1"><a href="#训练案例1-1" class="headerlink" title="训练案例1"></a>训练案例1</h4><p>   1.1．训练知识点<br>   1.Map集合<br>   1.2．训练描述<br>   使用键盘录入5个学生信息,录入格式为:”姓名,年龄”.将这5个学生信息存入Map集合中,key是姓名,value是年龄<br>   1.3．操作步骤描述<br>   1.创建HashMap<br>   2.创建键盘录入对象<br>   3.循环判断只要HashMap数量是否小于5<br>   4.HashMap数量小于5个就让用户接着输入<br>   5.使用,分割用户输入的字符串<br>   6.将分割后的索引为0的字符串作为key,索引为1的字符串作为value,放入HashMap中<br>   7.输出HashMap中的数据</p>
+<h4 id="训练案例2-1"><a href="#训练案例2-1" class="headerlink" title="训练案例2"></a>训练案例2</h4><p>   2.1．训练知识点<br>   1.可变参数<br>   2.2．训练描述<br>   定义一个方法add接收0个及以上的String类型数据,这个方法的作用是将传入的String类型的参数放入一个ArrayList中,并返回这个ArrayList集合<br>   2.3．操作步骤描述<br>   1.定义add方法,参数是(String … str),返回值是ArrayList<string><br>   2.在add方法中创建ArrayList用于存放传入的字符串<br>   3.使用增强for循环获取每个参数<br>   4.将每个参数都添加到ArrayList中<br>   5.返回array<br>   6.调用add方法传入任意个字符串<br>   7.使用增强for遍历返回的ArrayList,打印每个元素</string></p>
+<h4 id="训练案例3-1"><a href="#训练案例3-1" class="headerlink" title="训练案例3"></a>训练案例3</h4><p>   3.1．训练知识点<br>   1.集合转数组<br>   3.2．训练描述<br>   ArrayList集合中有如下内容: {11,33,55,77}.使用2种方式将集合中的数据转成数组<br>   3.3．操作步骤描述<br>   1.定义ArrayList<br>   2.使用add方法添加元素{11,33,55,77}<br>   3.使用方式1转数组.toArray()<br>   4.使用方式2转数组.准备空数组<br>   5.打印数组</p>
+<h4 id="训练案例4-1"><a href="#训练案例4-1" class="headerlink" title="训练案例4"></a>训练案例4</h4><p>   4.1．训练知识点<br>   1.Map集合<br>   4.2．训练描述<br>   研发部门有5个人，信息如下：（姓名-工资）【柳岩=2100, 张亮=1700, 诸葛亮=1800, 灭绝师太=2600, 东方不败=3800】,将以上员工的相关信息存放在适合的集合中,给柳岩涨工资300,迭代出每个元素的内容输出到控制台<br>   4.3．操作步骤描述<br>   1.定义HashMap,姓名作为key,工资作为value<br>   2.使用put方法添加需要的元素<br>   3.获取到柳岩的工资<br>   4.修改柳岩的工资为当前工资加上300<br>   5.使用增强for+keySet迭代出每个员工的工资</p>
+<h4 id="训练案例5-1"><a href="#训练案例5-1" class="headerlink" title="训练案例5"></a>训练案例5</h4><p>   5.1．训练知识点<br>   1.Map集合<br>   5.2．训练描述<br>   现在有一个map集合如下:{1=”张三丰”,2=”周芷若”,3=”汪峰”,4=”灭绝师太”}<br>   要求:<br>   1.将map集合中的所有信息显示到控制台上<br>   2.向该map集合中插入一个编码为5姓名为李晓红的信息<br>        3.移除该map中的编号为1的信息<br>        4.将map集合中编号为2的姓名信息修改为”周林”<br>   5.3．操作步骤描述<br>   1.定义HashMap,编号作为key,姓名作为value<br>   2.使用put方法添加元素<br>   3.使用keySet+增强for迭代map中的元素,并打印<br>   4.使用put向该map集合中插入一个编码为5姓名为李晓红的信息<br>   5.使用remove移除该map中的编号为1的信息<br>   6.使用put将map集合中编号为2的姓名信息修改为”周林”</p>
+<h4 id="训练案例6-1"><a href="#训练案例6-1" class="headerlink" title="训练案例6"></a>训练案例6</h4><p>   6.1．训练知识点<br>   1.Map集合<br>   6.2．训练描述<br>   利用键盘录入，输入一个字符串,统计该字符串中各个字符的数量<br>   如用户输入字符串:”hello world java”,程序输出结果：h(1)e(1)l(3)o(2) (2)w(1)r(1)d(1)j(1)a(2)v(1)<br>   注：输出结果不要求顺序一致<br>   6.3．操作步骤描述<br>   1.创建键盘输入对象<br>   2.使用nextLine从键盘中读取一行内容<br>   3.将字符串转换成字符数组<br>   4.创建map集合，用来存放字符：key是字符 value是字符出现的个数<br>   5.遍历字符数组<br>   6.拿到每个字符,去map中查看是否有保存对应的次数<br>   7.如果这个字符没有保存次数,就设置为1次<br>   8.如果这个字符有保存次数,就设置为原来的次数+1次<br>   9.创建字符串缓冲区对象<br>   10.按题目要求拼接字符串<br>   11.输出结果</p>
+<h4 id="训练案例7-1"><a href="#训练案例7-1" class="headerlink" title="训练案例7"></a>训练案例7</h4><p>   7.1．训练知识点<br>   1.Map集合<br>   7.2．训练描述<br>   键盘录入一个字符串,分别统计出其中英文字母、空格、数字和其它字符的数量,输出结果:”其他=1, 空格=2, 字母=12, 数字=6”<br>   7.3．操作步骤描述<br>   1.定义countingKey(HashMap&lt;String, Integer&gt; map, String key)方法.用于统计key出现的次数.调用一次,让key所对应的次数+1.<br>   2.在countingKey方法中.使用get方法从map中取出key的值<br>   3.如果为空,说明key第一次出现<br>   4.放入key,把次数设置为1<br>   5.如果之前,已经有key了,就把key的次数+1<br>   6.创建键盘录入对象<br>   7.使用nextLine获取用户录入的字符串<br>   8.定义一个Map用于统计,字母,空格,数字和其他字符的数量,key是字符value是字符出现的次数<br>   9.将输入的字符串转成字符<br>   10.遍历字符串数组中的每一个字符<br>   11.如果ch是一个字符,调用countingKey方法传入(map, “字母”)作为参数<br>   12.如果字符是一个空格,调用countingKey方法传入(map, “空格”)作为参数<br>   13.如果字符是一个数字,调用countingKey方法传入(map, “数字”)作为参数<br>   14.如果字符是一个其他,调用countingKey方法传入(map, “其他”)作为参数<br>   15.打印统计结果</p>
+<h4 id="训练案例8-1"><a href="#训练案例8-1" class="headerlink" title="训练案例8"></a>训练案例8</h4><p>   8.1．训练知识点<br>   1.Map集合<br>   8.2．训练描述<br>   定义一个List集合,泛型为String类型。统计整个集合中所有字符（注意，不是字符串）的个数。例如:集合中有”abc”、”bcd”两个元素,程序最终输出结果为:“a = 1,b = 2,c = 2,d = 1”<br>   8.3．操作步骤描述<br>   1.定义ArrayList存放元素<br>   2.使用add方法添加需要的元素<br>   3.定义HashMap,key是字符,value是字符对应的次数<br>   4.使用增强for获取ArrayList中的每个字符串<br>   5.将每个字符串转成字符数组<br>   6.使用增强for遍历字符数组<br>   7.获取拿到每个字符,使用字符去HashMap中查找次数<br>   8.如果为空,说明该字符第一次出现<br>   9.放入字符作为key,把次数设置为1<br>   10.如果之前,已经有字符了,就把字符的次数+1<br>   11.输出map中的内容</p>
+<h4 id="训练案例9-1"><a href="#训练案例9-1" class="headerlink" title="训练案例9"></a>训练案例9</h4><p>   9.1．训练知识点<br>   1.Map集合<br>   9.2．训练描述<br>   键盘录入语句英语,统计每个单词出现的次数,有如下字符串”If you want to change your fate I think you must come to the dark horse to learn java”(用空格间隔)<br>   打印格式：<br>       to=3<br>         think=1<br>         you=2<br>       …<br>   9.3．操作步骤描述<br>   1.创建键盘输入对象<br>   2.使用nextLine从键盘中读取一行内容<br>   3.定义HashMap,key是单词,value是字符对应的次数<br>   4.使用空格分割字符串<br>   5.遍历分割好的每个字符串<br>   6.获取拿到每个字符串,使用字符去HashMap中查找次数<br>   7.如果为空,说明该字符串第一次出现<br>   8.放入字符串作为key,把次数设置为1<br>   9.如果之前,已经有字符串了,就把字符的次数+1</p>
+<h4 id="训练案例10-1"><a href="#训练案例10-1" class="headerlink" title="训练案例10"></a>训练案例10</h4><p>   10.1．训练知识点<br>   1.Map集合<br>   10.2．训练描述<br>   通过键盘录入五个人的姓名,每当录入一个人的姓名,随机给出一个成绩<a href="包含0分,也包含100分">0, 100</a>.将姓名和成绩存储到Map集合中,姓名作为key,成绩作为value.统计五个学生的总分,最高分,最低分,平均分,并将总分,最高分,最低分,平均分,写入到score.txt文件中,格式为: 总分=xxx,最高分=xxx,最低分=xxx,平均分=xxx<br>   10.3．操作步骤描述<br>   1.创建键盘输入对象<br>   2.创建随机数对象<br>   3.创建HashMap集合key存放姓名,value存放成绩<br>   4.循环判断HashMap中数量是否小于5<br>   5.如果HashMap中数量小于5,让用户再输入一个姓名<br>   6.使用随机数生成一个成绩<br>   7.将姓名和分数添加到HashMap中<br>   8.使用迭代器获取一个键<br>   9.通过键找到对应的分数,作为默认分数<br>   10.定义总分分变量<br>   11.定义最高分变量=默认分数<br>   12.定义最低分变量=默认分数<br>   13.使用keySet获取到所有的key<br>   14.使用增强for遍历所有的key<br>   15.根据key找到对应的value<br>   16.将这个分数添加到总分<br>   17.如果最高分小于这个分数,让最高分=这个分数<br>   18.如果最低分大于这个分数,让最低分=这个分数<br>   19.计算平均分<br>   20.定义StringBuilder,用于拼接,总分,最高分,最低分,平均分字符串<br>   21.创建FileWriter字符输出流<br>   22.使用字符输出流将拼接好的字符串写到文件中<br>   23.关闭流</p>
+<h4 id="训练案例11-1"><a href="#训练案例11-1" class="headerlink" title="训练案例11"></a>训练案例11</h4><p>   11.1．训练知识点<br>   1.Map集合<br>   11.2．训练描述<br>   有一个Map集合里面存储了学生的名字,年龄,内容如下:{赵四=21, 王二=17, 张三=21},1将里面的元素使用两种遍历方式打印的控制台,2将赵四的年龄改为18,3将元素存入到student.txt中.一行保存格式:姓名,年龄<br>   11.3．操作步骤描述<br>   1.创建HashMap集合key存放姓名,value存放年龄<br>   2.使用put添加对应的数据<br>   3.使用keySet遍历Map<br>   4.使用entrySet遍历Map<br>   5.使用put修改赵四的年龄为18岁<br>   6.创建BufferedWriter字符输出流<br>   7.使用keySet遍历Map<br>   8.根据key拿到对应的value<br>   9.使用字符输出流将拼接好的字符串写到文件中<br>   10.关闭流</p>
+<h4 id="训练案例12-1"><a href="#训练案例12-1" class="headerlink" title="训练案例12"></a>训练案例12</h4><p>   12.1．训练知识点<br>   1.Map集合<br>   12.2．训练描述<br>   使用键盘循环录入:书名,价格.创建一个Map集合,key存储书名,value存储书的价格. 录入以下5本书数据:{Java=32.5,C++=25,PHP=28.6,UI=21.3,Python=10.2} 要求;<br>   1.删除集合中的C++这本书<br>   2.Java的这本书涨价为38.5元<br>   3.使用keySet和entrySet两种不同方式对集合遍历输出<br>   12.3．操作步骤描述<br>   1.创建HashMap集合key存放姓名,value存放年龄<br>   2.创建键盘录入对象Scanner<br>   3.循环判断HashSet的数量是否小于5<br>   4.如果HashSet的数量小于5,让用户输入一本书的信息<br>   5.使用,分割书名和价格<br>   6.将书名和价格添加到HashMap中<br>   7.使用remove方法删除集合中的C++这本书<br>   8.使用put方法将Java的这本书涨价为38.5元<br>   9.使用keySet遍历Map<br>   10.使用entrySet遍历Map</p>
+<h4 id="训练案例13-1"><a href="#训练案例13-1" class="headerlink" title="训练案例13"></a>训练案例13</h4><p>   13.1．训练知识点<br>   1.Map集合<br>   13.2．训练描述<br>   Map中有{张三=23,李四=24,王五=15,赵六=36,孙七=17,田七=57,周八=35}这些元素key为姓名value为年龄.将周八的年龄修改为22,并将年龄小于30岁人的信息写入到perosn.txt中,person.txt每行数据格式为:姓名=年龄<br>   13.3．操作步骤描述<br>   1.创建HashMap集合key存放姓名,value存放年龄<br>   2.使用put方法添加对应的元素<br>   3.使用put将周八的年龄修改为22<br>   4.创建BufferedWriter字符输出流<br>   5.使用keySet遍历HashMap集合<br>   6.根据key获取到对应的value<br>   7.将key和value按格式拼接好写入到person.txt文件中<br>   8.关闭流</p>
+<h4 id="训练案例14"><a href="#训练案例14" class="headerlink" title="训练案例14"></a>训练案例14</h4><p>   14.1．训练知识点<br>   1.字符串分割<br>   2.Map集合<br>   14.2．训练描述<br>   现有一串字符串”常州极客营,无锡极客营,武汉极客营,镇江极客营,苏州极客营”,要求使用程序统计出”极客营”在该字符串中出现的次数。<br>   14.3．操作步骤描述<br>   1.定义传极客营字符串<br>   2.创建HashMap保存极客营的次数<br>   3.使用put添加key”极客营”<br>   4.使用,分割字符串<br>   5.使用增强for遍历获取每个分割出来的字符串<br>   6.如果分割后的字符串串包含”极客营”,让HashSet中”极客营”的value+1<br>   7.打印HashMap的内容</p>
+<h4 id="训练案例15"><a href="#训练案例15" class="headerlink" title="训练案例15"></a>训练案例15</h4><p>   15.1．训练知识点<br>   1.Map集合<br>   15.2．训练描述<br>   有2个数组,第一个数组内容为:[黑龙江省,浙江省,江西省,广东省,福建省],第二个数组为:[哈尔滨,杭州,南昌,广州,福州],将第一个数组元素作为key,第二个数组元素作为value存储到Map集合中.如{黑龙江省=哈尔滨, 浙江省=杭州, …}<br>   15.3．操作步骤描述<br>   1.定义第一个数组arr1<br>   2.定义第二个数组arr2<br>   3.创建HashMap,key存放省,value存放市<br>   4.使用普通for循环遍历arr1<br>   5.根据索引到arr1中获取到省<br>   6.根据索引到arr2中获取到省会城市<br>   7.将省和省会城市添加到HashMap中<br>   8.输出HashMap中的内容</p>
+<h2 id="关卡3"><a href="#关卡3" class="headerlink" title="关卡3"></a>关卡3</h2><h4 id="训练案例1-2"><a href="#训练案例1-2" class="headerlink" title="训练案例1"></a>训练案例1</h4><p>   1.1．训练知识点<br>   1.Map集合<br>   1.2．训练描述<br>   Map中有{张三=3,李四=4,王五=5,赵六=6,孙七=7,田七=7,周八=5}这些元素.将Map中value相同的元素从Map中去除(value为7和5是相同的,都要删除).再将Map中剩余元素的key存放到一个ArrayLis中,并打印到控制台上</p>
+<h4 id="训练案例2-2"><a href="#训练案例2-2" class="headerlink" title="训练案例2"></a>训练案例2</h4><p>   2.1．训练知识点<br>   1.HashMap嵌套HashMap<br>   2.2．训练描述<br>   极客营包含2个班级:Java基础班,Java就业班<br>   Java基础班:<br>   001    李晨<br>   002    范冰冰<br>   Java就业班:<br>   001    马云<br>   002    马化腾<br>   使用HashMap嵌套HashMap方式完成,1使用keySet和增强for遍历出里面的元素,2使用entrySet和迭代器遍历出里面的元素</p>
+<h4 id="训练案例3-2"><a href="#训练案例3-2" class="headerlink" title="训练案例3"></a>训练案例3</h4><p>   3.1．训练知识点<br>   1.Map集合<br>   3.2．训练描述<br>   已知Map中保存如下信息:{“及时雨”=”宋江”, “玉麒麟”=”卢俊义”, “智多星”=”吴用”},其中键表示水浒中人物的外号,value表示人物的姓名.1往Map中添加 “入云龙”=”公孙胜”, ”豹子头”=”林冲”两位好汉.2删除“玉麒麟”=”卢俊义”,3将key为“智多星”的value修改为null,4.将“及时雨”=”宋江”,修改为”呼保义”=” 宋江”</p>
+<h4 id="训练案例4-2"><a href="#训练案例4-2" class="headerlink" title="训练案例4"></a>训练案例4</h4><p>   4.1．训练知识点<br>   1.HashSet<br>   2.Map<br>   4.2．训练描述<br>   有四种水果(苹果，香蕉，西瓜，橘子)<br>        1、给每种水果设定一个商品号，商品号是8个0-9的随机数，商品号码不能重复, 最小值 “00000001”, 最大值 “99999999”<br>        2、根据商品号查询对应的商品。<br>   如果查不到输出：“查无此商品”<br>   如果能查到打印：”根据商品号：12345678，查询到对应的商品为：西瓜”</p>
+<h4 id="训练案例5-2"><a href="#训练案例5-2" class="headerlink" title="训练案例5"></a>训练案例5</h4><p>   5.1．训练知识点</p>
+<ol>
+<li>斗地主洗牌发牌</li>
+<li>2．训练描述<br>完成课上斗地主洗牌发牌案例(牌需要排序)</li>
+</ol>
+<pre><code class="java">package com.greedring;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Practice {
+    public static void main(String[] args) {
+        List poker = new ArrayList();
+        for (int i = 1; i &lt;= 13; i++) {
+            poker.add(&quot;♠&quot;+i);
+            poker.add(&quot;♥&quot;+i);
+            poker.add(&quot;♦&quot;+i);
+            poker.add(&quot;♣&quot;+i);
+        }
+        poker.add(&quot;Black_JOKER&quot;);
+        poker.add(&quot;Red_JOKER&quot;);
+        Collections.shuffle(poker);
+        System.out.println(&quot;农名1的手牌为：&quot;+poker.subList(0,17));
+        System.out.println(&quot;农名2的手牌为：&quot;+poker.subList(17,34));
+        System.out.println(&quot;地主的手牌为：&quot;+poker.subList(34,54));
+    }
+}</code></pre>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>GreedRing<br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/09/12/JavaBasicsPractice20/" title="http://greedring.com/2019/09/12/JavaBasicsPractice20/" target="_blank" rel="noopener">http://greedring.com/2019/09/12/JavaBasicsPractice20/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '192a24997642e3747506',
+        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
+        id: window.location.pathname,
+        repo: 'greedring.github.io',
+        owner: 'GreedRing',
+        admin: 'GreedRing'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1568575841540"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
