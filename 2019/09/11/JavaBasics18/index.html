@@ -11,18 +11,18 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="day18">
+  <meta name="description" content="单列集合set，双列集合map">
 <meta name="keywords" content="Java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基础18">
 <meta property="og:url" content="http://greedring.com/2019/09/11/JavaBasics18/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="day18">
+<meta property="og:description" content="单列集合set，双列集合map">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-15T11:21:44.181Z">
+<meta property="og:updated_time" content="2019-09-15T18:58:51.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础18">
-<meta name="twitter:description" content="day18">
+<meta name="twitter:description" content="单列集合set，双列集合map">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1568552361453">
+  <link rel="stylesheet" href="/css/style.css?v=1568573970110">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,8 +171,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月11日</a>
-    <a><i class="nexmoefont icon-areachart"></i>459 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>5.2k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 26 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -181,20 +181,612 @@
     
   </div>
   <article>
-    <p>day18</p>
+    <p>单列集合set，双列集合map</p>
 <a id="more"></a>
 
 
-    <div id="aplayer-SpIiTEQf" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-rrmUIhHb" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
-<h2 id="set特有方法"><a href="#set特有方法" class="headerlink" title="set特有方法"></a>set特有方法</h2><p>以HashSet为例：<br>无序性：数据在存储时并非按照数组索引顺序进行存储的，是由存储数据的哈希值决定的<br>不可重复性：在添加数据时调用hashCode、equals方法，返回值不能为true。</p>
-<h4 id="HashSet添加元素底层实现原理"><a href="#HashSet添加元素底层实现原理" class="headerlink" title="HashSet添加元素底层实现原理"></a>HashSet添加元素底层实现原理</h4><p>在HashSet中添加元素a，首先调用元素a对象的hashCode方法获取七哈希值<br>根据哈希值通过某种算法，找到需要在数组中存储的位置（引索），如果该位置还没有存储元素，那么元素a添加成功（情况1）<br>如果该位置存储了元素b，那么就比较两者的哈希值是否相等，如果两种哈希值一致，那么元素a添加成功</p>
-<h4 id="LinkHashSet-HashSet的子类"><a href="#LinkHashSet-HashSet的子类" class="headerlink" title="LinkHashSet [HashSet的子类]"></a>LinkHashSet [HashSet的子类]</h4><p>每个元素维护了两个引用，一个指向上一个元素，一个指向下一个元素<br>更适合做 <strong>？？？？遍历</strong></p>
-<h4 id="Java中比较器"><a href="#Java中比较器" class="headerlink" title="Java中比较器"></a>Java中比较器</h4><p>Java中存在比较运算符：&gt; 、&lt; 、&gt;= &lt;= 、!= 、== 、instanceof<br>只能比较基本数据类型，对于对象无法比较，如果在对象中需要实现对象间的比较，只能通过Comparable、Comparator</p>
-<ol>
-<li><strong>??????</strong> 接口<br>String、包装类都已经默认实现了Comparable接口，并重写了int CompareTo(T o)方法，所以String、包装类都<br>默认是按照升序进行排序的<br>int compareTo(T o)如果返回值是正数，代表调用者(this)的值比o要大。负数比o小，0则相等。<br>如果一个自定义类需要实现排序功能，需要让当前类实现Comparable接口，重写compareTo（T o）方法，在该方法中重写排序的规则<br>如果一个类一旦实现了Comparable接口，那么这个类的对象在任意地方都可以进行排序或比较</li>
-</ol>
-<p>2.</p>
+<h2 id="set（接口）存储的无序且不可重复的数据"><a href="#set（接口）存储的无序且不可重复的数据" class="headerlink" title="set（接口）存储的无序且不可重复的数据"></a>set（接口）存储的无序且不可重复的数据</h2><p>Set中方法都是从Collection继承过来的，没有特有方法</p>
+<blockquote>
+<p>&emsp;无序性：&emsp;&emsp;数据在存储时并非按照数组索引顺序进行存储的，是由存储数据的哈希值决定的<br>不可重复性：&emsp;在添加数据时调用hashCode、equals方法，返回值不能为true</p>
+</blockquote>
+<h4 id="HashSet添加元素底层实现原理"><a href="#HashSet添加元素底层实现原理" class="headerlink" title="HashSet添加元素底层实现原理"></a>HashSet添加元素底层实现原理</h4><blockquote>
+<p>在HashSet中添加元素a，首先调用元素a对象的hashCode方法获取其哈希值<br>根据哈希值通过某种算法，找到需要在数组中存储的位置（引索），如果该位置还没有存储元素，那么元素a添加成功（情况1）<br>如果该位置存储了元素b，那么就比较两者的哈希值是否相等，如果两种哈希值一致，那么元素a添加成功（情况2）<br>如果哈希值一致，那么就调用equals方法比较两个对象：<br>(1).如果equals()方法返回值是true，则认为两个对象是同一个对象，元素a添加失败（情况3）<br>(2).如果equals()返回false，则元素a添加成功（情况4）</p>
+<p><em>对于情况1、4，元素a，元素b在同一个位置是使用链表的结构存储的</em></p>
+</blockquote>
+<ul>
+<li>JDK1.7 新增元素a保存在数组中位置，a元素指向原有元素b</li>
+<li>JDK1.8 原有元素b依旧还在数组位置上，该元素指向元素a</li>
+</ul>
+<p><em>总结：HashSet底层结构：数组+链表</em><br><em>如果需要向HashSet中存储数据，如果需要实现（相同属性数据无法存在多个），需要重写hashCode、equals方法</em></p>
+<h4 id="LinkHashSet-HashSet的子类，在其基础上"><a href="#LinkHashSet-HashSet的子类，在其基础上" class="headerlink" title="LinkHashSet [HashSet的子类，在其基础上]"></a>LinkHashSet [HashSet的子类，在其基础上]</h4><p>每个元素维护了两个引用，一个指向上一个元素，一个指向下一个元素。<br>linkHashSet更适合做set集合的遍历。</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class Test {
+    public static void main(String[] args) {
+        Set set = new LinkedHashSet();
+        set.add(1);
+        set.add(12);
+        set.add(6);
+        set.add(new User(&quot;1&quot;, &quot;Ring&quot;));
+        set.add(new User(&quot;1&quot;, &quot;Ring&quot;));//存储的地址不同
+        set.add(true);
+
+        System.out.println(set);
+    }
+
+    public static class User {
+
+        private String id;
+        private String name;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        User(String id, String name) {
+            super();
+            this.id = id;
+            this.name = name;
+        }
+
+        public User() {
+            super();
+        }
+    }
+}</code></pre>
+<h4 id="Java中比较器"><a href="#Java中比较器" class="headerlink" title="Java中比较器"></a>Java中比较器</h4><p>Java中存在比较运算符：&gt; 、&lt; 、&gt;= 、&lt;= 、!= 、== 、instanceof<br>只能比较基本数据类型，对于对象无法比较，如果在对象中需要实现对象间的比较，只能通过Comparable、Comparator<br>1.Comparable接口<br>String、包装类都已经默认实现了Comparable接口，并重写了int CompareTo(T o)方法，所以String、包装类都<br>默认是按照升序进行排序的<br>int compareTo(T o)如果返回值是正数，代表调用者(this)的值比o要大。负数比o小，0则相等。<br>如果一个自定义类需要实现排序功能，需要让当前类实现Comparable接口，重写compareTo（T o）方法，在该方法中重写排序的规则<br>如果一个类一旦实现了Comparable接口，那么这个类的对象在任意地方都可以进行排序或比较</p>
+<p>2.Comparator接口（定制排序）<br>如果一个类没有实现Comparable接口，但是这个类又不方便实现Comparable接口，或者一个类已经实现了Comparable接口，但是其中的compareTo不满足我们的需求，那么<br>可以使用Comparator接口方式实现定制排序<br>默认升序<br>int compare(T o1, T o2);<br>o1&gt;o2 返回正数<br>o1&lt;o2 返回负数<br>o1==o2 返回0</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Test {
+    public static void main(String[] args) {
+        String s1 = &quot;A&quot;;
+        String s2 = &quot;B&quot;;
+        //System.out.println(s1&gt;s2);
+
+        String[] arr = new String[]{&quot;AA&quot;, &quot;BB&quot;, &quot;DD&quot;, &quot;FF&quot;, &quot;EE&quot;, &quot;KK&quot;};
+        int[] arr2 = new int[]{1, 6, 10, 6, 8, 11, 100, 98};
+        Arrays.sort(arr);
+        Arrays.sort(arr2);
+        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr2));
+
+        Student[] users = new Student[5];
+        users[0] = new Student(2, &quot;Jack&quot;);
+        users[1] = new Student(1, &quot;Rose&quot;);
+        users[2] = new Student(1, &quot;Jerry&quot;);
+        users[3] = new Student(1, &quot;Tom&quot;);
+        users[4] = new Student(3, &quot;Marry&quot;);
+        //Arrays.sort(users);//com.igeekhome.pm.User cannot be cast to java.lang.Comparable
+        //System.out.println(Arrays.toString(users));
+        Integer i1 = 12;
+        int compareTo = i1.compareTo(20);
+        System.out.println(compareTo);
+
+        //按照id进行升序，如果id重复按照姓名降序(定制排序)
+        Arrays.sort(users, new Comparator() {
+
+            @Override
+            public int compare(Object o1, Object o2) {
+                if (o1 instanceof Student &amp;&amp; o2 instanceof Student) {
+                    Student s1 = (Student) o1;
+                    Student s2 = (Student) o2;
+                    if (s1.getId() &gt; s2.getId()) {
+                        return 1;
+                    } else if (s2.getId() &lt; s2.getId()) {
+                        return -1;
+                    } else {
+                        //id如果相同按照name倒序
+                        return -s1.getName().compareTo(s2.getName());
+                    }
+                }
+                return 0;
+            }
+        });
+
+        System.out.println(Arrays.toString(users));
+    }
+
+    public static class Student implements Comparable {
+
+        private Integer id;
+        private String name;
+
+        Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        Student(Integer id, String name) {
+            super();
+            this.id = id;
+            this.name = name;
+        }
+
+        public Student() {
+            super();
+        }
+
+        @Override
+        public int hashCode() {
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + ((id == null) ? 0 : id.hashCode());
+            result = prime * result + ((name == null) ? 0 : name.hashCode());
+            return result;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+            if (obj == null)
+                return false;
+            if (getClass() != obj.getClass())
+                return false;
+            Student other = (Student) obj;
+            if (id == null) {
+                if (other.id != null)
+                    return false;
+            } else if (!id.equals(other.id))
+                return false;
+            if (name == null) {
+                if (other.name != null)
+                    return false;
+            } else if (!name.equals(other.name))
+                return false;
+            return true;
+        }
+
+
+        @Override
+        public String toString() {
+            return &quot;Student [id=&quot; + id + &quot;, name=&quot; + name + &quot;]&quot;;
+        }
+
+        @Override
+        public int compareTo(Object o) {
+            if (o instanceof Student) {
+                Student s = (Student) o;
+                //按照id升序
+                /*
+                 * if(this.getId()&gt;s.getId()) { return 1; }else if(this.getId()&lt;s.getId()) {
+                 * return -1; }else { return 0; }
+                 */
+                //借助Integer内部的compareTo方法
+                return this.getId().compareTo(s.getId());
+
+            }
+            return 0;
+        }
+    }
+}</code></pre>
+<h4 id="treeSet"><a href="#treeSet" class="headerlink" title="treeSet"></a>treeSet</h4><p>可以按照添加元素的指定属性进行排序(比较)<br>TreeSet需要添加相同数据类型的元素（比较）</p>
+<blockquote>
+<p>对于自然排序，Comparable 比较两个对象是否相等就不再是通过equals进行比较了，而是通过compareTo进行比较<br>对于定制排序,Comparator 比较两个对象是否相等就不再是通过equals进行比较了，而是通过compare进行比较</p>
+</blockquote>
+<pre><code class="java">package com.greedring;
+
+import java.util.Comparator;
+import java.util.TreeSet;
+
+public class Test {
+    public static void main(String[] args) {
+        TreeSet ts = new TreeSet();
+        //自然排序
+        ts.add(123);
+        ts.add(12);
+        ts.add(1);
+        ts.add(66);
+        //ts.add(true);
+        //ts.add(new User(&quot;1&quot;, &quot;jack&quot;));
+        System.out.println(ts);
+
+        //自然排序
+        TreeSet ts2 = new TreeSet();
+        ts2.add(new User(&quot;1&quot;, &quot;Jack&quot;));
+        ts2.add(new User(&quot;1&quot;, &quot;Rose&quot;));
+        ts2.add(new User(&quot;1&quot;, &quot;Tom&quot;));
+        ts2.add(new User(&quot;4&quot;, &quot;Jerry&quot;));
+        ts2.add(new User(&quot;5&quot;, &quot;Tony&quot;));
+        //根据id排序
+        System.out.println(ts2);
+
+        //先按照id进行升序。如果id一致，再按照name降序（此需求只要比较一次）
+        /*
+         * TreeSet ts3 = new TreeSet(new Comparator&lt;User&gt;() {
+         *
+         * @Override public int compare(User o1, User o2) {
+         * if(o1.getId().compareTo(o2.getId())!=0) { return
+         * o1.getId().compareTo(o2.getId()); }else { return
+         * -o1.getName().compareTo(o2.getName()); }
+         *
+         * } });
+         */
+        TreeSet ts3 = new TreeSet(new MyUserComparator());
+        ts3.add(new User(&quot;1&quot;, &quot;Jack&quot;));
+        ts3.add(new User(&quot;1&quot;, &quot;Rose&quot;));
+        ts3.add(new User(&quot;1&quot;, &quot;Tom&quot;));
+        ts3.add(new User(&quot;4&quot;, &quot;Jerry&quot;));
+        ts3.add(new User(&quot;5&quot;, &quot;Tony&quot;));
+        System.out.println(ts3);
+    }
+}
+
+class MyUserComparator implements Comparator&lt;User&gt; {
+
+    @Override
+    public int compare(User o1, User o2) {
+        if (o1.getId().compareTo(o2.getId()) != 0) {
+            return o1.getId().compareTo(o2.getId());
+        } else {
+            return -o1.getName().compareTo(o2.getName());
+        }
+    }
+}</code></pre>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>接口，双列集合（存储一对一对的数据）类似函数y=f(x)<br>|—- HashMap:Map的主要实现类，线程不安全，效率高，可以存储为null的key和value<br>    |—- LinkedHashMap：HashMap的子类，能够按照元素的添加顺序进行遍历（因为每个元素包含了两个引用Entry&lt;K,V&gt; before, after;分别指向上一个元素以及下一个元素）<br>        如果涉及到频繁遍历操作时，LinkedHashMap性能高于HashMap<br>|—- TreeMap:可以对添加到集合中的元素进行排序（按照key的自然排序或者如果key是对象的话，按照对象的指定属性进行排序【自然排序、定制排序】）<br>|—- Hashtable:古老的双列集合，线程安全的（同步方法），效率低 不可以存储为null的key和value<br>    |—- Properties:操作属性配置文件的，key、value都必须是String类型（IO）</p>
+<blockquote>
+<p>Map、key、value的特点<br>以HashSet为例<br>Key是无序且不可重复，如果需要获取一个Map的所有的Key，可以使用的是Set结构<br>Value是无序可重复的，如果需要获取一个Map的所有Value，可以使用Collection结构存储<br>一个Map中的Entry对象无序且不可重复的，如果需要获取一个Map的所有键值对(Entry)，可以使用Set结构</p>
+</blockquote>
+<p><strong>Hash底层实现原理</strong><br>HashMap map = new HashMap();<br>当创建HashMap时，底层默认创建一个Entry数组，并进行默认初始化，初始化长度为16</p>
+<blockquote>
+<p>//之前已经存储了部分key…value<br>map.put(k1,v1)<br>先调用k1对象的hashCode方式，，根据k1的哈希值通过某种算法，得到元素需要再底层数组存储的位置（索引0-）<br>判断当前索引位置上是否有元素，如果当前索引位置上没有元素，k1，v1直接添加成功[情况1]<br>判断当前索引位置上存在一个或多个元素，将k1的哈希值依次与这一个或多个已经存在的key的哈希值进行比较，如果k1的哈希值与已存在元素的哈希值都不同，k1、v1添加成功[情况2]<br>如果k1的哈希值与已经存在的元素中的任意一个元素的key的哈希值相同(k2,v2)<br>调用equals方法比较k1、k2，如果返回false，k1、v1添加成功[情况3]<br>如果equals方法返回true，那么v1值将覆盖v2[情况4]</p>
+</blockquote>
+<p><strong>1.对于情况2、3多个元素再同一个数组中的位置使用链表进行存储<br>2.对于put过程（添加元素），可能会涉及到扩容操作，当数组使用长度超过临界值（而并非是数组长度），并且当前数组位置不为空的时候，需要进行扩容，扩容到原来的2倍，将将原有集合中数据拷贝到新的集合中</strong></p>
+<blockquote>
+<p>术语（常量）<br>DEFAULT_INITIAL_CAPACITY，默认初始化长度 16<br>DEFAULT_LOAD_FACTOR 默认加载因子 0.75（计算临界值（threshold）=16*0.75=12）<br>TREEIFY_THRESHOLD JDK1.8 桶中节点数量树化最大值（链表-&gt;红黑树）<br>MIN_TREEIFY_CAPACITY：64 树化数组的最小长度</p>
+</blockquote>
+<blockquote>
+<p>JDK1.8 与 JDK 1.7区别：<br>（1）JDK1.7中底层是Entry[]数组 JDK1.8中底层是Node&lt;K,V&gt;[] table<br>static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; {<br>      final int hash;<br>      final K key;<br>      V value;<br>      Node&lt;K,V&gt; next;<br>(2)JDK1.7中当调用HashMap()构造函数时，底层会创建一个长度为16的Entry数组，而JDK1.8中当调用构造函数时，并不会初始化底层数组<br>当第一次调用put操作时，初始化长度为16的Node[] 数组<br>（3）JDK1.7中桶中的数据是新增数据指向原有数据，JDK1.8是原有数据指向新增数据<br>（4）JDK1.8在某种情况（当前数组索引下节点的长度超过了8并且数组长度超过了64）下，会将桶中（数组中某个索引位置）的数据由链表结构转换为树形结构（树化）</p>
+</blockquote>
+<h4 id="Map方法"><a href="#Map方法" class="headerlink" title="Map方法"></a>Map方法</h4><p>1.map的操作（新增、删除、修改）<br>void clear()<br>从这个映射中移除所有的映射（可选操作）。<br>V put(K key, V value)<br>将指定的值与此映射中的指定键关联（可选操作）。<br>void putAll(Map&lt;? extends K,? extends V&gt; m)<br>从指定的映射到这个Map（可选操作）复制所有的映射。<br>V remove(Object key)<br>如果存在（可选操作），则从该Map中移除一个键的映射。</p>
+<p>2.map获取<br>boolean containsKey(Object key)<br>返回 true如果这Map包含一个指定的键映射。<br>boolean containsValue(Object value)<br>返回 true如果映射到指定的值的一个或多个键。<br>V get(Object key)<br>返回指定的键映射的值，或 null如果这个Map不包含的键映射。<br>int size()<br>返回这个映射中的键值映射的数目。<br>boolean isEmpty()<br>返回 true如果这个Map不包含键值的映射。<br>boolean equals(Object o)<br>将指定的对象与此映射的相等性进行比较。</p>
+<p>3.map的元操作<br>Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()<br>返回一个 Set视图的映射包含在这个Map。<br>Set<k> keySet()<br>返回一个 Set的关键视图包含在这个Map。<br>Collection<v> values()<br>返回一个 Collection视图的值包含在这个Map。</v></k></p>
+<pre><code class="java">package com.greedring;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class Test {
+    public static void main(String[] args) {
+        //以HashMap为例演示Map中常用方法
+        //1.Map操作
+        Map map = new HashMap();
+        //1.1 新增元素
+        map.put(1, &quot;AA&quot;);
+        map.put(&quot;bb&quot;, &quot;BB&quot;);
+        map.put(&quot;cc&quot;, &quot;CC&quot;);
+        map.put(&quot;CC&quot;, &quot;CC&quot;);
+        map.put(new User(&quot;1&quot;, &quot;jack&quot;), &quot;666&quot;);
+        //1.2修改
+        map.put(new User(&quot;1&quot;, &quot;jack&quot;), &quot;888&quot;);
+        map.put(&quot;user&quot;, new User(&quot;1&quot;, &quot;Jack&quot;));
+        map.put(1, &quot;AAAA&quot;);
+        System.out.println(map);
+
+        //1.3 清除
+        //map.clear();//移除集合中内容 （注意移除后并不是null）
+        //System.out.println(map);
+
+        //1.4 以某一个key移除键值对,并返回移除的value
+        //Object remove = map.remove(1);
+        //System.out.println(&quot;remove:&quot;+remove);
+        //System.out.println(map);
+
+        //2.获取
+        //2.1 根据指定key获取value
+        Object object = map.get(1);
+        System.out.println(object);
+        Object object2 = map.get(new User(&quot;1&quot;, &quot;jack&quot;));
+        System.out.println(object2);
+        Object object3 = map.get(&quot;666&quot;);//如果不存在某个key返回null
+        System.out.println(object3);
+        System.out.println(&quot;--------------&quot;);
+        //2.2 boolean containsKey(Object key) 判断key是否存在 （key使用set存储） 底层调用hashCode、equals
+        boolean containsKey = map.containsKey(&quot;bb&quot;);
+        System.out.println(containsKey);
+        boolean containsKey2 = map.containsKey(new User(&quot;1&quot;, &quot;jack&quot;));
+        System.out.println(containsKey2);
+        System.out.println(&quot;--------------&quot;);
+        //2.3 boolean containsValue(Object value)  判断value是否存在  （value使用collection存储） 底层调用equals
+        boolean containsValue = map.containsValue(&quot;CC&quot;);
+        System.out.println(containsValue);
+        boolean containsValue2 = map.containsValue(new User(&quot;1&quot;, &quot;Jack&quot;));
+        System.out.println(containsValue2);
+        System.out.println(&quot;===================&quot;);
+        //2.4 获取键值对的数量
+        System.out.println(map.size());
+        //2.5 判断集合中是否包含键值对
+        map.clear();
+        System.out.println(map.isEmpty());
+        System.out.println(&quot;----------------&quot;);
+        //2.6 判断两个集合中元素是否相同
+        Map m1 = new HashMap();
+        m1.put(&quot;a&quot;, &quot;AA&quot;);
+        m1.put(&quot;b&quot;, &quot;BB&quot;);
+        m1.put(&quot;c&quot;, &quot;CC&quot;);
+        Map m2 = new HashMap();
+        m2.put(&quot;a&quot;, &quot;AA&quot;);
+        m2.put(&quot;b&quot;, &quot;BB&quot;);
+        m2.put(&quot;c&quot;, &quot;CC&quot;);
+        m2.put(&quot;d&quot;, &quot;CC&quot;);
+        System.out.println(m1.equals(m2));
+
+        System.out.println(&quot;=======================&quot;);
+        //1.map元操作
+        //1.1 获取所有的key
+        Set keySet = m2.keySet();
+        System.out.println(keySet);
+
+        //1.2获取所有的value
+        Collection values = m2.values();
+        System.out.println(values);
+
+        //1.3获取所有的键值对
+        Set entrySet = m2.entrySet();
+        System.out.println(entrySet);
+
+        System.out.println(&quot;===================&quot;);
+        //遍历map集合
+        //方式一(1/2)：
+        Iterator iterator = keySet.iterator();
+        while (iterator.hasNext()) {
+            Object key = iterator.next();
+            //根据key获取value
+            Object val = m2.get(key);
+            System.out.println(&quot;Key:&quot; + key + &quot;;Value:&quot; + val);
+        }
+
+        System.out.println(&quot;=========&quot;);
+        //方式二(1)：
+        Iterator iterator2 = entrySet.iterator();
+        while (iterator2.hasNext()) {
+            Map.Entry entry = (Map.Entry) iterator2.next();
+            System.out.println(entry.getKey() + &quot;---&quot; + entry.getValue());
+        }
+
+        System.out.println(&quot;========&quot;);
+
+        //方式二(2)：
+        for (Object entry : entrySet) {
+            Map.Entry e = (Map.Entry) entry;
+            System.out.println(e.getKey() + &quot;---&quot; + e.getValue());
+        }
+    }
+}</code></pre>
+<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p>Map的主要实现类，线程不安全，效率高，可存储为null的key和value<br><strong>LinkedMap</strong>HashMap的子类，能够安装元素的添加顺序进行遍历（因为每个元素包含了两个引用）<br>如果涉及到频繁遍历操作时，LinkedHashMap性能高于HashMap</p>
+<blockquote>
+<p>LinkedHashMap 在 HashMap基础之上，每个节点对象<br>static class Entry&lt;K,V&gt; extends HashMap.Node&lt;K,V&gt; {<br>Entry&lt;K,V&gt; before, after;//before:指向上一个添加到集合中的元素   after:指向下一个添加到集合中的元素<br>Entry(int hash, K key, V value, Node&lt;K,V&gt; next) {<br>  super(hash, key, value, next);<br> }<br>}</p>
+</blockquote>
+<pre><code class="java">package com.greedring;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+
+public class Test {
+    public static void main(String[] args) {
+        Map map = new LinkedHashMap();
+        map.put(&quot;1&quot;, &quot;11&quot;);
+        map.put(&quot;4&quot;, &quot;44&quot;);
+        map.put(&quot;2&quot;, &quot;22&quot;);
+        map.put(&quot;3&quot;, &quot;33&quot;);
+
+        //适用于频繁遍历的双列集合，效率高
+        System.out.println(map);
+    }
+}</code></pre>
+<h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h4><p>可以对添加到集合中的元素进行排序（按照key的自然排序或者如果key是对象的话，</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.Comparator;
+import java.util.Map;
+import java.util.TreeMap;
+
+public class Test {
+    public static void main(String[] args) {
+        Map map = new TreeMap(new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                if (o1 instanceof User &amp;&amp; o2 instanceof User) {
+                    User u1 = (User) o1;
+                    User u2 = (User) o2;
+                    return u1.getName().compareTo(u2.getName());
+                }
+                return 0;
+            }
+        });
+
+        map.put(new User(&quot;1&quot;, &quot;Jack&quot;), 1);
+        map.put(new User(&quot;2&quot;, &quot;Rose&quot;), 6);
+        map.put(new User(&quot;3&quot;, &quot;Toz&quot;), 3);
+        map.put(new User(&quot;4&quot;, &quot;Tony&quot;), 4);
+        map.put(new User(&quot;5&quot;, &quot;Marry&quot;), 7);
+
+        System.out.println(map);
+    }
+}</code></pre>
+<h4 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h4><p>古老的双列集合，线程安全，效率低<br><strong>Properties</strong>操作属性配置文件的key和value都必须是String型</p>
+<h2 id="Array-Arrays"><a href="#Array-Arrays" class="headerlink" title="Array  Arrays"></a>Array  Arrays</h2><blockquote>
+<p>面试题:简述Collection与Collections（集合的工具类）区别？<br>     1.static <t> boolean addAll(Collection<? super T> c, T... elements)
+        将所有指定的元素添加到指定的集合中。
+    2.static <t> void copy(List<? super T> dest, List<? extends T> src)
+将所有的元素从一个列表复制到另一个列表中。
+    3.static int frequency(Collection<?> c, Object o)<br>返回指定集合中等于指定对象的元素的数目。<br>    4.static &lt;T extends Object &amp; Comparable<? super T>>
+    T max(Collection<? extends T> coll)
+    返回最大元素的集合，根据其元素的自然排序。
+    5.static <t> T max(Collection<? extends T> coll, Comparator<? super T> comp)
+返回给定集合的最大元素，根据指定的比较器诱导的顺序。
+    6.static <t extends object & comparable<? super t>>
+T min(Collection<? extends T> coll)
+返回最小的元素的集合，根据其元素的自然排序。
+    7.static <t> T min(Collection<? extends T> coll, Comparator<? super T> comp)
+返回给定集合的最小元素，根据指定的比较器诱导的顺序。
+    8.static void reverse(List<?> list)<br>反转指定列表中元素的顺序。<br>    9.static void shuffle(List<?> list)
+随机置换指定列表使用随机默认源。
+    10.static <t extends comparable<? super t>> void sort(List<t> list)
+指定列表为升序排序，根据其元素的 natural ordering。
+    11.static <t> void sort(List<t> list, Comparator<? super T> c)
+根据指定的比较器指定的顺序对指定的列表进行排序。
+    12.static void swap(List<?> list, int i, int j)<br>在指定的列表中的指定位置上交换元素。</t></t></t></t></t></t></t></t></t></p>
+</blockquote>
+<blockquote>
+<p>线程不安全集合转换为线程安全集合：<br>    static <t> Collection<t> synchronizedCollection(Collection<t> c)<br>    返回由指定集合支持的同步（线程安全）集合。<br>    static <t> List<t> synchronizedList(List<t> list)<br>    返回由指定列表支持的同步（线程安全）列表。<br>    static &lt;K,V&gt; Map&lt;K,V&gt; synchronizedMap(Map&lt;K,V&gt; m)<br>    返回由指定的Map支持的同步（线程安全）Map。<br>    static <t> Set<t> synchronizedSet(Set<t> s)<br>    返回一个由指定集合支持的同步（线程安全）集。</t></t></t></t></t></t></t></t></t></p>
+</blockquote>
+<pre><code class="java">package com.greedring;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+        List list = new ArrayList();
+        // 1.向集合中添加若干个元素
+        Collections.addAll(list, 1, true, &quot;hello&quot;, &quot;hello&quot;, false, 2, 3);
+        System.out.println(list);
+
+        List dest = Arrays.asList(new Object[7]);// java.lang.IndexOutOfBoundsException: Source does not fit in dest
+        System.out.println(dest.size());
+        // 2.拷贝集合元素
+        Collections.copy(dest, list);
+        System.out.println(&quot;dest=&gt;&quot; + dest);
+
+        // 3.查找指定元素在集合中出现的次数
+        int frequency = Collections.frequency(list, &quot;hello&quot;);
+        System.out.println(&quot;hello在list集合中出现的次数:&quot; + frequency);
+
+        // 4.查找集合最大值
+        ArrayList l = new ArrayList();
+        l.add(1);
+        l.add(2);
+        l.add(3);
+        l.add(4);
+        int i = (int) Collections.max(l, new Comparator() {
+
+            @Override
+            public int compare(Object o1, Object o2) {
+                // TODO Auto-generated method stub
+                if (o1 instanceof Integer &amp;&amp; o2 instanceof Integer) {
+                    Integer i1 = (Integer) o1;
+                    Integer i2 = (Integer) o2;
+                    if (i1 &gt; i2) {
+                        return -1;
+                    } else if (i1 &lt; i2) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+                return 0;
+            }
+        });
+        System.out.println(&quot;最大值:&quot; + i);
+    }
+}</code></pre>
+<h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><blockquote>
+<p>static void reverse(List<?> list) 
+反转指定列表中元素的顺序。  
+    static void shuffle(List<?> list)<br>随机置换指定列表使用随机默认源。<br>    static &lt;T extends Comparable<? super T>> void sort(List<t> list) 
+指定列表为升序排序，根据其元素的 natural ordering。  
+    static <t> void sort(List<t> list, Comparator<? super T> c) 
+根据指定的比较器指定的顺序对指定的列表进行排序。  
+    static void swap(List<?> list, int i, int j)<br>在指定的列表中的指定位置上交换元素。 </t></t></t></p>
+</blockquote>
+<pre><code class="java">package com.greedring;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+        List list = new ArrayList();
+        list.add(1);
+        list.add(true);
+        list.add(false);
+        list.add(new Date());
+
+        // 反转
+        Collections.reverse(list);
+        System.out.println(list);
+
+        // 打乱集合中元素
+        Collections.shuffle(list);
+        System.out.println(list);
+        Collections.shuffle(list);
+        System.out.println(list);
+        Collections.shuffle(list);
+        System.out.println(list);
+
+        System.out.println(&quot;=====================&quot;);
+
+        List l2 = new ArrayList();// 默认实现了Compareable接口，默认升序
+        /*
+         * l2.add(12); l2.add(6); l2.add(8); l2.add(22); l2.add(34); l2.add(5);
+         * l2.add(7); l2.add(11);
+         */
+        l2.add(new User(&quot;2&quot;, &quot;Jack&quot;));
+        l2.add(new User(&quot;1&quot;, &quot;Jack&quot;));
+        l2.add(new User(&quot;6&quot;, &quot;Jack&quot;));
+        l2.add(new User(&quot;5&quot;, &quot;Jack&quot;));
+
+        Collections.sort(l2);
+        // Collections.sort(list, c);
+
+        System.out.println(l2);
+
+        System.out.println(&quot;==============&quot;);
+
+        list = new ArrayList();
+        list.add(1);
+        list.add(true);
+        list.add(false);
+        list.add(new Date());
+
+        System.out.println(list);
+        // 交换位置
+        Collections.swap(list, 1, 2);
+        System.out.println(list);
+    }
+}</code></pre>
 
   </article>
   
@@ -242,7 +834,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1568552361466"></script>
+<script src="/js/app.js?v=1568573970122"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
