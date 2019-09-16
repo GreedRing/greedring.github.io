@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day20">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-15T19:30:30.986Z">
+<meta property="og:updated_time" content="2019-09-16T01:03:26.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java练习20">
 <meta name="twitter:description" content="day20">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1568575841534">
+  <link rel="stylesheet" href="/css/style.css?v=1568595833392">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,8 +171,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月12日</a>
-    <a><i class="nexmoefont icon-areachart"></i>5.8k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 25 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>6.5k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 29 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -185,15 +185,195 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-eopIoXEd" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-gtNHKhoc" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="一、关卡1"><a href="#一、关卡1" class="headerlink" title="一、关卡1"></a>一、关卡1</h2><h4 id="训练案例1"><a href="#训练案例1" class="headerlink" title="训练案例1"></a>训练案例1</h4><p>   1.1．训练知识点<br>   1.Map特点<br>   1.2．训练描述<br>   请简述Map 的特点<br>   1.3．操作步骤描述<br>   Map的特点:<br>       1.Map每个元素由键与值两部分组成<br>   2.Map键不能重复,每个键对应一个值<br>   3.键和值可以为null</p>
 <h4 id="训练案例2"><a href="#训练案例2" class="headerlink" title="训练案例2"></a>训练案例2</h4><p>   2.1．训练知识点<br>   1.Map接口中的常用方法<br>   2.2．训练描述<br>   练习Map集合的常用方法: put, get, remove<br>   2.3．操作步骤描述<br>   1.创建HashMap<br>   2.使用put添加元素<br>   3.使用put修改元素<br>   4.使用get获取元素<br>   5.使用remove删除元素<br>   6.打印集合中的元素</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Practice {
+    public static void main(String[] args) {
+        Map map=new HashMap();
+        map.put(1,&quot;张三&quot;);
+        map.put(2,&quot;李四&quot;);
+        map.put(2,&quot;王五&quot;);
+        System.out.println(map);
+        System.out.println(map.get(1));
+        System.out.println(&quot;删除值====&gt;&quot;+map.remove(2));
+        System.out.println(&quot;删除之后的集合=====&gt;&quot;+map);
+    }
+}</code></pre>
 <h4 id="训练案例3"><a href="#训练案例3" class="headerlink" title="训练案例3"></a>训练案例3</h4><p>   3.1．训练知识点<br>   1.Map接口中的方法<br>   3.2．训练描述<br>   往一个Map集合中添加若干元素.获取Map中的所有key, 并使用增强for和迭代器遍历输出每个key<br>   3.3．操作步骤描述<br>   1.创建HashMap<br>   2.使用put添加元素<br>   3.使用Map的keySet方法获取到所有的key<br>   4.使用增强for获取每个key<br>   5.获取keySet的迭代器<br>   6.循环判断迭代器中是否有下一个元素<br>   7.使用迭代器获取每个key</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+
+public class Practice {
+    public static void main(String[] args) {
+        HashMap hashMap = new HashMap();
+        hashMap.put(&quot;1&quot;, &quot;张三&quot;);
+        hashMap.put(&quot;2&quot;, &quot;李四&quot;);
+        hashMap.put(&quot;3&quot;, &quot;王五&quot;);
+        Set s = hashMap.keySet();
+        for (Object string : s) {
+            System.out.println(string);
+        }
+        System.out.println(&quot;=========================&quot;);
+        Iterator&lt;String&gt; it = s.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+    }
+}</code></pre>
 <h4 id="训练案例4"><a href="#训练案例4" class="headerlink" title="训练案例4"></a>训练案例4</h4><p>   4.1．训练知识点<br>   1.Map接口中的方法<br>   4.2．训练描述<br>   往一个Map集合中添加若干元素.获取Map中的所有value, 并使用增强for和迭代器遍历输出每个value<br>   4.3．操作步骤描述<br>   1.创建HashMap<br>   2.使用put添加元素<br>   3.使用Map的values方法获取到所有的value<br>   4.使用增强for获取每个value<br>   5.使用迭代器获取每个value</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+
+public class Practice {
+    public static void main(String[] args) {
+        HashMap hashMap = new HashMap();
+        hashMap.put(1, &quot;ABC&quot;);
+        hashMap.put(2, &quot;DEF&quot;);
+        hashMap.put(3, &quot;LMN&quot;);
+        Collection collection = hashMap.values();
+        for (Object string : collection) {
+            System.out.println(string);
+        }
+        System.out.println(&quot;=======================&quot;);
+        Iterator&lt;String&gt; it = collection.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+    }
+}</code></pre>
 <h4 id="训练案例5"><a href="#训练案例5" class="headerlink" title="训练案例5"></a>训练案例5</h4><p>   5.1．训练知识点<br>   1.Map遍历<br>   5.2．训练描述<br>   Map集合中包含5对元素: “邓超”-&gt;”孙俪”, “李晨”-&gt;”范冰冰”, “刘德华”-&gt;”柳岩”, “黄晓明”-&gt;” Baby”, “谢霆锋”-&gt;”张柏芝”.使用keySet方式迭代出Map集合中的元素<br>   5.3．操作步骤描述<br>   1.创建HashMap<br>   2.使用put方法添加元素<br>   3.使用keySet方法获取所有的键<br>   4.获取到keySet的迭代器<br>   5.循环判断迭代器是否有下一个元素<br>   6.使用迭代器next方法获取到一个键<br>   7.通过一个键找到一个值<br>   8.输出键和值</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+
+public class Practice {
+    public static void main(String[] args) {
+        HashMap hashMap = new HashMap();
+        hashMap.put(&quot;邓超&quot;, &quot;孙俪&quot;);
+        hashMap.put(&quot;李晨&quot;, &quot;范冰冰&quot;);
+        hashMap.put(&quot;刘德华&quot;, &quot;柳岩&quot;);
+        hashMap.put(&quot;黄晓明&quot;, &quot;Baby&quot;);
+        hashMap.put(&quot;谢霆锋&quot;, &quot;张柏芝&quot;);
+        Set set = hashMap.keySet();
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()) {
+            String key = (String) iterator.next();
+            System.out.println(key + hashMap.get(key));
+        }
+    }
+}</code></pre>
 <h4 id="训练案例6"><a href="#训练案例6" class="headerlink" title="训练案例6"></a>训练案例6</h4><p>   6.1．训练知识点<br>   1.Map遍历<br>   6.2．训练描述<br>   Map集合中包含5对元素: “邓超”-&gt;”孙俪”, “李晨”-&gt;”范冰冰”, “刘德华”-&gt;”柳岩”, “黄晓明”-&gt;” Baby”, “谢霆锋”-&gt;”张柏芝”.使用Entry方式迭代出Map集合中的元素<br>   6.3．操作步骤描述<br>   1.创建HashMap<br>   2.使用put方法添加元素<br>   3.使用entrySet方法获取到所有的键值对关系<br>   4.获取entrySet的迭代器<br>   5.使用迭代器查看是否有下一个元素<br>   6.使用迭代器拿到下一个元素(Entry类型)<br>   7.通过一个Entry&lt;K,V&gt;获取到key和value</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+
+public class Practice {
+    public static void main(String[] args) {
+        HashMap hashMap = new HashMap();
+        hashMap.put(&quot;邓超&quot;, &quot;孙俪&quot;);
+        hashMap.put(&quot;李晨&quot;, &quot;范冰冰&quot;);
+        hashMap.put(&quot;刘德华&quot;, &quot;柳岩&quot;);
+        hashMap.put(&quot;黄晓明&quot;, &quot;Baby&quot;);
+        hashMap.put(&quot;谢霆锋&quot;, &quot;张柏芝&quot;);
+        Set set = hashMap.entrySet();
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+}</code></pre>
 <h4 id="训练案例7"><a href="#训练案例7" class="headerlink" title="训练案例7"></a>训练案例7</h4><p>   7.1．训练知识点<br>   1.HashMap存储键是String值是自定义对象<br>   7.2．训练描述<br>   每位学生（姓名，年龄）都有自己的家庭住址。那么，既然有对应关系，则将学生对象和家庭住址存储到Map集合中。家庭住址作为键, 学生作为值。并使用keySet和entrySet方式遍历Map集合<br>   7.3．操作步骤描述<br>   1.定义学生类.包含姓名和年龄属性<br>   2.创建HashMapkey保存学生家庭住址,value是学生对象<br>   3.添加一批学生到HashMap中<br>   4.使用keySet方式遍历Map<br>   5.使用entrySet方式遍历Map</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+
+public class Practice {
+    public static void main(String[] args) {
+        HashMap hashMap = new HashMap();
+        hashMap.put(&quot;江苏无锡&quot;, new Student(&quot;张三&quot;, 20));
+        hashMap.put(&quot;安徽六安&quot;, new Student(&quot;李四&quot;, 18));
+        hashMap.put(&quot;北京&quot;, new Student(&quot;王五&quot;, 23));
+        System.out.println(hashMap);
+        Set s = hashMap.keySet();
+        for (Object string : s) {
+            String key = (String) string;
+            System.out.println(&quot;住址：&quot; + key + &quot;  學生信息:&quot; + hashMap.get(key));
+        }
+        System.out.println(&quot;==========================&quot;);
+        Iterator&lt;String&gt; it = s.iterator();
+        while (it.hasNext()) {
+            String key = it.next();
+            System.out.println(&quot;住址：&quot; + key + &quot;  學生信息:&quot; + hashMap.get(key));
+        }
+        System.out.println(&quot;=========================&quot;);
+        Set ss = hashMap.entrySet();
+        for (Object entry : ss) {
+            String key = (String) entry.getkey();
+            System.out.println(&quot;住址：&quot; + key + &quot;  學生信息:&quot; + hashMap.get(key));
+        }
+        System.out.println(&quot;=============================&quot;);
+        Iterator iterator = ss.iterator();
+        while (iterator.hasNext()) {
+            String key = iterator.next().getkey();
+            System.out.println(&quot;住址：&quot; + key + &quot;  學生信息:&quot; + hashMap.get(key));
+        }
+    }
+}
+
+class Student {
+    private String name;
+    private Integer age;
+
+    Student(String name, Integer age) {
+        super();
+        this.name = name;
+        this.age = age;
+    }
+
+    public Student() {
+        super();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Student [name=&quot; + name + &quot;, age=&quot; + age + &quot;]&quot;;
+    }
+}</code></pre>
 <h4 id="训练案例8"><a href="#训练案例8" class="headerlink" title="训练案例8"></a>训练案例8</h4><p>   8.1．训练知识点<br>   1.HashMap存储键是自定义对象值是String<br>   8.2．训练描述<br>   每位学生（姓名，年龄）都有自己的家庭住址。那么，既然有对应关系，则将学生对象和家庭住址存储到map集合中。学生作为键, 家庭住址作为值, 并使用keySet和entrySet方式遍历Map集合.注意，学生姓名相同并且年龄相同视为同一名学生<br>   8.3．操作步骤描述<br>   1.定义学生类.包含姓名和年龄属性, 重写hashCode和equals方法<br>   2.创建HashMapkey保存学生对象,value是学生家庭住址<br>   3.添加一批学生到HashMap中<br>   4.使用keySet方式遍历Map<br>   5.使用entrySet方式遍历Map</p>
 <h4 id="训练案例9"><a href="#训练案例9" class="headerlink" title="训练案例9"></a>训练案例9</h4><p>   9.1．训练知识点<br>   1.可变参数<br>   9.2．训练描述<br>   定义一个方法add接收0个及以上的int类型数据,这个方法的作用是将传入的int类型的值进行相加,并返回相加后的结果<br>   9.3．操作步骤描述<br>   1.定义add方法.参数是可变参数(int… arr)<br>   2.在add方法定义求和变量sum<br>   3.使用增强for获取每个参数<br>   4.将每个参数都加到求和变量sum中<br>   5.返回sum<br>   6.调用add方法传入任意个int类型的参数</p>
 <h4 id="训练案例10"><a href="#训练案例10" class="headerlink" title="训练案例10"></a>训练案例10</h4><p>   10.1．训练知识点<br>   1.Collections工具类<br>   10.2．训练描述<br>   ArrayList集合中有如下内容: {33,11,77,55},使用Collections.sort()对ArrayList集合中的数据进行排序,并打印出排序后的结果<br>   10.3．操作步骤描述<br>   1.创建ArrayList<br>   2.使用add方法添加{33,11,77,55}四个元素<br>   3.调用Collections的sort方法,对集合排序<br>   4.使用增强for遍历ArrayList集合</p>
@@ -294,7 +474,7 @@ public class Practice {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1568575841540"></script>
+<script src="/js/app.js?v=1568595833403"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
