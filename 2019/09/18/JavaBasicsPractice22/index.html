@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>Java练习22 - Greed Ring</title>
+  <meta charset="UTF-8">
+  <meta name="description" content>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="day22">
+<meta name="keywords" content="Java基础练习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java练习22">
+<meta property="og:url" content="http://greedring.com/2019/09/18/JavaBasicsPractice22/index.html">
+<meta property="og:site_name" content="Greed Ring">
+<meta property="og:description" content="day22">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-17T18:52:11.579Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java练习22">
+<meta name="twitter:description" content="day22">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1568746337877">
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/08/22/IxAp3mfcJWbzaFU.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="GreedRing" class="mdui-btn mdui-btn-icon"><img src="/images/avatar.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="GreedRing">
+            <img src="/images/avatar.png" alt="GreedRing">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>25</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/friends.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/15144854" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/greedring/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">23</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/设计模式/">设计模式</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/Java基础/" style="font-size: 20px;">Java基础</a> <a href="/tags/Java基础练习/" style="font-size: 15px;">Java基础练习</a> <a href="/tags/桥接模式/" style="font-size: 10px;">桥接模式</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 GreedRing
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+        <img src="https://i.loli.net/2019/08/28/VZTWaXsdY3hAoRg.jpg">
+        
+        <h1>Java练习22</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月18日</a>
+    <a><i class="nexmoefont icon-areachart"></i>3k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 12 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/Java基础练习/">Java基础练习</a>
+    
+  </div>
+  <article>
+    <p>day22</p>
+<a id="more"></a>
+
+
+    <div id="aplayer-XsnDgcrc" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+
+<h2 id="一、关卡1"><a href="#一、关卡1" class="headerlink" title="一、关卡1"></a>一、关卡1</h2><h4 id="训练案例1"><a href="#训练案例1" class="headerlink" title="训练案例1"></a>训练案例1</h4><p>1.1．训练知识点<br>1.相对路径和绝对路径的使用<br>1.2．训练描述<br>创建两个文件对象，分别使用相对路径和绝对路径创建。<br>1.3．操作步骤描述<br>1.绝对路径创建文件对象：使用File类一个参数的构造方法。<br>2.相对路径创建文件对象：使用File类两个参数的构造方法。</p>
+<pre><code class="java">package com.greedring;
+
+import java.io.File;
+
+public class Test {
+    public static void main(String[] args) {
+        File file = new File(&quot;Test.txt&quot;);
+        File file01 = new File(&quot;D:\\&quot;, &quot;Test.txt&quot;);
+    }
+}</code></pre>
+<h4 id="训练案例2"><a href="#训练案例2" class="headerlink" title="训练案例2"></a>训练案例2</h4><p>2.1．训练知识点<br>1.检查文件是否存在<br>2.文件的创建<br>2.2．训练描述<br>检查C盘下是否存在文件a.txt,如果不存在则创建该文件。<br>2.3．操作步骤描述<br>1.使用绝对路径创建对象关联到c盘的a.txt。<br>2.通过文件对象方法判断文件是否存在。<br>3.不存在则调用创建文件的方法创建文件。</p>
+<pre><code class="java">package com.greedring;
+
+import java.io.File;
+import java.io.IOException;
+
+public class Test {
+    public static void main(String[] args) {
+        File file = new File(&quot;C:\\a.txt&quot;);
+        System.out.println(file.exists());
+        if (file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}</code></pre>
+<h4 id="训练案例3"><a href="#训练案例3" class="headerlink" title="训练案例3"></a>训练案例3</h4><p>3.1．训练知识点<br>1.单级文件夹的创建<br>3.2．训练描述<br>在C盘下创建一个名为bbb的文件夹。<br>3.3．操作步骤描述<br>1.创建文件对象指定路径为c:/bbb<br>2.调用文件对象创建文件夹的方法</p>
+<pre><code class="java">package com.greedring;
+
+import java.io.File;
+
+public class Test {
+    public static void main(String[] args) {
+        File file=new File(&quot;C:\\bbb&quot;);
+        System.out.println(file.mkdir());
+    }
+}</code></pre>
+<h4 id="训练案例4"><a href="#训练案例4" class="headerlink" title="训练案例4"></a>训练案例4</h4><p>4.1．训练知识点<br>1.多级文件夹的创建<br>4.2．训练描述<br>在C盘下创建一个名为ccc的文件夹，要求如下：<br>1.ccc文件夹中要求包含bbb子文件夹<br>2.bbb子文件夹要求包含aaa文件夹<br>4.3．操作步骤描述<br>1.创建文件对象关联路径：c:/ccc/bbb/aaa</p>
+<ol start="2">
+<li>调用文件对象创建多级文件夹的方法</li>
+</ol>
+<h4 id="训练案例5"><a href="#训练案例5" class="headerlink" title="训练案例5"></a>训练案例5</h4><p>5.1．训练知识点<br>1.删除文件和文件夹<br>5.2．训练描述<br>将C盘下a.txt文件删除<br>将C盘下aaa文件夹删除,要求文件夹aaa是一个空文件夹。<br>5.3．操作步骤描述<br>1.创建文件对象关联路径：c:/a.txt<br>2.调用文件对象删除文件的方法<br>3.创建文件对象关联路径：c:/aaa<br>4.调用文件对象删除文件的方法</p>
+<h4 id="训练案例6"><a href="#训练案例6" class="headerlink" title="训练案例6"></a>训练案例6</h4><p>6.1．训练知识点<br>1.获取文件信息：文件名，文件大小，文件的绝对路径，文件的父路径<br>6.2．训练描述<br>获取C盘aaa文件夹中b.txt文件的文件名，文件大小，文件的绝对路径和父路径等信息，并将信息输出在控制台。<br>6.3．操作步骤描述<br>1.在c盘aaa文件夹中创建一个b.txt文件并输入数据<br>2.创建文件对象关联路径：c:/aaa/b.txt<br>3.调用文件对象的相关方法获得信息并输出。可以通过API帮助文档查询方法。</p>
+<h4 id="训练案例7"><a href="#训练案例7" class="headerlink" title="训练案例7"></a>训练案例7</h4><p>7.1．训练知识点<br>1.文件夹或文件的判断<br>7.2．训练描述<br>1.判断File对象是否文件,是文件则输出：xxx是一个文件，否则输出：xxx是不是一个文件。 2.判断File对象是否文件夹,是文件夹则输出：xxx是一个文件夹，否则输出：xxx是不是一个文件夹。(xxx是文件名或文件夹名)<br>7.3．操作步骤描述<br>1.创建两个文件对象分别关联到不同的文件，比如：c:/a.txt，c:/aaa<br>2.调用文件对象的判断是否是文件或是否是文件夹的方法<br>3.获得文件名，根据判断结果输出信息。</p>
+<h4 id="训练案例8"><a href="#训练案例8" class="headerlink" title="训练案例8"></a>训练案例8</h4><p>8.1．训练知识点<br>1.文件夹的获取方法<br>8.2．训练描述<br>获取指定文件夹下所有的文件，并将所有文件的名字输出到控制台。<br>注意：不包含子文件夹下的文件<br>8.3．操作步骤描述<br>1.创建文件对象关联到指定文件夹，比如：c:/aaa<br>2.调用文件对象的listFiles方法获得文件数组<br>3.遍历文件数组将每一个文件的名字输出到控制台</p>
+<h4 id="训练案例9"><a href="#训练案例9" class="headerlink" title="训练案例9"></a>训练案例9</h4><p>9.1．训练知识点<br>1.递归的使用<br>9.2．训练描述<br>求1到n的和(n&gt;=100 &amp;&amp; n&lt;=200)<br>9.3．操作步骤描述<br>1.定义一个求和方法sum,接收一个整形参数num<br>2.明确递归终止的条件<br>3.分析递归逻辑：1到n的和等于1到(n-1)的和再加n<br>4.开始递归</p>
+<h4 id="训练案例10"><a href="#训练案例10" class="headerlink" title="训练案例10"></a>训练案例10</h4><p>10.1     训练知识点<br>1递归的使用<br>10.2  训练描述<br>求整数n的阶乘(n &lt;=10)<br>10.3  操作步骤描述<br>1.定义一个求阶乘方法,接收一个整形参数num<br>2.明确递归终止的条件<br>3.分析递归逻辑：n的阶乘等于n*(n-1)的阶乘<br>4.开始递归</p>
+<h2 id="关卡2"><a href="#关卡2" class="headerlink" title="关卡2"></a>关卡2</h2><h4 id="训练案例1-1"><a href="#训练案例1-1" class="headerlink" title="训练案例1"></a>训练案例1</h4><p>1.1．训练知识点<br>1.File对象的创建<br>2.文件判断功能<br>3.文件的创建<br>4.文件的大小<br>1.2．训练描述<br>键盘录入一个文件路径，根据文件路径创建File对象<br>如果输入的文件路径对应的文件不存在，则创建该文件。<br>如果输入的文件路径对应的文件已经存在了，则获得文件大小并输出。<br>1.3．操作步骤描述<br>1.使用Scanner类进行键盘录入数据<br>2.将键盘输入的内容存放到字符串中<br>3.使用File类的构造方法创建文件对象<br>4.判断文件是否存在，不存在则创建，存在则输出文件大小</p>
+<h4 id="训练案例2-1"><a href="#训练案例2-1" class="headerlink" title="训练案例2"></a>训练案例2</h4><p>2.1．训练知识点<br>1.文件创建<br>2.文件判断功能<br>3.文件获取功能<br>2.2．训练描述<br>键盘录入一个文件路径，根据文件路径创建文件对象，判断是文件还是文件夹<br>如果是文件，则输出文件的大小<br>如果是文件夹，则计算该文件夹下所有文件大小之和并输出(不包含子文件夹)。<br>2.3．操作步骤描述<br>1.创建键盘录入对象<br>2.接收键盘录入的字符串路径<br>3.根据字符串路径创建文件对象<br>4.判断文件对象是文件还是文件夹，如果是文件，则直接输出文件大小<br>5.如果是文件夹，则获得该文件夹下所有的文件，定义一个求和变量，遍历文件数组获得每一个文件的大小并累加到求和变量中，最后输出求和变量的值。</p>
+<h4 id="训练案例3-1"><a href="#训练案例3-1" class="headerlink" title="训练案例3"></a>训练案例3</h4><p>3.1．训练知识点<br>1.递归的使用<br>3.2．训练描述<br>递归遍历将指定文件夹的所有文件(包括所有子文件夹的文件)的全路径输出在控制台。<br>3.3．操作步骤描述<br>1.根据指定的文件夹路径创建文件对象<br>2.定义一个递归方法用来遍历文件夹的所有文件，方法参数：文件对象<br>3.在递归方法中获得文件夹的所有文件，得到一个文件数组<br>4.遍历文件数组，获得每一个文件对象，如果文件对象是文件则输出全路径，如果是文件夹则，则将该文件夹对象作为参数递归调用当前方法。</p>
+<h4 id="训练案例4-1"><a href="#训练案例4-1" class="headerlink" title="训练案例4"></a>训练案例4</h4><p>4.1．训练知识点<br>1.文件过滤器的使用<br>4.2．训练描述<br>获得指定文件夹下所有的java文件(不考虑子文件夹的)并输出到控制台<br>4.3．操作步骤描述<br>1.创建一个类实现文件过滤器FileFilter接口并重新accept方法，在该方法根据传入的文件判断是否文件Java文件，如果是则返回true，否则返回false。<br>2.根据文件夹路径字符串创建文件对象和创建文件过滤器接口实现类对象<br>3.调用文件对象的listFiles(FileFilter f) 方法，传递文件过滤器实现类对象。<br>4.遍历文件数组，输入每一个文件对象</p>
+<h4 id="训练案例5-1"><a href="#训练案例5-1" class="headerlink" title="训练案例5"></a>训练案例5</h4><p>5.1．训练知识点<br>1.文件和文件夹删除<br>5.2．训练描述<br>键盘录入一个文件夹路径，删除该路径下的文件夹。<br>要求：录入的文件夹里面要有多个文件，不能包含有子文件夹。<br>提示：如果文件夹里面有文件，则需要先将文件删除才能删除文件夹。<br>5.3．操作步骤描述<br>1.创建键盘录入对象Scanner<br>2.定义字符串接收用户输入的文件夹路径<br>3.根据文件夹路径创建文件对象<br>4.调用文件对象的listFiles方法获得文件数组<br>5.遍历文件数组，删除每一个文件<br>6.最后调用删除方法删除文件夹。</p>
+<h4 id="训练案例6-1"><a href="#训练案例6-1" class="headerlink" title="训练案例6"></a>训练案例6</h4><p>6.1．训练知识点<br>1.文件获取方法<br>2.递归的使用<br>6.2．训练描述<br>从键盘接收一个文件夹路径,获得该文件夹大小并输出到控制台。<br>6.3．操作步骤描述<br>1.创建键盘录入对象Scanner<br>2.定义字符串接收用户输入的文件夹路径<br>3.根据文件夹路径创建文件对象<br>4.定义一个方法calculate用来计算指定文件夹的大小，接收文件参数，返回long类型数值表示文件夹的大小。<br>5.调用calculate方法传入文件夹对象，在该方法内部获得文件夹中所有文件，得到一个文件数组，定义一个变量size累加每一个文件的大小，遍历文件数组，判断是否是文件，如果是文件则获得文件大小并累加到变量size中，如果是文件夹，继续递归调用当前方法。</p>
+<h2 id="关卡3"><a href="#关卡3" class="headerlink" title="关卡3"></a>关卡3</h2><h4 id="训练案例1-2"><a href="#训练案例1-2" class="headerlink" title="训练案例1"></a>训练案例1</h4><p>1.1．训练知识点<br>1.文件获取和判断方法<br>2.文件过滤器<br>3.递归的使用<br>1.2．训练描述<br>使用文件过滤器筛选将指定文件夹下的小于200K的小文件获取并打印(包括所有子文件夹的文件)。</p>
+<h4 id="训练案例2-2"><a href="#训练案例2-2" class="headerlink" title="训练案例2"></a>训练案例2</h4><p>2.1．训练知识点<br>1.文件获取功能<br>2.文件的删除<br>3.文件的判断<br>4.递归的使用<br>2.2．训练描述<br>键盘录入一个文件夹路径，删除该路径下的文件夹。<br>要求：文件夹中包含有子文件夹</p>
+<h4 id="训练案例3-2"><a href="#训练案例3-2" class="headerlink" title="训练案例3"></a>训练案例3</h4><p>3.1．训练知识点<br>1.文件的获取<br>2.文件的判断<br>3.递归的使用<br>3.2．训练描述<br>键盘录入一个文件夹路径,统计该文件夹(包含子文件夹)中每种类型的文件及个数<br>注意:用文件类型(后缀名,不包含.(点),如：”java”,”txt”)作为key,<br>用个数作为value,放入到map集合中,并用两种方式遍历map集合<br>例如：<br>doc 的类型的文件有  3 个<br>java 的类型的文件有  5 个<br>txt 的类型的文件有  7 个</p>
+<h4 id="训练案例4-2"><a href="#训练案例4-2" class="headerlink" title="训练案例4"></a>训练案例4</h4><p>4.1．训练知识点<br>1.文件的获取<br>2.文件的判断<br>3.递归的使用<br>4.2．训练描述<br>从键盘接收一个文件夹路径,把文件夹中的所有文件以及文件夹的名字按层级打印<br>例如:<br>aaa是文件夹,里面有bbb.txt,ccc.txt,ddd.txt这些文件,有eee这样的文件夹,eee中有fff.txt和ggg.txt,打印出层级来<br>  aaa<br>        bbb.txt<br>        ccc.txt<br>        ddd.txt<br>        eee<br>           fff.txt<br>           ggg.txt</p>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>GreedRing<br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/09/18/JavaBasicsPractice22/" title="http://greedring.com/2019/09/18/JavaBasicsPractice22/" target="_blank" rel="noopener">http://greedring.com/2019/09/18/JavaBasicsPractice22/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '192a24997642e3747506',
+        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
+        id: window.location.pathname,
+        repo: 'greedring.github.io',
+        owner: 'GreedRing',
+        admin: 'GreedRing'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1568746337882"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
