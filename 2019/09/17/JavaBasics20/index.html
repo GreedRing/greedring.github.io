@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="day20">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-18T08:36:32.881Z">
+<meta property="og:updated_time" content="2019-09-18T15:56:39.942Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础20">
 <meta name="twitter:description" content="day20">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1568805644830">
+  <link rel="stylesheet" href="/css/style.css?v=1568829947822">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,8 +171,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月17日</a>
-    <a><i class="nexmoefont icon-areachart"></i>1.6k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.8k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-knLKbeUr" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-QovNttxM" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><p>用来处理设备间的数据传输，Java对数据的操作是通过流的方式，Java用于操作流的类都在IO包中</p>
 <blockquote>
@@ -323,12 +323,45 @@ public class Test {
         System.out.println(delete2);
 
         /*
-        //递归演示：如求N阶乘
+        //递归演示
+        //求N阶乘
         private static int factorial(int i) {
             if (i == 1) {
                 return 1;
             } else {
                 return i * factorial(i - 1);
+            }
+        }
+
+        //打印一个文件夹内所有的文件路径
+        private static void printFile(File file) {
+            if (file.isFile()) {
+                System.out.println(file.getName());
+            } else if (file.isDirectory()) {
+                System.out.println(&quot;Dir:&quot; + file.getName());
+
+                //获取目录下的子文件对象
+                File[] listFiles = file.listFiles();
+                for (File f : listFiles) {
+                    printFile(f);
+                }
+            }
+        }
+
+        //删除一个文件夹（包含其中所有目录与文件）
+        private static void deleteFile(File file) {
+            if (file.isFile()) {
+                file.delete();
+            } else if (file.isDirectory()) {
+
+                //获取目录下的子文件对象
+                File[] listFiles = file.listFiles();
+                for (File f : listFiles) {
+                    deleteFile(f);
+                }
+
+                //删除目录本身
+                file.delete();
             }
         }
         */
@@ -369,8 +402,13 @@ public class Test {
         }
     }
 }</code></pre>
-<p>IO流基本划分<br>1.按照操作的数据类型：字节流、字符流<br>2.按照流的流向：输入流、输出流<br>3.按照流的角色：节点流、处理流</p>
-<h2 id="IO体系"><a href="#IO体系" class="headerlink" title="IO体系"></a>IO体系</h2><table>
+<h2 id="IO体系"><a href="#IO体系" class="headerlink" title="IO体系"></a>IO体系</h2><p>&emsp;<strong>IO流基本划分：</strong></p>
+<ul>
+<li>1.按照操作的数据类型：字节流、字符流</li>
+<li>2.按照流的流向：输入流、输出流</li>
+<li>3.按照流的角色：节点流、处理流</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th align="left"><label style="color:#ff4e6a">抽象对象</label></th>
@@ -399,8 +437,19 @@ public class Test {
 <td align="left">BufferedWriter</td>
 </tr>
 </tbody></table>
-<p><strong>1.字符流</strong><br>(1).字符文件流<br>(i).字符文件输入流FileReader<br>需求：hello.txt 需要读取文件中字符内容<br>int read()<br>读取单个字符 [返回值为读取的单个字符的ascii，如果返回-1代表到达流的末尾]<br>int read(char[] cbuf)<br>讲字符读入一个数组 [返回值代表读取的字符数量，如果返回-1代表到达流的末尾]<br>abstract int read(char[] cbuf, int off, int len)<br>将字符读入一个数组的一部分</p>
-<p>(ii).字符文件输出流<br>FileWriter<br>将内存中数据写入磁盘中</p>
+<p><strong>1.字符流</strong><br>(1).字符文件流<br>(i).字符文件输入流 FileReader<br>需求：需要读取文件中字符内容</p>
+<p><strong>方法</strong></p>
+<ul>
+<li>int &emsp;<label style="color:#ff4e6a">read()</label><br>读取单个字符 [返回值为读取的单个字符的ascii，如果返回-1代表到达流的末尾]</li>
+</ul>
+<ul>
+<li>int &emsp;<label style="color:#ff4e6a">read(char[] cbuf)</label><br>将字符读入一个数组 [返回值代表读取的字符数量，如果返回-1代表到达流的末尾]</li>
+</ul>
+<ul>
+<li>abstract int &emsp;<label style="color:#ff4e6a">read(char[] cbuf, int off, int len)</label><br>将字符读入一个数组的一部分</li>
+</ul>
+<pre><code class="java"></code></pre>
+<p>(ii).字符文件输出流 FileWriter<br>需求：将内存中数据写入磁盘中</p>
 <p>注意：<br>对于文本文件（.txt .java .c .cpp…）可以使用字符流传输<br>对于非文本文件（.png .avi .jpg .word…）必须使用字节流传输</p>
 <p><strong>2.字节流</strong><br>(1).文件字节流<br>(i).字节输入流<br>FileInputStream</p>
 <p>(ii).字节输出流<br>FileOutputStream</p>
@@ -451,7 +500,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1568805644837"></script>
+<script src="/js/app.js?v=1568829947832"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
