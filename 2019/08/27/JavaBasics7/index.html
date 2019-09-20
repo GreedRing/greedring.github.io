@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/08/28/xyoKwNr2tOQMGvP.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/28/Fq1m5QnOkyEc69t.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/28/InarTH9iAx5o2tR.png">
-<meta property="og:updated_time" content="2019-08-29T08:44:30.560Z">
+<meta property="og:updated_time" content="2019-09-20T01:18:54.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础7">
 <meta name="twitter:description" content="面向对象基础、封装、this关键字、匿名对象">
@@ -37,7 +37,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1568923017369">
+  <link rel="stylesheet" href="/css/style.css?v=1568944330657">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -192,7 +192,7 @@
 <a id="more"></a> 
 
 
-    <div id="aplayer-rgKimOgT" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-UnqqDlXU" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="面向对象基础"><a href="#面向对象基础" class="headerlink" title="面向对象基础"></a>面向对象基础</h2><p><strong>核心思想：万物皆对象</strong></p>
 <h4 id="面向过程VS面向对象"><a href="#面向过程VS面向对象" class="headerlink" title="面向过程VS面向对象"></a>面向过程VS面向对象</h4><ul>
@@ -208,33 +208,51 @@
 </ul>
 <p><strong>面向对象：</strong></p>
 <ul>
-<li>人<br>class Person{<br>  抱(){<br>  }<br>}</li>
-<li>冰箱<br>class 冰箱{<br>  开门(){<br>  }<br>  关门(){<br>  }<br>}</li>
+<li>人</li>
+</ul>
+<blockquote>
+<p>class Person{<br>&emsp;&emsp;抱(){<br>&emsp;&emsp;}<br>}</p>
+</blockquote>
+<ul>
+<li>冰箱</li>
+</ul>
+<blockquote>
+<p>class 冰箱{<br>&emsp;&emsp;开门(){<br>&emsp;&emsp;}<br>&emsp;&emsp;关门(){<br>&emsp;&emsp;}<br>}</p>
+</blockquote>
+<ul>
 <li>大象</li>
 </ul>
-<h4 id="面向对象的核心：设计合适的类-gt-核心（设计类的成员）"><a href="#面向对象的核心：设计合适的类-gt-核心（设计类的成员）" class="headerlink" title="面向对象的核心：设计合适的类-&gt;核心（设计类的成员）"></a>面向对象的核心：设计合适的类-&gt;核心（设计类的成员）</h4><p><strong>类 对象</strong></p>
+<h4 id="面向对象的核心：设计合适的类-gt-核心（设计类的成员）"><a href="#面向对象的核心：设计合适的类-gt-核心（设计类的成员）" class="headerlink" title="面向对象的核心：设计合适的类-&gt;核心（设计类的成员）"></a>面向对象的核心：设计合适的类-&gt;核心（设计类的成员）</h4><blockquote>
+<p><strong>类 对象</strong></p>
 <ul>
 <li>类：对一类事物的描述，是抽象的、概念上的存在（人）</li>
 <li>类结构：属性（对类的描述）+行为（类具有的功能）</li>
 <li>对象：实际存在的一类事物的个体，又叫做实例 （张三、李四）</li>
 </ul>
+</blockquote>
 <h4 id="面向对象思想的落地实现："><a href="#面向对象思想的落地实现：" class="headerlink" title="面向对象思想的落地实现："></a>面向对象思想的落地实现：</h4><ul>
-<li><strong>设计类</strong><br>类格式:<br>修饰符 class 类名{<br>  属性（成员变量\field\域\字段）<br>  行为（成员方法）<br>}</li>
-<li><strong>创建对象:</strong><br>类名 对象名 = new 类名（）</li>
+<li><strong>设计类</strong><br>类格式:</li>
+</ul>
+<blockquote>
+<p>修饰符 class 类名{<br>&emsp;&emsp;属性（成员变量\field\域\字段）<br>&emsp;&emsp;行为（成员方法）<br>}</p>
+</blockquote>
+<ul>
+<li><strong>创建对象:</strong><br>类名 对象名 = new 类名();</li>
+</ul>
+<ul>
 <li><strong>访问对象的属性以及行为</strong><br>对象名.属性名<br>对象名.方法名();</li>
 </ul>
 <p><strong>补充：</strong><br>如果在当前类下访问当前类的成员，直接访问即可<br>如果在其他类下访问当前类的成员，需要在其他类中创建当前类对象，通过 <label style="color:#ff4e6a">对象.属性</label> 或者 <label style="color:#ff4e6a">对象.成员方法()</label></p>
 <h2 id="面向对象三大特征之————封装"><a href="#面向对象三大特征之————封装" class="headerlink" title="面向对象三大特征之————封装"></a>面向对象三大特征之————封装</h2><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>隐藏类内部实现细节，只暴露该暴露的属性、方法供外部调用</p>
 <h4 id="体现"><a href="#体现" class="headerlink" title="体现"></a>体现</h4><p>对类中的属性（xxx）进行私有化（使用private修饰符进行修饰）,暴露（public）出对应的get（getXxx()）/set(setXxx)方法供外部进行调用<br>封装实际就是通过private修饰符实现的</p>
-<pre><code class="java">//封装之后得到局部变量
+<pre><code>//封装之后得到局部变量
 private int number;
 private String name;
-private double height;</code></pre>
-<p>创建getter和setter方法</p>
+private double height;</code></pre><p>创建getter和setter方法</p>
 <pre><code class="java">    public int getNumber() {
         return number;
     }
-//this关键字下面会讲到
+    //this关键字下面会讲到
     public void setNumber(int number) {
         this.number = number;
     }
@@ -278,28 +296,26 @@ private double height;</code></pre>
 <li>this代表所在类的对象引用，方法被哪个对象调用，this就代表那个对象</li>
 <li>局部变量名和成员变量名相同时使用，在局部使用的时候，采用就近原则，如果不用this关键字，就无法将局部变量赋值给成员变量</li>
 </ul>
-<pre><code class="java">private int id;
+<pre><code>private int id;
 int getId(){
 return id;
 }
 void setId(int id){
 this.id=id;//通过this将局部变量赋值给成员变量
-}</code></pre>
-<h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><p>一、需求说明：创建三个图书类对象，找出价格最高的图书并打印该图书的所有信息。<br>二、设计“图书类”Book，要求有以下属性：<br>    图书编号：<br>    书名：<br>    价格：</p>
+}</code></pre><h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><p>一、需求说明：创建三个图书类对象，找出价格最高的图书并打印该图书的所有信息。<br>二、设计“图书类”Book，要求有以下属性：<br>图书编号、书名、价格</p>
 <p><img src="https://i.loli.net/2019/08/26/uaqeFCjghdQmM6x.png" alt><br><img src="https://i.loli.net/2019/08/26/smlSA6ba15LqJ9E.png" alt><br><img src="https://i.loli.net/2019/08/26/clsVyPCYzM75Z1S.png" alt></p>
 <h2 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h2><h4 id="匿名对象概述"><a href="#匿名对象概述" class="headerlink" title="匿名对象概述"></a>匿名对象概述</h4><p>匿名对象即没有引用的对象，没有名字的对象，与有名对象对比如下：</p>
 <ul>
 <li>Person person = new Person();<br>可以通过 person.showName(); 调用名为person对象的 showName() 方法</li>
+</ul>
+<ul>
 <li>new Person().showName();<br>匿名对象仅可调用一次，之后便被计算机删除</li>
 </ul>
 <h4 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h4><p>请用代码描述： 小王卖出一部价值6000的iPhone手机</p>
 <p><strong>操作步骤描述</strong></p>
-<ul>
-<li>定义手机类<br>(a)属性: 品牌(brand),价格(price)<br>(b)要求:<br>  i.提供带参构造,setter与getter方法</li>
-<li>定义人类(Person)<br>(a)属性: 名称(name)<br>(b)行为:  卖手机: Phone sellPhone() ,在方法内部使用匿名对象作为返回值<br>(c)要求: 提供带参构造,setter和getter方法</li>
-<li>定义测试类Test<br>(a)提供main方法<br>(b)在main方法中<br>  i.使用带参构造创建Person对象 p,name初始化为小王<br>  ii.调用对象p的sellPhone()方法,赋值给Phone phone变量</li>
-<li>在main方法输出: 小王卖出一部价值6000的iPhone手机</li>
-</ul>
+<blockquote>
+<p>1.定义手机类<br>&emsp;(1).属性: 品牌(brand),价格(price)<br>&emsp;(2).要求：提供带参构造,setter与getter方法<br>2.定义人类(Person)<br>&emsp;(1).属性: 名称(name)<br>&emsp;(2).行为:  卖手机: Phone sellPhone() ,在方法内部使用匿名对象作为返回值<br>&emsp;(3).要求: 提供带参构造,setter和getter方法<br>3.定义测试类Test<br>&emsp;(1).提供main方法<br>&emsp;(2).在main方法中<br>&emsp;&emsp;(a).使用带参构造创建Person对象 p,name初始化为小王<br>&emsp;&emsp;(b).调用对象p的sellPhone()方法,赋值给Phone phone变量<br>4.在main方法输出: 小王卖出一部价值6000的iPhone手机</p>
+</blockquote>
 <p><img src="https://i.loli.net/2019/08/28/xyoKwNr2tOQMGvP.png" alt><br><img src="https://i.loli.net/2019/08/28/Fq1m5QnOkyEc69t.png" alt><br><img src="https://i.loli.net/2019/08/28/InarTH9iAx5o2tR.png" alt></p>
 
   </article>
@@ -348,7 +364,7 @@ this.id=id;//通过this将局部变量赋值给成员变量
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1568923017377"></script>
+<script src="/js/app.js?v=1568944330662"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
