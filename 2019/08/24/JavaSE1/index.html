@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+  <title>Java基础1 - Greed Ring</title>
+  <meta charset="UTF-8">
+  <meta name="description" content>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="注释，关键字，常量，变量，数据类型，标识符">
+<meta name="keywords" content="JavaSE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础1">
+<meta property="og:url" content="http://greedring.com/2019/08/24/JavaSE1/index.html">
+<meta property="og:site_name" content="Greed Ring">
+<meta property="og:description" content="注释，关键字，常量，变量，数据类型，标识符">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/08/25/rJboCpUA5ZIWOvH.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/25/bzZSQuDCqnrNeG1.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/25/aHwkYb5AXNC7ivg.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/25/T94mltWw2vO6MeI.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/25/W3rgic8DBfStxGQ.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/25/1r8HebULfwoQDPB.png">
+<meta property="og:updated_time" content="2019-09-21T08:31:52.083Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础1">
+<meta name="twitter:description" content="注释，关键字，常量，变量，数据类型，标识符">
+<meta name="twitter:image" content="https://i.loli.net/2019/08/25/rJboCpUA5ZIWOvH.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1569054866633">
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/08/22/IxAp3mfcJWbzaFU.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="GreedRing" class="mdui-btn mdui-btn-icon"><img src="/images/avatar.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="GreedRing">
+            <img src="/images/avatar.png" alt="GreedRing">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>26</div>
+        <div><span>标签</span>4</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/friends.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/15144854" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/greedring/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Java/">Java</a>
+          <span class="category-list-count">24</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/设计模式/">设计模式</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/Java基础练习/" style="font-size: 15px;">Java基础练习</a> <a href="/tags/桥接模式/" style="font-size: 10px;">桥接模式</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 GreedRing
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+        <img src="https://i.loli.net/2019/08/25/qjVyadYDSXgeC9A.jpg">
+        
+        <h1>Java基础1</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月24日</a>
+    <a><i class="nexmoefont icon-areachart"></i>899 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/JavaSE/">JavaSE</a>
+    
+  </div>
+  <article>
+    <p>注释，关键字，常量，变量，数据类型，标识符</p>
+<a id="more"></a> 
+
+
+    <div id="aplayer-FSvevVgL" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>用于解释或说明程序的文字</li>
+</ul>
+<h4 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h4><pre><code class="java">//注释文字</code></pre>
+<h4 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h4><pre><code class="java">/*
+  注释文字  
+*/</code></pre>
+<h4 id="文档注释"><a href="#文档注释" class="headerlink" title="文档注释"></a>文档注释</h4><pre><code class="java">/**
+  注释文字
+*/</code></pre>
+<h4 id="注释的作用"><a href="#注释的作用" class="headerlink" title="注释的作用"></a>注释的作用</h4><ul>
+<li>解释说明程序</li>
+<li>提高程序的阅读性</li>
+<li>调试代码</li>
+</ul>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>被Java语言赋予特定含义的单词</li>
+</ul>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>组成关键字的字母全部小写</li>
+<li>常用的代码编辑器(Eclipse，InteliJ idea),针对关键字有特殊的颜色标记</li>
+</ul>
+<h4 id="常见关键字"><a href="#常见关键字" class="headerlink" title="常见关键字"></a>常见关键字</h4><p><img src="https://i.loli.net/2019/08/25/rJboCpUA5ZIWOvH.png" alt><br><img src="https://i.loli.net/2019/08/25/bzZSQuDCqnrNeG1.png" alt></p>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>在程序执行的过程中，其值不可以发生改变的量</li>
+</ul>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
+<li>字符串常量，用双引号括起来的内容(“GreedRing”)</li>
+<li>整数常量，所有整数(38,-7)</li>
+<li>小数常量，所有小数(12.34)</li>
+<li>字符常量，用单引号括起来的内容(‘a’,’A’,’0’)</li>
+<li>布尔常量，较为特有，只有true和false</li>
+<li>空常量，null</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h4 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>在程序执行的过程中，在某个范围内<label style="color:#ff4e6a">其值可以发生改变的量</label></li>
+</ul>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><ul>
+<li>数据类型 变量名(<label style="color:#ff4e6a">请注意标识符规范</label>)= 初始化值<pre><code class="java">int id=123;
+String name=&quot;GreedRing&quot;;</code></pre>
+</li>
+</ul>
+<p><strong>基本数据类型：</strong><br>byte,short,int,long、float,double、char、boolean。</p>
+<ul>
+<li><label style="color:#ff4e6a">整数默认是int类型，定义long类型的数据时，要在数据后面加L或l</label></li>
+<li><label style="color:#ff4e6a">浮点数默认是double类型，定义float类型的数据时，要在数据后面加F或f</label></li>
+</ul>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>变量未赋值,不能直接使用（引出变量的第二种使用格式）</li>
+<li>变量只在它所属的范围内有效（变量在哪对大括号内，变量就属于哪对大括号）</li>
+<li>一行上可以定义多个变量，但是不建议</li>
+</ul>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h4 id="计算机存储单元"><a href="#计算机存储单元" class="headerlink" title="计算机存储单元"></a>计算机存储单元</h4><p>计算机存储设备的最小信息单元叫“位（bit）” [0/1]，我们又称之为“比特位”，通常用小写的字母b表示。<br>计算机最小的存储单元叫“字节（byte）”，通常用大写字母B表示，字节是由连续的8个位组成。<br><img src="https://i.loli.net/2019/08/25/aHwkYb5AXNC7ivg.png" alt><br>了解：</p>
+<ul>
+<li>1B（字节） = 8bit</li>
+<li>1KB = 1024B</li>
+<li>1MB = 1024KB</li>
+<li>1GB = 1024MB</li>
+<li>1TB = 1024GB</li>
+</ul>
+<h4 id="数据类型概述和分类"><a href="#数据类型概述和分类" class="headerlink" title="数据类型概述和分类"></a>数据类型概述和分类</h4><p>Java语言是强类型语言，对于每一种数据都定义了明确的具体数据类型，在内存中分配了不同大小的内存空间。</p>
+<p><strong>数据类型分为：</strong></p>
+<ul>
+<li>基本数据类型</li>
+<li>引用数据类型<br><img src="https://i.loli.net/2019/08/25/T94mltWw2vO6MeI.png" alt><br><img src="https://i.loli.net/2019/08/25/W3rgic8DBfStxGQ.png" alt></li>
+</ul>
+<h4 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h4><p><strong>隐式数据类型转换</strong><br>取值范围小的数据类型与取值范围大的数据类型进行运算,会先将小的数据类型提升为大的,再运算<br><img src="https://i.loli.net/2019/08/25/1r8HebULfwoQDPB.png" alt></p>
+<p><strong>强制类型数据转换</strong></p>
+<ul>
+<li><p>格式<br>b = (byte)(a + b);</p>
+</li>
+<li><p>注意事项<br>如果超出了被赋值的数据类型的取值范围得到的结果会与你期望的结果不同</p>
+</li>
+</ul>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><ul>
+<li>给包,类,方法,变量等起名字</li>
+</ul>
+<h4 id="组成规则"><a href="#组成规则" class="headerlink" title="组成规则"></a>组成规则</h4><ul>
+<li>由字符(字母、数字)，下划线_，美元符$组成</li>
+<li>不能以数字开头</li>
+<li>不能是Java中的关键字</li>
+</ul>
+<h4 id="命名规则：见名知意"><a href="#命名规则：见名知意" class="headerlink" title="命名规则：见名知意"></a>命名规则：见名知意</h4><p><strong>包</strong></p>
+<ul>
+<li>最好是域名倒过来,要求所有的字母小写</li>
+</ul>
+<p><strong>类或者接口</strong></p>
+<ul>
+<li>如果是一个单词首字母大写</li>
+<li>如果是多个单词每个单词首字母大写</li>
+</ul>
+<p><strong>方法或者变量</strong></p>
+<ul>
+<li>如果是一个单词全部小写</li>
+<li>如果是多个单词,从第二个单词首字母大写</li>
+</ul>
+<p><strong>常量</strong></p>
+<ul>
+<li>如果是一个单词,所有字母大写</li>
+<li>如果是多个单词,所有的单词大写,用下划线区分每个单词</li>
+</ul>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>GreedRing<br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/08/24/JavaSE1/" title="http://greedring.com/2019/08/24/JavaSE1/" target="_blank" rel="noopener">http://greedring.com/2019/08/24/JavaSE1/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '192a24997642e3747506',
+        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
+        id: window.location.pathname,
+        repo: 'greedring.github.io',
+        owner: 'GreedRing',
+        admin: 'GreedRing'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1569054866639"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
