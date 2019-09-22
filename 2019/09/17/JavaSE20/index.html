@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="字符流、字节流、缓冲流、转化流、其他流">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-21T09:00:29.692Z">
+<meta property="og:updated_time" content="2019-09-22T17:14:29.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IO流">
 <meta name="twitter:description" content="字符流、字节流、缓冲流、转化流、其他流">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569056831823">
+  <link rel="stylesheet" href="/css/style.css?v=1569172510665">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,8 +171,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月17日</a>
-    <a><i class="nexmoefont icon-areachart"></i>4.6k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 22 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>5.4k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 26 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-sAiTOgir" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-gFrcnBVb" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><p>用来处理设备间的数据传输，Java对数据的操作是通过流的方式，Java用于操作流的类都在IO包中</p>
 <blockquote>
@@ -437,7 +437,7 @@ public class Test {
 <td align="left">BufferedWriter (write(char[] cbuf,int offset,int len)、write(String str)、newLine())</td>
 </tr>
 </tbody></table>
-<h4 id="1-字符流"><a href="#1-字符流" class="headerlink" title="1.字符流"></a>1.字符流</h4><p>1.字符文件流<br>(1).字符文件输入流 FileReader<br>需求：需要读取文件中字符内容</p>
+<h4 id="1-字符流"><a href="#1-字符流" class="headerlink" title="1.字符流"></a>1.字符流</h4><p>1.字符文件流<br>(1).字符文件输入流 FileReader</p>
 <p><strong>方法</strong></p>
 <ul>
 <li>int &emsp;<label style="color:#ff4e6a">read()</label><br>读取单个字符 [返回值为读取的单个字符的ascii，如果返回-1代表到达流的末尾]</li>
@@ -448,6 +448,7 @@ public class Test {
 <ul>
 <li>abstract int &emsp;<label style="color:#ff4e6a">read(char[] cbuf, int off, int len)</label><br>将字符读入一个数组的一部分</li>
 </ul>
+<p>需求：需要读取文件中字符内容</p>
 <pre><code class="java">package com.greedring;
 
 import java.io.FileNotFoundException;
@@ -540,7 +541,14 @@ public class Test {
         }
     }
 }</code></pre>
-<p>(2).字符文件输出流 FileWriter<br>需求：将内存中数据写入磁盘中</p>
+<p>(2).字符文件输出流 FileWriter</p>
+<ul>
+<li>void &emsp;<label style="color:#ff4e6a">write(Object object)</label><br>写入字符</li>
+</ul>
+<ul>
+<li>void &emsp;<label style="color:#ff4e6a">输出流对象.flush()</label><br>将输出流中的存储刷新进文件中（缓冲流满时和close关闭时会自动刷新进文件中）[多进程编程需要flush]</li>
+</ul>
+<p>需求：将内存中数据写入磁盘中</p>
 <pre><code class="java">package com.greedring;
 
 import java.io.File;
@@ -564,6 +572,7 @@ public class Test {
             fileWriter.write(&quot;おい、この先は地狱だぜ！\n&quot;);// \n为转义字符：换行
             char[] chars = {&#39;次&#39;, &#39;は&#39;, &#39;本&#39;, &#39;当&#39;, &#39;の&#39;, &#39;地&#39;, &#39;獄&#39;, &#39;で&#39;, &#39;す&#39;};
             fileWriter.write(chars);//&quot;次は本当の地獄です&quot;.toCharArray()
+            //fileWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -611,6 +620,7 @@ public class Test {
                 //写文件
                 //fw.write(cbuf); 拷贝之后的文件会出现脏数据
                 fileWriter.write(cbuf, 0, len);
+                //fileWriter.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -706,6 +716,7 @@ public class Test {
                 //写入数据（注意：脏数据问题）
                 assert fos != null;
                 fos.write(bbuf, 0, len);
+                //fos.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -757,6 +768,7 @@ public class Test {
                 //写入数据（注意：脏数据问题）
                 assert fos != null;
                 fos.write(bbuf, 0, len);
+                //fos.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -834,6 +846,7 @@ public class Test {
         try {
             while ((len = bis.read(bbuf)) != -1) {
                 bos.write(bbuf, 0, len);
+                //bos.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -879,6 +892,7 @@ public class Test {
         try {
             while ((len = br.read(cbuf)) != -1) {
                 bw.write(cbuf, 0, len);
+                //bw.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -895,14 +909,245 @@ public class Test {
 <h4 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h4><p>作用：提供了将字节流转换为字符流的一种方式</p>
 <p>Reader:<br>    InputStreamReader可以完成字节输入流转换为字符输入流<br>Writer:<br>    OutputStreamWriter可以完成字节输出流转换为字符输出流</p>
 <p>编码：字符、字符数组=&gt; 码表 =&gt;字节、字节数组<br>解码：字节、字节数组=&gt; 码表 =&gt;字符、字符数组</p>
-<h4 id="其他流"><a href="#其他流" class="headerlink" title="其他流"></a>其他流</h4><p>1.对象序列化与反序列化【掌握】<br>将自定义对象、String进行持久化（保存到文件中） =&gt; 序列化<br>将文件中内容读取转换为自定义对象 =&gt; 反序列化</p>
+<pre><code class="java">package com.greedring;
+
+import java.io.*;
+
+public class Test {
+    public static void main(String[] args) {
+        //创建文件对象
+        File srcFile = new File(&quot;D:/Test/Test.txt&quot;);
+        File destFile = new File(&quot;D:/Test/Test1/Test1.txt&quot;);
+        //创建转换流
+        InputStreamReader isr = null;
+        OutputStreamWriter osw = null;
+        try {
+            //创建文件字节流输入、输出对象
+            FileInputStream fis = new FileInputStream(srcFile);
+            FileOutputStream fos = new FileOutputStream(destFile);
+            //将字节输入流、输出流转换为字符输入、输出流
+            isr = new InputStreamReader(fis);
+            osw = new OutputStreamWriter(fos);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //使用字符流方式读取与写入
+        char[] cbuf = new char[1024];
+        int len;
+        try {
+            assert isr != null;
+            while ((len = isr.read(cbuf)) != -1) {
+                osw.write(cbuf, 0, len);
+                //osw.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                //关闭转换流会默认关闭字节流
+                assert isr != null;
+                isr.close();
+                osw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}</code></pre>
+<h4 id="其他流"><a href="#其他流" class="headerlink" title="其他流"></a>其他流</h4><p><strong>1.对象序列化与反序列化【掌握】</strong><br>&emsp;&emsp;序列化机制就是允许将内存中的Java对象转换为与平台无关的二进制数据，可以将这些二进制数据永久地存储在磁盘的文件中，或者通过网络传输到其他网络节点。只要其他程序获取到了这些二进制数据，就可以把数据再次转换为对象</p>
+<blockquote>
 <p>用于向流中写入对象的操作流 ObjectOutputStream称为序列化流<br>用于从流中读取对象的操作流 ObjectInputStream称为反序列化流<br>特点：用于操作对象。可以将对象写入到文件中，也可以从文件中读取对象。</p>
-<p>ObjectOutputStream序列化流<br>        public final void writeObject(Object  obj)<br>ObjectOutputStream将Java对象写入OutputStream，利用输出流将对象写入到指定的文件中。</p>
-<p>ObjectInputStream反序列化流<br>        public final Object readObject()<br>ObjectInputStream将InputStream中数据转换为对象，利用输入流从文件中读取对象</p>
-<p>注意点：<br>(1).如果一个对象需要支持序列化与反序列化，那么该对象所属的类必须实现Serializable接口（类对应的对象具有了序列化与反序列化的能力）<br>(2).需要实现序列化的类需要提供个serialVersionUID（如果没有提供，那么JVM会自动提供。每次修改类，该值都会发生变化）<br>(3).如果一个类需要支持序列化与反序列化操作那么这个类中的所有属性也需要支持序列化与反序列化<br>(4).被static与transient 关键字修饰的属性无法被序列化</p>
-<p>序列化机制就是允许将内存中的Java对象转换为与平台无关的二进制数据，可以将这些二进制数据永久地存储在磁盘的文件中，或者通过<br>网络传输到其他网络节点，只要其他程序获取到了这些二进制数据，就可以把数据再次转换为对象</p>
-<p>2.标准的输入流、标准输出流【了解】<br>System.in    标准输入流（键盘）<br>System.out   标准输出流  （控制台）</p>
-<p>3.打印流【了解】<br>打印流只有输出流<br>PrintStream    字节打印流，调用println方法时自动刷新<br>PrintWriter    字符打印流，指定自动刷新开关后，调用println方法时自动刷新，无需手动调用flush()方法。</p>
+</blockquote>
+<p>&emsp;&emsp;&emsp;&emsp;将自定义对象、String进行持久化（保存到文件中）&emsp; ==&gt; &emsp;&emsp;序列化<br>&emsp;&emsp;&emsp;&emsp;将文件中内容读取转换为自定义对象&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ==&gt; &emsp;&emsp;反序列化</p>
+<blockquote>
+<ul>
+<li><strong>ObjectOutputStream序列化流</strong><br><label style="color:#ff4e6a">public final void writeObject(Object  obj)</label><br>ObjectOutputStream将Java对象写入OutputStream，利用输出流将对象写入到指定的文件中。</li>
+</ul>
+<ul>
+<li><strong>ObjectInputStream反序列化流</strong><br><label style="color:#ff4e6a">public final Object readObject()</label><br>ObjectInputStream将InputStream中数据转换为对象，利用输入流从文件中读取对象</li>
+</ul>
+</blockquote>
+<p><strong>&emsp;&emsp;<label style="color:#ff4e6a">注意点：</label></strong></p>
+<ul>
+<li>如果一个对象需要支持序列化与反序列化，那么该对象所属的类必须实现Serializable接口（类对应的对象具有了序列化与反序列化的能力）</li>
+</ul>
+<ul>
+<li>需要实现序列化的类需要提供个serialVersionUID（如果没有提供，那么JVM会自动提供。每次修改类，该值都会发生变化）<br>Java的序列化机制是通过判断类的serialVersionUID来验证版本一致性的。</li>
+</ul>
+<ul>
+<li>如果一个类需要支持序列化与反序列化操作那么这个类中的所有属性也需要支持序列化与反序列化</li>
+</ul>
+<ul>
+<li>被 <label style="color:#ff4e6a">static</label> 与 <label style="color:#ff4e6a">transient</label> 关键字修饰的属性无法被序列化</li>
+</ul>
+<pre><code class="java">package com.greedring;
+
+import java.io.*;
+
+public class Test {
+    public static void main(String[] args) {
+        //序列化操作 内存=&gt;文件
+        //创建写出文件对象
+        File src = new File(&quot;Ride on.txt&quot;);
+        //创建序列化对象
+        ObjectOutputStream oos = null;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(src));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            //将对象写入输出流
+            assert oos != null;
+            oos.writeObject(&quot;重装小兔19C UP GRADE!\n&quot;);
+            //自定义对象如果需要实习序列化操作，必须实现Serializable接口
+            oos.writeObject(new Person(&quot;Bronya_Zaychik&quot;, 14, new Pet(&quot;重装小兔19C&quot;, 3)));
+            //oos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                //关闭资源
+                assert oos != null;
+                oos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        ReadObject();
+    }
+
+    //反序列化 文件=&gt;内存(对象)
+    private static void ReadObject() {
+        //创建读取文件对象
+        File dest = new File(&quot;Ride on.txt&quot;);
+        //创建对象读取流(通过输入构造流)
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream(new FileInputStream(dest));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            //读取文件获得对象
+            //readObject顺序需要按照writeObject的顺序
+            assert ois != null;
+            String str = (String) ois.readObject();
+            Person person = (Person) ois.readObject();
+            System.out.print(str);
+            System.out.print(person);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                //关闭资源
+                assert ois != null;
+                ois.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static class Pet implements Serializable {
+        private static final long serialVersionUID = 124523457341534L;
+        private String name;
+        private int age;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public Pet(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public Pet() {
+        }
+
+        @Override
+        public String toString() {
+            return &quot;Pet{&quot; +
+                    &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                    &quot;, age=&quot; + age +
+                    &#39;}&#39;;
+        }
+    }
+
+    public static class Person implements Serializable {
+        private static final long serialVersionUID = 4357459356L;
+        private static String id = &quot;1&quot;;//static修饰的属性无法实现序列化
+        private String name;
+        private transient int age;//transient修饰的属性无法实现序列化
+        private Pet pet;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public Pet getPet() {
+            return pet;
+        }
+
+        public void setPet(Pet pet) {
+            this.pet = pet;
+        }
+
+        Person(String name, int age, Pet pet) {
+            this.name = name;
+            this.age = age;
+            this.pet = pet;
+        }
+
+        public Person() {
+        }
+
+        @Override
+        public String toString() {
+            return &quot;Person{&quot; +
+                    &quot;id=&#39;&quot; + id + &#39;\&#39;&#39; +
+                    &quot;, name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                    &quot;, age=&quot; + age +
+                    &quot;, pet=&quot; + pet +
+                    &#39;}&#39;;
+        }
+    }
+}</code></pre>
+<p>2.标准的输入流、标准输出流【了解】</p>
+<blockquote>
+<p>System.in    标准输入流（键盘）<br>System.out   标准输出流（控制台）</p>
+</blockquote>
+<p>3.打印流【了解】</p>
+<blockquote>
+<p>打印流只有输出流<br>PrintStream    字节打印流，调用println方法时自动刷新<br>PrintWriter    字符打印流，指定自动刷新开关后，调用println方法时自动刷新，无需手动调用flush()方法。</p>
+</blockquote>
 
   </article>
   
@@ -950,7 +1195,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569056831835"></script>
+<script src="/js/app.js?v=1569172510676"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
