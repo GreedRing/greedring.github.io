@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>JavaSE21 - Greed Ring</title>
+  <title>反射 - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,18 +11,18 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="day21">
+  <meta name="description" content="反射">
 <meta name="keywords" content="JavaSE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaSE21">
+<meta property="og:title" content="反射">
 <meta property="og:url" content="http://greedring.com/2019/09/18/JavaSE21/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="day21">
+<meta property="og:description" content="反射">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-21T09:06:54.021Z">
+<meta property="og:updated_time" content="2019-09-23T10:00:24.224Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaSE21">
-<meta name="twitter:description" content="day21">
+<meta name="twitter:title" content="反射">
+<meta name="twitter:description" content="反射">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569175824218">
+  <link rel="stylesheet" href="/css/style.css?v=1569259358231">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -167,11 +167,11 @@
         
         <img src="https://i.loli.net/2019/09/21/NyYscOljraoSp24.jpg">
         
-        <h1>JavaSE21</h1>
+        <h1>反射</h1>
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月18日</a>
-    <a><i class="nexmoefont icon-areachart"></i>1 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>117 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -181,12 +181,16 @@
     
   </div>
   <article>
-    <p>day21</p>
+    <p>反射</p>
 <a id="more"></a>
 
 
-    <div id="aplayer-vnEBMtQz" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-LSAatzDN" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h4 id="Java反射是什么"><a href="#Java反射是什么" class="headerlink" title="Java反射是什么"></a>Java反射是什么</h4><p>在运行过程中获取当前类的所有属性的方法</p>
+<h4 id="如何Java反射"><a href="#如何Java反射" class="headerlink" title="如何Java反射"></a>如何Java反射</h4><p>编译====class字节码文件（class对象）====结果</p>
+<p>每去创建对象的时候，JVM的过程：加载（将类文件读写到内存）、连接（安全检查）、实例化<br>在程序运行中，先获取class对象，通过class对象拿到当前类的所有属性和方法</p>
+<h4 id="具体的实例应用"><a href="#具体的实例应用" class="headerlink" title="具体的实例应用"></a>具体的实例应用</h4>
   </article>
   
     
@@ -233,7 +237,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569175824226"></script>
+<script src="/js/app.js?v=1569259358245"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 

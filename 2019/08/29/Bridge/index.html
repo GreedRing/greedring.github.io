@@ -11,18 +11,22 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="桥接模式">
+  <meta name="description" content="Bridge">
 <meta name="keywords" content="桥接模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="桥接模式">
 <meta property="og:url" content="http://greedring.com/2019/08/29/Bridge/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="桥接模式">
+<meta property="og:description" content="Bridge">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-17T18:58:01.512Z">
+<meta property="og:image" content="https://i.loli.net/2019/09/23/LG5Vs3zbJrD7f8R.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/23/6Yri2blWmTFvqKx.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/23/HpSEyaueJ3v89gT.png">
+<meta property="og:updated_time" content="2019-09-23T17:22:26.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="桥接模式">
-<meta name="twitter:description" content="桥接模式">
+<meta name="twitter:description" content="Bridge">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/23/LG5Vs3zbJrD7f8R.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,7 +34,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569175824551">
+  <link rel="stylesheet" href="/css/style.css?v=1569259359642">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,8 +175,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月29日</a>
-    <a><i class="nexmoefont icon-areachart"></i>890 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.7k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/设计模式/">设计模式</a>
     
@@ -181,26 +185,333 @@
     
   </div>
   <article>
-    <p>桥接模式</p>
+    <p>Bridge</p>
 <a id="more"></a>
 
 
-    <div id="aplayer-fmdlRFSH" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2979728820" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-nAGZHvMN" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2979728820" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
-<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p>桥接（Bridge）是用于把抽象化与实现化解耦，使得二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。</p>
-<p>这种模式涉及到一个作为桥接的接口，使得实体类的功能独立于接口实现类。这两种类型的类可被结构化改变而互不影响。</p>
-<p><strong>桥接模式即将抽象部分与它的实现部分分离开来，使他们都可以独立变化。</strong></p>
-<p><strong>桥接模式将继承关系转化成关联关系，它降低了类与类之间的耦合度，减少了系统中类的数量，也减少了代码量。</strong></p>
-<p>将抽象部分与他的实现部分分离这句话不是很好理解，其实这并不是将抽象类与他的派生类分离，而是抽象类和它的派生类用来实现自己的对象。这样还是不能理解的话。我们就先来认清什么是抽象化，什么是实现化，什么是脱耦。</p>
+<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p><label style="color:#ff4e6a">桥接（Bridge）：</label>是用于把抽象化与实现化解耦，使得二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。<br>这种模式涉及到一个作为桥接的接口，使得实体类的功能独立于接口实现类。这两种类型的类可被结构化改变而互不影响。</p>
 <blockquote>
-<p>抽象化：其概念是将复杂物体的一个或几个特性抽出去而只注意其他特性的行动或过程。在面向对象就是将对象共同的性质抽取出去而形成类的过程。<br>实现化：针对抽象化给出的具体实现。它和抽象化是一个互逆的过程，实现化是对抽象化事物的进一步具体化。<br>脱耦：脱耦就是将抽象化和实现化之间的耦合解脱开，或者说是将它们之间的强关联改换成弱关联，将两个角色之间的继承关系改为关联关系。</p>
+<p><strong>桥接模式即将抽象部分与它的实现部分分离开来，使他们都可以独立变化。</strong><br>桥接模式将继承关系转化成关联关系，它降低了类与类之间的耦合度，减少了系统中类的数量，也减少了代码量。</p>
 </blockquote>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p>电视机厂家为了减少成本，将遥控器生产外包，我们公司就接到了Sony和TCL的遥控器项目。<br><strong>现状：</strong>Sony和TCL厂家的接口设计好了，并分别提供了相关的类。<br>我们遥控器所要做的就是继承Sony和TCL的类，调用各自的方法，就可以控制Sony和TCL的电视；需要把遥控器的界面、功能设计好。</p>
+<p><img src="https://i.loli.net/2019/09/23/LG5Vs3zbJrD7f8R.png" alt></p>
+<p><strong>电视厂家共同继承的接口</strong></p>
+<pre><code class="java">package com.greedring;
+
+public interface Control {
+    public void on();
+
+    public void off();
+
+    public void setChannel(int channel);
+}</code></pre>
+<p><strong>Sony厂商提供的遥控器类</strong></p>
+<pre><code class="java">package com.greedring;
+
+public class SonyControl implements Control {
+    @Override
+    public void on() {
+        System.out.println(&quot;Turn on the Sony TV...&quot;);
+    }
+
+    @Override
+    public void off() {
+        System.out.println(&quot;Turn off the Sony TV...&quot;);
+    }
+
+    @Override
+    public void setChannel(int channel) {
+        System.out.println(&quot;The Sony TV Channel is setted &quot; + channel + &quot;...&quot;);
+    }
+}</code></pre>
+<p><strong>TCL厂商提供的遥控器类</strong></p>
+<pre><code class="java">package com.greedring;
+
+public class TCLControl implements Control {
+    @Override
+    public void on() {
+        System.out.println(&quot;Turn on the TCL TV...&quot;);
+    }
+
+    @Override
+    public void off() {
+        System.out.println(&quot;Turn off the TCL TV...&quot;);
+    }
+
+    @Override
+    public void setChannel(int channel) {
+        System.out.println(&quot;The TCL TV Channel is setted &quot; + channel + &quot;...&quot;);
+    }
+}</code></pre>
+<p><strong>我们作为遥控器厂家设置的集结方案</strong></p>
+<pre><code class="java">package com.greedring;
+
+public interface TVControl {
+    public void onOff();
+
+    public void nextChannel();
+
+    public void preChannel();
+}</code></pre>
+<p><strong>我们完成的Sony遥控器</strong></p>
+<pre><code class="java">package com.greedring;
+
+public class SonyTVControl extends SonyControl implements TVControl {
+    private static int channel = 0;
+    private static boolean isOn = false;
+
+    @Override
+    public void onOff() {
+        if (isOn) {
+            isOn = false;
+            super.off();
+        } else {
+            isOn = true;
+            super.on();
+        }
+    }
+
+    @Override
+    public void nextChannel() {
+        channel++;
+        if (channel &gt; 233) {
+            channel = 0;
+        }
+        super.setChannel(channel);
+    }
+
+    @Override
+    public void preChannel() {
+        channel--;
+        if (channel &lt; 0) {
+            channel = 233;
+        }
+        super.setChannel(channel);
+    }
+}</code></pre>
+<p><strong>我们完成的TCL遥控器</strong></p>
+<pre><code class="java">package com.greedring;
+
+public class TCLTVControl extends TCLControl implements TVControl {
+    private static int channel = 0;
+    private static boolean isOn = false;
+
+    @Override
+    public void onOff() {
+        if (isOn) {
+            isOn = false;
+            super.off();
+        } else {
+            isOn = true;
+            super.on();
+        }
+    }
+
+    @Override
+    public void nextChannel() {
+        channel++;
+        if (channel &gt; 233) {
+            channel = 0;
+        }
+        super.setChannel(channel);
+    }
+
+    @Override
+    public void preChannel() {
+        channel--;
+        if (channel &lt; 0) {
+            channel = 233;
+        }
+        super.setChannel(channel);
+    }
+}</code></pre>
+<p><strong>测试我们完成的两个遥控器</strong></p>
+<pre><code class="java">package com.greedring;
+
+public class MainAPP {
+    public static void main(String[] args) {
+        SonyTVControl sonyTVControl = new SonyTVControl();
+        TCLTVControl tcltvControl = new TCLTVControl();
+
+        sonyTVControl.onOff();
+        sonyTVControl.nextChannel();
+        sonyTVControl.nextChannel();
+        sonyTVControl.preChannel();
+        sonyTVControl.onOff();
+
+        System.out.println(&quot;==============================&quot;);
+
+        tcltvControl.onOff();
+        tcltvControl.preChannel();
+        tcltvControl.nextChannel();
+        tcltvControl.onOff();
+    }
+}</code></pre>
+<h4 id="需求拓展"><a href="#需求拓展" class="headerlink" title="需求拓展"></a>需求拓展</h4><p>随着社会的发展，我们有了新的需求：<br>1.别的厂家发来新的外包<br>2.客户需要新功能，比如说我想回看功能</p>
+<p><img src="https://i.loli.net/2019/09/23/6Yri2blWmTFvqKx.png" alt></p>
+<p>每次出现新需求就重写集结方案过于复杂，我们就需要引入桥接模式</p>
+<p><img src="https://i.loli.net/2019/09/23/HpSEyaueJ3v89gT.png" alt></p>
 <ul>
-<li><p>对于那句话：将抽象部分与他的实现部分分离套用《大话设计模式》里面的就是<strong>实现系统可能有多个角度分类，每一种角度都可能变化，那么把这种多角度分类给分离出来让他们独立变化，减少他们之间耦合。</strong></p>
-</li>
-<li><p>桥接模式中的所谓脱耦，就是指在一个软件系统的抽象化和实现化之间使用关联关系（组合或者聚合关系）而不是继承关系，从而使两者可以相对独立地变化，这就是桥接模式的用意。</p>
-</li>
+<li>原来使用的集结接口，现在我们做成抽象类。在类里面放一个遥控器的接口 <label style="color:#ff4e6a">Control</label> ，这个接口指向了所有遥控器厂家都实现的接口。</li>
+<li>因为Sony、TCL和Sharp都是基于这个接口来做的,我们在这个接口里放置一个变量 <label style="color:#ff4e6a">mControl</label> ，里面所有的函数功能都是调用这个变量来实现的。</li>
+<li>那么我们基于这个接口来做的集结遥控器和新类型遥控器，所有的功能都可以调用<label style="color:#ff4e6a">Control</label>底层提供的接口对象。</li>
+<li>这个接口对象设置的时候，比如我们设置成Sony、TCL、Sharp的类，集结遥控器和新类型遥控器调用的时候就是调用接口里的对象。</li>
+<li>也就是说集结遥控器和新类型遥控器在调用的时候，不清楚调用的是哪个遥控器厂家提供的类对象。用哪个厂家的，我们就调用哪个厂家的电视机。</li>
 </ul>
+<blockquote>
+<p>这时候我们再来看</p>
+<p><strong>桥接模式的原理：将实现与抽象放在两个不同的类层次中，使两个层次可以独立改变。</strong><br>&emsp;&emsp;&emsp;&emsp;将遥控器的实现与抽象放在两个不同的类层次中，使两个层次可以独立改变。</p>
+</blockquote>
+<p><strong>创建抽象类TVControlabs</strong></p>
+<pre><code class="java">package com.greedring;
+
+public abstract class TVControlabs {
+    public Control mControl;
+
+    public Control getmControl() {
+        return mControl;
+    }
+
+    public void setmControl(Control mControl) {
+        this.mControl = mControl;
+    }
+
+    public TVControlabs(Control mControl) {
+        this.mControl = mControl;
+    }
+
+    public TVControlabs() {
+    }
+
+    public abstract void onOff();
+
+    public abstract void nextChannel();
+
+    public abstract void preChannel();
+}</code></pre>
+<p><strong>我们先测试通过TVControl1继承TVControlabs类，来完成未更新的需求</strong></p>
+<pre><code class="java">package com.greedring;
+
+public class TVControl1 extends TVControlabs {
+    private static int channel = 0;
+    private static boolean isOn = false;
+
+    public TVControl1(Control mControl) {
+        super(mControl);
+    }
+
+    public TVControl1() {
+    }
+
+    @Override
+    public void onOff() {
+        if (isOn) {
+            isOn = false;
+            mControl.off();
+        } else {
+            isOn = true;
+            mControl.on();
+        }
+    }
+
+    @Override
+    public void nextChannel() {
+        channel++;
+        if (channel &gt; 233) {
+            channel = 0;
+        }
+        mControl.setChannel(channel);
+    }
+
+    @Override
+    public void preChannel() {
+        channel--;
+        if (channel &lt; 0) {
+            channel = 233;
+        }
+        mControl.setChannel(channel);
+    }
+}</code></pre>
+<p><strong>通过主函数测试</strong></p>
+<pre><code class="java">package com.greedring;
+
+public class MainApp1 {
+    public static void main(String[] args) {
+        TVControl1 mSonyControl = new TVControl1(new SonyControl());
+        mSonyControl.onOff();
+        mSonyControl.preChannel();
+        mSonyControl.nextChannel();
+        mSonyControl.onOff();
+    }
+}</code></pre>
+<p><strong>为拓展需求，创建新的类NewTVControl继承自TVControlabs</strong></p>
+<pre><code class="java">package com.greedring;
+
+public class NewTVControl extends TVControlabs {
+    private static int channel = 0;
+    private static boolean isOn = false;
+    private static int backChannel = 0;
+
+    public NewTVControl(Control mControl) {
+        super(mControl);
+    }
+
+    public NewTVControl() {
+    }
+
+    @Override
+    public void onOff() {
+        if (isOn) {
+            isOn = false;
+            mControl.off();
+        } else {
+            isOn = true;
+            mControl.on();
+        }
+    }
+
+    @Override
+    public void nextChannel() {
+        backChannel = channel;
+        channel++;
+        if (channel &gt; 233) {
+            channel = 0;
+        }
+        mControl.setChannel(channel);
+    }
+
+    @Override
+    public void preChannel() {
+        backChannel = channel;
+        channel--;
+        if (channel &lt; 0) {
+            channel = 233;
+        }
+        mControl.setChannel(channel);
+    }
+
+    public void back() {
+        int change = channel;
+        channel = backChannel;
+        backChannel = change;
+        mControl.setChannel(channel);
+    }
+}</code></pre>
+<p><strong>通过主函数测试新需求</strong></p>
+<pre><code class="java">package com.greedring;
+
+public class MainApp2 {
+    public static void main(String[] args) {
+        NewTVControl mSharpControl = new NewTVControl(new SharpControl());
+        mSharpControl.onOff();
+        mSharpControl.nextChannel();
+        mSharpControl.back();
+        mSharpControl.preChannel();
+        mSharpControl.onOff();
+    }
+}</code></pre>
 <blockquote>
 <p><strong>优点：</strong><br>1、分离抽象接口及其实现部分。提高了比继承更好的解决方案。<br>2、桥接模式提高了系统的可扩充性，在两个变化维度中任意扩展一个维度，都不需要修改原有系统。<br>3、实现细节对客户透明，可以对用户隐藏实现细节。</p>
 </blockquote>
@@ -257,7 +568,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569175824571"></script>
+<script src="/js/app.js?v=1569259359652"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
