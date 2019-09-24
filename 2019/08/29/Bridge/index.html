@@ -20,9 +20,9 @@
 <meta property="og:description" content="Bridge">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/09/23/LG5Vs3zbJrD7f8R.png">
-<meta property="og:image" content="https://i.loli.net/2019/09/23/6Yri2blWmTFvqKx.png">
-<meta property="og:image" content="https://i.loli.net/2019/09/23/HpSEyaueJ3v89gT.png">
-<meta property="og:updated_time" content="2019-09-23T17:46:58.075Z">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/HRUYAgoKcW3k9CL.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/qiCdAuBeHcvhzWn.png">
+<meta property="og:updated_time" content="2019-09-24T01:42:25.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="桥接模式">
 <meta name="twitter:description" content="Bridge">
@@ -34,7 +34,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569287625754">
+  <link rel="stylesheet" href="/css/style.css?v=1569289356799">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -189,7 +189,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-jKrTvjpf" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2979728820" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-pqJEvGft" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="2979728820" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p><label style="color:#ff4e6a">桥接（Bridge）：</label>是用于把抽象化与实现化解耦，使得二者可以独立变化。这种类型的设计模式属于结构型模式，它通过提供抽象化和实现化之间的桥接结构，来实现二者的解耦。<br>这种模式涉及到一个作为桥接的接口，使得实体类的功能独立于接口实现类。这两种类型的类可被结构化改变而互不影响。</p>
 <blockquote>
@@ -350,9 +350,9 @@ public class MainAPP {
     }
 }</code></pre>
 <h4 id="需求拓展"><a href="#需求拓展" class="headerlink" title="需求拓展"></a>需求拓展</h4><p>随着社会的发展，我们有了新的需求：<br>1.别的厂家发来新的外包<br>2.客户需要新功能，比如说我想回看功能</p>
-<p><img src="https://i.loli.net/2019/09/23/6Yri2blWmTFvqKx.png" alt></p>
+<p><img src="https://i.loli.net/2019/09/24/HRUYAgoKcW3k9CL.png" alt></p>
 <p>每次出现新需求就重写集结方案过于复杂，我们就需要引入桥接模式</p>
-<p><img src="https://i.loli.net/2019/09/23/HpSEyaueJ3v89gT.png" alt></p>
+<p><img src="https://i.loli.net/2019/09/24/qiCdAuBeHcvhzWn.png" alt></p>
 <ul>
 <li>原来使用的集结接口，现在我们做成抽象类。在类里面放一个遥控器的接口 <label style="color:#ff4e6a">Control</label> ，这个接口指向了所有遥控器厂家都实现的接口。</li>
 <li>因为Sony、TCL和Sharp都是基于这个接口来做的,我们在这个接口里放置一个变量 <label style="color:#ff4e6a">mControl</label> ，里面所有的函数功能都是调用这个变量来实现的。</li>
@@ -568,7 +568,7 @@ public class MainApp2 {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569287625759"></script>
+<script src="/js/app.js?v=1569289356804"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
