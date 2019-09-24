@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>Java基础8 - Greed Ring</title>
+  <title>speech - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,18 +11,17 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="继承、重写、super关键字、抽象【待写">
-<meta name="keywords" content="JavaSE">
+  <meta name="description" content="整体思路流程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础8">
-<meta property="og:url" content="http://greedring.com/2019/08/28/JavaSE8/index.html">
+<meta property="og:title" content="speech">
+<meta property="og:url" content="http://greedring.com/2019/08/23/speech/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="继承、重写、super关键字、抽象【待写">
+<meta property="og:description" content="整体思路流程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-21T09:01:16.165Z">
+<meta property="og:updated_time" content="2019-09-24T01:07:08.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础8">
-<meta name="twitter:description" content="继承、重写、super关键字、抽象【待写">
+<meta name="twitter:title" content="speech">
+<meta name="twitter:description" content="整体思路流程">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,10 +29,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569287268322">
-<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+  <link rel="stylesheet" href="/css/style.css?v=1569287268741">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -165,36 +161,45 @@
         <div class="nexmoe-post">
     <div class="nexmoe-post-cover"> 
         
-        <img src="https://i.loli.net/2019/09/21/NyYscOljraoSp24.jpg">
+        <img src="https://i.loli.net/2019/09/24/VasimfRyZtr92Ln.jpg">
         
-        <h1>Java基础8</h1>
+        <h1>speech</h1>
     </div>
   <div class="nexmoe-post-meta">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月28日</a>
-    <a><i class="nexmoefont icon-areachart"></i>23 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月23日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.5k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
     
-      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
-    
-    
-      <a class="nexmoefont icon-tag-fill -link" href="/tags/JavaSE/">JavaSE</a>
     
   </div>
   <article>
-    <p>继承、重写、super关键字、抽象【待写</p>
+    <p>整体思路流程</p>
 <a id="more"></a>
 
+<h2 id="始まります"><a href="#始まります" class="headerlink" title="始まります"></a>始まります</h2><p>电视机厂家为了减少成本，将遥控器生产外包，我们公司就接到了Sony和TCL的遥控器项目。<br>现状：Sony和TCL厂家的接口设计好了，并分别提供了相关的类。<br>我们遥控器所要做的就是继承Sony和TCL的类，调用各自的方法，就可以控制Sony和TCL的电视。<br>我们要把遥控器的界面、功能设计好。</p>
+<p>首先这是我们的方案，开关放在一个按钮，遥控器嘛，不都是一个按钮按一下开，再按下关。<br>频道放两个按钮，上个频道，下个频道（音量什么的太多就不看了）。<br>然后我们再来看遥控器业界，Sony和TCL都可以视为实现了Control这样一个接口，开、关、设置频道。<br>但是内部协议不同，调用的格式肯定不一样，Sony的遥控器不能和TCL的电视机沟通。<br>所以两个订单，我们的方案需要分别继承Sony和TCL的类。</p>
+<p>我们先创建遥控器厂家的接口，具有开关、设置频道的功能。</p>
+<p>Sony的遥控器他有一个类，实现了遥控器厂家的接口，[on 打开Sony的电视机、关闭、设置频道]。<br>这就表示Sony厂家提供的可以遥控电视机的类，通过这个类，可以完成Sony的协议。</p>
+<p>TCL也有自己的类，需要实现自己的协议，自己的指令。通过调用TCL的遥控器可以控制TCL的电视机。</p>
+<p>我们设置了一个集结方案，我们是遥控器厂家，接到了Sony和TCL的订单。<br>我们设置的集结方案，开和关放在一个按钮上，下一个频道，上一个频道。</p>
+<p>我们拿到了Sony提供给我们的遥控器类，我们就可以继承这个类，调用Sony的功能，控制Sony的电视机。<br>同时实现我们自己的遥控器接口的功能，我们是把开关放在一个按钮的，Sony分成了两个按钮。<br>我们设置一个boolean值，缓存电视机的状态，判断如果电视机打开，把状态设为关闭，并关闭电视机；如果关闭，状态设为开启，并打开电视机。<br>同样Sony的遥控器只有上一个频道、下一个频道，我们设置一个int值，缓存当前处于频道。<br>上一个频道，频道++，如果超过最后一个频道（233），我们返回第一个频道0，然后设置这个频道；下一个频道，频道–，如果频道&lt;0，返回最后一个频道，设置频道。</p>
+<p>TCL的电视遥控器也是这样的，只不过继承自TCL的遥控器，TCL的遥控器有自己的协议。</p>
+<p>主函数这里，创建Sony和TCL的类对象，对两个遥控器进行测试。满足我们的设计要求，很好。</p>
+<p>然后随着社会的发展，我们有了新的需求：<br>1.别的厂家发来新的外包<br>2.客户需要新功能，比如说我想回看功能<br>我们的集结方案有两个变化的地方，不变的地方（遥控器接口，电视机厂家都是基于这个接口来开发，只不过协议不同）</p>
+<p>原来使用的接口，现在我们做成抽象类，在类里面放一个遥控器的接口[Control (mControl)]，这个接口指向了所有遥控器厂家都实现的接口<br>因为Sony、TCL和Sharp都是基于这个接口来做的,我们在这个接口里放置一个变量(mControl)，里面所有的函数功能都是调用这个变量来实现的<br>那么我们基于这个接口来做的集结遥控器和新类型遥控器，所有的功能都可以调用[Control]底层提供的接口对象<br>这个接口对象设置的时候，比如我们设置成Sony、TCL、Sharp的类，集结遥控器和新类型遥控器调用的时候就是调用接口里的对象<br>也就是说集结遥控器和新类型遥控器在调用的时候，不清楚调用的是哪个遥控器厂家提供的类对象。用哪个厂家的，我们就调用哪个厂家的电视机</p>
+<p>这就是桥接模式的原理：将实现与抽象放在两个不同的类层次中，使两个层次可以独立改变。<br>实现指的是右侧，抽象指的是左侧。将遥控器的实现与抽象放在两个不同的类层次，使两个层次可以独立变化。</p>
+<p>我们来创建抽象的TVControlabs类，先封装一个Control接口型mControl参数，创建getter/setter方法，构建带参、无参构造方法，构造相应的功能。</p>
+<p>创建TVControl1类继承TVControlabs类，同样设置boolean对象缓存电视机状态，设置int对象缓存电视机频道。<br>存进一个不同厂家的接口对象(mControl)，控制不同厂家的电视机。<br>onOff()、nextChannel()、preChannel()等方法均与我们做好的Sony遥控器中方法一致，仅需要将super改成mControl。</p>
+<p>创建主函数，通过匿名类(new SonyControl())的方法传入Sony的接口对象。这是通过桥接模式，实现最开始的集结遥控器。</p>
+<p>创建NewControl类继承TVControlabs类，同样设置boolean对象缓存电视机状态，设置int对象缓存电视机频道。<br>为实现回看操作，设置int对象(backChannel)缓存上一次的频道。<br>存进一个不同厂家的接口对象(mControl)，控制不同厂家的电视机。<br>onOff()、nextChannel()、preChannel()等方法均与TVControl1一致，为实现回看操作，仅需要在channel变化前，将channel赋给backChannel以记录回看频道。<br>写回看方法public void back() {}<br>通过mControl.setChannel(channel);实现输出</p>
 
-    <div id="aplayer-iKGiZphT" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
-
-<h2 id="面向对象三大特征之————继承"><a href="#面向对象三大特征之————继承" class="headerlink" title="面向对象三大特征之————继承"></a>面向对象三大特征之————继承</h2>
   </article>
   
     
 <div class="nexmoe-post-copyright">
 <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
 <strong>本文作者：</strong>GreedRing<br>
-<strong>本文链接：</strong><a href="http://greedring.com/2019/08/28/JavaSE8/" title="http://greedring.com/2019/08/28/JavaSE8/" target="_blank" rel="noopener">http://greedring.com/2019/08/28/JavaSE8/</a><br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/08/23/speech/" title="http://greedring.com/2019/08/23/speech/" target="_blank" rel="noopener">http://greedring.com/2019/08/23/speech/</a><br>
 
   <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
 
@@ -234,7 +239,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569287268328"></script>
+<script src="/js/app.js?v=1569287268748"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
