@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="XML">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-24T18:10:53.176Z">
+<meta property="og:updated_time" content="2019-09-25T01:29:08.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaSE22">
 <meta name="twitter:description" content="XML">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569348837719">
+  <link rel="stylesheet" href="/css/style.css?v=1569427570828">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -57,7 +57,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>29</div>
+        <div><span>文章</span>30</div>
         <div><span>标签</span>4</div>
         <div><span>分类</span>2</div>
     </div>
@@ -114,7 +114,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/Java/">Java</a>
-          <span class="category-list-count">26</span>
+          <span class="category-list-count">27</span>
         </li>
 
         
@@ -171,7 +171,7 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月25日</a>
-    <a><i class="nexmoefont icon-areachart"></i>97 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>333 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -185,9 +185,10 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-javPkLHM" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-muNKoTKD" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
-<h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><p>第一行为XML声明，定义XML版本(1.0)、编码格式(UTF-8)<br>&lt;note&gt;为描述根元素<note><br>&lt;note&gt;与&lt;/note&gt;中为描述根的4个子元素(to,from,heading,body)<br>&lt;/note&gt;为根元素结尾</note></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 
 &lt;note&gt;
     &lt;to&gt;George&lt;/to&gt;
@@ -195,7 +196,42 @@
     &lt;heading&gt;Reminder&lt;/heading&gt;
     &lt;body&gt;Don&#39;t forget the meeting!&lt;/body&gt;
 &lt;/note&gt;</code></pre>
-<p>第一行为XML声明，定义XML版本(1.0)、编码格式(UTF-8)<br>描述根元素<note><br>描述根的4个子元素(to,from,heading,body)<br>根元素结尾</note></p>
+<blockquote>
+<ul>
+<li>XML所有标签都必须关闭&lt;p&gt;、&lt;/p&gt;，第一行的声明不属于XML本身的组成部分，不是XML元素，不需要关闭标签</li>
+<li>XML标签对大小写敏感</li>
+<li>XML中，所有元素必须正确嵌套</li>
+<li></li>
+</ul>
+</blockquote>
+<p>解析XML：<br>1.获取所有bean</p>
+<pre><code>SAXReader reader = new SAXReader();
+Document doc = reader(&quot;src/Test.xml&quot;);
+List&lt;Element&gt; allBeanEle = doc.getRootElement().elements();</code></pre><p>2.根据beanID = <bean id></bean></p>
+<pre><code>for(Element element : allBeanEle){
+    Attribute idAttr = element.attribute(&quot;id&quot;);
+    if(idAttr.getText().equals(beanID)){
+        beanEle = element;
+    }
+}</code></pre><p>3.获取bean的属性，以及property的属性</p>
+<pre><code>if(beanEle != null){
+    Attribute classNameAtt = beanEle.attribute(&quot;className&quot;);
+    String className = classNameAtt.getText();
+    //根据标签名获取元素节点
+    List&lt;Element&gt; allPropertyEles = beanEle.elements(&quot;property&quot;)
+    //获取property标签下属性
+    for(Element element : allPropertyEles){
+        List&lt;Attribute&gt; everyPropertyAtts = element.attributes();
+        //遍历每个property的所有属性
+        for(Attribute attr : everyPropertyAttris){
+        //name1
+        String attrName = attr.getName();
+        //zhangsan
+        String attrValue = attr.getText();
+        }
+} else {
+    //抛出异常
+}</code></pre><p>4.实例化，初始化</p>
 
   </article>
   
@@ -243,7 +279,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569348837733"></script>
+<script src="/js/app.js?v=1569427570888"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 

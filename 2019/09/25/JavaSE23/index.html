@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>分类：设计模式 - Greed Ring</title>
+  <title>JavaSE23 - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,13 +11,18 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Greed Ring">
-<meta property="og:url" content="http://greedring.com/categories/设计模式/index.html">
+  <meta name="description" content="注解">
+<meta name="keywords" content="JavaSE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaSE23">
+<meta property="og:url" content="http://greedring.com/2019/09/25/JavaSE23/index.html">
 <meta property="og:site_name" content="Greed Ring">
+<meta property="og:description" content="注解">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-25T07:07:18.189Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Greed Ring">
+<meta name="twitter:title" content="JavaSE23">
+<meta name="twitter:description" content="注解">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -25,7 +30,10 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569427572365">
+  <link rel="stylesheet" href="/css/style.css?v=1569427572703">
+<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -154,37 +162,79 @@
   </div>
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
-        <section class="nexmoe-posts" id="brand-waterfall">
-    
-    <div class="nexmoe-post">
-        <a href="/2019/08/29/Bridge/">
-            <div class="nexmoe-post-cover mdui-ripple"> 
-                
-                <img src="https://i.loli.net/2019/09/24/VasimfRyZtr92Ln.jpg" alt="桥接模式">
-                
-                <h1>桥接模式</h1>
-            </div>
-        </a>
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月29日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.7k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
-            
-                <a class="nexmoefont icon-appstore-fill -link" href="/categories/设计模式/">设计模式</a>
-            
-            
-                <a class="nexmoefont icon-tag-fill -link" href="/tags/桥接模式/">桥接模式</a>
-            
-        </div>
-        <article>
-            
-            <p>Bridge</p>
-            
-        </article>
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+        <img src="https://i.loli.net/2019/09/21/NyYscOljraoSp24.jpg">
+        
+        <h1>JavaSE23</h1>
     </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月25日</a>
+    <a><i class="nexmoefont icon-areachart"></i>363 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
-</section>
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/JavaSE/">JavaSE</a>
+    
+  </div>
+  <article>
+    <p>注解</p>
+<a id="more"></a>
 
+
+    <div id="aplayer-UoCDWzyb" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h4 id="1-什么是注解"><a href="#1-什么是注解" class="headerlink" title="1.什么是注解"></a>1.什么是注解</h4><p>元数据：只是用来作为某些类、某些属性的相关解释说明<br>元数据在Java中的体现为注解</p>
+<p>是很特殊（当前某个类或者属性或者方法的解释说明）的类，注解类用来替换配置文件的相关配置</p>
+<h4 id="2-注解的基本语法格式"><a href="#2-注解的基本语法格式" class="headerlink" title="2.注解的基本语法格式"></a>2.注解的基本语法格式</h4><p>@注解类名：class上方，属性上方，方法上方</p>
+<h4 id="3-自定义注解"><a href="#3-自定义注解" class="headerlink" title="3.自定义注解"></a>3.自定义注解</h4><blockquote>
+<p>权限修饰符 @interface 类名{<br>   //default 值可写可不写<br>   权限修饰符 abstract 属性类型 属性名() default 值;<br>}</p>
+</blockquote>
+<pre><code>public @interface MyAnnoation {
+    public abstract int age() default 18;
+    public abstract String name();
+}</code></pre><p>元注解：注解的注解（生命周期+作用位置）<br>简单使用：1.获取注解类 2.注解类获取它里面的属性</p>
+<h4 id="4-常见注解"><a href="#4-常见注解" class="headerlink" title="4.常见注解"></a>4.常见注解</h4><h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><h4 id="1-类加载器作用"><a href="#1-类加载器作用" class="headerlink" title="1.类加载器作用"></a>1.类加载器作用</h4><p>类加载器：加载、连接、初始化<br>ClassLoader</p>
+<h4 id="类加载器的分类"><a href="#类加载器的分类" class="headerlink" title="类加载器的分类"></a>类加载器的分类</h4><p>根据加载类功能不同分为多种类加载器</p>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>在不修改核心代码的基础上，在核心代码周围加上一些辅助功能</p>
+<p>客户：记录日志 核心代码 打印日志</p>
+<h4 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h4><p>java支持的jdk代理，cglib代理<br>jdk代理面向接口代理，cglib代理的类可以没有接口，就是实体类</p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p>接口类，实现子类目标类（核心功能所在的类）+ 通知类（辅助功能所在类）</p>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>GreedRing<br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/09/25/JavaSE23/" title="http://greedring.com/2019/09/25/JavaSE23/" target="_blank" rel="noopener">http://greedring.com/2019/09/25/JavaSE23/</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '192a24997642e3747506',
+        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
+        id: window.location.pathname,
+        repo: 'greedring.github.io',
+        owner: 'GreedRing',
+        admin: 'GreedRing'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
@@ -200,7 +250,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569427572378"></script>
+<script src="/js/app.js?v=1569427572710"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
