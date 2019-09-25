@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="集合概述，单列集合List，增强for循环，可变参数，栈与队列">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-25T16:05:53.442Z">
+<meta property="og:updated_time" content="2019-09-25T16:21:52.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础17">
 <meta name="twitter:description" content="集合概述，单列集合List，增强for循环，可变参数，栈与队列">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569427571193">
+  <link rel="stylesheet" href="/css/style.css?v=1569433465087">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-GsYbqmaY" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-WtkOxGAZ" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="集合引入"><a href="#集合引入" class="headerlink" title="集合引入"></a>集合引入</h2><h4 id="1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"><a href="#1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器" class="headerlink" title="1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"></a>1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器</h4><p>注意：此处的存储是基于内存结构的存储，不同于持久化存储（txt数据库….）</p>
 <h4 id="2-数组特点"><a href="#2-数组特点" class="headerlink" title="2.数组特点"></a>2.数组特点</h4><p>int[] arr = new int[5];<br>User[] arr = new User[5];//对象数组<br>Object[] objects = new Object[5];</p>
@@ -247,10 +247,10 @@
 <li>Object[] &emsp;<label style="color:#ff4e6a">集合A.toArray();</label><br>返回包含集合A中所有元素的数组</li>
 </ul>
 <blockquote>
-<p><strong>将集合转为数组</strong><br>Object[] array = A.toArray();<br>System.out.println(array);//打印数组地址<br>System.out.println(arrays.toString(array));//打印数组</p>
+<p><strong>将集合转为数组</strong><br><label style="color:#ff4e6a">Object[] array = A.toArray();</label><br>System.out.println(array);//打印数组地址<br>System.out.println(arrays.toString(array));//打印数组</p>
 </blockquote>
 <blockquote>
-<p><strong>将数组转为集合</strong><br>Collection A = Arrays.asList(array);</p>
+<p><strong>将数组转为集合</strong><br><label style="color:#ff4e6a">Collection A = new Collection(Arrays.asList(array));</label></p>
 </blockquote>
 <ul>
 <li>&lt;T&gt; T[] &emsp;<label style="color:#ff4e6a">集合A.toArray(T[] a);</label><br>返回包含此集合中所有元素的数组；返回数组的运行时类型是指定的数组的运行时类型</li>
@@ -607,7 +607,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569427571223"></script>
+<script src="/js/app.js?v=1569433465092"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
