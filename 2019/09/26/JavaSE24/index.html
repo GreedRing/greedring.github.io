@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="SQL">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-26T12:01:26.040Z">
+<meta property="og:updated_time" content="2019-09-27T10:47:30.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL">
 <meta name="twitter:description" content="SQL">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569499825083">
+  <link rel="stylesheet" href="/css/style.css?v=1569595830941">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,7 +171,7 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月26日</a>
-    <a><i class="nexmoefont icon-areachart"></i>2 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>312 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -185,9 +185,52 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-EfdjnPLW" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-gFhdZIVt" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
-<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h4 id="表"><a href="#表" class="headerlink" title="表"></a>表</h4><p>class Student{<br>String stuName;<br>String stuNo;<br>}</p>
+<table>
+<thead>
+<tr>
+<th align="left">stuName</th>
+<th align="left">stuNo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Kiana</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">Mei</td>
+<td align="left">2</td>
+</tr>
+</tbody></table>
+<p>Student：表<br>表是类在数据库的结构表示<br>字段是类的属性<br>student(stuName,stuNo)<br>字段=类型+名称</p>
+<blockquote>
+<p><strong>类型：</strong></p>
+<ul>
+<li><p>整数:int；</p>
+</li>
+<li><p>小数:float；</p>
+</li>
+<li><p>字符串：<br>定长：char(固定长度)<br>不定长：varchar(最大长度)</p>
+</li>
+<li><p>日期：date</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>表结构创建：主键：唯一+不能为空 [所有命名不区分大小写]<br>creat table 表名(<br>字段名 字段类型,<br>字段名 字段类型<br>)</p>
+<p>创建学生表<br>creat table student(<br>stuName VARCHAR(20),<br>stuNo char(10)<br>)</p>
+</blockquote>
+<p>表数据<br>一行 = 一条记录 = java对象</p>
+<h4 id="表数据的操作"><a href="#表数据的操作" class="headerlink" title="表数据的操作"></a>表数据的操作</h4><p>1.sql语句分为几类<br>DDL：定义语句<br>DCL：控制语言<br>DML：更新语句（u，i，d）<br>DQL：查询语句（s）</p>
+<p>2.表结构的创建，修改表结构（修改列名，列类型，增加列，删除列）<br>alter table 表名 modify/change/add/drop 列名 新的类型/旧的列名 新的列名 列数据类型/column 列名 类名/列名；</p>
+<p>3.查看我们自己创建的数据库<br>show creat database 数据库名;</p>
+<p>4.查看正在使用的数据库<br>select `database`();</p>
+<p>5.使用数据库/选择某个数据库[dos下使用]<br>use 数据库名;</p>
+<p>6.查看表结构<br>desc 表名;<br>desc student;</p>
+<p>7.删除表结构<br>drop table 表名;</p>
+
   </article>
   
     
@@ -234,7 +277,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569499825088"></script>
+<script src="/js/app.js?v=1569595830947"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
