@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>JavaSE练习16 - Greed Ring</title>
+  <title>标签：SurpriseGift - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,18 +11,13 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="day16">
-<meta name="keywords" content="JavaSE练习">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JavaSE练习16">
-<meta property="og:url" content="http://greedring.com/2019/09/08/JavaSEPractice16/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Greed Ring">
+<meta property="og:url" content="http://greedring.com/tags/SurpriseGift/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="day16">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-21T09:06:02.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaSE练习16">
-<meta name="twitter:description" content="day16">
+<meta name="twitter:title" content="Greed Ring">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,10 +25,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569683569946">
-<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+  <link rel="stylesheet" href="/css/style.css?v=1569683570306">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -169,105 +161,37 @@
   </div>
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
-        <div class="nexmoe-post">
-    <div class="nexmoe-post-cover"> 
-        
-        <img src="https://i.loli.net/2019/09/21/yH9UlFhkcBdSqoZ.jpg">
-        
-        <h1>JavaSE练习16</h1>
+        <section class="nexmoe-posts" id="brand-waterfall">
+    
+    <div class="nexmoe-post">
+        <a href="/2019/09/28/SurpriseGift/">
+            <div class="nexmoe-post-cover mdui-ripple"> 
+                
+                <img src="https://i.loli.net/2019/09/28/bgchLrKPNs8VM2u.jpg" alt="SurpriseGift">
+                
+                <h1>SurpriseGift</h1>
+            </div>
+        </a>
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月28日</a>
+            <a><i class="nexmoefont icon-areachart"></i>68 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+            
+                <a class="nexmoefont icon-appstore-fill -link" href="/categories/瞎搞/">瞎搞</a>
+            
+            
+                <a class="nexmoefont icon-tag-fill -link" href="/tags/SurpriseGift/">SurpriseGift</a>
+            
+        </div>
+        <article>
+            
+            <p>一只失去了主人的家猫</p>
+            
+        </article>
     </div>
-  <div class="nexmoe-post-meta">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月08日</a>
-    <a><i class="nexmoefont icon-areachart"></i>193 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
-      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
-    
-    
-      <a class="nexmoefont icon-tag-fill -link" href="/tags/JavaSE练习/">JavaSE练习</a>
-    
-  </div>
-  <article>
-    <p>day16</p>
-<a id="more"></a>
-
-
-    <div id="aplayer-GopgnPJG" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="774480" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
-
-<h2 id="First"><a href="#First" class="headerlink" title="First"></a>First</h2><p>给定一个32位int的整数，将其颠倒。<br>假设环境只能处理32位int范围内整数。根据这个假设，如果颠倒后结果超过这个范围，则返回0。</p>
-<pre><code class="java">package com.greedring;
-
-import java.util.Scanner;
-import java.util.concurrent.*;
-
-public class Test {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        ExecutorService threadPool = Executors.newFixedThreadPool(4);
-        MyTask myTask = new MyTask();
-        Future&lt;Integer&gt; future = threadPool.submit(myTask);
-        System.out.println(future.get());
-        threadPool.shutdown();
-    }
-}
-
-
-class MyTask implements Callable&lt;Integer&gt; {
-    private Scanner scanner = new Scanner(System.in);
-
-    @Override
-    public Integer call() throws Exception {
-        System.out.println(&quot;请输入要颠倒的数字：&quot;);
-        long a = scanner.nextLong();
-        if (a &gt; 2147483647 || a &lt; -2147483648) {
-            System.out.println(&quot;请输入32位int范围内整数&quot;);
-            return null;
-        } else {
-            long b = 0;
-            while (a != 0) {
-                long c = a % 10;
-                a = a / 10;
-                b = b * 10 + c;
-            }
-            if (b &gt; 2147483647 || b &lt; -2147483648) {
-                return 0;
-            } else {
-                return (int) b;
-            }
-        }
-    }
-}</code></pre>
-<h2 id="Second"><a href="#Second" class="headerlink" title="Second"></a>Second</h2>
-  </article>
-  
-    
-<div class="nexmoe-post-copyright">
-<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-<strong>本文作者：</strong>GreedRing<br>
-<strong>本文链接：</strong><a href="http://greedring.com/2019/09/08/JavaSEPractice16/" title="http://greedring.com/2019/09/08/JavaSEPractice16/" target="_blank" rel="noopener">http://greedring.com/2019/09/08/JavaSEPractice16/</a><br>
-
-  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
-
-</div>
-
-
-  
-  <section class="nexmoe-comment">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
-<div id="gitalk"></div>
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '192a24997642e3747506',
-        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
-        id: window.location.pathname,
-        repo: 'greedring.github.io',
-        owner: 'GreedRing',
-        admin: 'GreedRing'
-    })
-    gitalk.render('gitalk')
-</script>
 </section>
-</div>
+
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
@@ -283,7 +207,7 @@ class MyTask implements Callable&lt;Integer&gt; {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569683569952"></script>
+<script src="/js/app.js?v=1569683570311"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
