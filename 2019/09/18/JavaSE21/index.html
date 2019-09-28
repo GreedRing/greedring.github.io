@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="反射">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-27T12:27:58.064Z">
+<meta property="og:updated_time" content="2019-09-28T14:36:16.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反射">
 <meta name="twitter:description" content="反射">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1569595830999">
+  <link rel="stylesheet" href="/css/style.css?v=1569681405123">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -171,8 +171,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月18日</a>
-    <a><i class="nexmoefont icon-areachart"></i>454 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>853 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -185,7 +185,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-rHHriPNO" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-oDUvzVbQ" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><p>在面向对象的世界里，万事万物皆对象<br>class类也是对象，是java.lang.Class的实例对象</p>
 <h4 id="如何表示class这个对象"><a href="#如何表示class这个对象" class="headerlink" title="如何表示class这个对象"></a>如何表示class这个对象</h4><p>任何类都是Class的实例对象，这个实例对象有三种表示方法，在下方代码处种演示</p>
@@ -232,7 +232,69 @@ class Foo {
         System.out.println(&quot;Foo&quot;);
     }
 }</code></pre>
-<p>编译时刻加载类是静态加载类，运行时刻加载类是动态加载类</p>
+<h4 id="Class-forName-类的全称"><a href="#Class-forName-类的全称" class="headerlink" title="Class.forName(类的全称)"></a>Class.forName(类的全称)</h4><p>既表示类的类型，又表示动态加载类<br>编译时刻加载类是静态加载类，运行时刻加载类是动态加载类</p>
+<h4 id="基本的数据类型、void关键字都存在类类型"><a href="#基本的数据类型、void关键字都存在类类型" class="headerlink" title="基本的数据类型、void关键字都存在类类型"></a>基本的数据类型、void关键字都存在类类型</h4><pre><code class="java">package com.greedring;
+
+public class Test {
+    public static void main(String[] args) {
+        Class c1 = int.class;
+        Class c2 = String.class;
+        Class c3 = double.class;
+        Class c4 = Double.class;
+        Class c5 = void.class;
+
+        System.out.println(c1.getName());
+        System.out.println(c2.getName());
+        System.out.println(c2.getSimpleName());//获得不含包名的
+        System.out.println(c5.getName());
+    }
+}</code></pre>
+<pre><code class="java">package com.greedring;
+
+import java.lang.reflect.Method;
+
+public class Test {
+    public static void main(String[] args) {
+        String s = &quot;hello&quot;;
+        Test.printClassMessage(s);//通过反射获取Test中，所有String类的基本信息
+
+        System.out.println(&quot;===================================================&quot;);
+
+        Integer n1 = 1;
+        Test.printClassMessage(n1);//通过反射获取Test中，所有Integer类的基本信息
+    }
+
+
+    /*
+    打印类的信息，包括类的成员函数、成员变量
+    obj 该对象所属类的信息
+     */
+    public static void printClassMessage(Object obj) {
+        //要获取类的信息 首先要获取类的类类型
+        Class c = obj.getClass();//传递的是哪个子类的对象 c就是该子类的类类型
+        //获取类的名称
+        System.out.println(&quot;类的名称为&quot; + c.getName());
+        /*
+        Method类，方法对象
+        一个成员方法就是一个Method对象
+        getMethods()方法获取的所有的public的函数，包含父类继承而来的
+        getDeclaredMethods()获取的是所有该类自己声明的方法，不问访问权限
+         */
+        Method[] ms = c.getMethods();//c.getDeclaredMethods();
+        for (int i = 0; i &lt; ms.length; i++) {
+            //得到方法的返回值类型的类类型
+            Class returnType = ms[i].getReturnType();
+            System.out.println(returnType.getName() + &quot; &quot;);
+            //得到方法的名称
+            System.out.println(ms[i].getName() + &quot;(&quot;);
+            //获取参数类型
+            Class[] paramTypes = ms[i].getParameterTypes();
+            for (Class class1 : paramTypes) {
+                System.out.println(&quot;)&quot;);
+            }
+        }
+    }
+}</code></pre>
 <h4 id="Java反射是什么"><a href="#Java反射是什么" class="headerlink" title="Java反射是什么"></a>Java反射是什么</h4><p>在运行过程中获取当前类的所有属性的方法</p>
 <h4 id="如何Java反射"><a href="#如何Java反射" class="headerlink" title="如何Java反射"></a>如何Java反射</h4><p>编译====class字节码文件（class对象）====结果</p>
 <p>每去创建对象的时候，JVM的过程：加载（将类文件读写到内存）、连接（安全检查）、实例化<br>在程序运行中，先获取class对象，通过class对象拿到当前类的所有属性和方法</p>
@@ -283,7 +345,7 @@ class Foo {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1569595831009"></script>
+<script src="/js/app.js?v=1569681405132"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
