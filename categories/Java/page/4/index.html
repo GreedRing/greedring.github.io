@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>Java基础12 - Greed Ring</title>
+  <title>分类：Java - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,18 +11,13 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="Object类，错误和异常">
-<meta name="keywords" content="JavaSE">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java基础12">
-<meta property="og:url" content="http://greedring.com/2019/09/03/JavaSE12/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Greed Ring">
+<meta property="og:url" content="http://greedring.com/categories/Java/page/4/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="Object类，错误和异常">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-21T09:01:16.133Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础12">
-<meta name="twitter:description" content="Object类，错误和异常">
+<meta name="twitter:title" content="Greed Ring">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,10 +25,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1570546371172">
-<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+  <link rel="stylesheet" href="/css/style.css?v=1570546371711">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -169,116 +161,41 @@
   </div>
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
-        <div class="nexmoe-post">
-    <div class="nexmoe-post-cover"> 
-        
-        <img src="https://i.loli.net/2019/09/21/NyYscOljraoSp24.jpg">
-        
-        <h1>Java基础12</h1>
+        <section class="nexmoe-posts" id="brand-waterfall">
+    
+    <div class="nexmoe-post">
+        <a href="/2019/08/24/JavaSE1/">
+            <div class="nexmoe-post-cover mdui-ripple"> 
+                
+                <img src="https://i.loli.net/2019/09/21/NyYscOljraoSp24.jpg" alt="Java基础1">
+                
+                <h1>Java基础1</h1>
+            </div>
+        </a>
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月24日</a>
+            <a><i class="nexmoefont icon-areachart"></i>899 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+            
+                <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+            
+            
+                <a class="nexmoefont icon-tag-fill -link" href="/tags/JavaSE/">JavaSE</a>
+            
+        </div>
+        <article>
+            
+            <p>注释，关键字，常量，变量，数据类型，标识符</p>
+            
+        </article>
     </div>
-  <div class="nexmoe-post-meta">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月03日</a>
-    <a><i class="nexmoefont icon-areachart"></i>338 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
-      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
-    
-    
-      <a class="nexmoefont icon-tag-fill -link" href="/tags/JavaSE/">JavaSE</a>
-    
-  </div>
-  <article>
-    <p>Object类，错误和异常</p>
-<a id="more"></a>
-
-
-    <div id="aplayer-ZXRhNtjU" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
-
-<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>Object是所有类的超类，所有类都直接或间接继承了Object类。</p>
-<ul>
-<li>Object提供了一个默认的无参构造函数</li>
-<li>Object提供方法</li>
-</ul>
-<h2 id="Equals-boolean-equals-Object-obj"><a href="#Equals-boolean-equals-Object-obj" class="headerlink" title="Equals [boolean equals(Object obj)]"></a>Equals [boolean equals(Object obj)]</h2><h4 id="与”-”的区别"><a href="#与”-”的区别" class="headerlink" title="与”==”的区别"></a>与”==”的区别</h4><ul>
-<li><strong>比较基本数据类型：</strong> 比较的是两者的值是否相等（不管其数据类型 byte short int long double float…）</li>
-<li><strong>比较引用数据类型：</strong> 比较的是两者地址是否相等（两个引用是否指向的是同一个对象）</li>
-</ul>
-<p>在Object类中，equals默认比较两个对象的地址是否相同，与”==”一致</p>
-<h5 id="equals的重写"><a href="#equals的重写" class="headerlink" title="equals的重写"></a>equals的重写</h5><p>String等很多类(继承于Object类)对equals进行重写，比较两个字符串内容是否相等</p>
-<h2 id="ToString"><a href="#ToString" class="headerlink" title="ToString"></a>ToString</h2><p>在Object类中，toString默认打印对象的地址</p>
-<h4 id="toString的重写"><a href="#toString的重写" class="headerlink" title="toString的重写"></a>toString的重写</h4><pre><code class="java">public class Test {
-    public static void main(String[] args) throws Throwable {
-        Person person = new Person(&quot;张三&quot;, &quot;20&quot;);
-        System.out.println(person);
-    }
-
-    static class Person {
-        private String name;
-        private String age;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getAge() {
-            return age;
-        }
-
-        public void setAge(String age) {
-            this.age = age;
-        }
-
-        Person(String name, String age) {
-            this.name = name;
-            this.age = age;
-        }
-
-        public Person() {
-        }
-
-        @Override
-        public String toString() {
-            return &quot;Person{&quot; + &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; + &quot;, age=&#39;&quot; + age + &#39;\&#39;&#39; + &#39;}&#39;;
-        }
-    }
-}</code></pre>
-<p>如上述例子，如果没有对toString方法进行重写，打印的结果为person的地址，重写之后为<strong>Person{name=&#39;张三’, age=&#39;20’}</strong></p>
-
-  </article>
-  
-    
-<div class="nexmoe-post-copyright">
-<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-<strong>本文作者：</strong>GreedRing<br>
-<strong>本文链接：</strong><a href="http://greedring.com/2019/09/03/JavaSE12/" title="http://greedring.com/2019/09/03/JavaSE12/" target="_blank" rel="noopener">http://greedring.com/2019/09/03/JavaSE12/</a><br>
-
-  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
-
-</div>
-
-
-  
-  <section class="nexmoe-comment">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
-<div id="gitalk"></div>
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '192a24997642e3747506',
-        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
-        id: window.location.pathname,
-        repo: 'greedring.github.io',
-        owner: 'GreedRing',
-        admin: 'GreedRing'
-    })
-    gitalk.render('gitalk')
-</script>
 </section>
-</div>
+
+    <nav class="nexmoe-page-nav">
+      <a class="extend prev" rel="prev" href="/categories/Java/page/3/"><i class="nexmoefont icon-left"></i></a><a class="page-number" href="/categories/Java/">1</a><a class="page-number" href="/categories/Java/page/2/">2</a><a class="page-number" href="/categories/Java/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
+  
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
@@ -294,7 +211,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1570546371179"></script>
+<script src="/js/app.js?v=1570546371716"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
