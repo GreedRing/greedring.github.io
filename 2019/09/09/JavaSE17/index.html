@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>Java基础17 - Greed Ring</title>
+  <title>单列集合 - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,18 +11,18 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="集合概述，单列集合List，增强for循环，可变参数，栈与队列">
+  <meta name="description" content="集合概述，单列集合，增强for循环，可变参数，栈与队列">
 <meta name="keywords" content="JavaSE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础17">
+<meta property="og:title" content="单列集合">
 <meta property="og:url" content="http://greedring.com/2019/09/09/JavaSE17/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="集合概述，单列集合List，增强for循环，可变参数，栈与队列">
+<meta property="og:description" content="集合概述，单列集合，增强for循环，可变参数，栈与队列">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-25T16:21:52.274Z">
+<meta property="og:updated_time" content="2019-12-02T15:10:27.334Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础17">
-<meta name="twitter:description" content="集合概述，单列集合List，增强for循环，可变参数，栈与队列">
+<meta name="twitter:title" content="单列集合">
+<meta name="twitter:description" content="集合概述，单列集合，增强for循环，可变参数，栈与队列">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1575283445899">
+  <link rel="stylesheet" href="/css/style.css?v=1575299817892">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -174,12 +174,12 @@
         
         <img src="https://i.loli.net/2019/09/21/NyYscOljraoSp24.jpg">
         
-        <h1>Java基础17</h1>
+        <h1>单列集合</h1>
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月09日</a>
-    <a><i class="nexmoefont icon-areachart"></i>3k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 14 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>4.9k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 24 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -188,11 +188,11 @@
     
   </div>
   <article>
-    <p>集合概述，单列集合List，增强for循环，可变参数，栈与队列</p>
+    <p>集合概述，单列集合，增强for循环，可变参数，栈与队列</p>
 <a id="more"></a>
 
 
-    <div id="aplayer-KbrfyvbI" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-UJHkmeOt" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="集合引入"><a href="#集合引入" class="headerlink" title="集合引入"></a>集合引入</h2><h4 id="1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"><a href="#1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器" class="headerlink" title="1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"></a>1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器</h4><p>注意：此处的存储是基于内存结构的存储，不同于持久化存储（txt数据库….）</p>
 <h4 id="2-数组特点"><a href="#2-数组特点" class="headerlink" title="2.数组特点"></a>2.数组特点</h4><p>int[] arr = new int[5];<br>User[] arr = new User[5];//对象数组<br>Object[] objects = new Object[5];</p>
@@ -214,7 +214,7 @@
 <li><em>Set(子接口) 无序不可重复</em><br>&emsp;- HashSet<br>&emsp;- LinkedHashSet<br>&emsp;- TreeSet</li>
 </ul>
 <p><strong><label style="color:#ff4e6a">Map：双列集合（一对对数据组成）</label></strong><br>&emsp;- HashMap<br>&emsp;- LinkedHashMap<br>&emsp;- TreeMap<br>&emsp;- HashTable<br>&emsp;- Properties</p>
-<h2 id="Collection方法"><a href="#Collection方法" class="headerlink" title="Collection方法"></a>Collection方法</h2><ul>
+<h2 id="Collection单列集合-常用方法"><a href="#Collection单列集合-常用方法" class="headerlink" title="Collection单列集合 常用方法"></a>Collection单列集合 常用方法</h2><ul>
 <li>boolean &emsp;<label style="color:#ff4e6a">集合A.add(E e);</label><br>向集合A中添加元素</li>
 </ul>
 <ul>
@@ -253,12 +253,6 @@
 <ul>
 <li>Object[] &emsp;<label style="color:#ff4e6a">集合A.toArray();</label><br>返回包含集合A中所有元素的数组</li>
 </ul>
-<blockquote>
-<p><strong>将集合转为数组</strong><br><label style="color:#ff4e6a">Object[] array = A.toArray();</label><br>System.out.println(array);//打印数组地址<br>System.out.println(arrays.toString(array));//打印数组</p>
-</blockquote>
-<blockquote>
-<p><strong>将数组转为集合</strong><br><label style="color:#ff4e6a">Collection A = new Collection(Arrays.asList(array));</label></p>
-</blockquote>
 <ul>
 <li>&lt;T&gt; T[] &emsp;<label style="color:#ff4e6a">集合A.toArray(T[] a);</label><br>返回包含此集合中所有元素的数组；返回数组的运行时类型是指定的数组的运行时类型</li>
 </ul>
@@ -309,9 +303,15 @@ public class Test {
         System.out.println(&quot;删除集合中第一次出现的元素&#39;a&#39;后为：&quot;+collection);
     }
 }</code></pre>
-<h4 id="底层分析"><a href="#底层分析" class="headerlink" title="底层分析"></a>底层分析</h4><p><strong>ArrayList</strong><br>&emsp;懒加载:节约内存空间<br>&emsp;ArrayList list = new ArrayList(); 底层创建一个空的数组（长度为0）<br>&emsp;list.add(123); 如果是第一次add，那么在add过程中会自动进行扩容，长度为10<br>&emsp;list.add(“abc”); 再次add时，会判断当前数组容量是否足够存放，如果不够，也会默认扩容到原有数组长度的1.5倍，并且会将数组内容拷贝到新的数组中</p>
-<p><strong>LinkedList</strong><br>&emsp;基于双向链表结构<br>&emsp;LinkedList linkedList = new LinkedList();<br>&emsp;LinkedList对象默认维护了两个对象Node<e> First、Node<e> Last 默认值都是null，分别代表链表的头指针以及尾指针</e></e></p>
-<p>&emsp;确认双向链表结构：Node<br>&emsp;E item;//当前节点的元素<br>&emsp;Node<e> next;//后置指针（下一个节点元素）<br>&emsp;Node<e> prev;//前置指针（指向）</e></e></p>
+<h4 id="集合与数组间相互转换"><a href="#集合与数组间相互转换" class="headerlink" title="集合与数组间相互转换"></a>集合与数组间相互转换</h4><blockquote>
+<p><strong>将集合转为数组</strong><br><label style="color:#ff4e6a">Object[] array = A.toArray();</label><br>System.out.println(array);//打印数组地址<br>System.out.println(arrays.toString(array));//打印数组</p>
+</blockquote>
+<blockquote>
+<p><strong>将数组转为集合</strong><br><label style="color:#ff4e6a">Collection A = new Collection(Arrays.asList(array));</label></p>
+</blockquote>
+<h4 id="底层分析"><a href="#底层分析" class="headerlink" title="底层分析"></a>底层分析</h4><p><strong>ArrayList</strong><br>&emsp;懒加载:节约内存空间<br>&emsp;ArrayList&emsp;list = new&emsp;ArrayList(); 底层创建一个空的数组（长度为0）<br>&emsp;list.add(123); 如果是第一次add，那么在add过程中会自动进行扩容，长度为10<br>&emsp;list.add(“abc”); 再次add时，会判断当前数组容量是否足够存放，如果不够，也会默认扩容到原有数组长度的1.5倍，并且会将数组内容拷贝到新的数组中</p>
+<p><strong>LinkedList</strong><br>&emsp;基于双向链表结构<br>&emsp;LinkedList&emsp;linkedList = new&emsp;LinkedList();<br>&emsp;LinkedList对象默认维护了两个对象Node&lt;E&gt;&emsp;First、Node&lt;E&gt;&emsp;Last 默认值都是null，分别代表链表的头指针以及尾指针</p>
+<p>&emsp;确认双向链表结构：Node<br>&emsp;E&emsp;item;//当前节点的元素<br>&emsp;Node&lt;E&gt;&emsp;next;//后置指针（下一个节点元素）<br>&emsp;Node&lt;E&gt;&emsp;prev;//前置指针（指向）</p>
 <blockquote>
 <p>Node(Node<e> prev, E element, Node<e> next) {<br>&emsp;&emsp;this.item = element;<br>&emsp;&emsp;this.next = next;<br>&emsp;&emsp;this.prev = prev;<br>}</e></e></p>
 </blockquote>
@@ -416,7 +416,283 @@ public class Test {
         System.out.println(&quot;last=&gt;&quot; + linkedList.getLast());
     }
 }</code></pre>
-<h4 id="增强for循环"><a href="#增强for循环" class="headerlink" title="增强for循环"></a>增强for循环</h4><pre><code class="java">package com.greedring;
+<h2 id="set（接口）存储的无序且不可重复的数据"><a href="#set（接口）存储的无序且不可重复的数据" class="headerlink" title="set（接口）存储的无序且不可重复的数据"></a>set（接口）存储的无序且不可重复的数据</h2><p>Set中方法都是从Collection继承过来的，没有特有方法</p>
+<blockquote>
+<p>&emsp;无序性：&emsp;&emsp;数据在存储时并非按照数组索引顺序进行存储的，是由存储数据的哈希值决定的<br>不可重复性：&emsp;在添加数据时调用hashCode、equals方法，返回值不能为true</p>
+</blockquote>
+<h4 id="HashSet添加元素底层实现原理"><a href="#HashSet添加元素底层实现原理" class="headerlink" title="HashSet添加元素底层实现原理"></a>HashSet添加元素底层实现原理</h4><blockquote>
+<p>在HashSet中添加元素a，首先调用元素a对象的hashCode方法获取其哈希值<br>根据哈希值通过某种算法，找到需要在数组中存储的位置（引索），如果该位置还没有存储元素，那么元素a添加成功（情况1）<br>如果该位置存储了元素b，那么就比较两者的哈希值是否相等，如果两种哈希值一致，那么元素a添加成功（情况2）<br>如果哈希值一致，那么就调用equals方法比较两个对象：</p>
+<ul>
+<li>如果equals()方法返回值是true，则认为两个对象是同一个对象，元素a添加失败（情况3）</li>
+<li>如果equals()返回false，则元素a添加成功（情况4）</li>
+</ul>
+<p><em>对于情况1、4，元素a，元素b在同一个位置是使用链表的结构存储的</em></p>
+</blockquote>
+<ul>
+<li>JDK1.7 新增元素a保存在数组中位置，a元素指向原有元素b</li>
+<li>JDK1.8 原有元素b依旧还在数组位置上，该元素指向元素a</li>
+</ul>
+<p><em>总结：HashSet底层结构：数组+链表</em><br><em>如果需要向HashSet中存储数据，如果需要实现（相同属性数据无法存在多个），需要重写hashCode、equals方法</em></p>
+<h4 id="LinkHashSet-HashSet的子类，在其基础上"><a href="#LinkHashSet-HashSet的子类，在其基础上" class="headerlink" title="LinkHashSet [HashSet的子类，在其基础上]"></a>LinkHashSet [HashSet的子类，在其基础上]</h4><p>每个元素维护了两个引用，一个指向上一个元素，一个指向下一个元素。<br>linkHashSet更适合做set集合的遍历。</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class Test {
+    public static void main(String[] args) {
+        Set set = new LinkedHashSet();
+        set.add(1);
+        set.add(12);
+        set.add(6);
+        set.add(new User(&quot;1&quot;, &quot;Ring&quot;));
+        set.add(new User(&quot;1&quot;, &quot;Ring&quot;));//存储的地址不同
+        set.add(true);
+
+        System.out.println(set);
+    }
+
+    public static class User {
+
+        private String id;
+        private String name;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        User(String id, String name) {
+            super();
+            this.id = id;
+            this.name = name;
+        }
+
+        public User() {
+            super();
+        }
+    }
+}</code></pre>
+<h4 id="Java中比较器"><a href="#Java中比较器" class="headerlink" title="Java中比较器"></a>Java中比较器</h4><p>Java中存在比较运算符：&gt; 、&lt; 、&gt;= 、&lt;= 、!= 、== 、instanceof<br>只能比较基本数据类型，对于对象无法比较，如果在对象中需要实现对象间的比较，只能通过Comparable、Comparator<br>1.Comparable接口<br>String、包装类都已经默认实现了Comparable接口，并重写了int CompareTo(T o)方法，所以String、包装类都<br>默认是按照升序进行排序的<br>int compareTo(T o)如果返回值是正数，代表调用者(this)的值比o要大。负数比o小，0则相等。<br>如果一个自定义类需要实现排序功能，需要让当前类实现Comparable接口，重写compareTo（T o）方法，在该方法中重写排序的规则<br>如果一个类一旦实现了Comparable接口，那么这个类的对象在任意地方都可以进行排序或比较</p>
+<p>2.Comparator接口（定制排序）<br>如果一个类没有实现Comparable接口，但是这个类又不方便实现Comparable接口，或者一个类已经实现了Comparable接口，但是其中的compareTo不满足我们的需求，那么<br>可以使用Comparator接口方式实现定制排序<br>默认升序<br>int compare(T o1, T o2);<br>o1&gt;o2 返回正数<br>o1&lt;o2 返回负数<br>o1==o2 返回0</p>
+<pre><code class="java">package com.greedring;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Test {
+    public static void main(String[] args) {
+        String s1 = &quot;A&quot;;
+        String s2 = &quot;B&quot;;
+        //System.out.println(s1&gt;s2);
+
+        String[] arr = new String[]{&quot;AA&quot;, &quot;BB&quot;, &quot;DD&quot;, &quot;FF&quot;, &quot;EE&quot;, &quot;KK&quot;};
+        int[] arr2 = new int[]{1, 6, 10, 6, 8, 11, 100, 98};
+        Arrays.sort(arr);
+        Arrays.sort(arr2);
+        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr2));
+
+        Student[] users = new Student[5];
+        users[0] = new Student(2, &quot;Jack&quot;);
+        users[1] = new Student(1, &quot;Rose&quot;);
+        users[2] = new Student(1, &quot;Jerry&quot;);
+        users[3] = new Student(1, &quot;Tom&quot;);
+        users[4] = new Student(3, &quot;Marry&quot;);
+        //Arrays.sort(users);//com.igeekhome.pm.User cannot be cast to java.lang.Comparable
+        //System.out.println(Arrays.toString(users));
+        Integer i1 = 12;
+        int compareTo = i1.compareTo(20);
+        System.out.println(compareTo);
+
+        //按照id进行升序，如果id重复按照姓名降序(定制排序)
+        Arrays.sort(users, new Comparator() {
+
+            @Override
+            public int compare(Object o1, Object o2) {
+                if (o1 instanceof Student &amp;&amp; o2 instanceof Student) {
+                    Student s1 = (Student) o1;
+                    Student s2 = (Student) o2;
+                    if (s1.getId() &gt; s2.getId()) {
+                        return 1;
+                    } else if (s2.getId() &lt; s2.getId()) {
+                        return -1;
+                    } else {
+                        //id如果相同按照name倒序
+                        return -s1.getName().compareTo(s2.getName());
+                    }
+                }
+                return 0;
+            }
+        });
+
+        System.out.println(Arrays.toString(users));
+    }
+
+    public static class Student implements Comparable {
+
+        private Integer id;
+        private String name;
+
+        Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        Student(Integer id, String name) {
+            super();
+            this.id = id;
+            this.name = name;
+        }
+
+        public Student() {
+            super();
+        }
+
+        @Override
+        public int hashCode() {
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + ((id == null) ? 0 : id.hashCode());
+            result = prime * result + ((name == null) ? 0 : name.hashCode());
+            return result;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+            if (obj == null)
+                return false;
+            if (getClass() != obj.getClass())
+                return false;
+            Student other = (Student) obj;
+            if (id == null) {
+                if (other.id != null)
+                    return false;
+            } else if (!id.equals(other.id))
+                return false;
+            if (name == null) {
+                if (other.name != null)
+                    return false;
+            } else if (!name.equals(other.name))
+                return false;
+            return true;
+        }
+
+
+        @Override
+        public String toString() {
+            return &quot;Student [id=&quot; + id + &quot;, name=&quot; + name + &quot;]&quot;;
+        }
+
+        @Override
+        public int compareTo(Object o) {
+            if (o instanceof Student) {
+                Student s = (Student) o;
+                //按照id升序
+                /*
+                 * if(this.getId()&gt;s.getId()) { return 1; }else if(this.getId()&lt;s.getId()) {
+                 * return -1; }else { return 0; }
+                 */
+                //借助Integer内部的compareTo方法
+                return this.getId().compareTo(s.getId());
+
+            }
+            return 0;
+        }
+    }
+}</code></pre>
+<h4 id="treeSet"><a href="#treeSet" class="headerlink" title="treeSet"></a>treeSet</h4><p>可以按照添加元素的指定属性进行排序(比较)<br>TreeSet需要添加相同数据类型的元素（比较）</p>
+<blockquote>
+<p>对于自然排序，Comparable 比较两个对象是否相等就不再是通过equals进行比较了，而是通过compareTo进行比较<br>对于定制排序,Comparator 比较两个对象是否相等就不再是通过equals进行比较了，而是通过compare进行比较</p>
+</blockquote>
+<pre><code class="java">package com.greedring;
+
+import java.util.Comparator;
+import java.util.TreeSet;
+
+public class Test {
+    public static void main(String[] args) {
+        TreeSet ts = new TreeSet();
+        //自然排序
+        ts.add(123);
+        ts.add(12);
+        ts.add(1);
+        ts.add(66);
+        //ts.add(true);
+        //ts.add(new User(&quot;1&quot;, &quot;jack&quot;));
+        System.out.println(ts);
+
+        //自然排序
+        TreeSet ts2 = new TreeSet();
+        ts2.add(new User(&quot;1&quot;, &quot;Jack&quot;));
+        ts2.add(new User(&quot;1&quot;, &quot;Rose&quot;));
+        ts2.add(new User(&quot;1&quot;, &quot;Tom&quot;));
+        ts2.add(new User(&quot;4&quot;, &quot;Jerry&quot;));
+        ts2.add(new User(&quot;5&quot;, &quot;Tony&quot;));
+        //根据id排序
+        System.out.println(ts2);
+
+        //先按照id进行升序。如果id一致，再按照name降序（此需求只要比较一次）
+        /*
+         * TreeSet ts3 = new TreeSet(new Comparator&lt;User&gt;() {
+         *
+         * @Override public int compare(User o1, User o2) {
+         * if(o1.getId().compareTo(o2.getId())!=0) { return
+         * o1.getId().compareTo(o2.getId()); }else { return
+         * -o1.getName().compareTo(o2.getName()); }
+         *
+         * } });
+         */
+        TreeSet ts3 = new TreeSet(new MyUserComparator());
+        ts3.add(new User(&quot;1&quot;, &quot;Jack&quot;));
+        ts3.add(new User(&quot;1&quot;, &quot;Rose&quot;));
+        ts3.add(new User(&quot;1&quot;, &quot;Tom&quot;));
+        ts3.add(new User(&quot;4&quot;, &quot;Jerry&quot;));
+        ts3.add(new User(&quot;5&quot;, &quot;Tony&quot;));
+        System.out.println(ts3);
+    }
+}
+
+class MyUserComparator implements Comparator&lt;User&gt; {
+
+    @Override
+    public int compare(User o1, User o2) {
+        if (o1.getId().compareTo(o2.getId()) != 0) {
+            return o1.getId().compareTo(o2.getId());
+        } else {
+            return -o1.getName().compareTo(o2.getName());
+        }
+    }
+}</code></pre>
+<h2 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a>零碎知识点</h2><h4 id="增强for循环-foreach"><a href="#增强for循环-foreach" class="headerlink" title="增强for循环(foreach)"></a>增强for循环(foreach)</h4><blockquote>
+<p><strong>格式：</strong></p>
+<p>for(集合、数组中元素类型&emsp;变量名 <strong>:</strong> 数组、集合){<br>&emsp;&ensp;变量名存放的就是每次遍历的元素<br>}</p>
+</blockquote>
+<pre><code class="java">package com.greedring;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -445,8 +721,9 @@ public class Test {
     }
 }</code></pre>
 <h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><blockquote>
-<p>&emsp;1.格式： 数据类型… 变量名&emsp;&emsp;[在形参声明中使用]<br>&emsp;2.可变参数传递实参时，可以传递一个数组的实参（可变参数使用类似数组 length args[i]）<br>&emsp;3.可变参数在调用方法时，可以传递0个、1个、2个…数量的参数<br>&emsp;4.可变参数的方法与同名的方法可以构成重载(但是存在匹配方法时，会优点调用匹配的非可变参数方法)<br>&emsp;5.可变参数的方法与同名的数组作为参数的方法不构成重载<br>&emsp;6.可变参数必须声明在形参列表的最后一个<br>&emsp;7.在一个方法的参数列表中，只能声明一个可变参数</p>
+<p><strong>格式：</strong><br>&emsp;&emsp;&ensp;数据类型… 变量名&emsp;&emsp;&emsp;[在形参声明中使用]</p>
 </blockquote>
+<p>1.可变参数传递实参时，可以传递一个数组的实参（可变参数使用类似数组 length args[i]）<br>2.可变参数在调用方法时，可以传递0个、1个、2个…数量的参数<br>3.可变参数的方法与同名的方法可以构成重载(但是存在匹配方法时，会优点调用匹配的非可变参数方法)<br>4.可变参数的方法与同名的数组作为参数的方法不构成重载<br>5.可变参数必须声明在形参列表的最后一个<br>6.在一个方法的参数列表中，只能声明一个可变参数</p>
 <pre><code class="java">package com.greedring;
 
 public class Test {
@@ -614,7 +891,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1575283445905"></script>
+<script src="/js/app.js?v=1575299817899"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 

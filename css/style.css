@@ -78,7 +78,7 @@ body {
   -ms-flex: 1;
   flex: 1;
   text-align: center;
-  color: #a3a8ae;
+  color: #787878;
 }
 #nexmoe-header .nexmoe-count div span {
   color: #ffb11b;
@@ -102,7 +102,7 @@ body {
 }
 #nexmoe-header .nexmoe-list .nexmoe-list-item {
   padding: 0 36px;
-  color: #9ca2a8;
+  color: #787878;
   transition: all 0.35s;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -115,11 +115,11 @@ body {
 #nexmoe-header .nexmoe-list .nexmoe-list-item.active {
   opacity: 0.9;
   background: #ff4e6a;
-  box-shadow: 0 2px 12px #d0104c;
+  box-shadow: 0 2px 12px #ff4e6a;
 }
 #nexmoe-header .nexmoe-list .nexmoe-list-item i {
   font-size: 22px;
-  color: #9ca2a8;
+  color: #787878;
 }
 #nexmoe-header .nexmoe-list .nexmoe-list-item .mdui-list-item-content {
   margin-left: 0px;
@@ -155,7 +155,7 @@ body {
 #nexmoe-header .nexmoe-widget-wrap .nexmoe-widget ul li a {
   padding: 14px 10px;
   display: block;
-  color: #606266;
+  color: #787878;
 }
 #nexmoe-header .nexmoe-widget-wrap .nexmoe-widget ul li:last-child {
   border-bottom: none;
@@ -219,7 +219,7 @@ body {
 #nexmoe-header .nexmoe-copyright {
   padding: 0 30px;
   text-align: right;
-  color: #777;
+  color: #787878;
   white-space: normal;
   margin-bottom: 20px;
 }
@@ -260,7 +260,7 @@ body {
 }
 #nexmoe-content .nexmoe-primary .nexmoe-page-nav .page-number,
 #nexmoe-content .nexmoe-primary .nexmoe-page-nav .extend {
-  color: #999;
+  color: #787878;
   border-radius: 10px;
   width: 35px;
   height: 35px;
