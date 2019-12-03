@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>Java基础19 - Greed Ring</title>
+  <title>标签：Spring - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,18 +11,13 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="day19">
-<meta name="keywords" content="JavaSE">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java基础19">
-<meta property="og:url" content="http://greedring.com/2019/09/12/JavaSE19/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Greed Ring">
+<meta property="og:url" content="http://greedring.com/tags/Spring/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="day19">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-21T09:01:16.273Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础19">
-<meta name="twitter:description" content="day19">
+<meta name="twitter:title" content="Greed Ring">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,10 +25,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1575356899656">
-<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+  <link rel="stylesheet" href="/css/style.css?v=1575356900517">
 </head>
 
 <body class="mdui-drawer-body-left">
@@ -169,84 +161,37 @@
   </div>
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
-        <div class="nexmoe-post">
-    <div class="nexmoe-post-cover"> 
-        
-        <img src="https://i.loli.net/2019/09/21/NyYscOljraoSp24.jpg">
-        
-        <h1>Java基础19</h1>
+        <section class="nexmoe-posts" id="brand-waterfall">
+    
+    <div class="nexmoe-post">
+        <a href="/2019/12/03/Spring01/">
+            <div class="nexmoe-post-cover mdui-ripple"> 
+                
+                <img src="https://i.loli.net/2019/12/03/XzCQuPdGfZjAL2O.jpg" alt="Spring01">
+                
+                <h1>Spring01</h1>
+            </div>
+        </a>
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年12月03日</a>
+            <a><i class="nexmoefont icon-areachart"></i>4 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+            
+                <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
+            
+            
+                <a class="nexmoefont icon-tag-fill -link" href="/tags/Spring/">Spring</a>
+            
+        </div>
+        <article>
+            
+            <p>Spring框架</p>
+            
+        </article>
     </div>
-  <div class="nexmoe-post-meta">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月12日</a>
-    <a><i class="nexmoefont icon-areachart"></i>426 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
-      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
-    
-    
-      <a class="nexmoefont icon-tag-fill -link" href="/tags/JavaSE/">JavaSE</a>
-    
-  </div>
-  <article>
-    <p>day19</p>
-<a id="more"></a>
-
-
-    <div id="aplayer-mawHEvTP" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
-
-<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>1.泛型可以灵活的将数据类型应用到不同的类、方法、接口中，并将数据类型作为参数传递 [泛型类、泛型接口、泛型方法]<br>2.泛型是数据类的一部分，我们将类名与泛型合并一起看作数据类型<br>3.泛型定义：定义泛型可以在类中预支地使用未知数据类型<br>4.泛型的使用：一般在创建对象时，将未知的类型确定为具体的类型。当没有指定泛型时，默认类型为Object类型。</p>
-<blockquote>
-<p>（1）.泛型类<br>当创建该类的对象时，传入类型,此时类上的泛型被确定<br>class  类名&lt;E,T,……&gt;{//&lt;&gt;中的泛型可以写无数个<br> //E,T……能够做为类型在该类内部被使用<br>}</p>
-</blockquote>
-<blockquote>
-<p>（2）.泛型接口<br>interface 接口名&lt;Q,E,R……&gt;{<br>public abstract void method(T t);//假设定义一个方法<br>}</p>
-</blockquote>
-<p><strong>方式一：</strong><br>实现类在实现接口时，指定泛型的实际类型</p>
-<pre><code>public class MyUserClass implements 接口名&lt;User&gt;{
-  @Override
-  public void printMessage(User obj) {
-  }    
-}</code></pre><p><strong>方式二：</strong><br>实现类依旧不指定泛型的实际类型，实现类也需要是一个泛型类</p>
-<pre><code>class 类名&lt;T&gt; implements 接口名&lt;T&gt;{
-  //由于没有指定接口中具体的数据类型,所以方法中仍然使用这种不确定的数据类型
-  @Override
-  public void method(T t) {    
-  }
-}</code></pre><blockquote>
-<p>（3）.泛型方法<br>在调用泛型方法并传入实参的时候才能确定方法上形参类型<br>修饰符&lt;T，Q，E…&gt;返回值类型方法名(T t,Q q,……){<br>//方法上的泛型定义在返回值的前面<br>}</p>
-</blockquote>
-
-  </article>
-  
-    
-<div class="nexmoe-post-copyright">
-<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-<strong>本文作者：</strong>GreedRing<br>
-<strong>本文链接：</strong><a href="http://greedring.com/2019/09/12/JavaSE19/" title="http://greedring.com/2019/09/12/JavaSE19/" target="_blank" rel="noopener">http://greedring.com/2019/09/12/JavaSE19/</a><br>
-
-  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
-
-</div>
-
-
-  
-  <section class="nexmoe-comment">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
-<div id="gitalk"></div>
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '192a24997642e3747506',
-        clientSecret: '54617c6a7809ea7b74d1d9d215e1b31a734c25ff',
-        id: window.location.pathname,
-        repo: 'greedring.github.io',
-        owner: 'GreedRing',
-        admin: 'GreedRing'
-    })
-    gitalk.render('gitalk')
-</script>
 </section>
-</div>
+
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
@@ -262,7 +207,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1575356899661"></script>
+<script src="/js/app.js?v=1575356900527"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
