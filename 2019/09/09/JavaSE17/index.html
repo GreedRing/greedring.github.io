@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="集合概述，单列集合，增强for循环，可变参数，栈与队列">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-03T01:08:08.926Z">
+<meta property="og:updated_time" content="2019-12-03T08:47:45.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单列集合">
 <meta name="twitter:description" content="集合概述，单列集合，增强for循环，可变参数，栈与队列">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1575361449497">
+  <link rel="stylesheet" href="/css/style.css?v=1575362887859">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -192,7 +192,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-LvXOZCiU" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-silCuswG" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="集合引入"><a href="#集合引入" class="headerlink" title="集合引入"></a>集合引入</h2><h4 id="1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"><a href="#1-集合：集合（数组）是对多个数据进行存储操作的结构，Java容器" class="headerlink" title="1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器"></a>1.集合：集合（数组）是对多个数据进行存储操作的结构，Java容器</h4><p>注意：此处的存储是基于内存结构的存储，不同于持久化存储（txt数据库….）</p>
 <h4 id="2-数组特点"><a href="#2-数组特点" class="headerlink" title="2.数组特点"></a>2.数组特点</h4><p>int[] arr = new int[5];<br>User[] arr = new User[5];//对象数组<br>Object[] objects = new Object[5];</p>
@@ -484,8 +484,12 @@ public class Test {
         }
     }
 }</code></pre>
-<h4 id="Java中比较器"><a href="#Java中比较器" class="headerlink" title="Java中比较器"></a>Java中比较器</h4><p>Java中存在比较运算符：&gt; 、&lt; 、&gt;= 、&lt;= 、!= 、== 、instanceof<br>只能比较基本数据类型，对于对象无法比较，如果在对象中需要实现对象间的比较，只能通过Comparable、Comparator<br>1.Comparable接口<br>String、包装类都已经默认实现了Comparable接口，并重写了int CompareTo(T o)方法，所以String、包装类都<br>默认是按照升序进行排序的<br>int compareTo(T o)如果返回值是正数，代表调用者(this)的值比o要大。负数比o小，0则相等。<br>如果一个自定义类需要实现排序功能，需要让当前类实现Comparable接口，重写compareTo（T o）方法，在该方法中重写排序的规则<br>如果一个类一旦实现了Comparable接口，那么这个类的对象在任意地方都可以进行排序或比较</p>
-<p>2.Comparator接口（定制排序）<br>如果一个类没有实现Comparable接口，但是这个类又不方便实现Comparable接口，或者一个类已经实现了Comparable接口，但是其中的compareTo不满足我们的需求，那么<br>可以使用Comparator接口方式实现定制排序<br>默认升序<br>int compare(T o1, T o2);<br>o1&gt;o2 返回正数<br>o1&lt;o2 返回负数<br>o1==o2 返回0</p>
+<h4 id="Java中比较器"><a href="#Java中比较器" class="headerlink" title="Java中比较器"></a>Java中比较器</h4><p>Java中存在比较运算符：&gt; 、&lt; 、&gt;= 、&lt;= 、!= 、== 、instanceof<br>只能比较基本数据类型，对于对象无法比较，如果在对象中需要实现对象间的比较，只能通过Comparable、Comparator</p>
+<p><strong>1.Comparable接口</strong><br>String、包装类都已经默认实现了Comparable接口，并重写了int CompareTo(T o)方法，所以String、包装类都<br>默认是按照升序进行排序的<br>int compareTo(T o)如果返回值是正数，代表调用者(this)的值比o要大。负数比o小，0则相等。<br>如果一个自定义类需要实现排序功能，需要让当前类实现Comparable接口，重写compareTo（T o）方法，在该方法中重写排序的规则<br>如果一个类一旦实现了Comparable接口，那么这个类的对象在任意地方都可以进行排序或比较</p>
+<p><strong>2.Comparator接口（定制排序）</strong><br>如果一个类没有实现Comparable接口，但是这个类又不方便实现Comparable接口，或者一个类已经实现了Comparable接口，但是其中的compareTo不满足我们的需求，那么可以使用Comparator接口方式实现定制排序(默认升序)</p>
+<blockquote>
+<p>int compare(T o1, T o2);<br>&nbsp;o1 &gt; o2 &nbsp;&nbsp;&nbsp;返回正数<br>&nbsp;o1 &lt; o2 &nbsp;&nbsp;&nbsp;返回负数<br>o1 == o2 &nbsp;&nbsp;返回0</p>
+</blockquote>
 <pre><code class="java">package com.greedring;
 
 import java.util.Arrays;
@@ -894,7 +898,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1575361449502"></script>
+<script src="/js/app.js?v=1575362887865"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
