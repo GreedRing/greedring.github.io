@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="双列集合">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-03T15:30:50.123Z">
+<meta property="og:updated_time" content="2019-12-04T08:35:36.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双列集合">
 <meta name="twitter:description" content="双列集合">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1575431189656">
+  <link rel="stylesheet" href="/css/style.css?v=1575448816142">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -178,7 +178,7 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月10日</a>
-    <a><i class="nexmoefont icon-areachart"></i>3.2k 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>3.3k 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 16 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
@@ -192,7 +192,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-iohmOUAW" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-rZDdMflm" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>接口，双列集合（存储一对一对的数据）类似函数y=f(x)</p>
 <blockquote>
@@ -208,10 +208,10 @@
 </ul>
 </blockquote>
 <blockquote>
-<p><strong>Hash底层实现原理：</strong></p>
+<p><strong>HashMap底层实现原理：</strong></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;HashMap map = new HashMap(); //当创建HashMap时，底层默认创建一个Entry数组，并进行默认初始化，初始化长度为<strong><label style="color:#ff4e6a">16</label></strong><br>&nbsp;&nbsp;&nbsp;&nbsp;map.put(k1,v1);</p>
 <ul>
-<li>先调用k1对象的hashCode方式，获取k1对象的hasCode方法，获取k1的哈希值，根据某种算法得到索引值。判断当前索引位置上是否有元素，如果当前索引位置上没有元素，k1，v1直接添加成功。</li>
+<li>先调用k1对象的hashCode方式，获取k1对象的hashCode方法，获取k1的哈希值，根据某种算法得到索引值。判断当前索引位置上是否有元素，如果当前索引位置上没有元素，k1，v1直接添加成功。</li>
 </ul>
 <ul>
 <li>若前索引位置上存在一个或多个元素，将k1的哈希值依次与这一个或多个已经存在的key的哈希值进行比较，如果k1的哈希值与已存在元素的哈希值都不同，k1、v1添加成功。</li>
@@ -235,9 +235,48 @@
 <p>(3).JDK1.7 桶中的数据是新增数据指向原有数据；JDK1.8 是原有数据指向新增数据。</p>
 <p>(4).JDK1.8 在某种情况（当前数组索引下节点的长度超过了8并且数组长度超过了64）下，会将桶中（数组中某个索引位置）的数据由链表结构转换为树形结构（树化）。</p>
 </blockquote>
-<h2 id="Map常用方法"><a href="#Map常用方法" class="headerlink" title="Map常用方法"></a>Map常用方法</h2><p>1.map的操作（新增、删除、修改）<br>void clear()<br>从这个映射中移除所有的映射（可选操作）。<br>V put(K key, V value)<br>将指定的值与此映射中的指定键关联（可选操作）。<br>void putAll(Map&lt;? extends K,? extends V&gt; m)<br>从指定的映射到这个Map（可选操作）复制所有的映射。<br>V remove(Object key)<br>如果存在（可选操作），则从该Map中移除一个键的映射。</p>
-<p>2.map获取<br>boolean containsKey(Object key)<br>返回 true如果这Map包含一个指定的键映射。<br>boolean containsValue(Object value)<br>返回 true如果映射到指定的值的一个或多个键。<br>V get(Object key)<br>返回指定的键映射的值，或 null如果这个Map不包含的键映射。<br>int size()<br>返回这个映射中的键值映射的数目。<br>boolean isEmpty()<br>返回 true如果这个Map不包含键值的映射。<br>boolean equals(Object o)<br>将指定的对象与此映射的相等性进行比较。</p>
-<p>3.map的元操作<br>Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()<br>返回一个 Set视图的映射包含在这个Map。<br>Set<k> keySet()<br>返回一个 Set的关键视图包含在这个Map。<br>Collection<v> values()<br>返回一个 Collection视图的值包含在这个Map。</v></k></p>
+<h2 id="Map常用方法"><a href="#Map常用方法" class="headerlink" title="Map常用方法"></a>Map常用方法</h2><p><strong>1.map的操作（新增、删除、修改）</strong></p>
+<ul>
+<li>V&emsp;<strong><label style="color:#ff4e6a">集合A.put(K key, V value);</label></strong><br>将指定的值与集合A中的指定键关联。</li>
+</ul>
+<ul>
+<li>void&emsp;<strong><label style="color:#ff4e6a">集合A.clear();</label></strong><br>从集合A中移除所有的映射。</li>
+</ul>
+<ul>
+<li>void&emsp;<strong><label style="color:#ff4e6a">集合A.putAll(集合B);</label></strong><br>从集合B映射到集合A，复制所有的映射；如果集合B映射到集合A中的相同键，用集合B的值覆盖集合A的。</li>
+</ul>
+<ul>
+<li>V&emsp;<strong><label style="color:#ff4e6a">集合A.remove(Object key);</label></strong><br>如果存在，则从该集合A中移除一个键的映射。</li>
+</ul>
+<p><strong>2.map获取</strong></p>
+<ul>
+<li>V&emsp;<strong><label style="color:#ff4e6a">集合A.get(Object key);</label></strong><br>返回集合A中指定的键映射的值；如果集合A不包含的键映射，返回null。</li>
+</ul>
+<ul>
+<li>boolean&emsp;<strong><label style="color:#ff4e6a">集合A.containsKey(Object key);</label></strong><br>如果集合A包含一个指定的键映射，返回true。</li>
+</ul>
+<ul>
+<li>boolean&emsp;<strong><label style="color:#ff4e6a">集合A.containsValue(Object value);</label></strong><br>如果集合A中映射到指定值的一个或多个键，返回true。</li>
+</ul>
+<ul>
+<li>int&emsp;<strong><label style="color:#ff4e6a">集合A.size();</label></strong><br>返回集合A中的键值映射的数目。</li>
+</ul>
+<ul>
+<li>boolean&emsp;<strong><label style="color:#ff4e6a">集合A.isEmpty();</label></strong><br>如果集合A不包含键值的映射，返回true。</li>
+</ul>
+<ul>
+<li>boolean&emsp;<strong><label style="color:#ff4e6a">集合A.equals(Object o);</label></strong><br>将指定的对象与此映射的相等性进行比较。</li>
+</ul>
+<p><strong>3.map的元操作</strong></p>
+<ul>
+<li>Set<k>&emsp;<strong><label style="color:#ff4e6a">集合A.keySet();</label></strong><br>获取集合A所有的key。</k></li>
+</ul>
+<ul>
+<li>Collection<v>&emsp;<strong><label style="color:#ff4e6a">集合A.map4.values();</label></strong><br>获取集合A所有的value。</v></li>
+</ul>
+<ul>
+<li>Set&lt;Map.Entry&lt;K,V&gt;&gt;&emsp;<strong><label style="color:#ff4e6a">集合A.entrySet();</label></strong><br>获取集合A所有的键值对。</li>
+</ul>
 <pre><code class="java">package com.greedring;
 
 import java.util.Collection;
@@ -249,90 +288,112 @@ import java.util.Set;
 public class Test {
     public static void main(String[] args) {
         //以HashMap为例演示Map中常用方法
-        //1.Map操作
         Map map = new HashMap();
-        //1.1 新增元素
+        //新增元素
         map.put(1, &quot;AA&quot;);
         map.put(&quot;bb&quot;, &quot;BB&quot;);
         map.put(&quot;cc&quot;, &quot;CC&quot;);
         map.put(&quot;CC&quot;, &quot;CC&quot;);
-        map.put(new User(&quot;1&quot;, &quot;jack&quot;), &quot;666&quot;);
-        //1.2修改
-        map.put(new User(&quot;1&quot;, &quot;jack&quot;), &quot;888&quot;);
-        map.put(&quot;user&quot;, new User(&quot;1&quot;, &quot;Jack&quot;));
+        map.put(new User(&quot;1&quot;, &quot;Yae&quot;), &quot;666&quot;);
+        System.out.println(map);
+        //修改
+        map.put(new User(&quot;1&quot;, &quot;Yae&quot;), &quot;888&quot;);
+        map.put(&quot;user&quot;, new User(&quot;1&quot;, &quot;Yae&quot;));
         map.put(1, &quot;AAAA&quot;);
         System.out.println(map);
 
-        //1.3 清除
-        //map.clear();//移除集合中内容 （注意移除后并不是null）
-        //System.out.println(map);
+/*        //清除
+        map.clear();//移除集合中内容 （注意移除后并不是null）
+        System.out.println(map);*/
 
-        //1.4 以某一个key移除键值对,并返回移除的value
-        //Object remove = map.remove(1);
-        //System.out.println(&quot;remove:&quot;+remove);
-        //System.out.println(map);
+        //新集合中所有Entry添加到原集合中
+        Map map2 = new HashMap();
+        map2.put(&quot;bb&quot;, &quot;map1&quot;);
+        map2.put(&quot;new&quot;, &quot;map1&quot;);
+        map.putAll(map2);
+        System.out.println(map);
 
-        //2.获取
-        //2.1 根据指定key获取value
+/*        //以某一个key移除键值对,并返回移除的value
+        Object remove = map.remove(1);
+        System.out.println(&quot;remove:&quot;+remove);
+        System.out.println(map);*/
+
+        System.out.println(&quot;=================================================&quot;);
+
+        //获取
+        //根据指定key获取value
         Object object = map.get(1);
         System.out.println(object);
-        Object object2 = map.get(new User(&quot;1&quot;, &quot;jack&quot;));
+        Object object2 = map.get(&quot;666&quot;);//如果不存在某个key返回null
         System.out.println(object2);
-        Object object3 = map.get(&quot;666&quot;);//如果不存在某个key返回null
+        Object object3 = map.get(new User(&quot;1&quot;, &quot;Yae&quot;));//匿名地址不同
         System.out.println(object3);
-        System.out.println(&quot;--------------&quot;);
-        //2.2 boolean containsKey(Object key) 判断key是否存在 （key使用set存储） 底层调用hashCode、equals
+
+        System.out.println(&quot;=================================================&quot;);
+
+        //判断key是否存在 （key使用set存储） 底层调用hashCode、equals
         boolean containsKey = map.containsKey(&quot;bb&quot;);
         System.out.println(containsKey);
-        boolean containsKey2 = map.containsKey(new User(&quot;1&quot;, &quot;jack&quot;));
+        boolean containsKey2 = map.containsKey(new User(&quot;1&quot;, &quot;Yae&quot;));
         System.out.println(containsKey2);
-        System.out.println(&quot;--------------&quot;);
-        //2.3 boolean containsValue(Object value)  判断value是否存在  （value使用collection存储） 底层调用equals
+        //判断value是否存在  （value使用collection存储） 底层调用equals
         boolean containsValue = map.containsValue(&quot;CC&quot;);
         System.out.println(containsValue);
-        boolean containsValue2 = map.containsValue(new User(&quot;1&quot;, &quot;Jack&quot;));
+        boolean containsValue2 = map.containsValue(new User(&quot;1&quot;, &quot;Yae&quot;));
         System.out.println(containsValue2);
-        System.out.println(&quot;===================&quot;);
-        //2.4 获取键值对的数量
+
+        System.out.println(&quot;=================================================&quot;);
+
+        //获取键值对的数量
         System.out.println(map.size());
-        //2.5 判断集合中是否包含键值对
+
+        System.out.println(&quot;=================================================&quot;);
+
+        //判断集合中是否不包含键值对
+        System.out.println(map.isEmpty());//存在键值对返回false
         map.clear();
         System.out.println(map.isEmpty());
-        System.out.println(&quot;----------------&quot;);
-        //2.6 判断两个集合中元素是否相同
-        Map m1 = new HashMap();
-        m1.put(&quot;a&quot;, &quot;AA&quot;);
-        m1.put(&quot;b&quot;, &quot;BB&quot;);
-        m1.put(&quot;c&quot;, &quot;CC&quot;);
-        Map m2 = new HashMap();
-        m2.put(&quot;a&quot;, &quot;AA&quot;);
-        m2.put(&quot;b&quot;, &quot;BB&quot;);
-        m2.put(&quot;c&quot;, &quot;CC&quot;);
-        m2.put(&quot;d&quot;, &quot;CC&quot;);
-        System.out.println(m1.equals(m2));
 
-        System.out.println(&quot;=======================&quot;);
-        //1.map元操作
-        //1.1 获取所有的key
-        Set keySet = m2.keySet();
+        System.out.println(&quot;=================================================&quot;);
+
+        //判断两个集合中元素是否相同
+        Map map3 = new HashMap();
+        map3.put(&quot;a&quot;, &quot;AA&quot;);
+        map3.put(&quot;b&quot;, &quot;BB&quot;);
+        map3.put(&quot;c&quot;, &quot;CC&quot;);
+        Map map4 = new HashMap();
+        map4.put(&quot;a&quot;, &quot;AA&quot;);
+        map4.put(&quot;b&quot;, &quot;BB&quot;);
+        map4.put(&quot;c&quot;, &quot;CC&quot;);
+        System.out.println(map3.equals(map4));
+        map4.put(&quot;d&quot;, &quot;CC&quot;);
+        System.out.println(map3.equals(map4));
+
+        System.out.println(&quot;=================================================&quot;);
+
+        //map元操作
+        //获取所有的key
+        Set keySet = map4.keySet();
         System.out.println(keySet);
 
-        //1.2获取所有的value
-        Collection values = m2.values();
+        //获取所有的value
+        Collection values = map4.values();
         System.out.println(values);
 
-        //1.3获取所有的键值对
-        Set entrySet = m2.entrySet();
+        //获取所有的键值对
+        Set entrySet = map4.entrySet();
         System.out.println(entrySet);
 
-        System.out.println(&quot;===================&quot;);
+        System.out.println(&quot;=================================================&quot;);
+        System.out.println(&quot;=================================================&quot;);
+
         //遍历map集合
         //方式一(1/2)：
         Iterator iterator = keySet.iterator();
         while (iterator.hasNext()) {
             Object key = iterator.next();
             //根据key获取value
-            Object val = m2.get(key);
+            Object val = map4.get(key);
             System.out.println(&quot;Key:&quot; + key + &quot;;Value:&quot; + val);
         }
 
@@ -599,7 +660,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1575431189660"></script>
+<script src="/js/app.js?v=1575448816151"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
