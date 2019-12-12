@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="双列集合">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-04T08:35:36.550Z">
+<meta property="og:updated_time" content="2019-12-10T03:27:32.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="双列集合">
 <meta name="twitter:description" content="双列集合">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1575514224231">
+  <link rel="stylesheet" href="/css/style.css?v=1576154870641">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -192,7 +192,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-rZDdMflm" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-zCgbozbh" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>接口，双列集合（存储一对一对的数据）类似函数y=f(x)</p>
 <blockquote>
@@ -318,7 +318,7 @@ public class Test {
         System.out.println(&quot;remove:&quot;+remove);
         System.out.println(map);*/
 
-        System.out.println(&quot;=================================================&quot;);
+        System.out.println(&quot;*************************************************&quot;);
 
         //获取
         //根据指定key获取value
@@ -384,11 +384,10 @@ public class Test {
         Set entrySet = map4.entrySet();
         System.out.println(entrySet);
 
-        System.out.println(&quot;=================================================&quot;);
-        System.out.println(&quot;=================================================&quot;);
+        System.out.println(&quot;*************************************************&quot;);
 
         //遍历map集合
-        //方式一(1/2)：
+        //通过迭代器遍历键值
         Iterator iterator = keySet.iterator();
         while (iterator.hasNext()) {
             Object key = iterator.next();
@@ -397,32 +396,31 @@ public class Test {
             System.out.println(&quot;Key:&quot; + key + &quot;;Value:&quot; + val);
         }
 
-        System.out.println(&quot;=========&quot;);
-        //方式二(1)：
+        System.out.println(&quot;=================================================&quot;);
+
+        //通过迭代器遍历键值对
         Iterator iterator2 = entrySet.iterator();
         while (iterator2.hasNext()) {
             Map.Entry entry = (Map.Entry) iterator2.next();
             System.out.println(entry.getKey() + &quot;---&quot; + entry.getValue());
         }
 
-        System.out.println(&quot;========&quot;);
+        System.out.println(&quot;=================================================&quot;);
 
-        //方式二(2)：
+        //通过foreach遍历
         for (Object entry : entrySet) {
             Map.Entry e = (Map.Entry) entry;
             System.out.println(e.getKey() + &quot;---&quot; + e.getValue());
         }
     }
 }</code></pre>
-<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p>Map的主要实现类，线程不安全，效率高，可存储为null的key和value<br><strong>LinkedMap</strong>HashMap的子类，能够安装元素的添加顺序进行遍历（因为每个元素包含了两个引用）<br>如果涉及到频繁遍历操作时，LinkedHashMap性能高于HashMap</p>
-<blockquote>
-<p>LinkedHashMap 在 HashMap基础之上，每个节点对象<br>static class Entry&lt;K,V&gt; extends HashMap.Node&lt;K,V&gt; {<br>Entry&lt;K,V&gt; before, after;//before:指向上一个添加到集合中的元素   after:指向下一个添加到集合中的元素<br>Entry(int hash, K key, V value, Node&lt;K,V&gt; next) {<br>  super(hash, key, value, next);<br> }<br>}</p>
+<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><blockquote>
+<p>LinkedHashMap 在 HashMap基础之上，每个节点对象<br>static class Entry&lt;K<strong>,</strong> V&gt; extends HashMap.Node&lt;K<strong>,</strong> V&gt; {<br>&emsp;&emsp;Entry&lt;K<strong>,</strong> V&gt; before<strong>,</strong> after<strong>;</strong>//before：指向上一个添加到集合中的元素&emsp;after：指向下一个添加到集合中的元素<br>&emsp;&emsp;Entry(int hash<strong>,</strong> K key<strong>,</strong> V value<strong>,</strong> Node&lt;K<strong>,</strong> V&gt; next) {<br>&emsp;&emsp;&emsp;super(hash<strong>,</strong> key<strong>,</strong> value<strong>,</strong> next)<strong>;</strong><br>&emsp;&emsp;&nbsp;}<br>}</p>
 </blockquote>
 <pre><code class="java">package com.greedring;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 
 public class Test {
     public static void main(String[] args) {
@@ -436,7 +434,7 @@ public class Test {
         System.out.println(map);
     }
 }</code></pre>
-<h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h4><p>可以对添加到集合中的元素进行排序（按照key的自然排序或者如果key是对象的话，</p>
+<h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h4><p>可以对添加到集合中的元素进行排序(根据其键的自然顺序进行排序，或者根据创建映射时提供的 Comparator 进行排序)</p>
 <pre><code class="java">package com.greedring;
 
 import java.util.Comparator;
@@ -466,7 +464,6 @@ public class Test {
         System.out.println(map);
     }
 }</code></pre>
-<h4 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h4><p>古老的双列集合，线程安全，效率低<br><strong>Properties</strong>操作属性配置文件的key和value都必须是String型</p>
 <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><blockquote>
 <p>简述Collection与Collections（集合的工具类）区别？<br>     1.static <t> boolean addAll(Collection<? super T> c, T... elements)
         将所有指定的元素添加到指定的集合中。
@@ -547,13 +544,21 @@ public class Test {
     }
 }</code></pre>
 <h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><blockquote>
-<p>static void reverse(List<?> list) 
-反转指定列表中元素的顺序。  
-    static void shuffle(List<?> list)<br>随机置换指定列表使用随机默认源。<br>    static &lt;T extends Comparable<? super T>> void sort(List<t> list) 
-指定列表为升序排序，根据其元素的 natural ordering。  
-    static <t> void sort(List<t> list, Comparator<? super T> c) 
-根据指定的比较器指定的顺序对指定的列表进行排序。  
-    static void swap(List<?> list, int i, int j)<br>在指定的列表中的指定位置上交换元素。 </t></t></t></p>
+<ul>
+<li>static void reverse(List&lt;?&gt; list)<br>反转指定列表中元素的顺序。</li>
+</ul>
+<ul>
+<li>static void shuffle(List&lt;?&gt; list)<br>随机置换指定列表使用随机默认源。</li>
+</ul>
+<ul>
+<li>static &lt;T extends Comparable&lt;? super T&gt;&gt; void sort(List&lt;T&gt; list)<br>指定列表为升序排序，根据其元素的 natural ordering。</li>
+</ul>
+<ul>
+<li>static &lt;T&gt; void sort(List&lt;T&gt; list, Comparator&lt;? super T&gt; c)<br>根据指定的比较器指定的顺序对指定的列表进行排序。</li>
+</ul>
+<ul>
+<li>static void swap(List&lt;?&gt; list, int i, int j)<br>在指定的列表中的指定位置上交换元素。</li>
+</ul>
 </blockquote>
 <pre><code class="java">package com.greedring;
 
@@ -570,11 +575,11 @@ public class Test {
         list.add(false);
         list.add(new Date());
 
-        // 反转
+        //反转
         Collections.reverse(list);
         System.out.println(list);
 
-        // 打乱集合中元素
+        //打乱集合中元素
         Collections.shuffle(list);
         System.out.println(list);
         Collections.shuffle(list);
@@ -582,7 +587,7 @@ public class Test {
         Collections.shuffle(list);
         System.out.println(list);
 
-        System.out.println(&quot;=====================&quot;);
+        System.out.println(&quot;=================================================&quot;);
 
         List l2 = new ArrayList();// 默认实现了Compareable接口，默认升序
         /*
@@ -595,11 +600,11 @@ public class Test {
         l2.add(new User(&quot;5&quot;, &quot;Jack&quot;));
 
         Collections.sort(l2);
-        // Collections.sort(list, c);
+        //Collections.sort(list, c);
 
         System.out.println(l2);
 
-        System.out.println(&quot;==============&quot;);
+        System.out.println(&quot;=================================================&quot;);
 
         list = new ArrayList();
         list.add(1);
@@ -608,7 +613,7 @@ public class Test {
         list.add(new Date());
 
         System.out.println(list);
-        // 交换位置
+        //交换位置
         Collections.swap(list, 1, 2);
         System.out.println(list);
     }
@@ -660,7 +665,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1575514224237"></script>
+<script src="/js/app.js?v=1576154870648"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
