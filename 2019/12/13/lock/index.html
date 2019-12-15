@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>SurpriseGift - Greed Ring</title>
+  <title>Java锁的实现原理 - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,26 +11,25 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="一只失去了主人的家猫">
-<meta name="keywords" content="SurpriseGift">
+  <meta name="description" content="Java锁的实现原理">
+<meta name="keywords" content="Lock">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SurpriseGift">
-<meta property="og:url" content="http://greedring.com/2019/09/28/SurpriseGift/index.html">
+<meta property="og:title" content="Java锁的实现原理">
+<meta property="og:url" content="http://greedring.com/2019/12/13/lock/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="一只失去了主人的家猫">
+<meta property="og:description" content="Java锁的实现原理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://i.loli.net/2019/09/28/aIv9BWGDuSQVTw2.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/09/28/HAq5uKxoiL7vP3D.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/09/28/ksceS61HtVAdJKf.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/09/28/HbDcRdnAXLGtPCF.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/09/28/WJfza7u1IxgnSdc.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/09/28/3BYLRbUANICpVST.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/09/28/kCnfSF4ZPQlvEuq.jpg">
-<meta property="og:updated_time" content="2019-12-05T01:50:26.099Z">
+<meta property="og:image" content="https://i.loli.net/2019/12/15/C3We5GLz12rsAN6.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/16/s7dNyXuJFgbQ3C6.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/16/348J9QnHTjFaufD.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/15/MjSZ4rUIiLoXTbz.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/16/4FhgeZXO8vIc7Jd.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/16/R7t5kwSTrHujMNB.png">
+<meta property="og:updated_time" content="2019-12-15T18:28:02.775Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SurpriseGift">
-<meta name="twitter:description" content="一只失去了主人的家猫">
-<meta name="twitter:image" content="https://i.loli.net/2019/09/28/aIv9BWGDuSQVTw2.jpg">
+<meta name="twitter:title" content="Java锁的实现原理">
+<meta name="twitter:description" content="Java锁的实现原理">
+<meta name="twitter:image" content="https://i.loli.net/2019/12/15/C3We5GLz12rsAN6.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -38,7 +37,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1576434538358">
+  <link rel="stylesheet" href="/css/style.css?v=1576434538245">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -187,31 +186,128 @@
         <div class="nexmoe-post">
     <div class="nexmoe-post-cover"> 
         
-        <img src="https://i.loli.net/2019/12/05/4fRawNJjGIrBDk2.jpg">
+        <img src="https://i.loli.net/2019/12/05/vlq2mEib4jeNLX5.jpg">
         
-        <h1>SurpriseGift</h1>
+        <h1>Java锁的实现原理</h1>
     </div>
   <div class="nexmoe-post-meta">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月28日</a>
-    <a><i class="nexmoefont icon-areachart"></i>68 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年12月13日</a>
+    <a><i class="nexmoefont icon-areachart"></i>838 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
     
-      <a class="nexmoefont icon-appstore-fill -link" href="/categories/瞎搞/">瞎搞</a>
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/Lock/">Lock</a>
     
     
-      <a class="nexmoefont icon-tag-fill -link" href="/tags/SurpriseGift/">SurpriseGift</a>
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/Lock/">Lock</a>
     
   </div>
   <article>
-    <p>一只失去了主人的家猫</p>
+    <p>Java锁的实现原理</p>
 <a id="more"></a>
 
 
-    <div id="aplayer-GXPQlyzB" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="31649017" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-DBJGaidJ" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="3116480034" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
-<p>感谢你，给我带了的一整晚的温暖<br>让我提前体会到理想的生活<br>敲着代码，腿上躺着猫</p>
-<p>但是，对不起，我没有能力养你…<br>愿你被这个世界温柔以待</p>
-<p><img src="https://i.loli.net/2019/09/28/aIv9BWGDuSQVTw2.jpg" alt><br><img src="https://i.loli.net/2019/09/28/HAq5uKxoiL7vP3D.jpg" alt><br><img src="https://i.loli.net/2019/09/28/ksceS61HtVAdJKf.jpg" alt><br><img src="https://i.loli.net/2019/09/28/HbDcRdnAXLGtPCF.jpg" alt><br><img src="https://i.loli.net/2019/09/28/WJfza7u1IxgnSdc.jpg" alt><br><img src="https://i.loli.net/2019/09/28/3BYLRbUANICpVST.jpg" alt><br><img src="https://i.loli.net/2019/09/28/kCnfSF4ZPQlvEuq.jpg" alt></p>
+<h2 id="对象布局"><a href="#对象布局" class="headerlink" title="对象布局"></a>对象布局</h2><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.openjdk.jol&lt;/groupId&gt;
+    &lt;artifactId&gt;jol-core&lt;/artifactId&gt;
+    &lt;version&gt;0.9&lt;/version&gt;
+&lt;/dependency&gt;</code></pre><pre><code class="java">package com.greedring.lock;
+
+import org.openjdk.jol.info.ClassLayout;
+
+import java.util.concurrent.locks.ReentrantLock;
+
+public class Test {
+
+    static L l = new L();
+
+    //给这个new出来的reentrantLock上锁
+    static ReentrantLock reentrantLock = new ReentrantLock();
+
+    public static void main(String[] args) {
+        System.out.println(ClassLayout.parseInstance(l).toPrintable());
+    }
+
+    public static void lockTest() {
+
+        //JUC并发包下提供的锁
+        reentrantLock.lock();
+        System.out.println(&quot;zzz&quot;);
+        reentrantLock.unlock();
+
+        //java的内置锁
+        synchronized (l) {
+            System.out.println(&quot;XXX&quot;);
+            System.out.println(&quot;yyy&quot;);
+        }
+    }
+}</code></pre>
+<pre><code class="java">package com.greedring.lock;
+
+public class L {
+    boolean flag = false;
+}</code></pre>
+<blockquote>
+<p>l中有一个标识改变来标记上锁成功，reentrantLock中有一个state变量用来体现线程给他加了锁，那么l这个变量在哪里体现标记上锁成功呢。</p>
+</blockquote>
+<p>来看下Java中对象的组成：</p>
+<p><img src="https://i.loli.net/2019/12/15/C3We5GLz12rsAN6.png" alt></p>
+<ul>
+<li><strong>OFFSET</strong>&emsp;偏移量，Java中内存上都是以指针形式存储，偏了多少位</li>
+</ul>
+<ul>
+<li><strong>SIZE</strong>&emsp;长度</li>
+</ul>
+<ul>
+<li><strong>TYPE DESCRIPTION</strong>&emsp;类型说明<ul>
+<li><strong>object header</strong>&emsp;对象头（固定存在）</li>
+<li><strong>实例数据</strong></li>
+<li><strong>lose due to the next object alignment</strong>&emsp;对齐填充（64位JVM中对象必须以8byte去对齐）</li>
+</ul>
+</li>
+</ul>
+<h2 id="对象头"><a href="#对象头" class="headerlink" title="对象头"></a>对象头</h2><p>对象的第一个部分，所有对象公共部分，由 Mark Word 和 Klass Pointer（Class Metadata Address）两个部分组成。</p>
+<p>对象头是实现synchronized的锁对象的基础，一般而言，synchronized使用的锁对象是存储在Java对象头里的。</p>
+<p>JVM中采用两个字来存储对象头：Mark Word + Klass Pointer 一共 12byte</p>
+<p>openjdk（<strong><a href="http://openjdk.java.net/groups/hotspot/docs/HotSpotGlossary.html" target="_blank" rel="noopener">点我进入</a></strong>）中可以找到：<br><img src="https://i.loli.net/2019/12/16/s7dNyXuJFgbQ3C6.png" alt><br><img src="https://i.loli.net/2019/12/16/348J9QnHTjFaufD.png" alt></p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>头对象结构</strong></th>
+<th align="center"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Mark Word</td>
+<td align="center">存储对象的hashCode、锁信息或分代年龄或GC标志等信息</td>
+</tr>
+<tr>
+<td align="center">Klass Pointer</td>
+<td align="center">类型指针指向对象的类元数据，JVM通过这个指针确定该对象是哪个类的实例</td>
+</tr>
+</tbody></table>
+<h2 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h2><p>cmd中输入java -version，可以看出使用的是HotSpot虚拟机</p>
+<p><img src="https://i.loli.net/2019/12/15/MjSZ4rUIiLoXTbz.png" alt></p>
+<p>那么HotSpot和我们常提到的JVM是何关系:<br>JVM是虚拟机的规范或标准，HotSpot是产品或实现，其他的比如J9，taobaovm等都遵循了JVM规范。<br>由于HotSpot是由sun公司开发的，一般我们安装的都是这个。</p>
+<p>openjdk（<strong><a href="http://openjdk.java.net/groups/hotspot/docs/HotSpotGlossary.html" target="_blank" rel="noopener">点我进入</a></strong>）中可以找到：<br><img src="https://i.loli.net/2019/12/16/4FhgeZXO8vIc7Jd.png" alt><br>着重来看下这句话：<br>&emsp;&emsp;<strong>Includes fundamental information about the heap object’s layout, type, GC state, synchronization state, and identity hash code.</strong></p>
+<ul>
+<li>类型：以指针的形式保存在对象头中</li>
+</ul>
+<ul>
+<li>GC状态：分为两种，Partial GC（并不收集整个GC堆的模式）和 Full GC（收集整个堆所有部分的模式）</li>
+</ul>
+<p><img src="https://i.loli.net/2019/12/16/R7t5kwSTrHujMNB.png" alt></p>
+<blockquote>
+<p>对象分配的时候分配在eden区，当eden区空间不足时，就会发生Partial GC，将部分Eden中活跃对象放入Survivor区。Survivor区被用来作为Eden及Old的中间交换区域，当Old区空间足够时，Survivor区的对象会被移到Old区，否则会被保留在Survivor区。如果Old区空间不足，则会发生Full GC。</p>
+<p>Survivor区到老年代，需要在from区和to区中发生15次的复制算法，from区和to区来回倒，倒一次年龄值就会加一次，年龄值记录在对象头中的某四位上，4bit最大能表示10进制的2<sup>4</sup>，所以是0到15次。</p>
+</blockquote>
+<ul>
+<li>同步状态，当通过synchronized对对象进行加锁后，对象头中的某2bit就会发生改变。</li>
+</ul>
+<ul>
+<li>哈希代码：每个对象都有一个hash code，存储在对象头12个byte中的某个地方。</li>
+</ul>
 
   </article>
   
@@ -219,7 +315,7 @@
 <div class="nexmoe-post-copyright">
 <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
 <strong>本文作者：</strong>GreedRing<br>
-<strong>本文链接：</strong><a href="http://greedring.com/2019/09/28/SurpriseGift/" title="http://greedring.com/2019/09/28/SurpriseGift/" target="_blank" rel="noopener">http://greedring.com/2019/09/28/SurpriseGift/</a><br>
+<strong>本文链接：</strong><a href="http://greedring.com/2019/12/13/lock/" title="http://greedring.com/2019/12/13/lock/" target="_blank" rel="noopener">http://greedring.com/2019/12/13/lock/</a><br>
 
   <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
 
@@ -259,7 +355,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1576434538388"></script>
+<script src="/js/app.js?v=1576434538260"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
