@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
   
-  <title>泛型 - Greed Ring</title>
+  <title>泛型与通配符 - Greed Ring</title>
   <meta charset="UTF-8">
   <meta name="description" content>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -11,18 +11,18 @@
   
 
   <link rel="shortcut icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="泛型">
+  <meta name="description" content="泛型、通配符">
 <meta name="keywords" content="JavaSE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="泛型">
+<meta property="og:title" content="泛型与通配符">
 <meta property="og:url" content="http://greedring.com/2019/09/12/JavaSE19/index.html">
 <meta property="og:site_name" content="Greed Ring">
-<meta property="og:description" content="泛型">
+<meta property="og:description" content="泛型、通配符">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-18T01:18:20.012Z">
+<meta property="og:updated_time" content="2019-12-20T07:20:32.300Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="泛型">
-<meta name="twitter:description" content="泛型">
+<meta name="twitter:title" content="泛型与通配符">
+<meta name="twitter:description" content="泛型、通配符">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
    
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1576632174824">
+  <link rel="stylesheet" href="/css/style.css?v=1576829697182">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -174,12 +174,12 @@
         
         <img src="https://i.loli.net/2019/09/21/NyYscOljraoSp24.jpg">
         
-        <h1>泛型</h1>
+        <h1>泛型与通配符</h1>
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月12日</a>
-    <a><i class="nexmoefont icon-areachart"></i>464 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>848 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -188,14 +188,14 @@
     
   </div>
   <article>
-    <p>泛型</p>
+    <p>泛型、通配符</p>
 <a id="more"></a>
 
 
-    <div id="aplayer-YAqoKDoH" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-ChqqeNtc" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><ul>
-<li>泛型可以灵活的将数据类型应用到不同的类、方法、接口中，并将数据类型作为参数传递(泛型类、泛型接口、泛型方法)。</li>
+<li>泛型可以灵活的将数据类型应用到不同的类、方法、接口中，并将数据类型作为参数传递(泛型类、泛型接口、泛型方法)</li>
 </ul>
 <ul>
 <li>泛型是数据类的一部分，我们将类名与泛型合并一起看作数据类型。</li>
@@ -210,25 +210,27 @@
 <p>当创建该类的对象时，传入类型，此时类上的泛型被确定<br>class&emsp;类名&lt;E<strong>,</strong>&nbsp;T<strong>,</strong>&nbsp;……&gt;{&emsp;&emsp;&emsp;//&lt;&gt;中的泛型可以写无数个<br>&emsp;&emsp;//E,T……能够做为类型在该类内部被使用<br>}</p>
 </blockquote>
 <h4 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h4><blockquote>
-<p>在调用泛型方法并传入实参的时候才能确定方法上形参类型<br>修饰符&lt;T，Q，E…&gt;返回值类型方法名(T t,Q q,……){<br>//方法上的泛型定义在返回值的前面<br>}</p>
+<p>在调用泛型方法并传入实参的时候才能确定方法上形参类型<br>修饰符&lt;T<strong>,</strong>&nbsp;Q<strong>,</strong>&nbsp;E<strong>,</strong>&nbsp;……&gt;返回值类型方法名(T t<strong>,</strong>&nbsp;Q q<strong>,</strong>&nbsp;……){<br>//方法上的泛型定义在返回值的前面<br>}</p>
 </blockquote>
 <h4 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h4><blockquote>
-<p>interface 接口名&lt;Q,E,R……&gt;{<br>public abstract void method(T t);//假设定义一个方法<br>}</p>
+<p>interface 接口名&lt;Q<strong>,</strong>&nbsp;E<strong>,</strong>&nbsp;R<strong>,</strong>&nbsp;……&gt;{<br>public abstract void method(T t);//假设定义一个方法<br>}</p>
 </blockquote>
 <ul>
 <li><p><strong>方式一：</strong><br>实现类在实现接口时，指定泛型的实际类型</p>
-<pre><code>public class MyUserClass implements 接口名&lt;User&gt;{
-@Override
-public void printMessage(User obj) {
-}    
-}</code></pre></li>
+<pre><code class="java">public class MyUserClass implements 接口名&lt;User&gt;{
+   @Override
+   public void printMessage(User obj) {
+   }    
+}</code></pre>
+</li>
 <li><p><strong>方式二：</strong><br>实现类依旧不指定泛型的实际类型，实现类也需要是一个泛型类</p>
-<pre><code>class 类名&lt;T&gt; implements 接口名&lt;T&gt;{
-//由于没有指定接口中具体的数据类型,所以方法中仍然使用这种不确定的数据类型
-@Override
-public void method(T t) {    
-}
-}</code></pre></li>
+<pre><code class="java">class 类名&lt;T&gt; implements 接口名&lt;T&gt;{
+   //由于没有指定接口中具体的数据类型,所以方法中仍然使用这种不确定的数据类型
+   @Override
+   public void method(T t) {    
+   }
+}</code></pre>
+</li>
 </ul>
 <p>泛型的优点：</p>
 <ul>
@@ -240,6 +242,83 @@ public void method(T t) {
 <ul>
 <li>省去了类型强转的麻烦</li>
 </ul>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><ul>
+<li><blockquote>
+<p>协变&emsp;&lt;?&nbsp;extends&nbsp;T&gt;<br>逆变&emsp;&lt;?&nbsp;super&nbsp;T&gt;<br>不变&emsp;T</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>协变只能get，不能add（可以add null）<br>逆变能add，不能get（可以用Object型的数据去get）<br>不变能随便get和add</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>协变 List&lt;?&nbsp;extends&nbsp;Object&gt;&nbsp;object&nbsp;=&nbsp;new&nbsp;ArrayList<string>();<br>逆变 List&lt;?&nbsp;super&nbsp;String&gt;&nbsp;object&nbsp;=&nbsp;new&nbsp;ArrayList<object>();<br>不变 List<string>&nbsp;object&nbsp;=&nbsp;new&nbsp;ArrayList<string>();</string></string></object></string></p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="java">package com.greedring;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Test {
+    public static void main(String[] args) {
+
+        List&lt;Student&gt; list = new ArrayList&lt;&gt;();
+        list.add(new Student(2, 60));
+        list.add(new Student(3, 88));
+
+        List&lt;Student.Pupil&gt; pupil = new ArrayList&lt;&gt;();
+
+        //协变  向上限定  Student本身或者Student的子类
+        List&lt;? extends Student&gt; l1 = null;
+
+        l1 = list;
+        //l1 = pupil;
+
+        //取值
+        Student student = l1.get(0);
+
+        System.out.println(student);
+
+        //设值
+        //l1.add(new Student(2,90)); //?代表某个确定的Student子类或本身，无法添加除null以外的元素
+
+        List&lt;Object&gt; os = new ArrayList&lt;&gt;();
+        //l1 = os; //编译报错，os中元素Object是l1中元素Student的父类
+
+        System.out.println(&quot;==============================================&quot;);
+
+        //逆变  向下限定  集合中元素必须是Student以及Student的父类
+        List&lt;? super Student&gt; l2 = null;
+        l2 = list;
+
+        //l2 = pupil; //编译报错
+
+        l2 = os; //编译通过
+
+        //取值
+        Object object = l2.get(0);
+        System.out.println(object);//?代表某个确定的Student父类或自身，只能用Object去接
+
+        //设值
+        l2.add(new Student(6, 66));
+
+        System.out.println(l2);
+
+        System.out.println(list);
+
+        List&lt;Student&gt; ls = new ArrayList&lt;&gt;();
+        Collections.addAll(ls, new Student.Pupil());
+
+    }
+
+    public static void printArray(List&lt;?&gt; list) {
+        System.out.println(list);
+        //list.add(12);
+    }
+}</code></pre>
 
   </article>
   
@@ -287,7 +366,7 @@ public void method(T t) {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1576632174831"></script>
+<script src="/js/app.js?v=1576829697189"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
