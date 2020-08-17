@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Greed Ring">
 <meta property="og:description" content="泛型、通配符">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-20T07:20:32.300Z">
+<meta property="og:updated_time" content="2019-12-27T01:37:54.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="泛型与通配符">
 <meta name="twitter:description" content="泛型、通配符">
@@ -30,7 +30,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1576829697182">
+  <link rel="stylesheet" href="/css/style.css?v=1597669305710">
 <link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -161,7 +161,7 @@
   
 </aside>
     <div class="nexmoe-copyright">
-        &copy; 2019 GreedRing
+        &copy; 2020 GreedRing
         Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
         & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
     </div>
@@ -178,8 +178,8 @@
     </div>
   <div class="nexmoe-post-meta">
     <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月12日</a>
-    <a><i class="nexmoefont icon-areachart"></i>848 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.1k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
     
       <a class="nexmoefont icon-appstore-fill -link" href="/categories/Java/">Java</a>
     
@@ -192,7 +192,7 @@
 <a id="more"></a>
 
 
-    <div id="aplayer-ChqqeNtc" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
+    <div id="aplayer-RXfkDFIr" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="27580979" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"></div>
 
 <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><ul>
 <li>泛型可以灵活的将数据类型应用到不同的类、方法、接口中，并将数据类型作为参数传递(泛型类、泛型接口、泛型方法)</li>
@@ -232,6 +232,48 @@
 }</code></pre>
 </li>
 </ul>
+<pre><code class="java">public class Test {
+    public static void main(String[] args) {
+        // 数组定义
+        int[] arr = new int[5];
+        arr[0] = 12;
+        // arr[1] = &quot;hello&quot;;//编译报错
+        // 数组一旦定义，数组中元素类型也就确定了
+
+        // Object类型数组
+        Object[] arr2 = new Object[5];
+        arr2[0] = 12;
+        arr2[1] = true;
+        arr2[2] = &#39;a&#39;;
+        arr2[3] = &quot;hello&quot;;
+        System.out.println(Arrays.toString(arr2));
+
+        // Object obj = arr2[2];
+        // 可能存在：java.lang.ClassCastException
+        // String s = (String)obj;
+        // System.out.println(s);
+
+        // 如果集合没有指定泛型，那么集合中存储的数据类型可以是任意数据（Object）类型
+        List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        // list.add(true);
+        // list.add(true);
+        // list.add(&#39;a&#39;);
+        // list.add(&quot;hello&quot;);
+
+        Object object = list.get(1);
+        // boolean b = (boolean)object;
+        // 编译通过，运行不通过（更希望将运行时出现的问题提前到编译时）
+        int b = (int) object;
+        System.out.println(b);
+
+        System.out.println(&quot;=========================================&quot;);
+
+    }
+}</code></pre>
 <p>泛型的优点：</p>
 <ul>
 <li>提高程序的安全性</li>
@@ -366,7 +408,7 @@ public class Test {
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1576829697189"></script>
+<script src="/js/app.js?v=1597669305729"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
